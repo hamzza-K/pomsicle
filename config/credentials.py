@@ -33,7 +33,7 @@ def login(username: str, password: str) -> None:
     if response.ok:
         token_data = json.loads(response.content)
         token = Token(token_data['access_token'], token_data['expires_in'])
-        print("Logged in as {username}")
+        print(f"Logged in as {username}")
         return token
     else:
         response.raise_for_status()

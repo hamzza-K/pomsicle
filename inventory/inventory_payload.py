@@ -6,7 +6,7 @@ class Payload:
     def __init__(self, type: str = "xml") -> None:
         self.trans = Inventory()
     
-    def fetch(self, records: Iterator = None, save: bool = Optional[False]) -> str:
+    def fetch(self, records: Iterator = None, save: bool = False) -> str:
         """record is a singular row of the excel sheet"""
         # Create instances of Header, Record, and LineItem
         header = Header()

@@ -1,10 +1,25 @@
+import os
 import argparse
 from banners import Banner
 from bom.bom_mapper import Header
 from inventory.inventory_payload import Payload
 from inventory.read_inventory import read_file as read_inventory
 from config.credentials import login
+from reading import read_file
 import getpass
+
+import configparser
+
+
+
+config = configparser.ConfigParser()
+config_file = os.path.join(os.path.dirname(__file__), 'config/config.cfg')
+config.read(config_file)
+settings = config['pomsicle']
+
+USERNAME = settings['USERNAME']
+PASSWORD = settings['PASSWORD']
+
 
 ban = Banner()
 
@@ -52,20 +67,12 @@ def author():
     print(f"Made with ❤  by {author_name} - {author_link}")
     print('-----------------------------------------------------')
 
-
-try:
-    args = parser.parse_args()
-except SystemExit:
-    parser.print_help()
-    author()
-    exit(1)
-
-print("Please enter your credentials\n")
-username = input("Username: ")
-password = getpass.getpass("Password: ")
+#print("Please enter your credentials\n")
+#username = input("Username: ")
+#password = getpass.getpass("Password: ")
 print("Checking credentials...")
-token = login(username=username, password=password)
-print("OK")
+token = login(username=USERNAME, password=PASSWORD)
+print(token.access_token)
 
 args = parser.parse_args()
 
@@ -82,6 +89,9 @@ elif args.create_material:
         print(
             "Error: Both name (-n) and description (-d) are required for creating material."
         )
+elif args.load_materials:
+    ban.info(f"Loading materials from: {args.load_materials}")
+    read_file(args.load_materials)
 
 # Handling --create-bom
 elif args.create_bom:

@@ -17,4 +17,5 @@ def read_file(token: str, filename: str):
         Banner().info(f"Reading: {record}")
         pay = payload.fetch(record)
         print("Payload", pay)
-        call(token, filename)
+        print(call(token, pay))
+
