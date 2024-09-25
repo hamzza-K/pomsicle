@@ -1,4 +1,4 @@
-from typing import Iterator
+from typing import Iterator, Optional
 from inventory.inventory_structure import record_lookup, header_lookup, Record, Header, Inventory
 
 class Payload:
@@ -6,7 +6,7 @@ class Payload:
     def __init__(self, type: str = "xml") -> None:
         self.trans = Inventory()
     
-    def fetch(self, records: Iterator = None) -> str:
+    def fetch(self, records: Iterator = None, save: bool = Optional[False]) -> str:
         """record is a singular row of the excel sheet"""
         # Create instances of Header, Record, and LineItem
         header = Header()
@@ -21,5 +21,7 @@ class Payload:
         for record_attr, xml_element in record_lookup(record_instance).items():
             self.trans.add_record(record_attr, xml_element)
             
-        # return self.trans.to_string()
-        return self.trans.save("inventory.xml")
+
+        if save:
+            return self.trans.save("inventory.xml")
+        return self.trans.to_string()
