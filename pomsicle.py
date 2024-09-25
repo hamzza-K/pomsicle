@@ -79,7 +79,7 @@ args = parser.parse_args()
 # Handling --load-inventory
 if args.load_inventory:
     ban.info(f"Loading inventory from: {args.load_inventory}")
-    read_inventory(token=token, filename=args.load_inventory)
+    read_inventory(token=token.access_token, filename=args.load_inventory)
 
 # Handling --create-material
 elif args.create_material:

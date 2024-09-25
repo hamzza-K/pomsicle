@@ -7,7 +7,7 @@ class Inventory:
         self.root = ET.Element("POMSTransaction")
         self.header = None
         self.record = None
-        self.line   = None
+        self.line = None
 
     def add_header(self, name: str, text: str) -> None:
         if self.header is None:
@@ -33,13 +33,12 @@ class Inventory:
             self.root.remove(self.record)
             self.record = None
 
-    def to_string(self):
-        return ET.tostring(self.root, encoding="UTF-8", xml_declaration=True)
+    def to_string(self, xml_declaration: bool = False) -> str:
+        return ET.tostring(self.root, encoding="UTF-8", xml_declaration=xml_declaration)
 
-    def save(self, file_name: str = "bom.xml"):
+    def save(self, file_name: str = "bom.xml", xml_declaration: bool = False):
         tree = ET.ElementTree(self.root)
-        tree.write(file_name, encoding="UTF-8", xml_declaration=True)
-
+        tree.write(file_name, encoding="UTF-8", xml_declaration=xml_declaration)
 
 
 # ========================== HEADER =======================
