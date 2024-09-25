@@ -82,6 +82,9 @@ class Record:
     UOM = "kg"
     MATERIAL_TYPE = "Raw Material"
     CONTAINER_ID = "C-10203"
+    LOT_ID = "L000000011"
+    LOT_STATUS = "Released"
+    AREA_ID = "Freezer"
 
 
 
@@ -106,8 +109,10 @@ def record_lookup(record: Record) -> dict:
         "LOCATION_ID": Record.LOCATION_ID,
         "UOM": Record.UOM,
         "MATERIAL_TYPE": Record.MATERIAL_TYPE,
-        "CONTAINER_ID": Record.CONTAINER_ID
-
+        "CONTAINER_ID": Record.CONTAINER_ID,
+        "LOT_ID": Record.LOT_ID,
+        "LOT_STATUS": Record.LOT_STATUS,
+        "AREA_ID": Record.AREA_ID
     }
 
     return record_look_up

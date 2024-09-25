@@ -14,7 +14,8 @@ def read_file(filename: str):
     for record in df.iter_rows():
         Banner().info(f'Reading: {record}')
         pay = payload.fetch(record)
-        # print('Payload', pay)
+        print('Payload', pay)
+        break
         
         
 read_file(filename) 

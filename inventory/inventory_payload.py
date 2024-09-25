@@ -21,7 +21,5 @@ class Payload:
         for record_attr, xml_element in record_lookup(record_instance).items():
             self.trans.add_record(record_attr, xml_element)
             
-        return self.trans.to_string()
-
-if __name__ == '__main__':
-    print(Payload().fetch())
+        # return self.trans.to_string()
+        return self.trans.save("inventory.xml")
