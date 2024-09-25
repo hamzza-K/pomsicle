@@ -2,13 +2,12 @@ from typing import Iterator, Optional
 from inventory.inventory_structure import record_lookup, header_lookup, Record, Header, Inventory
 
 class Payload:
-    """Returns the string representation of the BOM"""
-    def __init__(self, type: str = "xml") -> None:
-        self.trans = Inventory()
+    """Returns the string representation of the Inventory"""
     
     def fetch(self, records: Iterator = None, save: bool = False) -> str:
         """record is a singular row of the excel sheet"""
-        # Create instances of Header, Record, and LineItem
+        self.trans = Inventory()
+
         header = Header()
         record_instance = Record()
         
