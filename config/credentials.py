@@ -1,6 +1,8 @@
 import os
+import json
 import configparser
 import requests
+from api.token import Token
 
 config = configparser.ConfigParser()
 config_file = os.path.join(os.path.dirname(__file__), 'config.cfg')
@@ -29,10 +31,10 @@ def login(username: str, password: str) -> None:
     response = http_client.post(token_url, data=data)
 
     if response.ok:
-        # token_data = json.loads(response.content)
-        # token = Token(token_data['access_token'], token_data['expires_in'])
-        return f"Logged in as {username}"
-        # return token
+        token_data = json.loads(response.content)
+        token = Token(token_data['access_token'], token_data['expires_in'])
+        print("Logged in as {username}")
+        return token
     else:
         response.raise_for_status()
 

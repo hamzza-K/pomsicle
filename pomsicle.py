@@ -2,6 +2,7 @@ import argparse
 from banners import Banner
 from bom.bom_mapper import Header
 from inventory.inventory_payload import Payload
+from inventory.read_inventory import read_file as read_inventory
 from config.credentials import login
 import getpass
 
@@ -63,13 +64,15 @@ print("Please enter your credentials\n")
 username = input("Username: ")
 password = getpass.getpass("Password: ")
 print("Checking credentials...")
-login(username=username, password=password)
+token = login(username=username, password=password)
+print("OK")
 
 args = parser.parse_args()
 
 # Handling --load-inventory
 if args.load_inventory:
     ban.info(f"Loading inventory from: {args.load_inventory}")
+    read_inventory(token=token, filename=args.load_inventory)
 
 # Handling --create-material
 elif args.create_material:
