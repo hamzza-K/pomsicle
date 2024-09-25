@@ -1,8 +1,10 @@
+import os
 import configparser
 import requests
 
 config = configparser.ConfigParser()
-config.read(['../config.cfg'])
+config_file = os.path.join(os.path.dirname(__file__), 'config.cfg')
+config.read(config_file)
 settings = config['pomsicle']
 
 MACHINE_NAME = settings["MACHINE_NAME"]

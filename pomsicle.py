@@ -67,13 +67,8 @@ login(username=username, password=password)
 
 args = parser.parse_args()
 
-# Handling --read-file
-if args.read_file:
-    ban.info(f"Reading: {args.read_file}")
-    # read_file(args.read_file)
-
 # Handling --load-inventory
-elif args.load_inventory:
+if args.load_inventory:
     ban.info(f"Loading inventory from: {args.load_inventory}")
 
 # Handling --create-material
