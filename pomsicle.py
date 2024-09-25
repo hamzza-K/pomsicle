@@ -2,12 +2,12 @@ import argparse
 from banners import Banner
 from bom.bom_mapper import Header
 from inventory.inventory_payload import Payload
-from inventory.test_read import read_file
+from config.credentials import login
+import getpass
 
 ban = Banner()
 
-# ASCII art of "POMSICLE"
-ascii_art = r"""
+print(r"""
  ________    ________      _____ ______       ________       ___      ________      ___           _______      
 |\   __  \  |\   __  \    |\   _ \  _   \    |\   ____\     |\  \    |\   ____\    |\  \         |\  ___ \     
 \ \  \|\  \ \ \  \|\  \   \ \  \\\__\ \  \   \ \  \___|_    \ \  \   \ \  \___|    \ \  \        \ \   __/|    
@@ -17,32 +17,8 @@ ascii_art = r"""
     \|__|       \|_______|    \|__|     \|__|   |\_________\    \|__|    \|_______|    \|_______|    \|_______|
                                                 \|_________|                                                   
                                                           
-"""
+""")
 
-print(ascii_art)
-
-
-def author():
-    author_name = "Hamzza K"
-    author_link = "https://hamzza.vercel.app/"
-    print('\n-----------------------------------------------------')
-    print(f"Made with ❤  by {author_name} - {author_link}")
-    print('-----------------------------------------------------')
-
-
-
-class CustomArgumentParser(argparse.ArgumentParser):
-    def error(self, message):
-        # Instead of calling the superclass method, just print the message
-        print(f"Error: {message}")
-        # Print available arguments without showing help
-        print("\nAvailable arguments:")
-        self.print_help()
-        author()
-        exit(1)
-
-
-parser = CustomArgumentParser(description="create materials using POMSicle")
 parser = argparse.ArgumentParser(description="create/load materials using POMSicle")
 
 group_read = parser.add_argument_group("Read Excel File")
@@ -68,6 +44,26 @@ group_create.add_argument("-d", metavar="[description]", help="Description of a 
 
 group_bom.add_argument("--create-bom", action="store_true", help="Create a BOM")
 
+def author():
+    author_name = "Hamzza K"
+    author_link = "https://hamzza.vercel.app/"
+    print('\n-----------------------------------------------------')
+    print(f"Made with ❤  by {author_name} - {author_link}")
+    print('-----------------------------------------------------')
+
+
+try:
+    args = parser.parse_args()
+except SystemExit:
+    parser.print_help()
+    author()
+    exit(1)
+
+print("Please enter your credentials\n")
+username = input("Username: ")
+password = getpass.getpass("Password: ")
+print("Checking credentials...")
+login(username=username, password=password)
 
 args = parser.parse_args()
 
@@ -79,7 +75,6 @@ if args.read_file:
 # Handling --load-inventory
 elif args.load_inventory:
     ban.info(f"Loading inventory from: {args.load_inventory}")
-    read_file(args.load_inventory)
 
 # Handling --create-material
 elif args.create_material:
@@ -99,3 +94,4 @@ else:
     print(
         "No valid options provided. Use --read-file, --load-inventory, or --create-material."
     )
+    author()

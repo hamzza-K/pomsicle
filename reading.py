@@ -11,7 +11,7 @@ sheet = "MaterialTemplating"
 
 
 def read_file(filename: str):
-    df = pl.read_excel(filename, xlsx2csv_options={"skip_empty_lines": True})
+    df = pl.read_excel(filename, sheet_name=sheet, xlsx2csv_options={"skip_empty_lines": True})
 
     for record in df.iter_rows():
         print("Reading:", record)
