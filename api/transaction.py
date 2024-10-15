@@ -49,9 +49,9 @@ def call(token: str, material_file: str):
     }
 
 
-    print("Request Payload::", payload)
+    print(payload)
 
-    response = requests.post(path, data=payload, headers=headers, timeout=10)
+    response = requests.post(path, json=payload, headers=headers, timeout=10)
 
     if response.status_code == 200:
         return response.text

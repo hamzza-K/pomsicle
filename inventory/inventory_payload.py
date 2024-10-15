@@ -11,9 +11,9 @@ class Payload:
         header = Header()
         record_instance = Record()
 
-        record_instance.MATERIAL_ID = record[1]
+        record_instance.MATERIAL_ID = record[0]
         record_instance.PLANT_ID = record[2]
-        record_instance.MATERIAL_QTY = record[6]
+        record_instance.MATERIAL_QTY = f"{record[6]:.2f}"
         record_instance.LOCATION_ID = record[5]
         record_instance.UOM = record[7]
         record_instance.MATERIAL_TYPE = record[8]
