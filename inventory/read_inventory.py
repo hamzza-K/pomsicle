@@ -17,6 +17,7 @@ def read_file(token: str, filename: str):
     for record in df.iter_rows():
         Banner().info(f"Reading: {record}")
         pay = payload.fetch(record)
+        print(pay)
         time.sleep(1)
         print(call(token, pay))
         break

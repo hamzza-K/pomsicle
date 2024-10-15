@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import secrets
 from datetime import datetime
+from typing import Optional, List, Tuple
+import json
 
 class Inventory:
     def __init__(self):
@@ -42,6 +44,50 @@ class Inventory:
     def save(self, file_name: str = "inventory.xml", xml_declaration: bool = True):
         tree = ET.ElementTree(self.root)
         tree.write(file_name, encoding="UTF-8", xml_declaration=xml_declaration)
+
+
+
+
+# ========================== Inventory JSON ========================#
+class InventoryJSON:
+    def __init__(self):
+        self.data = {
+            "POMSTransaction": {
+                "Header": {},
+                "Record": {}
+            }
+        }
+
+    def add_header(self, name: str, text: str) -> None:
+        """Adds a header key-value pair."""
+        self.data["POMSTransaction"]["Header"][name] = text
+
+    def add_record(self, name: str, text: str) -> None:
+        """Adds a single record key-value pair."""
+        self.data["POMSTransaction"]["Record"][name] = text
+
+    def add_records(self, records: List[Tuple[str, str]]) -> None:
+        """Adds multiple records from a list of tuples."""
+        for name, text in records:
+            self.add_record(name, text)
+
+    def remove_header(self) -> None:
+        """Removes the Header section."""
+        self.data["POMSTransaction"]["Header"] = {}
+
+    def remove_records(self) -> None:
+        """Removes the Record section."""
+        self.data["POMSTransaction"]["Record"] = {}
+
+    def to_string(self, indent: Optional[int] = 4) -> str:
+        """Returns the JSON data as a formatted string."""
+        return json.dumps(self.data, indent=indent)
+
+    def save(self, file_name: str = "bom.json", indent: Optional[int] = 4) -> None:
+        """Saves the JSON data to a file."""
+        with open(file_name, "w", encoding="UTF-8") as f:
+            json.dump(self.data, f, indent=indent)
+# ========================== Inventory Json ====================
 
 
 # ========================== HEADER =======================
@@ -92,12 +138,12 @@ class Record:
 
 def header_lookup(header: Header) -> dict:
     header_look_up = {
-        "TransactionID": Header.TRANSACTION_ID,
-        "TransactionTimeStamp": Header.TIMESTAMP,
-        "TransactionRefID": Header.TRANSACTION_REF_ID,
-        "SourceSystem": Header.SOURCE_SYSTEM,
-        "SourceSiteID": Header.SOURCE_SITE_ID,
-        "TargetSystem": Header.TARGET_SYSTEM
+        "TransactionID": header.TRANSACTION_ID,
+        "TransactionTimeStamp": header.TIMESTAMP,
+        "TransactionRefID": header.TRANSACTION_REF_ID,
+        "SourceSystem": header.SOURCE_SYSTEM,
+        "SourceSiteID": header.SOURCE_SITE_ID,
+        "TargetSystem": header.TARGET_SYSTEM
     }
 
     return header_look_up
@@ -105,16 +151,16 @@ def header_lookup(header: Header) -> dict:
 
 def record_lookup(record: Record) -> dict:
     record_look_up = {
-        "PLANTID": Record.PLANT_ID,
-        "MATERIALID": Record.MATERIAL_ID,
-        "MATERIAL_QTY": Record.MATERIAL_QTY,
-        "LOCATION_ID": Record.LOCATION_ID,
-        "UOM": Record.UOM,
-        "MATERIAL_TYPE": Record.MATERIAL_TYPE,
-        "CONTAINER_ID": Record.CONTAINER_ID,
-        "LOT_ID": Record.LOT_ID,
-        "LOT_STATUS": Record.LOT_STATUS,
-        "AREA_ID": Record.AREA_ID
+        "PLANTID": record.PLANT_ID,
+        "MATERIALID": record.MATERIAL_ID,
+        "MATERIAL_QTY": record.MATERIAL_QTY,
+        "LOCATION_ID": record.LOCATION_ID,
+        "UOM": record.UOM,
+        "MATERIAL_TYPE": record.MATERIAL_TYPE,
+        "CONTAINER_ID": record.CONTAINER_ID,
+        "LOT_ID": record.LOT_ID,
+        "LOT_STATUS": record.LOT_STATUS,
+        "AREA_ID": record.AREA_ID
     }
 
     return record_look_up
