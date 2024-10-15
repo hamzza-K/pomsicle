@@ -4,13 +4,25 @@ from inventory.inventory_structure import record_lookup, header_lookup, Record, 
 class Payload:
     """Returns the string representation of the Inventory"""
     
-    def fetch(self, records: Iterator = None, save: bool = False) -> str:
+    def fetch(self, record: Iterator = None, save: bool = False) -> str:
         """record is a singular row of the excel sheet"""
         self.trans = Inventory()
 
         header = Header()
         record_instance = Record()
-        
+
+        record_instance.MATERIAL_ID = record[0]
+        record_instance.PLANT_ID = record[2]
+        record_instance.MATERIAL_QTY = record[6]
+        record_instance.LOCATION_ID = record[5]
+        record_instance.UOM = record[7]
+        record_instance.MATERIAL_TYPE = record[8]
+        record_instance.CONTAINER_ID = record[9]
+        record_instance.LOT_ID = record[1]
+        record_instance.LOT_STATUS = record[3]
+        record_instance.AREA_ID = record[4]
+
+
         # Fill in Header information
         for header_attr, xml_element in header_lookup(header).items():
             self.trans.add_header(header_attr, xml_element)

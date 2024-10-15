@@ -33,10 +33,13 @@ class Inventory:
             self.root.remove(self.record)
             self.record = None
 
-    def to_string(self, xml_declaration: bool = False) -> str:
-        return ET.tostring(self.root, encoding="UTF-8", xml_declaration=xml_declaration)
+    def to_string(self, xml_declaration: bool = True) -> str:
+        # Convert the XML tree to a byte string
+        byte_string = ET.tostring(self.root, encoding="UTF-8", xml_declaration=xml_declaration)
+        # Decode the byte string to a normal string
+        return byte_string.decode("UTF-8")
 
-    def save(self, file_name: str = "bom.xml", xml_declaration: bool = False):
+    def save(self, file_name: str = "inventory.xml", xml_declaration: bool = True):
         tree = ET.ElementTree(self.root)
         tree.write(file_name, encoding="UTF-8", xml_declaration=xml_declaration)
 
@@ -66,7 +69,7 @@ class Header:
     TIMESTAMP = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
     TRANSACTION_REF_ID = secrets.token_hex(16)
     TRANSACTION_ID = "INVENTORY"
-    SOURCE_SYSTEM = "Pomsicle: The inventory loader"
+    SOURCE_SYSTEM = "Pomsicle"
     SOURCE_SITE_ID = "0001"
     TARGET_SYSTEM = "POMSnet"
 
@@ -74,13 +77,13 @@ class Header:
 # ========================= RECORD =======================
 class Record:
     """Adds the records in the JSON or XML transaction payloads."""
-    MATERIAL_ID = "100031"
+    MATERIAL_ID = "100032"
     PLANT_ID = "Herndon"
     MATERIAL_QTY = "100"
-    LOCATION_ID = "Freeze1"
+    LOCATION_ID = "Freeze2"
     UOM = "kg"
     MATERIAL_TYPE = "Raw Material"
-    CONTAINER_ID = "C-10203"
+    CONTAINER_ID = "C-10204"
     LOT_ID = "L000000011"
     LOT_STATUS = "Released"
     AREA_ID = "Freezer"

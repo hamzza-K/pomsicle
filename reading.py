@@ -6,7 +6,7 @@ from transact_api import login, USERNAME, PASSWORD, interface
 ban = Banner()
 
 token = login(USERNAME, PASSWORD)
-payload = Payload('json')
+payload = Payload('xml')
 sheet = "MaterialTemplating"
 
 
