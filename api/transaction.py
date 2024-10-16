@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 config = configparser.ConfigParser()
 config_file = os.path.join(os.path.dirname(__file__), '../config/config.cfg')
 config.read(config_file)
-settings = config['pomsicle']
+settings = config['stallergenes']
 
 
 # Weird Namespacing restrictions when sending the data in .xml format.

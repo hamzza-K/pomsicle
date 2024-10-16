@@ -1,5 +1,8 @@
 from typing import Iterator, Optional
 from inventory.inventory_structure import record_lookup, header_lookup, Record, Header, InventoryJSON
+from decimal import Decimal, getcontext
+
+getcontext().prec = 4
 
 class Payload:
     """Returns the string representation of the Inventory"""
@@ -13,7 +16,7 @@ class Payload:
 
         record_instance.MATERIAL_ID = record[0]
         record_instance.PLANT_ID = record[2]
-        record_instance.MATERIAL_QTY = f"{record[6]:.2f}"
+        record_instance.MATERIAL_QTY = f"{record[6]}" + ".00"
         record_instance.LOCATION_ID = record[5]
         record_instance.UOM = record[7]
         record_instance.MATERIAL_TYPE = record[8]
