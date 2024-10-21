@@ -3,11 +3,9 @@ import json
 import configparser
 import requests
 from api.token import Token
+from config import config
 
-config = configparser.ConfigParser()
-config_file = os.path.join(os.path.dirname(__file__), 'config.cfg')
-config.read(config_file)
-settings = config['pomsicle']
+settings = config('pomsicle')
 
 MACHINE_NAME = settings["MACHINE_NAME"]
 

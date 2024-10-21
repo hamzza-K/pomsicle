@@ -1,12 +1,11 @@
 import os
-import configparser
+import sys
+
+from config import config
 from typing import Iterator, Optional
 from inventory.inventory_structure import record_lookup, header_lookup, Record, Header, InventoryJSON
 
-config = configparser.ConfigParser()
-config_file = os.path.join(os.path.dirname(__file__), '../config/config.cfg')
-config.read(config_file)
-settings = config['pomsicle']
+settings = config('pomsicle')
 
 class Payload:
     """Returns the string representation of the Inventory"""

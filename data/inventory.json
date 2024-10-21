@@ -1,0 +1,25 @@
+{
+    "POMSTransaction": {
+        "Header": {
+            "TransactionID": "INVENTORY",
+            "TransactionTimeStamp": "2024-10-16T16:35:36",
+            "TransactionRefID": "aa669f15c609c045e19264047a4a4ab2",
+            "SourceSystem": "Pomsicle",
+            "SourceSiteID": "0001",
+            "TargetSystem": "POMSnet",
+            "User": "administrator"
+        },
+        "Record": {
+            "PLANTID": "Herndon",
+            "MATERIALID": 31313,
+            "MATERIAL_QTY": 100.1,
+            "LOCATION_ID": "ReceivingTempStore",
+            "UOM": "kg",
+            "MATERIAL_TYPE": "Raw Material",
+            "CONTAINER_ID": "0000000124",
+            "LOT_ID": "L000000416",
+            "LOT_STATUS": "Released",
+            "AREA_ID": "Receiving"
+        }
+    }
+}
