@@ -1,12 +1,17 @@
-import polars as pl
+import os
 import time
+import polars as pl
+import configparser
 from inventory.inventory_payload import Payload
-from banners import Banner
 from api.transaction import call
 
 payload = Payload()
 
-SHEET = "InventoryTemplating"
+config = configparser.ConfigParser()
+config_file = os.path.join(os.path.dirname(__file__), '../config/config.cfg')
+config.read(config_file)
+settings = config['pomsicle']
+SHEET = settings['INVENTORY_SHEET']
 
 
 def read_file(token: str, filename: str):
@@ -15,10 +20,8 @@ def read_file(token: str, filename: str):
     )
 
     for record in df.iter_rows():
-        Banner().info(f"Reading: {record}")
+        print(record)
         pay = payload.fetch(record)
-        print(pay)
-        time.sleep(1)
-        print(call(token, pay))
-        break
+        time.sleep(2)
+        call(token, pay)
 

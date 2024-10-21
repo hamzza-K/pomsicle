@@ -1,12 +1,9 @@
 import os
 import argparse
 from banners import Banner
-from bom.bom_mapper import Header
-from inventory.inventory_payload import Payload
 from inventory.read_inventory import read_file as read_inventory
 from config.credentials import login
 from reading import read_file
-import getpass
 
 import configparser
 
@@ -72,7 +69,6 @@ def author():
 #password = getpass.getpass("Password: ")
 print("Checking credentials...")
 token = login(username=USERNAME, password=PASSWORD)
-print(token.access_token)
 
 args = parser.parse_args()
 

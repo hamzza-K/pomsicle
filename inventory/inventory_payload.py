@@ -1,8 +1,12 @@
+import os
+import configparser
 from typing import Iterator, Optional
 from inventory.inventory_structure import record_lookup, header_lookup, Record, Header, InventoryJSON
-from decimal import Decimal, getcontext
 
-getcontext().prec = 4
+config = configparser.ConfigParser()
+config_file = os.path.join(os.path.dirname(__file__), '../config/config.cfg')
+config.read(config_file)
+settings = config['pomsicle']
 
 class Payload:
     """Returns the string representation of the Inventory"""
@@ -12,18 +16,19 @@ class Payload:
         self.trans = InventoryJSON()
 
         header = Header()
+        header.USER = settings["USERNAME"]
         record_instance = Record()
 
         record_instance.MATERIAL_ID = record[0]
         record_instance.PLANT_ID = record[2]
-        record_instance.MATERIAL_QTY = f"{record[6]}" + ".00"
+        record_instance.MATERIAL_QTY = record[6]
         record_instance.LOCATION_ID = record[5]
         record_instance.UOM = record[7]
         record_instance.MATERIAL_TYPE = record[8]
         record_instance.CONTAINER_ID = record[9]
         record_instance.LOT_ID = record[1]
         record_instance.LOT_STATUS = record[3]
-        record_instance.AREA_ID = record[5]
+        record_instance.AREA_ID = record[4]
 
 
         # Fill in Header information

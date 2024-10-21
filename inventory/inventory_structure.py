@@ -118,6 +118,7 @@ class Header:
     SOURCE_SYSTEM = "Pomsicle"
     SOURCE_SITE_ID = "0001"
     TARGET_SYSTEM = "POMSnet"
+    USER = "Pomsicle"
 
 
 # ========================= RECORD =======================
@@ -143,7 +144,8 @@ def header_lookup(header: Header) -> dict:
         "TransactionRefID": header.TRANSACTION_REF_ID,
         "SourceSystem": header.SOURCE_SYSTEM,
         "SourceSiteID": header.SOURCE_SITE_ID,
-        "TargetSystem": header.TARGET_SYSTEM
+        "TargetSystem": header.TARGET_SYSTEM,
+        "User": header.USER
     }
 
     return header_look_up
