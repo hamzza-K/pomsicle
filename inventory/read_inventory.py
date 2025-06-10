@@ -13,7 +13,7 @@ SHEET = settings['INVENTORY_SHEET']
 
 def read_file(token: str, filename: str):
     df = pl.read_excel(
-        filename, sheet_name=SHEET, xlsx2csv_options={"skip_empty_lines": True}
+            filename, sheet_name=SHEET, engine="xlsx2csv", engine_options={"skip_empty_lines": True}
     )
 
     for record in df.iter_rows():

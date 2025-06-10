@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<POMSTransaction>
+    <Header>
+        <TransactionID>INVENTORY</TransactionID>
+        <TransactionTimeStamp>2024-09-25T17:20:31</TransactionTimeStamp>
+        <TransactionRefID>d727a6983b2fc94d32afdce9f462a2c4</TransactionRefID>
+        <SourceSystem>Pomsicle: The inventory loader</SourceSystem>
+        <SourceSiteID>0001</SourceSiteID>
+        <TargetSystem>POMSnet</TargetSystem>
+    </Header>
+    <Record>
+        <OrderID>12345</OrderID>
+        <BatchID>67890</BatchID>
+		<PlantID></PlantID>
+		<BatchProduct></BatchProduct>
+		<LotNumber></LotNumber>
+        <UNIT_PROC_ID>11223</UNIT_PROC_ID>
+        <SPLIT_ID>44556</SPLIT_ID>
+        <BOM_REF_NO>78901</BOM_REF_NO>
+        <MaterialID>33445</MaterialID>
+		<ActionPerformedBy></ActionPerformedBy>
+		<ActionVerifiedBy></ActionVerifiedBy>
+		<ESignatureComment></ESignatureComment>
+		<WarehouseLocation></WarehouseLocation>
+		<LineItemNo></LineItemNo>
+        <MATERIAL_DESC>Sample Material Description</MATERIAL_DESC>
+        <REASON_CODE>RC01</REASON_CODE>
+        <REASON_DESCRIPTION>Sample reason for action</REASON_DESCRIPTION>
+        <GROUP_ID>GRP123</GROUP_ID>
+        <ACCOUNT_VALUE1>100</ACCOUNT_VALUE1>
+        <ACCOUNT_VALUE2>200</ACCOUNT_VALUE2>
+        <ACCOUNT_VALUE3>300</ACCOUNT_VALUE3>
+        <SourceContainerId>SCID001</SourceContainerId>
+        <CONTAINER_ID>CID001</CONTAINER_ID>
+        <LotId>LID001</LotId>
+        <Quantity>500</Quantity>
+        <UOM>kg</UOM>
+        <IsAutoReturnedExcipient>true</IsAutoReturnedExcipient>
+        <IsSource>false</IsSource>
+        <AreaId>AID001</AreaId>
+        <LocationId>LID001</LocationId>
+        <NewContainerId>NCID002</NewContainerId>
+        <NewLotId>NLID002</NewLotId>
+        <NewQuantity>450</NewQuantity>
+        <NewUOM>kg</NewUOM>
+        <Sig_DML_ACTION>INSERT</Sig_DML_ACTION>
+        <Sig_ENTRY_TIMESTAMP>2024-09-25T17:21:00</Sig_ENTRY_TIMESTAMP>
+        <Sig_SIGNATURE_COMMENT>Approved by supervisor</Sig_SIGNATURE_COMMENT>
+        <Sig_SIGNATURE_REASON>Verification</Sig_SIGNATURE_REASON>
+        <Sig_USER_ID>USR123</Sig_USER_ID>
+        <Sig_USER_NAME>John Doe</Sig_USER_NAME>
+        <Sig_VERIFIER_ID>VRF123</Sig_VERIFIER_ID>
+        <Sig_VERIFIER_NAME>Jane Smith</Sig_VERIFIER_NAME>
+    </Record>
+</POMSTransaction>
