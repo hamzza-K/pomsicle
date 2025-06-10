@@ -84,7 +84,6 @@ elif args.load_materials:
 elif args.create_bom:
     print("Creating BOM")
 
-# No valid options provided
 else:
     print(
         "No valid options provided. Use --read-file, --load-inventory, or --create-material."

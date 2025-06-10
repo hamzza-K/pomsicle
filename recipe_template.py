@@ -69,19 +69,18 @@ except Exception as e:
 # --- POST Request Setup ---
 url = "http://win-bkblmqnn8d9/poms/apps/eSpecWebApplication/SpecificationManagement.aspx/ImportFiles"
 
-# The base data payload, now dynamically updated
 pass_data = {
     "userID":"administrator",
-    "TreeIdentifier":"accf9c3b-1691-4e1a-b548-58c72e1db63c", # This is a fixed value from your original payload
+    "TreeIdentifier":"accf9c3b-1691-4e1a-b548-58c72e1db63c",
     "Domain":"",
     "DLL":"POMS_ProcObject_Lib",
     "Type": obj_type,
-    "SubType":"PM_RECIPE", # This is a fixed value from your original payload
+    "SubType":"PM_RECIPE",
     "Level": level_id,
     "Location": location_id,
     "Folder":"",
     "SearchSubType":"",
-    "Files":[file_entry], # Dynamic file information
+    "Files":[file_entry],
     "Signature":{
         "SignatureRequired":False,
         "UserID":"administrator",
@@ -109,13 +108,10 @@ headers = {
 
 # --- Send POST Request ---
 try:
-    # Make the POST request
     response = requests.post(url, json=pass_data, headers=headers)
 
-    # Raise an HTTPError for bad responses (4xx or 5xx)
     response.raise_for_status()
 
-    # If the request was successful, you can access the JSON response body
     result = response.json()
     print("Request successful!")
     print("Response JSON:")

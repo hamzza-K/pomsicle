@@ -1,3 +1,5 @@
+# pomsicle.py (Your main CLI entry script)
+
 import argparse
 import logging
 from banners import Banner
@@ -5,8 +7,10 @@ from inventory.read_inventory import read_file as read_inventory
 from credentials import login
 from config import config
 
+# Import the new class from the template module
+from template.template import PomsicleTemplateManager # Adjust path as needed
+
 # --- Logging Configuration ---
-# Basic logging setup for general output, not directly for argparse help formatting
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -20,46 +24,33 @@ except (FileNotFoundError, ValueError) as e:
 USERNAME = settings.get('USERNAME')
 PASSWORD = settings.get('PASSWORD')
 
-# --- Helper Function for Template Creation (Placeholder) ---
-def create_template_action(username: str, password: str, template_name: str = "NewTemplate"):
-    """
-    Placeholder function for creating a template.
-    This is where your actual API call to create the template would go.
-    """
-    logger.info(f"Initiating template creation:")
-    logger.info(f"  Template Name: {template_name}")
-    logger.info(f"  Using User:    {username}")
-    logger.debug(f"  (Password for API call: {password[:2]}...{password[-2:]})") # Mask password
-    # Your actual API call to POMSicle for template creation would be implemented here.
-    # For example:
-    # try:
-    #     session = requests.Session()
-    #     auth_token = login(username=username, password=password).access_token # Assuming login returns an object with access_token
-    #     headers = {"Authorization": f"Bearer {auth_token}", "Content-Type": "application/json"}
-    #     template_api_url = f"{settings.get('BASE_APP_URL')}TemplateService/CreateTemplate" # Example URL
-    #     payload = {"name": template_name, "createdBy": username}
-    #     response = session.post(template_api_url, headers=headers, json=payload, verify=False)
-    #     response.raise_for_status()
-    #     logger.info(f"Successfully sent request to create template '{template_name}'. Server response: {response.json()}")
-    # except Exception as e:
-    #     logger.error(f"Error creating template '{template_name}': {e}")
-    logger.info(f"Template creation logic for '{template_name}' would be executed now.")
+# --- Banner Display ---
+ban = Banner()
+print(r"""
+ ________    ________      _____ ______       ________       ___      ________      ___           _______      
+|\   __  \  |\   __  \    |\   _ \  _   \    |\   ____\     |\  \    |\   ____\    |\  \         |\  ___ \     
+\ \  \|\  \ \ \  \|\  \   \ \  \\\__\ \  \   \ \  \___|_    \ \  \   \ \  \___|    \ \  \        \ \   __/|    
+ \ \   ____\ \ \  \\\  \   \ \  \\|__| \  \   \ \_____  \    \ \  \   \ \  \        \ \  \        \ \  \_|/__  
+  \ \  \___|  \ \  \\\  \   \ \  \    \ \  \   \|____|\  \    \ \  \   \ \  \____    \ \  \____    \ \  \_|\ \ 
+   \ \__\      \ \_______\   \ \__\    \ \__\    ____\_\  \    \ \__\   \ \_______\   \ \_______\   \ \_______\
+    \|__|       \|_______|    \|__|     \|__|   |\_________\    \|__|    \|_______|    \|_______|    \|_______|
+                                                \|_________|                                                   
+                                                          
+""")
 
-# --- Custom Help Formatter (Optional but enhances readability) ---
+# --- Custom Help Formatter (for better argparse help output) ---
 class CustomHelpFormatter(argparse.HelpFormatter):
     """
-    A custom formatter for argparse help output to improve readability.
-    This provides slightly more space for arguments and their help text.
-    For more complex tabular output, consider 'rich' or a more advanced formatter.
+    A custom formatter for argparse help output to improve readability and structure.
+    This provides slightly more space for arguments and their help text, aligning them.
     """
     def __init__(self, prog, indent_increment=2, max_help_position=30, width=None):
         super().__init__(prog, indent_increment, max_help_position, width)
 
 # --- Argument Parser Setup ---
-# Using the custom formatter
 parser = argparse.ArgumentParser(
     description="Manage materials and templates using POMSicle CLI.",
-    formatter_class=CustomHelpFormatter # Apply the custom formatter here
+    formatter_class=CustomHelpFormatter # Apply the custom formatter
 )
 
 # --- Argument Groups ---
@@ -85,14 +76,13 @@ group_create.add_argument("-d", metavar="[DESCRIPTION]", help="Description of a 
 group_bom = parser.add_argument_group("BOM Operations")
 group_bom.add_argument("--create-bom", action="store_true", help="Create a Bill of Materials (BOM).")
 
-# --- New Argument Group: Create Template ---
-group_template = parser.add_argument_group("Template Operations")
+group_template = parser.add_argument_group("Recipe Template Operations")
 group_template.add_argument(
     "--create-template",
-    nargs='?',                 # Makes the argument optional
-    const='DefaultTemplate',   # Value if --create-template is present but no name given
-    metavar="[TEMPLATE_NAME]", # How it appears in help message
-    help="Create a new template. Optionally provide a custom name.",
+    nargs='?',
+    const='Template.xml',
+    metavar="[TEMPLATE_FILE]",
+    help="Create a new template from an XML file. Optionally provide the XML filename (e.g., 'MyTemplate.xml'). Defaults to 'Template.xml'.",
 )
 
 # --- Author Info ---
@@ -100,54 +90,57 @@ def author_info():
     """Prints author information."""
     author_name = "Hamzza K"
     author_link = "https://hamzza.vercel.app/"
-    print('\n' + '-' * 50)
-    print(f"Made with ❤ by {author_name} - {author_link}")
-    print('-' * 50)
+    print('\n' + '-' * 55)
+    print(f"Made with ❤  by {author_name} - {author_link}")
+    print('-' * 55)
 
-# --- Main Script Logic ---
 if __name__ == "__main__":
-    ban = Banner()
-    print(r"""
- ________   ________    _____ ______     ________       ___      ________       ___           _______
-|\  __  \  |\  __  \   |\  _ \  _  \   |\  ____\      |\  \    |\  ____\     |\  \           |\  ___ \
-\ \  \|\  \ \ \  \|\  \  \ \  \\\__\ \  \  \ \  \___|_    \ \  \    \ \  \___|     \ \  \           \ \  __/|
- \ \  ____\ \ \  \\\  \  \ \  \\|__| \  \  \ \_____  \     \ \  \    \ \  \         \ \  \           \ \  \_|/__
-  \ \ \___|  \ \  \\\  \  \ \  \    \ \  \  \|____|\  \     \ \  \    \ \  ____     \ \  ____     \ \ \_|\ \
-   \ \__\      \ \_______\  \ \__\    \ \__\   ____\_\  \     \ \__\    \ \_______\   \ \_______\   \ \_______\
-    \|__|       \|_______|   \|__|     \|__|  |\_________|     \|__|     \|_______|    \|_______|    \|_______|
-                                               \|_________|
-""")
-    
-    logger.info("Checking credentials...")
-    token = login(username=USERNAME, password=PASSWORD) # Ensure your login returns an object with access_token
+    logger.info("Checking credentials and attempting login...")
 
-    if not token or not hasattr(token, 'access_token'):
-        logger.critical("Login failed. Could not retrieve access token. Exiting.")
+    token_obj = login(username=USERNAME, password=PASSWORD) 
+    if not token_obj or not hasattr(token_obj, 'access_token'):
+        logger.critical("Initial login failed. Cannot proceed with any operations. Exiting.")
         exit(1)
-    logger.info("Login successful.")
+    logger.info("Initial login successful.")
 
     args = parser.parse_args()
 
     if args.create_template is not None:
-        template_name_to_create = args.create_template
-        create_template_action(USERNAME, PASSWORD, template_name_to_create)
+        template_xml_filename = args.create_template
+        logger.info(f"Attempting to create template using XML file: '{template_xml_filename}'")
+        
+        try:
+            template_manager = PomsicleTemplateManager(settings, USERNAME, PASSWORD)
+            success = template_manager.create_template(template_name=template_xml_filename)
+            if success:
+                logger.info(f"Template '{template_xml_filename}' operation completed successfully.")
+            else:
+                logger.error(f"Template '{template_xml_filename}' operation failed.")
+        except ValueError as e:
+            logger.critical(f"Failed to initialize Template Manager: {e}")
+            exit(1)
+        except Exception as e:
+            logger.critical(f"An unexpected error occurred during template creation: {e}")
+            exit(1)
+
     elif args.load_inventory:
         logger.info(f"Loading inventory from: {args.load_inventory}")
-        read_inventory(token=token.access_token, filename=args.load_inventory)
+        read_inventory(token=token_obj.access_token, filename=args.load_inventory)
     elif args.create_material:
         if args.n and args.d:
             logger.info(f"Creating material with name: '{args.n}' and description: '{args.d}'")
+            # This is where you would call your Material creation logic
+            # e.g., PomsicleMaterialManager(settings, USERNAME, PASSWORD).create_material(args.n, args.d)
         else:
             logger.error("Error: Both name (-n) and description (-d) are required for creating a material.")
-            parser.print_help() # Show help if required args are missing
+            parser.print_help()
     elif args.load_materials:
         ban.error("Loading materials functionality under development!")
         logger.warning(f"Loading materials from: {args.load_materials} (Functionality under development)")
-        # read_file(args.load_materials) # Uncomment if 'read_file' is used here
     elif args.create_bom:
         logger.info("Creating BOM.")
     else:
         logger.info("No valid option provided. Use --help for available commands.")
-        parser.print_help() # Show help if no valid option is given
+        parser.print_help()
 
     author_info()
