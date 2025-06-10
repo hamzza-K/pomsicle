@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from urllib.parse import quote_plus, urljoin
+from banners import Banner
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +42,6 @@ class PomsicleTemplateManager:
         self.login_page_relative_path = "/POMS/DesktopDefault.aspx"
         self.espec_model_base_path = "/poms/apps/eSpecWebApplication/"
         self.espec_model_base_poms_path = "/poms/"
-        print(self.username, self.password, self.machine_name, self.base_app_url, self.import_url, self.file_upload_url, self.login_host)
 
         # Validate essential configurations
         if not all([self.username, self.password, self.machine_name, self.base_app_url,
@@ -59,13 +59,13 @@ class PomsicleTemplateManager:
         Returns:
             bool: True if login is successful, False otherwise.
         """
-        logger.info("Attempting browser-like login via DesktopDefault.aspx...")
+        logger.debug("Attempting browser-like login via DesktopDefault.aspx...")
 
         initial_get_return_url_encoded = quote_plus(f"{self.espec_model_base_path}SpecificationManagement.aspx?AutoClose=1")
         initial_get_login_url = f"{self.login_host}{self.espec_model_base_poms_path}DesktopDefault.aspx?ReturnUrl={initial_get_return_url_encoded}"
 
         try:
-            logger.info(f"GETting login page for VIEWSTATEs: {initial_get_login_url}")
+            logger.debug(f"GETting login page for VIEWSTATEs: {initial_get_login_url}")
             login_page_response = self.session.get(initial_get_login_url, verify=False)
             login_page_response.raise_for_status()
 
@@ -94,7 +94,7 @@ class PomsicleTemplateManager:
                 return False
 
             post_login_url = urljoin(initial_get_login_url, form_action_url)
-            logger.info(f"POSTing login data to: {post_login_url}")
+            logger.debug(f"POSTing login data to: {post_login_url}")
 
             login_headers = {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -112,7 +112,7 @@ class PomsicleTemplateManager:
                 logger.error(f"Login Response Content (start):\n{login_response.text[:1000]}...")
                 return False
             else:
-                logger.info(f"Browser-like login successful! Current URL after login: {login_response.url}")
+                logger.debug(f"Browser-like login successful! Current URL after login: {login_response.url}")
                 logger.debug(f"Session cookies after login: {self.session.cookies.get_dict()}")
                 return True
 
@@ -156,7 +156,7 @@ class PomsicleTemplateManager:
                 obj_type = e_proc_object.get("objType")
                 level_id = e_proc_object.get("levelId")
                 location_id = e_proc_object.get("locationId")
-            logger.info(f"XML parsed successfully. objType: {obj_type}, levelId: {level_id}, locationId: {location_id}")
+            logger.debug(f"XML parsed successfully. objType: {obj_type}, levelId: {level_id}, locationId: {location_id}")
             return obj_type, level_id, location_id, file_size
 
         except (FileNotFoundError, ET.ParseError, Exception) as e:
@@ -175,7 +175,7 @@ class PomsicleTemplateManager:
         Returns:
             tuple: (uploaded_file_uid, temp_server_filename) or (None, None) on failure.
         """
-        logger.info(f"Initiating single file upload for '{xml_file_name}' to {self.file_upload_url}...")
+        logger.debug(f"Initiating single file upload for '{xml_file_name}' to {self.file_upload_url}...")
 
         uploaded_file_uid = str(uuid.uuid4())
         temp_server_filename = None
@@ -209,7 +209,7 @@ class PomsicleTemplateManager:
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
                 }
 
-                logger.info(f"Uploading entire file as a single chunk (UID: {uploaded_file_uid})...")
+                logger.debug(f"Uploading entire file as a single chunk (UID: {uploaded_file_uid})...")
                 upload_response = self.session.post(self.file_upload_url, files=upload_files, headers=upload_headers, verify=False)
                 upload_response.raise_for_status()
 
@@ -217,7 +217,7 @@ class PomsicleTemplateManager:
                 logger.debug(f"Single upload response: {upload_result}")
 
                 if upload_result.get("uploaded", False):
-                    logger.info("File uploaded successfully to server temp directory!")
+                    logger.debug("File uploaded successfully to server temp directory!")
                     temp_server_filename = upload_result.get("TempFileName")
                     uploaded_file_uid = upload_result.get("fileUid")
                     if uploaded_file_uid is None:
@@ -230,7 +230,7 @@ class PomsicleTemplateManager:
                 logger.error("File upload completed but no TempFileName was received from the server.")
                 return None, None
 
-            logger.info(f"Full file uploaded successfully. Server temporary path: {temp_server_filename}")
+            logger.debug(f"Full file uploaded successfully. Server temporary path: {temp_server_filename}")
             return uploaded_file_uid, temp_server_filename
 
         except requests.exceptions.RequestException as e:
@@ -257,7 +257,7 @@ class PomsicleTemplateManager:
         Returns:
             dict: The JSON response from the import API call, or None on failure.
         """
-        logger.info(f"Attempting to call ImportFiles with uploaded file UID: {uploaded_file_uid}...")
+        logger.debug(f"Attempting to call ImportFiles with uploaded file UID: {uploaded_file_uid}...")
 
         file_entry = {
             "FileName": xml_file_name,
@@ -312,7 +312,7 @@ class PomsicleTemplateManager:
             response.raise_for_status()
 
             result = response.json()
-            logger.info("Import request successful!")
+            logger.debug("Import request successful!")
             logger.debug(f"Response JSON: {json.dumps(result, indent=2)}")
             return result
 
@@ -330,7 +330,7 @@ class PomsicleTemplateManager:
             template_name (str): The name of the template XML file to use.
                                  (Assumed to be in the 'data' folder relative to script)
         """
-        logger.info(f"Attempting to create template: '{template_name}'")
+        logger.debug(f"Attempting to create template: '{template_name}'")
 
         if not self._perform_login():
             logger.critical("Login failed. Cannot proceed with template creation.")
@@ -353,8 +353,10 @@ class PomsicleTemplateManager:
         import_result = self._import_file(uploaded_file_uid, template_name, obj_type, level_id, location_id, file_size)
 
         if import_result and import_result.get("d", {}).get("Success"):
-            logger.info(f"Template '{template_name}' imported successfully.")
+            logger.debug(f"Recipe '{template_name}' imported successfully.")
+            Banner().success(f"Recipe '{template_name}' imported successfully.")
             return True
         else:
-            logger.error(f"Template '{template_name}' import was not successful.")
+            logger.error(f"Recipe '{template_name}' import was not successful.")
+            Banner.error(f"Recipe '{template_name}' import was not successful.")
             return False

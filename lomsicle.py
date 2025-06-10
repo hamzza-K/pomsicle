@@ -38,7 +38,6 @@ print(r"""
                                                           
 """)
 
-# --- Custom Help Formatter (for better argparse help output) ---
 class CustomHelpFormatter(argparse.HelpFormatter):
     """
     A custom formatter for argparse help output to improve readability and structure.
@@ -50,7 +49,7 @@ class CustomHelpFormatter(argparse.HelpFormatter):
 # --- Argument Parser Setup ---
 parser = argparse.ArgumentParser(
     description="Manage materials and templates using POMSicle CLI.",
-    formatter_class=CustomHelpFormatter # Apply the custom formatter
+    formatter_class=CustomHelpFormatter
 )
 
 # --- Argument Groups ---
@@ -101,7 +100,7 @@ if __name__ == "__main__":
     if not token_obj or not hasattr(token_obj, 'access_token'):
         logger.critical("Initial login failed. Cannot proceed with any operations. Exiting.")
         exit(1)
-    logger.info("Initial login successful.")
+    logger.info(f"Initial login successful. Logged in as {USERNAME}")
 
     args = parser.parse_args()
 
@@ -116,6 +115,7 @@ if __name__ == "__main__":
                 logger.info(f"Template '{template_xml_filename}' operation completed successfully.")
             else:
                 logger.error(f"Template '{template_xml_filename}' operation failed.")
+                Banner.error(f"Template '{template_xml_filename}' operation failed.")
         except ValueError as e:
             logger.critical(f"Failed to initialize Template Manager: {e}")
             exit(1)
