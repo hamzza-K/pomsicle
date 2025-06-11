@@ -1,5 +1,3 @@
-# pomsicle.py (Your main CLI entry script)
-
 import argparse
 import logging
 from banners import Banner
@@ -8,7 +6,7 @@ from credentials import login
 from config import config
 
 # Import the new class from the template module
-from template.template import PomsicleTemplateManager # Adjust path as needed
+from archive.template import PomsicleTemplateManager # Adjust path as needed
 
 # --- Logging Configuration ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
