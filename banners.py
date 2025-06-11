@@ -120,10 +120,10 @@ class Banner:
             Tuple[str, str]: The line string filled with `style` characters and the centered
                              message string.
         """
-        term_size = shutil.get_terminal_size((80, 20)).columns
+        term_size = shutil.get_terminal_size((80, 20)).columns - 100
         style_count = (term_size - len(message))
         formatted_msg = message.center(style_count, ' ')
-        lines = self.style * style_count 
+        lines = self.style * style_count
         return lines, formatted_msg
 
     def _format(func):

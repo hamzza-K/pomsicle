@@ -1,15 +1,27 @@
+import os
+import sys
 import argparse
 import logging
 from banners import Banner
 from inventory.read_inventory import read_file as read_inventory
 from credentials import login
 from config import config
-
 from template.recipe_template import PomsicleTemplateManager
 
 # --- Logging Configuration ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+
+def get_script_dir():
+    if getattr(sys, 'frozen', False):
+        return os.path.dirname(sys.executable)
+    else:
+        return os.path.dirname(os.path.abspath(__file__))
+
+script_directory = get_script_dir()
+config_folder_name = 'config'
+config_file_name = 'config.cfg'
 
 # --- Global Configuration ---
 try:

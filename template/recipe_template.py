@@ -480,7 +480,7 @@ class PomsicleTemplateManager:
 
         if import_result and import_result.get("d", {}).get("Success"):
             logger.debug(f"Template '{template_name}' imported successfully.")
-            Banner().success(f"Recipe '{recipe_name}' created successfully.")
+            Banner().success(f"Recipe '{recipe_name or template_name}' created successfully.")
             return True
         else:
             logger.error(f"Template '{template_name}' import was not successful.")
