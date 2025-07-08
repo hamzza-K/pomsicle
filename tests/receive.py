@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
 # Setup logging
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
 username = "administrator"
 password = "Karachi@123"
@@ -215,10 +215,14 @@ commit_payload = {
 response = session.post(commit_url, headers=webmethod_headers, data=json.dumps(commit_payload))
 if response.ok:
     try:
-        result = json.loads(response.json()["d"])
+        outer = response.json()
+        result = json.loads(outer["d"])
+        nested_data = json.loads(result["data"])
+
+        print(nested_data["Containers"])
         if not result["hasErrors"]:
             logging.info("Commit successful.")
-            logging.debug("result: ", result)
+
         else:
             logging.warning(f"Commit returned errors: {result}")
     except Exception as e:
