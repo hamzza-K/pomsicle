@@ -6,6 +6,7 @@ from banners import Banner
 from inventory.read_inventory import read_file as read_inventory
 from credentials import login
 from config import config
+from receive.receiving import ReceiveManager
 from template.recipe_template import PomsicleTemplateManager
 
 # --- Logging Configuration ---
@@ -26,6 +27,7 @@ config_file_name = 'config.cfg'
 # --- Global Configuration ---
 try:
     settings = config(translator='pomsicle')
+    receive_settings = config(translator='pomsicle:receive')
 except (FileNotFoundError, ValueError) as e:
     logger.critical(f"Configuration error: {e}. Exiting.")
     exit(1)
@@ -111,6 +113,39 @@ group_template.add_argument(
 )
 
 
+# --- Receiving ---
+group_template = parser.add_argument_group("Receiving")
+group_template.add_argument(
+    "--receive",
+    nargs='?',
+    const=True,  # If no value is provided, treat it as True
+    metavar="[RECEIVE_OPTION]",
+    help="Initiate receiving operation. Optionally provide a value.",
+)
+group_template.add_argument(
+    "-m", "--material-name",
+    metavar="[MATERIAL_ID]",
+    help="Material ID to receive in POMS.",
+)
+group_template.add_argument(
+    "-u", "--uom",
+    metavar="[UOM]",
+    help="Material UOM to define.",
+)
+
+group_template.add_argument(
+    "-c", "--containers",
+    metavar="[CONTAINERS]",
+    help="Number of containers to receive (default: 1).",
+)
+
+group_template.add_argument(
+    "-q", "--containers-qty",
+    metavar="[CONTAINERS_QTY]",
+    help="Quantity per container to receive (default: 1).",
+)
+
+
 # --- Author Info ---
 def author_info():
     """Prints author information."""
@@ -185,6 +220,31 @@ if __name__ == "__main__":
         logger.warning(f"Loading materials from: {args.load_materials} (Functionality under development)")
     elif args.create_bom:
         logger.info("Creating BOM.")
+
+    elif args.receive:
+        if args.material_name and args.uom:
+            logger.info(f"Receiving material: '{args.material_name}' with UOM: '{args.uom}'")
+            try:
+                receive_manager = ReceiveManager(settings, receive_settings, USERNAME, PASSWORD)
+                success = receive_manager.receive(
+                    material_name=args.material_name,
+                    uom=args.uom,
+                    containers=args.containers if args.containers else 1,
+                    qty_per_container=args.containers_qty if args.containers_qty else 1
+                )
+                if success:
+                    ban.success(f"Material '{args.material_name}' received successfully.")
+                else:
+                    logger.error(f"Failed to receive material '{args.material_name}'.")
+            except ValueError as e:
+                logger.critical(f"Failed to initialize Receive Manager: {e}")
+                exit(1)
+            except Exception as e:
+                logger.critical(f"An unexpected error occurred during material receiving: {e}")
+                exit(1)
+        else:
+            logger.error("Error: Both material name (-m) and UOM (-u) are required for receiving a material.")
+            parser.print_help()
     else:
         logger.info("No valid option provided. Use --help for available commands.")
         parser.print_help()

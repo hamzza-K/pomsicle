@@ -107,6 +107,7 @@ class LoginManager:
 
 
     def _perform_login(self) -> bool:
+
         """
         Performs a browser-like login to the POMSicle system.
 
@@ -176,3 +177,11 @@ class LoginManager:
         except Exception as e:
             logger.error(f"An unexpected error occurred during browser-like login: {e}")
             return False
+
+
+    def __call__(cls, *args, **kwargs):
+        """
+        Allows the class instance to be called like a function.
+        """
+        cls._perform_login()
+        return cls.session
