@@ -118,7 +118,7 @@ group_template = parser.add_argument_group("Receiving")
 group_template.add_argument(
     "--receive",
     nargs='?',
-    const=True,  # If no value is provided, treat it as True
+    const=True,
     metavar="[RECEIVE_OPTION]",
     help="Initiate receiving operation. Optionally provide a value.",
 )

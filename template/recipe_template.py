@@ -231,7 +231,7 @@ class PomsicleTemplateManager:
                             
                             # If displayText is explicitly mapped, it might also be here
                             # This part is highly dependent on exact XML structure and what POMSicle reads
-                            if 'displayText' in object_config: # Assuming a direct key if it exists
+                            if 'displayText' in object_config:
                                 object_config['displayText'] = new_id
 
                             comp_obj.set("objectConfig", json.dumps(object_config))
@@ -240,7 +240,6 @@ class PomsicleTemplateManager:
                             logger.warning(f"Could not parse objectConfig JSON for {comp_proc_type} with ID '{original_comp_obj_id}'. Skipping config update.")
 
 
-            # Save the modified XML back to the file
             tree.write(xml_file_path, encoding="UTF-8", xml_declaration=False)
             logger.info(f"XML file '{xml_file_path}' modified successfully with new names.")
             return True
@@ -428,14 +427,11 @@ class PomsicleTemplateManager:
             logger.critical("Login failed. Cannot proceed with template creation.")
             return False
 
-        # Construct path to the XML file relative to the project root
         xml_folder = os.path.join(self.program_path, 'data')
         xml_file_path = os.path.join(xml_folder, template_name)
 
-        # Create a temporary copy of the XML file for modification
         temp_xml_file_path = f"{xml_file_path}.temp_{uuid.uuid4().hex}"
         try:
-            # Copy original template to a temp file for modification
             import shutil
             shutil.copy(xml_file_path, temp_xml_file_path)
             logger.debug(f"Created temporary XML file for modification: {temp_xml_file_path}")
@@ -457,12 +453,11 @@ class PomsicleTemplateManager:
         obj_type, level_id, location_id, file_size = self._process_xml_file(temp_xml_file_path)
         if not all([obj_type, level_id, location_id, file_size]):
             logger.error("Failed to process XML file for template creation. Aborting.")
-            os.remove(temp_xml_file_path) # Clean up temp file
+            os.remove(temp_xml_file_path)
             return False
 
         uploaded_file_uid, temp_server_filename = self._upload_file(temp_xml_file_path, template_name, file_size)
         
-        # Clean up the local temporary file after upload attempt
         try:
             if os.path.exists(temp_xml_file_path):
                 os.remove(temp_xml_file_path)
@@ -475,7 +470,6 @@ class PomsicleTemplateManager:
             logger.error("File upload failed. Aborting template creation.")
             return False
 
-        # For the import call, use the obj_type that was parsed from the (potentially modified) XML.
         import_result = self._import_file(uploaded_file_uid, template_name, obj_type, level_id, location_id, file_size)
 
         if import_result and import_result.get("d", {}).get("Success"):

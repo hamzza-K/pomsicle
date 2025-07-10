@@ -175,8 +175,8 @@ class ReceiveManager:
                     query_params = parse_qs(parsed.query)
                     self.pfc_val = query_params.get("__PFC", [""])[0]
                     self.element_val = query_params.get("__ELEMENT", [""])[0]
-                    logging.info(f"Captured request to: {url}")
-                    logging.info(f"__PFC: {self.pfc_val}, __ELEMENT: {self.element_val}")
+                    logging.debug(f"Captured request to: {url}")
+                    logging.debug(f"__PFC: {self.pfc_val}, __ELEMENT: {self.element_val}")
 
             page.on("request", on_request)
             page.goto(f"{self.login_host}/poms/Apps/RecipeExecution/ActionList/UI/ActionList.aspx?_PFCGUID={pfc_guid}&RECIPETYPE=Worksheet")
@@ -294,12 +294,12 @@ class ReceiveManager:
             "vendorLotId": "",
             "noOfContainers": containers,
             "qtyPerContainer": qty_per_container,
-            "areaId": "Bulk Dry Tank 1", # TODO Change this
-            "locationId": "Outlet D11", # TODO Change this
+            "areaId": self.area_id, # TODO Change this
+            "locationId": self.location_id, # TODO Change this
             "vesselId": "",
             "dateExpire": "7/7/2030 6:34:28 PM",
             "dateRetest": "12/25/2027 6:34:28 PM",
-            "plantId": "Herndon",
+            "plantId": self.plant_id,
             "exceptionId": "",
             "LabelGroupKey": "labelGroupf9561bd6-db77-4d43-a7af-eb299a3fc5c2",
             "vesselEquipmentClass": "",
