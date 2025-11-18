@@ -158,7 +158,7 @@ class ReceiveManager:
                 {
                     'name': k,
                     'value': v,
-                    'domain': 'win-bkblmqnn8d9',
+                    'domain': self.machine_name,
                     'path': '/',
                     'httpOnly': True,
                     'secure': False,
@@ -181,7 +181,7 @@ class ReceiveManager:
             page.on("request", on_request)
             page.goto(f"{self.login_host}/poms/Apps/RecipeExecution/ActionList/UI/ActionList.aspx?_PFCGUID={pfc_guid}&RECIPETYPE=Worksheet")
             logging.info("Waiting for browser to trigger WebMethod request...")
-            page.wait_for_timeout(10000)
+            page.wait_for_timeout(20000)
             browser.close()
 
         if not self.pfc_val or not self.element_val:

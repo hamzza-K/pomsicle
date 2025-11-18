@@ -1,0 +1,15 @@
+    <eProcObject id="OperatorInstruction" levelName="Master" levelId="10" locationName="Herndon" locationId="4" objType="PM_PHASE" relObjType="PM_PHASE" description="Operator Instruction recipe phase" status="APPROVED" lastChangedBy="pomssystem" icon="operator_instruction.svg" guid="K9F763FE-8EFF-4FF6-A2CD-9E12D2F4E509" displayOptions="0" version="1.001" createDate="29/08/2025 08:00:27.000000" lastChangedDate="29/08/2025 08:01:02.000000">
+      <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.OperatorInstruction.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="Class Name" sValue="OperatorInstruction" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/OperatorInstruction/UI/OperatorInstructionEdit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/OperatorInstruction/UI/OperatorInstruction.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="Object ID" sValue="OperatorInstruction" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.OperatorInstruction.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+      </eObjectAttribute>
+      <eClassRef classId="PhaseExecutionInfo" />
+    </eProcObject>
