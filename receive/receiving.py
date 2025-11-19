@@ -8,7 +8,6 @@ from playwright.sync_api import sync_playwright
 
 import polars
 
-# Setup logging
 logger = logging.getLogger(__name__)
 
 class ReceiveManager:

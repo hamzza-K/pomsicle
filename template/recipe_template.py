@@ -421,13 +421,13 @@ class PomsicleTemplateManager:
             unit_procedure_name (str, optional): New name for PM_SUP. Defaults to None.
             operation_name (str, optional): New name for PM_OPERATION. Defaults to None.
         """
-        logger.info(f"Attempting to create recipe template: '{template_name}'")
+        logger.info(f"Attempting to create recipe: '{template_name}'")
 
         if not self._perform_login():
             logger.critical("Login failed. Cannot proceed with template creation.")
             return False
 
-        xml_folder = os.path.join(self.program_path, 'data')
+        xml_folder = os.path.join(self.program_path, 'template')
         xml_file_path = os.path.join(xml_folder, template_name)
 
         temp_xml_file_path = f"{xml_file_path}.temp_{uuid.uuid4().hex}"
