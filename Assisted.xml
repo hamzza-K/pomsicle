@@ -1,0 +1,407 @@
+<eSpecObjects>
+  <eSpecXmlObjs>
+    <eProcObject id="Template" levelName="Master" levelId="10" locationName="Herndon" locationId="4" objType="PM_RECIPE" relObjType="PM_RECIPE" description="General Recipe Template (Pomsicle)" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" guid="07EB8C04-837F-4EE4-94FA-330463F61636" editType="PFC;" displayOptions="0" version="1.001" createDate="10/06/2025 21:43:26.730968" lastChangedDate="10/06/2025 21:48:55.409177">
+      <eObjectAttribute attribId="Auto Close" classId="Recipe Class" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement parentSValue="No" elemId="Value" sValue="No" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Auto EBR Report" classId="Recipe Class" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Report Option" format="200" popMethodId="SQLCOMBO_LIST" popMethodAttr="CALC:Accessor.Element(&quot;Auto EBR Report&quot;, &quot;Report Type&quot;).StrValue == &quot;EBR Template&quot; ? &quot;CO_BATCH_RECORD_TEMPLATE_SP;DOCUMENT_FORMAT;WHERE DOCUMENT_TYPE='EBRTEMPLATE'&quot; : &quot;CO_LIST_SP;LIST_ITEM_ID;WHERE LIST_ID='Product EBR'&quot;" dataType="String" elemValidity="True"/>
+        <eObjectAttributeElement elemId="Report Type" format="20" popMethodId="COMBO_LIST" popMethodAttr="None;Product EBR;EBR Template" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="AutoRelease" classId="Recipe Class" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Pre-Assign Split" classId="Recipe Class" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Value" format="20" popMethodId="COMBO_LIST" popMethodAttr="True;False" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Primary Product ID" classId="Recipe Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Value" sValue="177406" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="MM_MATERIAL_SP;MATERIAL_ID;WHERE MATERIAL_TYPE IN ('Product', 'Intermediate', 'WIP') ORDER BY MATERIAL_ID" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Quantity" classId="Recipe Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Maximum" format="12.3" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Number" hilo="High" ord="1" nValue="99999" elemValidity="True"/>
+        <eObjectAttributeElement elemId="Minimum" format="12.3" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Number" hilo="Low" ord="-1" nValue="1" elemValidity="True"/>
+        <eObjectAttributeElement elemId="Target Number" format="12.3" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Number" hilo="Target" ord="0" nValue="10" elemValidity="True"/>
+        <eObjectAttributeElement elemId="UOM" sValue="#" format="10" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_UOM_SP;UOM;WHERE UOM_TYPE IN (1,3,9) ORDER BY UOM" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Recipe Type" classId="Recipe Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Value" sValue="Production" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_LIST_SP;LIST_ITEM_ID;WHERE LIST_ID = 'Recipe Type' ORDER BY LIST_ITEM_ID" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eClassRef classId="Recipe Class" priority="1"/>
+      <eProcCompSeq prereq_language="0" fromCompNo="0" toCompNo="1" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}"/>
+      <eProcCompSeq prereq="return(Accessor.AreComplete());" prereq_language="3" fromCompNo="1" toCompNo="-1" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}"/>
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Template" compProcType="PM_SUP" instanceId="Template1" guid="f732442b-4a42-4bc9-2083-93a52be57233" compNo="1" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="460" yPos="200" change_flag="0" displayText="Pomsicle" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;image&quot;,&quot;originX&quot;:&quot;left&quot;,&quot;originY&quot;:&quot;top&quot;,&quot;left&quot;:460,&quot;top&quot;:200,&quot;width&quot;:60,&quot;height&quot;:47,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;stroke&quot;:null,&quot;strokeWidth&quot;:0,&quot;strokeDashArray&quot;:null,&quot;strokeLineCap&quot;:&quot;butt&quot;,&quot;strokeLineJoin&quot;:&quot;miter&quot;,&quot;strokeMiterLimit&quot;:10,&quot;scaleX&quot;:1,&quot;scaleY&quot;:1,&quot;angle&quot;:0,&quot;flipX&quot;:false,&quot;flipY&quot;:false,&quot;opacity&quot;:1,&quot;shadow&quot;:null,&quot;visible&quot;:true,&quot;clipTo&quot;:null,&quot;backgroundColor&quot;:&quot;&quot;,&quot;fillRule&quot;:&quot;nonzero&quot;,&quot;globalCompositeOperation&quot;:&quot;source-over&quot;,&quot;transformMatrix&quot;:null,&quot;skewX&quot;:0,&quot;skewY&quot;:0,&quot;crossOrigin&quot;:&quot;&quot;,&quot;alignX&quot;:&quot;none&quot;,&quot;alignY&quot;:&quot;none&quot;,&quot;meetOrSlice&quot;:&quot;meet&quot;,&quot;filters&quot;:[],&quot;resizeFilters&quot;:[]},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:442,&quot;top&quot;:248,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;fontFamily&quot;:&quot;Arial, Helvetica, sans-serif&quot;,&quot;lineHeight&quot;:0.85,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:11,&quot;ZOrderLabel&quot;:9,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Auto Bind Unit" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement parentSValue="No" elemId="Value" sValue="No" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Auto Check In Unit" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="Value" sValue="No" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Experion Integration" classId="Unit Procedure Class" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement parentSValue="No" elemId="Value" sValue="No" format="20" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Number of Splits" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="Integer" format="12" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Integer" parentNValue="1" nValue="1" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Security" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement parentSValue="ProductionOperator" elemId="Object Name" sValue="ProductionOperator" format="40" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_SEC_OBJECT_SP;SEC_OBJECT_NAME;ORDER BY SEC_OBJECT_NAME" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement parentSValue="Operator Security" elemId="Type" sValue="Operator Security" format="40" popMethodId="COMBO_LIST" popMethodAttr="Operator Security;Verifier Security;Alternate Security" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Security" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="2" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement parentSValue="ProductionVerifier" elemId="Object Name" sValue="ProductionVerifier" format="40" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_SEC_OBJECT_SP;SEC_OBJECT_NAME;ORDER BY SEC_OBJECT_NAME" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement parentSValue="Verifier Security" elemId="Type" sValue="Verifier Security" format="40" popMethodId="COMBO_LIST" popMethodAttr="Operator Security;Verifier Security;Alternate Security" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Security" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="3" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement parentSValue="ProductionVerifier" elemId="Object Name" sValue="ProductionVerifier" format="40" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_SEC_OBJECT_SP;SEC_OBJECT_NAME;ORDER BY SEC_OBJECT_NAME" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement parentSValue="Alternate Security" elemId="Type" sValue="Alternate Security" format="40" popMethodId="COMBO_LIST" popMethodAttr="Operator Security;Verifier Security;Alternate Security" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eObjectAttribute attribId="Unit Class" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="Value" sValue="1000L Bulk Tank" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="EM_EQUIPMENT_CLASS_SP;EQUIPMENT_CLASS;ORDER BY EQUIPMENT_CLASS" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+      </eProcCompObject>
+    </eProcObject>
+    <eProcObject id="Template" levelName="Master" levelId="10" locationName="Herndon" locationId="4" objType="PM_SUP" relObjType="PM_SUP" description="General Template UP (Pomsicle)" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" guid="81F92CAF-8525-481F-8CE5-ECB0F7DE8F38" editType="PFC;" displayOptions="0" version="1.001" createDate="10/06/2025 21:44:42.899425" lastChangedDate="10/06/2025 21:49:11.395146">
+      <eObjectAttribute attribId="Auto Bind Unit" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement parentSValue="No" elemId="Value" sValue="No" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Auto Check In Unit" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Value" sValue="No" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Experion Integration" classId="Unit Procedure Class" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement parentSValue="No" elemId="Value" sValue="No" format="20" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Number of Splits" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Integer" format="12" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Integer" parentNValue="1" nValue="1" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Security" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement parentSValue="ProductionOperator" elemId="Object Name" sValue="ProductionOperator" format="40" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_SEC_OBJECT_SP;SEC_OBJECT_NAME;ORDER BY SEC_OBJECT_NAME" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        <eObjectAttributeElement parentSValue="Operator Security" elemId="Type" sValue="Operator Security" format="40" popMethodId="COMBO_LIST" popMethodAttr="Operator Security;Verifier Security;Alternate Security" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Security" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="2" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement parentSValue="ProductionVerifier" elemId="Object Name" sValue="ProductionVerifier" format="40" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_SEC_OBJECT_SP;SEC_OBJECT_NAME;ORDER BY SEC_OBJECT_NAME" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        <eObjectAttributeElement parentSValue="Verifier Security" elemId="Type" sValue="Verifier Security" format="40" popMethodId="COMBO_LIST" popMethodAttr="Operator Security;Verifier Security;Alternate Security" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Security" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="3" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement parentSValue="ProductionVerifier" elemId="Object Name" sValue="ProductionVerifier" format="40" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_SEC_OBJECT_SP;SEC_OBJECT_NAME;ORDER BY SEC_OBJECT_NAME" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+        <eObjectAttributeElement parentSValue="Alternate Security" elemId="Type" sValue="Alternate Security" format="40" popMethodId="COMBO_LIST" popMethodAttr="Operator Security;Verifier Security;Alternate Security" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eObjectAttribute attribId="Unit Class" classId="Unit Procedure Class" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
+        <eObjectAttributeElement elemId="Value" sValue="1000L Bulk Tank" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="EM_EQUIPMENT_CLASS_SP;EQUIPMENT_CLASS;ORDER BY EQUIPMENT_CLASS" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+      </eObjectAttribute>
+      <eClassRef classId="Unit Procedure Class" priority="1"/>
+      <eProcCompSeq prereq_language="0" fromCompNo="0" toCompNo="1" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>
+      <eProcCompSeq prereq="return(Accessor.IsComplete());" prereq_language="3" fromCompNo="1" toCompNo="-1" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Template" compProcType="PM_OPERATION" instanceId="Template1" guid="8113e33d-fd5e-0e75-de35-68b2f4ad1ffc" compNo="1" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="520" yPos="140" change_flag="0" displayText="Pomsicle" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;image&quot;,&quot;left&quot;:520,&quot;top&quot;:140,&quot;width&quot;:60,&quot;height&quot;:47,&quot;crossOrigin&quot;:&quot;&quot;,&quot;filters&quot;:[],&quot;resizeFilters&quot;:[]},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:502,&quot;top&quot;:188,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;fontFamily&quot;:&quot;Arial, Helvetica, sans-serif&quot;,&quot;lineHeight&quot;:0.85,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:15,&quot;ZOrderLabel&quot;:14,&quot;Hidden&quot;:&quot;0&quot;}"/>
+    </eProcObject>
+    <eProcObject id="Template" levelName="Master" levelId="10" locationName="Herndon" locationId="4" objType="PM_OPERATION" relObjType="PM_OPERATION" description="General Template OP (Pomsicle)" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" guid="f6f42ce3-1181-4954-8db2-736456b42623" editType="PFC;" displayOptions="0" version="1.001" createDate="10/06/2025 21:45:32.358432" lastChangedDate="10/06/2025 21:49:38.180875">
+    <eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="1" toCompNo="2" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+<eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="RecordText" compProcType="PM_PHASE" instanceId="record_text2" guid="fdb27e8c-92e3-46f1-970c-54207b499297" icon="/POMS/apps/ActionListApp/AltBitmaps/Record_text.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="2" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="300" yPos="220" change_flag="0" objectConfig="{&amp;quot;Image&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;path-group&amp;quot;,&amp;quot;left&amp;quot;:360,&amp;quot;top&amp;quot;:100,&amp;quot;width&amp;quot;:60,&amp;quot;height&amp;quot;:48,&amp;quot;fill&amp;quot;:&amp;quot;rgb(0,0,0)&amp;quot;,&amp;quot;strokeWidth&amp;quot;:0},&amp;quot;Label&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;textbox&amp;quot;,&amp;quot;left&amp;quot;:282,&amp;quot;top&amp;quot;:100,&amp;quot;width&amp;quot;:96,&amp;quot;height&amp;quot;:15.82,&amp;quot;fontSize&amp;quot;:14,&amp;quot;lineHeight&amp;quot;:0.9,&amp;quot;textAlign&amp;quot;:&amp;quot;center&amp;quot;,&amp;quot;minWidth&amp;quot;:20,&amp;quot;styles&amp;quot;:{}},&amp;quot;ZOrderImage&amp;quot;:63,&amp;quot;ZOrderLabel&amp;quot;:61,&amp;quot;Hidden&amp;quot;:&amp;quot;0&amp;quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.RecordText.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Class Name" sValue="RecordText" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/RecordText/UI/RecordText_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/RecordText/UI/RecordText.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Object ID" sValue="RecordText" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.RecordText.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;test" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Maximum Length" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="10" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Minimum Length" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="1" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Mode" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="TEXT" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Record Type" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Other" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecordTextOutput" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Text are all capital letters" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="RecordText3" seqNumber="0"/>
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Maximum Length" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Minimum Length" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Mode" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Record Type" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:RecordTextOutput" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Text are all capital letters" attribNumber="1" seqNumber="0"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="fdb27e8c-92e3-46f1-970c-54207b499297" dl_type="N" c1_value="&lt;@UseHTML@&gt;test" sequence="1"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="fdb27e8c-92e3-46f1-970c-54207b499297" dl_type="N" c1_value="Phase Title" sequence="5"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="fdb27e8c-92e3-46f1-970c-54207b499297" dl_type="N" c1_value="Confirmation Type: None" sequence="6"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="fdb27e8c-92e3-46f1-970c-54207b499297" dl_type="D" c1_value="Record Type: Other" sequence="8"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="fdb27e8c-92e3-46f1-970c-54207b499297" dl_type="D" c1_value="Record Text" sequence="9"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="fdb27e8c-92e3-46f1-970c-54207b499297" dl_type="D" c1_value="1 - 10 Characters" sequence="10"/>
+      </eProcCompObject>			
+<eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="2" toCompNo="3" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+<eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="OperatorInstruction" compProcType="PM_PHASE" instanceId="operator_instruction3" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" icon="/POMS/apps/ActionListApp/AltBitmaps/operator_instruction.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="3" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="480" yPos="220" change_flag="0" objectConfig="{&amp;quot;Image&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;path-group&amp;quot;,&amp;quot;left&amp;quot;:500,&amp;quot;top&amp;quot;:100,&amp;quot;width&amp;quot;:60,&amp;quot;height&amp;quot;:48,&amp;quot;fill&amp;quot;:&amp;quot;rgb(0,0,0)&amp;quot;,&amp;quot;strokeWidth&amp;quot;:0},&amp;quot;Label&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;textbox&amp;quot;,&amp;quot;left&amp;quot;:462,&amp;quot;top&amp;quot;:149,&amp;quot;width&amp;quot;:96,&amp;quot;height&amp;quot;:30.06,&amp;quot;fontSize&amp;quot;:14,&amp;quot;lineHeight&amp;quot;:0.9,&amp;quot;textAlign&amp;quot;:&amp;quot;center&amp;quot;,&amp;quot;minWidth&amp;quot;:20,&amp;quot;styles&amp;quot;:{}},&amp;quot;ZOrderImage&amp;quot;:60,&amp;quot;ZOrderLabel&amp;quot;:58,&amp;quot;Hidden&amp;quot;:&amp;quot;0&amp;quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.OperatorInstruction.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Class Name" sValue="OperatorInstruction" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/OperatorInstruction/UI/OperatorInstructionEdit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/OperatorInstruction/UI/OperatorInstruction.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Object ID" sValue="OperatorInstruction" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.OperatorInstruction.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Choices" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ChoicesType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:CompleteOnSelection" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="false" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;test" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OperatorResponse" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ResponseString" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="OperatorInstruction" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="OperatorInstruction2" seqNumber="0"/>
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Choices" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ChoicesType" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:CompleteOnSelection" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OperatorResponse" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:ResponseString" attribNumber="1" seqNumber="0"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" dl_type="N" c1_value="&lt;@UseHTML@&gt;test" sequence="1"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" dl_type="N" c1_value="Phase Title" sequence="5"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" dl_type="N" c1_value="Confirmation Type: None" sequence="6"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" dl_type="D" c1_value="Responses: " sequence="8"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" dl_type="D" c1_value="Response Type: " sequence="9"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="9eaff24d-1722-4dfa-acd2-95b211bdf488" dl_type="D" c1_value="Auto Finish on Selection: False" sequence="10"/>
+      </eProcCompObject>			
+<eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="3" toCompNo="4" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+<eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="RecordText" compProcType="PM_PHASE" instanceId="record_text4" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" icon="/POMS/apps/ActionListApp/AltBitmaps/Record_text.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="4" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="660" yPos="220" change_flag="0" objectConfig="{&amp;quot;Image&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;path-group&amp;quot;,&amp;quot;left&amp;quot;:360,&amp;quot;top&amp;quot;:100,&amp;quot;width&amp;quot;:60,&amp;quot;height&amp;quot;:48,&amp;quot;fill&amp;quot;:&amp;quot;rgb(0,0,0)&amp;quot;,&amp;quot;strokeWidth&amp;quot;:0},&amp;quot;Label&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;textbox&amp;quot;,&amp;quot;left&amp;quot;:642,&amp;quot;top&amp;quot;:198,&amp;quot;width&amp;quot;:96,&amp;quot;height&amp;quot;:15.82,&amp;quot;fontSize&amp;quot;:14,&amp;quot;lineHeight&amp;quot;:0.9,&amp;quot;textAlign&amp;quot;:&amp;quot;center&amp;quot;,&amp;quot;minWidth&amp;quot;:20,&amp;quot;styles&amp;quot;:{}},&amp;quot;ZOrderImage&amp;quot;:63,&amp;quot;ZOrderLabel&amp;quot;:61,&amp;quot;Hidden&amp;quot;:&amp;quot;0&amp;quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.RecordText.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Class Name" sValue="RecordText" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/RecordText/UI/RecordText_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/RecordText/UI/RecordText.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Object ID" sValue="RecordText" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.RecordText.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;test" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Maximum Length" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="10" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Minimum Length" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="1" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Mode" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="TEXT" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Record Type" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Other" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecordTextOutput" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Text are all capital letters" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="RecordText3" seqNumber="0"/>
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Maximum Length" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Minimum Length" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Mode" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Record Type" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:RecordTextOutput" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Text are all capital letters" attribNumber="1" seqNumber="0"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" dl_type="N" c1_value="&lt;@UseHTML@&gt;test" sequence="1"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" dl_type="N" c1_value="Phase Title" sequence="5"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" dl_type="N" c1_value="Confirmation Type: None" sequence="6"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" dl_type="D" c1_value="Record Type: Other" sequence="8"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" dl_type="D" c1_value="Record Text" sequence="9"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="d98b6b74-2df6-4ecd-afdb-3b5c5d1e457d" dl_type="D" c1_value="1 - 10 Characters" sequence="10"/>
+      </eProcCompObject>			
+<eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="4" toCompNo="5" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+<eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="OperatorInstruction" compProcType="PM_PHASE" instanceId="operator_instruction5" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" icon="/POMS/apps/ActionListApp/AltBitmaps/operator_instruction.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="5" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="300" yPos="340" change_flag="0" objectConfig="{&amp;quot;Image&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;path-group&amp;quot;,&amp;quot;left&amp;quot;:500,&amp;quot;top&amp;quot;:100,&amp;quot;width&amp;quot;:60,&amp;quot;height&amp;quot;:48,&amp;quot;fill&amp;quot;:&amp;quot;rgb(0,0,0)&amp;quot;,&amp;quot;strokeWidth&amp;quot;:0},&amp;quot;Label&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;textbox&amp;quot;,&amp;quot;left&amp;quot;:282,&amp;quot;top&amp;quot;:247,&amp;quot;width&amp;quot;:96,&amp;quot;height&amp;quot;:30.06,&amp;quot;fontSize&amp;quot;:14,&amp;quot;lineHeight&amp;quot;:0.9,&amp;quot;textAlign&amp;quot;:&amp;quot;center&amp;quot;,&amp;quot;minWidth&amp;quot;:20,&amp;quot;styles&amp;quot;:{}},&amp;quot;ZOrderImage&amp;quot;:60,&amp;quot;ZOrderLabel&amp;quot;:58,&amp;quot;Hidden&amp;quot;:&amp;quot;0&amp;quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.OperatorInstruction.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Class Name" sValue="OperatorInstruction" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/OperatorInstruction/UI/OperatorInstructionEdit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/OperatorInstruction/UI/OperatorInstruction.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Object ID" sValue="OperatorInstruction" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.OperatorInstruction.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Choices" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ChoicesType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:CompleteOnSelection" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="false" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;test" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OperatorResponse" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ResponseString" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="OperatorInstruction" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="OperatorInstruction2" seqNumber="0"/>
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Choices" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ChoicesType" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:CompleteOnSelection" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OperatorResponse" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:ResponseString" attribNumber="1" seqNumber="0"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" dl_type="N" c1_value="&lt;@UseHTML@&gt;test" sequence="1"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" dl_type="N" c1_value="Phase Title" sequence="5"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" dl_type="N" c1_value="Confirmation Type: None" sequence="6"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" dl_type="D" c1_value="Responses: " sequence="8"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" dl_type="D" c1_value="Response Type: " sequence="9"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="e0b38f05-66c7-441d-9825-04f0c0a20ae5" dl_type="D" c1_value="Auto Finish on Selection: False" sequence="10"/>
+      </eProcCompObject>			
+<eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="5" toCompNo="6" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+<eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="RecordText" compProcType="PM_PHASE" instanceId="record_text6" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" icon="/POMS/apps/ActionListApp/AltBitmaps/Record_text.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="6" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="480" yPos="340" change_flag="0" objectConfig="{&amp;quot;Image&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;path-group&amp;quot;,&amp;quot;left&amp;quot;:360,&amp;quot;top&amp;quot;:100,&amp;quot;width&amp;quot;:60,&amp;quot;height&amp;quot;:48,&amp;quot;fill&amp;quot;:&amp;quot;rgb(0,0,0)&amp;quot;,&amp;quot;strokeWidth&amp;quot;:0},&amp;quot;Label&amp;quot;:{&amp;quot;type&amp;quot;:&amp;quot;textbox&amp;quot;,&amp;quot;left&amp;quot;:462,&amp;quot;top&amp;quot;:296,&amp;quot;width&amp;quot;:96,&amp;quot;height&amp;quot;:15.82,&amp;quot;fontSize&amp;quot;:14,&amp;quot;lineHeight&amp;quot;:0.9,&amp;quot;textAlign&amp;quot;:&amp;quot;center&amp;quot;,&amp;quot;minWidth&amp;quot;:20,&amp;quot;styles&amp;quot;:{}},&amp;quot;ZOrderImage&amp;quot;:63,&amp;quot;ZOrderLabel&amp;quot;:61,&amp;quot;Hidden&amp;quot;:&amp;quot;0&amp;quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.RecordText.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Class Name" sValue="RecordText" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/RecordText/UI/RecordText_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/RecordText/UI/RecordText.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="Object ID" sValue="RecordText" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.RecordText.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True"/>
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;test" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Maximum Length" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="10" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Minimum Length" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="1" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Mode" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="TEXT" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Record Type" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Other" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecordTextOutput" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False"/>
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Text are all capital letters" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False"/>
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="RecordText3" seqNumber="0"/>
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Maximum Length" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Minimum Length" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Mode" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Record Type" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:RecordTextOutput" attribNumber="1" seqNumber="0"/>
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Text are all capital letters" attribNumber="1" seqNumber="0"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" dl_type="N" c1_value="&lt;@UseHTML@&gt;test" sequence="1"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" dl_type="N" c1_value="Phase Title" sequence="5"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" dl_type="N" c1_value="Confirmation Type: None" sequence="6"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" dl_type="D" c1_value="Record Type: Other" sequence="8"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" dl_type="D" c1_value="Record Text" sequence="9"/>
+        <eProcCompDataLine parent_guid="f6f42ce3-1181-4954-8db2-736456b42623" guid="edbbc88d-c26f-464a-b830-c0fa04c09d96" dl_type="D" c1_value="1 - 10 Characters" sequence="10"/>
+      </eProcCompObject>			
+<eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="6" toCompNo="-1" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+<eProcCompSeq prereq_language="return(Accessor.IsComplete());" fromCompNo="0" toCompNo="2" objectConfig="{&quot;LineColor&quot;:&quot;#000000&quot;,&quot;ArrowColor&quot;:&quot;#000000&quot;,&quot;IntArrowColor&quot;:&quot;blue&quot;,&quot;HideConnection&quot;:false}" zOrder="-1"/>			
+</eProcObject>
+  </eSpecXmlObjs>
+</eSpecObjects>
