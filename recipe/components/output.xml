@@ -1,0 +1,346 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Output" compProcType="PM_PHASE" instanceId="Output1" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" icon="/POMS/apps/ActionListApp/AltBitmaps/Output.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="1" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="100" yPos="40" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:100,&quot;top&quot;:40,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:82,&quot;top&quot;:89,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:14,&quot;ZOrderLabel&quot;:12,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.Output.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="Output" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/Output/UI/Output_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/Output/UI/Output.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="Output" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.Output.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AllowAddToNonEmpty" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:AllowAny" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:AllowMultiConts" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BopTolerance" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ComponentList" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ContTolerance" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ContTolLower" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ContTolRule" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Fixed" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ContTolUpper" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:DisplayTargetQtyAtRuntime" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:EnableMoveOutput" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:EnforceEqCheckIn" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exp Offset UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Expiration Offset" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ExpirationDate" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ExpirationPeriod" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ExpirationPeriodUom" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ExpNullDate" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Output Phase" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:KeepDates" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:KeepLot" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:LabelName" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:LastContainer" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:LotStatusSource" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="ASPRODUCT" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ManualQty" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Marker Position" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="End" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Marker" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OPC_Tag" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OPC_Type" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OutBulkToRegular" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Output" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OutputDestination" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="any" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OutputLotIDSource" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="preGenerated" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OutputQtyType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Measured" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OutputType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="mass" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:OutputWithinLimits" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PreTareCont" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PrintLabels" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ProductDescription" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Material 2" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ProductId" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Mat_002" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ProductNumber" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ProductStatusSource" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="STATICLIST" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QtyPerCont" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RECORD_COUNT5000" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RECORD_COUNT6000" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecVar_Tag" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecVarLotID_Tag" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecVarLotQCStatus_Tag" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecVarQCStatus_Tag" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecVarTargetQty_Tag" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RestestDate" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Retest Offset UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Retest Offset" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RetestPeriod" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RetestPeriodUom" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RetNullDate" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RuleForDates" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="PRODUCT" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RuleForSDAs" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="MATLDEFAULTS" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SelectedBOMForDates" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SelectedBomForLotFlagQC" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SelectedBomForQC" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SelectedBOMForSDAs" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:StatusForLotFlagQC" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Conditional Released" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:StatusForQC" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Conditional Released" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:TargetQtySource" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Fixed" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UniqueLots" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="kg" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseQtyAsNumOfLblToPrint" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="Output1" seqNumber="0" />
+        <eProcGroup groupId="grpAuthoredPeriods" groupName="Authored Periods" seqNumber="4" parentGroupId="grpRuleForDates" />
+        <eProcGroup groupId="grpBatchParams" groupName="Batch Parameters" seqNumber="5" parentGroupId="grpRuleForDates" />
+        <eProcGroup groupId="grpCheckState" groupName="Check State" seqNumber="1" parentGroupId="grpClassSelection" />
+        <eProcGroup groupId="grpClassSelection" groupName="Select Equipment Class" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="grpDatesAsNulls" groupName="Dates as nulls" seqNumber="10" parentGroupId="grpRuleForDates" />
+        <eProcGroup groupId="grpLotFlagQCStatus" groupName="Lot Flag QC Status" seqNumber="18" parentGroupId="grpLotStatusSource" />
+        <eProcGroup groupId="grpLotStatusSource" groupName="Lot QC Stat Select" seqNumber="16" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="grpMarker" groupName="Marker" seqNumber="9" parentGroupId="grpRuleForDates" />
+        <eProcGroup groupId="grpProductStatusSource" groupName="Prod QC Stat Select" seqNumber="12" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="grpQCStatus" groupName="Product QC Status" seqNumber="14" parentGroupId="grpProductStatusSource" />
+        <eProcGroup groupId="grpRecVarLotFlagQC" groupName="Rec Var For Lot Flag QC" seqNumber="19" parentGroupId="grpLotStatusSource" />
+        <eProcGroup groupId="grpRecVarQC" groupName="Rec Var For QC" seqNumber="15" parentGroupId="grpProductStatusSource" />
+        <eProcGroup groupId="grpRuleForDates" groupName="Input for Exp/Retest Dates" seqNumber="3" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="grpRuleForSDAs" groupName="Input for SDAs" seqNumber="7" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="grpSetState" groupName="Set State" seqNumber="2" parentGroupId="grpClassSelection" />
+        <eProcGroup groupId="grpTargetQty" groupName="Target Qty Options" seqNumber="20" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="21" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AllowAddToNonEmpty" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AllowAny" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AllowMultiConts" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BopTolerance" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ComponentList" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ContTolerance" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ContTolLower" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ContTolRule" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ContTolUpper" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:DisplayTargetQtyAtRuntime" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:EnableMoveOutput" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:EnforceEqCheckIn" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpMarker" paramId="ObjRef:Exp Offset UOM" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpMarker" paramId="ObjRef:Expiration Offset" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpBatchParams" paramId="ObjRef:ExpirationDate" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpAuthoredPeriods" paramId="ObjRef:ExpirationPeriod" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpAuthoredPeriods" paramId="ObjRef:ExpirationPeriodUom" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpDatesAsNulls" paramId="ObjRef:ExpNullDate" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:KeepDates" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:KeepLot" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:LabelName" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:LastContainer" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpLotStatusSource" paramId="ObjRef:LotStatusSource" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ManualQty" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpMarker" paramId="ObjRef:Marker Position" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpMarker" paramId="ObjRef:Marker" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OPC_Tag" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OPC_Type" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OutBulkToRegular" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Output" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OutputDestination" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OutputLotIDSource" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OutputQtyType" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:OutputType" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:OutputWithinLimits" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PreTareCont" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PrintLabels" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ProductDescription" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ProductId" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ProductNumber" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpProductStatusSource" paramId="ObjRef:ProductStatusSource" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpTargetQty" paramId="ObjRef:QtyPerCont" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpSetState" paramId="ObjRef:RECORD_COUNT5000" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpCheckState" paramId="ObjRef:RECORD_COUNT6000" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:RecVar_Tag" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:RecVarLotID_Tag" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpRecVarLotFlagQC" paramId="ObjRef:RecVarLotQCStatus_Tag" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpRecVarQC" paramId="ObjRef:RecVarQCStatus_Tag" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpTargetQty" paramId="ObjRef:RecVarTargetQty_Tag" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpBatchParams" paramId="ObjRef:RestestDate" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpMarker" paramId="ObjRef:Retest Offset UOM" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpMarker" paramId="ObjRef:Retest Offset" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpAuthoredPeriods" paramId="ObjRef:RetestPeriod" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpAuthoredPeriods" paramId="ObjRef:RetestPeriodUom" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpDatesAsNulls" paramId="ObjRef:RetNullDate" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpRuleForDates" paramId="ObjRef:RuleForDates" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpRuleForSDAs" paramId="ObjRef:RuleForSDAs" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SelectedBOMForDates" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SelectedBomForLotFlagQC" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SelectedBomForQC" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SelectedBOMForSDAs" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpLotFlagQCStatus" paramId="ObjRef:StatusForLotFlagQC" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpQCStatus" paramId="ObjRef:StatusForQC" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpTargetQty" paramId="ObjRef:TargetQtySource" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UniqueLots" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpTargetQty" paramId="ObjRef:UOM" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseQtyAsNumOfLblToPrint" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="N" c1_value="&lt;@UseHTML@&gt;Output Phase" sequence="1" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Allow any material:" c2_value="No" sequence="8" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Output Material ID: | Description:" c2_value="Mat_002" c3_value="Material 2" sequence="9" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="BOP reference number:" c2_value="1" sequence="10" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Output quantity source from:" c2_value="scale" sequence="11" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Output Lot ID source from:" c2_value="pregenerated" sequence="12" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Allow multiple containers:" c2_value="No" sequence="13" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Target Quantity:" c2_value="Fixed" sequence="15" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Target Quantity | UOM :" c2_value="1" c3_value="kg" sequence="16" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Display Target Qty At Runtime" c2_value="Yes" sequence="18" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Enable Move Output:" c2_value="Yes" sequence="19" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Allow container tolerance:" c2_value="No" sequence="20" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Use pre-tare containers:" c2_value="No" sequence="21" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Create unique lots:" c2_value="No" sequence="22" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Print labels:" c2_value="No" sequence="23" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Equipment class: " c2_value="No reusable container class in BOE" sequence="25" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Product QC Status source from:" c2_value="Static List" sequence="27" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Product status:" c2_value="Conditional Released" sequence="28" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Lot Flag QC Status source from:" c2_value="Same as Product QC Status" sequence="30" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Output UOM type:" c2_value="mass" sequence="32" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Input for Exp/Retest Dates:" c2_value="Product QC Rules" sequence="34" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Input for SDAs:" c2_value="Material Defaults" sequence="36" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="D" c1_value="Output Destination:" c2_value="Any" sequence="37" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="P" c1_value="Record Output Information:  (Quantity Recorded as Net Quantity if Weighed)" sequence="39" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="P" c1_value="Container ID | Number" c2_value="____________" c3_value="____________" sequence="41" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="P" c1_value="Actual Quantity | UOM" c2_value="____________" c3_value="____________" sequence="42" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="P" c1_value="Total Quantity | UOM" c2_value="____________" c3_value="____________" sequence="44" />
+        <eProcCompDataLine parent_guid="67E328FD-3995-43B9-B8AF-4B16B57C9DE6" guid="16b5d839-d2e8-671b-3b63-d4aa6de3537d" dl_type="P" c1_value="Exception Type: | Exception ID:" c2_value="____________" c3_value="____________" sequence="46" />
+      </eProcCompObject>

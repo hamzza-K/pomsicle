@@ -1,0 +1,121 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Create Exception" compProcType="PM_PHASE" instanceId="Create Exception3" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" icon="/POMS/apps/ActionListApp/AltBitmaps/createException.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="14" prereq_language="0" action_type="6" options="0" displayOptions="73728" seqOptions="0" compObjVer="1.001" xPos="620" yPos="340" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:620,&quot;top&quot;:340,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:602,&quot;top&quot;:389,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:124,&quot;ZOrderLabel&quot;:123,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.CreateException.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="CreateException" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/CreateException/UI/CreateException_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.RecipeExecution.CreateException.BLL.dll,Poms.RecipeExecution.CreateException.BLL.CreateExceptionPhaseAutomation,poms/Apps/RecipeExecution/CreateException/UI/CreateException.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="Create Exception" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Resource Base Name" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.CreateException.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Action Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Action" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:CAPA Reference Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:CAPA Reference" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Conclusion Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Conclusion" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exception Type Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exception Type" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="COMMENT" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exception UOM Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exception UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exception Value Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Exception Value" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Explanation Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Explanation" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;create an &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Exception&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; during any stage of the recipe execution&lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Reason Code Runtime Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Reason Code" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Bad Quality" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Run In Background" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Specification Criteria" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="Create Exception3" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Action Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Action" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:CAPA Reference Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:CAPA Reference" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Conclusion Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Conclusion" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Exception Type Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Exception Type" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Exception UOM Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Exception UOM" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Exception Value Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Exception Value" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Explanation Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Explanation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Reason Code Runtime Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Reason Code" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Run In Background" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Specification Criteria" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;create an &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Exception&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; during any stage of the recipe execution&lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Exception Type: COMMENT" sequence="8" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Reason Code: Bad Quality" sequence="9" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Exception Value: UNDEFINED" sequence="10" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Exception UOM: UNDEFINED" sequence="11" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: NO]  Specification Criteria: UNDEFINED" sequence="12" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  CAPA Reference: UNDEFINED" sequence="13" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Explanation: UNDEFINED" sequence="14" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Action: UNDEFINED" sequence="15" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="[Runtime Edit: YES]  Conclusion: UNDEFINED" sequence="16" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="a34528b9-89f5-7ca4-bef7-08ecfaa9efe1" dl_type="D" c1_value="Run In Background: NO" sequence="17" />
+      </eProcCompObject>

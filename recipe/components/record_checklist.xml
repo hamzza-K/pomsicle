@@ -1,0 +1,43 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="RecordChecklist" compProcType="PM_PHASE" instanceId="RecordChecklist13" guid="5953db2d-7584-6a0e-47e3-fd1b4c35762f" icon="/POMS/apps/ActionListApp/AltBitmaps/RecordChecklist.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="13" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="440" yPos="340" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:440,&quot;top&quot;:340,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:422,&quot;top&quot;:389,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:149,&quot;ZOrderLabel&quot;:147,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.RecordChecklist.BLL" format="100" popMethodId="ENTRY" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="RecordChecklist" format="100" popMethodId="ENTRY" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/RecordChecklist/UI/RecordChecklist_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/RecordChecklist/UI/RecordChecklist.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="100" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="RecordChecklist" format="100" popMethodId="ENTRY" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.RecordChecklist.UI" format="100" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Checklist Group" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Check List for BOL items" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecordedValues" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="RecordChecklist13" seqNumber="0" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Checklist Group" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:RecordedValues" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="5953db2d-7584-6a0e-47e3-fd1b4c35762f" dl_type="N" c1_value="&lt;@UseHTML@&gt;Check List for BOL items" sequence="1" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="5953db2d-7584-6a0e-47e3-fd1b4c35762f" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="5953db2d-7584-6a0e-47e3-fd1b4c35762f" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="5953db2d-7584-6a0e-47e3-fd1b4c35762f" dl_type="D" c1_value="Checklist Group: " sequence="8" />
+      </eProcCompObject>

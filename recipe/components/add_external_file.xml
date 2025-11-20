@@ -1,0 +1,52 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="AddExternalFile" compProcType="PM_PHASE" instanceId="AddExternalFile8" guid="f904af61-ea9c-38b3-6a4d-69598ac70f08" icon="/POMS/apps/ActionListApp/AltBitmaps/add_external_file.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="8" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="420" yPos="200" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:420,&quot;top&quot;:200,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:402,&quot;top&quot;:249,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:138,&quot;ZOrderLabel&quot;:137,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.AddExternalFile.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="AddExternalFile" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/Apps/RecipeExecution/AddExternalFile/UI/AddExternalFile_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/Apps/RecipeExecution/AddExternalFile/UI/AddExternalFile.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Hook Module" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.AddExternalFile.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AttachedFileCount" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:AttachedFileNames" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:AttachedFileType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="DOC" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Add a document of your choice" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Link" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="C:\Users\shahjbil\Documents" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="AddExternalFile8" seqNumber="0" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:AttachedFileCount" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:AttachedFileNames" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AttachedFileType" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Link" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="f904af61-ea9c-38b3-6a4d-69598ac70f08" dl_type="N" c1_value="&lt;@UseHTML@&gt;Add a document of your choice" sequence="1" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="f904af61-ea9c-38b3-6a4d-69598ac70f08" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="f904af61-ea9c-38b3-6a4d-69598ac70f08" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="f904af61-ea9c-38b3-6a4d-69598ac70f08" dl_type="D" c1_value="Link:" c2_value="C:\Users\shahjbil\Documents" sequence="8" />
+      </eProcCompObject>

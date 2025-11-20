@@ -1,0 +1,107 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Quality" compProcType="PM_PHASE" instanceId="Quality13" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" icon="/POMS/apps/ActionListApp/AltBitmaps/quality.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="4" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="500" yPos="80" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:500,&quot;top&quot;:80,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:482,&quot;top&quot;:129,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:77,&quot;ZOrderLabel&quot;:75,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.MaterialManagement.Quality.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="Quality" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/Apps/MaterialManagement/Quality/UI/Quality_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.MaterialManagement.Quality.BLL.dll,Poms.MaterialManagement.Quality.BLL.QualityAutomation,poms/apps/MaterialManagement/Quality/UI/Quality.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="Quality" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Resource Base Name" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.MaterialManagement.Quality.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AutoComplete" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="false" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BC Label" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ContainerID" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;The &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Quality&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; phase is used to handle a container&amp;rsquo;s material status, retest and expiration dates.&lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Null Dates" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="true" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Print Label" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="false" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC From Variable" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="false" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC Status" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Released" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC Variable" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC_ContainerID" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC_ExpirationDate" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC_MaterialID" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC_RetestDate" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:QC_Status" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RuleForDates" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="nullValues" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SelectAtRuntime" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="true" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="Quality13" seqNumber="0" />
+        <eProcGroup groupId="grpNullValues" groupName="grpNullValues" seqNumber="7" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="grpRuleForDates" groupName="grpRuleForDates" seqNumber="8" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="6" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AutoComplete" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BC Label" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ContainerID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpNullValues" paramId="ObjRef:Null Dates" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Print Label" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:QC From Variable" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:QC Status" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:QC Variable" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:QC_ContainerID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:QC_ExpirationDate" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:QC_MaterialID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:QC_RetestDate" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:QC_Status" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="grpRuleForDates" paramId="ObjRef:RuleForDates" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SelectAtRuntime" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;The &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Quality&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; phase is used to handle a container&amp;rsquo;s material status, retest and expiration dates.&lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="D" c1_value="Phase auto complete flag set to:" c2_value="Not Checked" sequence="8" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="D" c1_value="Select container ID during runtime." sequence="9" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="D" c1_value="Don't print new label." sequence="10" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="D" c1_value="New QC status value:" c2_value="Released" sequence="11" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="32fbe409-2e63-8fa4-3a1b-2a9099cb25cf" dl_type="D" c1_value="Retest and expiration dates will be set to null." sequence="12" />
+      </eProcCompObject>

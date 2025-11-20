@@ -1,0 +1,49 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="PrintInProcessLabel" compProcType="PM_PHASE" instanceId="PrintInProcessLabel12" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" icon="/POMS/apps/ActionListApp/AltBitmaps/printinprocesslabel.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="12" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="740" yPos="180" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:740,&quot;top&quot;:180,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:722,&quot;top&quot;:229,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:145,&quot;ZOrderLabel&quot;:144,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.PrintInprocessLabel.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="PrintInprocessLabel" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/PrintInProcessLabel/UI/PrintInProcessLabel_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/PrintInProcessLabel/UI/PrintInProcessLabel.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="PrintInProcessLabel" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.PrintInprocessLabel.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AutoComplete" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Print in Label" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Label Name" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="IN PROCESS LABEL" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Num Of Labels To Print" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Pring Label Signoff Type" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="PrintInProcessLabel12" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AutoComplete" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Label Name" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Num Of Labels To Print" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Pring Label Signoff Type" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" dl_type="N" c1_value="&lt;@UseHTML@&gt;Print in Label" sequence="1" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" dl_type="D" c1_value="Label Name: IN PROCESS LABEL" sequence="8" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" dl_type="D" c1_value="Number of Labels to print: 1" sequence="9" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="a1c9022d-4d44-e8e5-4d49-93d031c546fa" dl_type="D" c1_value="Auto Complete with UI:No" sequence="10" />
+      </eProcCompObject>

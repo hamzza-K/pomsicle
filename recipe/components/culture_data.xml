@@ -1,0 +1,69 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="CultureData" compProcType="PM_PHASE" instanceId="CultureData4" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" icon="/POMS/apps/ActionListApp/AltBitmaps/cultureData.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="3" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="300" yPos="180" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:300,&quot;top&quot;:180,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:282,&quot;top&quot;:229,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:74,&quot;ZOrderLabel&quot;:73,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.CultureData.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="CultureDataBLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/CultureData/UI/CultureData_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/CultureData/UI/CultureData.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="CultureData" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.CultureData.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Critical Variable" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Not Defined" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:CriticalVarValue" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;Determine if the cell culture is ready for further processing.&lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Selected Variable5" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Humidity" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Selected Variable6" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Not Defined" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:target factor" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="10" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ThresholdExceeded" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ThresholdValue" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="CultureData4" seqNumber="0" />
+        <eProcGroup groupId="CriticalVariable" groupName="Critical Variable" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="ProcessVariables" groupName="Process Variables" seqNumber="1" parentGroupId="CriticalVariable" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="2" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="CriticalVariable" paramId="ObjRef:Critical Variable" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:CriticalVarValue" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ProcessVariables" paramId="ObjRef:Selected Variable5" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ProcessVariables" paramId="ObjRef:Selected Variable6" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="CriticalVariable" paramId="ObjRef:target factor" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:ThresholdExceeded" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:ThresholdValue" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;Determine if the cell culture is ready for further processing.&lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="D" c1_value="Critical Variable:   Not Defined" sequence="8" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="D" c1_value="Target Factor: 10" sequence="9" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="D" c1_value="Selected Variable: Humidity" sequence="11" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="d28be9f4-ded8-b62b-bb2f-404ccd2b0ff2" dl_type="D" c1_value="Selected Variable: Not Defined" sequence="12" />
+      </eProcCompObject>

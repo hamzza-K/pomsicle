@@ -1,0 +1,89 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="RecordContainerTare" compProcType="PM_PHASE" instanceId="RecordContainerTare7" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" icon="/POMS/apps/ActionListApp/AltBitmaps/record_container_tare.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="16" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="860" yPos="400" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:860,&quot;top&quot;:400,&quot;width&quot;:60,&quot;height&quot;:47,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:842,&quot;top&quot;:448,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:127,&quot;ZOrderLabel&quot;:126,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.RecordContainerTare.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="RecordContainerTare" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/RecordContainerTare/UI/RecordContainerTare_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/RecordContainerTare/UI/RecordContainerTare.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="RecordContainerTare" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.RecordContainerTare.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Allow Multiple Containers Per Signoff" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Container ID Source" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Poms" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Enter Container Lot ID" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;The &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Record Container Tare&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; function lets an operator record the tare value for the container for later use during dispensing.&lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Label ID Source" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Poms" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Label Name" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Label" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Product ID" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Product Number" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ProductDefer" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="no" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RecordContainerTare" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="g" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="RecordContainerTare7" seqNumber="0" />
+        <eProcGroup groupId="ContLblIdSource" groupName="Container and Label ID Source" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="LabelName" groupName="Label Name" seqNumber="1" parentGroupId="ContLblIdSource" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="2" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Allow Multiple Containers Per Signoff" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ContLblIdSource" paramId="ObjRef:Container ID Source" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Enter Container Lot ID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ContLblIdSource" paramId="ObjRef:Label ID Source" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="LabelName" paramId="ObjRef:Label Name" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Product ID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Product Number" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ProductDefer" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:RecordContainerTare" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UOM" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;The &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Record Container Tare&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; function lets an operator record the tare value for the container for later use during dispensing.&lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="D" c1_value="Product ID: Mat_002" sequence="8" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="D" c1_value="Container ID Source: Poms" sequence="10" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="D" c1_value="Label ID Source: Poms" sequence="11" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="D" c1_value="Container Lot ID: N" sequence="12" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Record Container Tare" c2_value="____________" sequence="14" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Container ID:" c2_value="____________" sequence="15" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Tare Quantity | UOM:" c2_value="____________" c3_value="____________" sequence="16" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Record Container Tare" c2_value="____________" sequence="18" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Container ID:" c2_value="____________" sequence="19" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Tare Quantity | UOM:" c2_value="____________" c3_value="____________" sequence="20" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Source Lots:" c2_value="____________" sequence="22" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="6180810d-8e63-9a83-fa86-31aeadfad0f3" dl_type="P" c1_value="Exception Type: | Exception ID:" c2_value="____________" c3_value="____________" sequence="24" />
+      </eProcCompObject>

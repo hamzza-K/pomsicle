@@ -1,0 +1,102 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="CheckInEquipment" compProcType="PM_PHASE" instanceId="CheckInEquipment1" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" icon="/POMS/apps/ActionListApp/AltBitmaps/check_in_equipment.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="1" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="100" yPos="20" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:100,&quot;top&quot;:20,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:82,&quot;top&quot;:69,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:84,&quot;ZOrderLabel&quot;:83,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.EquipmentManagement.CheckInEquipment.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="CheckInEquipment" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/EquipmentManagement/CheckInEquipment/UI/CheckInEquipmentEdit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.EquipmentManagement.CheckInEquipment.BLL.dll,Poms.EquipmentManagement.CheckInEquipment.BLL.CheckInEquipmentAutomation,poms/apps/EquipmentManagement/CheckInEquipment/UI/CheckInEquipment.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="CheckInEquipment" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.EquipmentManagement.CheckInEquipment.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AutoComplete" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="false" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Check In" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1,2,4,5" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Check In the Equipment" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RECORD_COUNT5000" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RECORD_COUNT6000" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Status_1_0_Availability" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Status_1_0_Cleanliness" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Status_4_0_Calibration" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Status_4_0_Standardization" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Status_5_0_Availability" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="CheckInEquipment1" seqNumber="0" />
+        <eProcGroup groupId="BOESelection" groupName="Select BOE Ref No" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="CheckState" groupName="Check State" seqNumber="1" parentGroupId="BOESelection" />
+        <eProcGroup groupId="SetState" groupName="Set State" seqNumber="2" parentGroupId="BOESelection" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="3" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AutoComplete" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="BOESelection" paramId="ObjRef:Check In" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="SetState" paramId="ObjRef:RECORD_COUNT5000" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="CheckState" paramId="ObjRef:RECORD_COUNT6000" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Status_1_0_Availability" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Status_1_0_Cleanliness" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Status_4_0_Calibration" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Status_4_0_Standardization" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Status_5_0_Availability" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="N" c1_value="&lt;@UseHTML@&gt;Check In the Equipment" sequence="1" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="Phase is not set to Auto Complete" sequence="8" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="BOE Ref No: 1  Equipment Class: 500mL Flask" c2_value="Qty Required" c3_value="1" sequence="10" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="Desc: 500mL Flask" sequence="11" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="BOE Ref No: 2  Equipment Class: 10mL Syringe" c2_value="Qty Required" c3_value="1" sequence="13" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="Desc: 10mL Syringe" sequence="14" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="BOE Ref No: 4  Equipment Class: Benchtop Scale" c2_value="Qty Required" c3_value="1" sequence="16" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="Desc: Bench Top Weighing Scale" sequence="17" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="BOE Ref No: 5  Equipment Class: Glasswash" c2_value="Qty Required" c3_value="1" sequence="19" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="D" c1_value="Desc: Glass Wash" sequence="20" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="23" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="24" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="25" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="26" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="27" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="28" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="29" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="30" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="31" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="32" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="33" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="34" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________________" sequence="35" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Equipment ID:" c2_value="____________________" sequence="36" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="ab0c82aa-1f5f-0c38-3e49-4c4d1b43c1d2" dl_type="P" c1_value="Exception Type | Exception ID" c2_value="____________________" c3_value="____________________" sequence="38" />
+      </eProcCompObject>

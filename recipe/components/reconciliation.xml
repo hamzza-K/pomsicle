@@ -1,0 +1,93 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Reconciliation" compProcType="PM_PHASE" instanceId="Reconciliation6" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" icon="/POMS/apps/ActionListApp/AltBitmaps/Reconciliation.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="15" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="860" yPos="180" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:860,&quot;top&quot;:180,&quot;width&quot;:60,&quot;height&quot;:47,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:842,&quot;top&quot;:228,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:129,&quot;ZOrderLabel&quot;:128,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.MaterialReconciliation.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="MaterialReconciliation" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/MaterialReconciliation/UI/MaterialReconciliation_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/MaterialReconciliation/UI/MaterialReconciliation.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="Reconciliation" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.MaterialReconciliation.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Comment Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Comment Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Description" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Material 001" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Deviation Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Deviation Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;The &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Material&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Reconciliation&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; function lets the operator reconcile the total inputs for a specified material against the total outputs.&lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:MaterialId" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Mat_001" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Message Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Message Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ProductID" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Mat_001" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Reconciliation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Report Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Report Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="Reconciliation6" seqNumber="0" />
+        <eProcGroup groupId="ExceptionLimits" groupName="Exception Limits" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Comment Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Comment Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Description" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Deviation Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Deviation Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:MaterialId" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Message Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Message Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ProductID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Reconciliation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Report Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Report Minimum" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;The &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Material&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;Reconciliation&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; function lets the operator reconcile the total inputs for a specified material against the total outputs.&lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="D" c1_value="Material ID: | Description:" c2_value="Mat_001" c3_value="Material 001" sequence="8" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Input Quantity - UOM:" c2_value="____________" c3_value="____________" sequence="10" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Output Quantity:" c2_value="____________" c3_value="____________" sequence="12" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Waste:" c2_value="____________" c3_value="____________" sequence="13" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Sample Quantity:" c2_value="____________" c3_value="____________" sequence="14" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Transfer Quantity:" c2_value="____________" c3_value="____________" sequence="15" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Actual Reconciliation:" c2_value="____________" c3_value="____________" sequence="16" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="D" c1_value=" Exception limits not defined." sequence="18" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="b64689dc-eaf3-bd99-1f6a-000992da180e" dl_type="P" c1_value="Exception Type: | Exception ID:" c2_value="____________" c3_value="____________" sequence="20" />
+      </eProcCompObject>

@@ -1,0 +1,87 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="CheckInMaterial" compProcType="PM_PHASE" instanceId="CheckInMaterial1" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" icon="/POMS/apps/ActionListApp/AltBitmaps/checkin_Material.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="1" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="80" yPos="160" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:80,&quot;top&quot;:160,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:62,&quot;top&quot;:209,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:131,&quot;ZOrderLabel&quot;:130,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.CheckInMaterial.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="CheckInMaterial" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/CHECKINMATERIAL/UI/CHECKINMATERIAL_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/CHECKINMATERIAL/UI/CHECKINMATERIAL.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="CheckInMaterial" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.CheckInMaterial.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Check-In AllowOverage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Check-In Materials" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1,2,3" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Check-In NoQuantity" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Check-In RequireMinimum" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Check in Material" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="CheckInMaterial1" seqNumber="0" />
+        <eProcGroup groupId="CheckInAllowOverage" groupName="CheckInAllowOverage" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="CheckInMaterials" groupName="Check-In Materials" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="CheckInNoQuantity" groupName="CheckInNoQuantity" seqNumber="3" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="CheckInRequireMinimum" groupName="CheckInRequireMinimum" seqNumber="2" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="CheckInAllowOverage" paramId="ObjRef:Check-In AllowOverage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="CheckInMaterials" paramId="ObjRef:Check-In Materials" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="CheckInNoQuantity" paramId="ObjRef:Check-In NoQuantity" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="CheckInRequireMinimum" paramId="ObjRef:Check-In RequireMinimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="N" c1_value="&lt;@UseHTML@&gt;Check in Material" sequence="1" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="BOM Ref No: 1" sequence="8" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Material ID: Mat_001" sequence="9" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Description: Material 001" sequence="10" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Allow Overage:No" sequence="11" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Require Minimum:No" sequence="12" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="BOM Ref No: 2" sequence="14" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Material ID: Material_A" sequence="15" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Description: Material with Common Class" sequence="16" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Allow Overage:No" sequence="17" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Require Minimum:No" sequence="18" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Check In With No Quantity:No" sequence="19" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="BOM Ref No: 3" sequence="21" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Material ID: Material_B" sequence="22" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Description: Material With Common and Bulk Class" sequence="23" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Allow Overage:No" sequence="24" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Require Minimum:No" sequence="25" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="D" c1_value="Check In With No Quantity:No" sequence="26" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Record Material Check-In for Material:" c2_value="Mat_001" sequence="29" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="31" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="32" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="33" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Total Quantity-UOM" c3_value="____________" sequence="35" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Record Material Check-In for Material:" c2_value="Material_A" sequence="37" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="39" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="40" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="41" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Total Quantity-UOM" c3_value="____________" sequence="43" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Record Material Check-In for Material:" c2_value="Material_B" sequence="45" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="47" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="48" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Container ID|Quantity-UOM" c2_value="____________" c3_value="____________" sequence="49" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Total Quantity-UOM" c3_value="____________" sequence="51" />
+        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="cbaab342-30d7-430e-5415-9a3e6b47f0cf" dl_type="P" c1_value="Exception Type|Exception ID" c2_value="____________" c3_value="____________" sequence="53" />
+      </eProcCompObject>

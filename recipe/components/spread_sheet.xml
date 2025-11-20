@@ -1,0 +1,90 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="Spreadsheet" compProcType="PM_PHASE" instanceId="Spreadsheet10" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" icon="/POMS/apps/ActionListApp/AltBitmaps/Spreadsheet.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="10" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="560" yPos="200" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:560,&quot;top&quot;:200,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:542,&quot;top&quot;:249,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:143,&quot;ZOrderLabel&quot;:141,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.Spreadsheet.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="Spreadsheet" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/Spreadsheet/UI/Spreadsheet_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/Spreadsheet/UI/Spreadsheet.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="Spreadsheet" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Resource Base Name" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.Spreadsheet.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AttachToEBR" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BackgroundExec" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Spreadsheet phase to enter Variable Data and recording any record." format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Calculation Design" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="{&#xA;  &quot;name&quot;: &quot;Spreadsheet&quot;,&#xA;  &quot;columns&quot;: [],&#xA;  &quot;frozenRows&quot;: 0,&#xA;  &quot;frozenColumns&quot;: 0,&#xA;  &quot;showGridLines&quot;: true,&#xA;  &quot;mergedCells&quot;: [],&#xA;  &quot;hyperlinks&quot;: [],&#xA;  &quot;defaultCellStyle&quot;: {&#xA;    &quot;fontFamily&quot;: &quot;Arial&quot;,&#xA;    &quot;fontSize&quot;: 12&#xA;  },&#xA;  &quot;drawings&quot;: []&#xA;}" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Calculation Rows Chunk Size" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Calculation Rows Chunk0" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="[]" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Input Design" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="{&#xA;  &quot;name&quot;: &quot;Inputs&quot;,&#xA;  &quot;columns&quot;: [&#xA;    {&#xA;      &quot;index&quot;: 0,&#xA;      &quot;width&quot;: 315&#xA;    },&#xA;    {&#xA;      &quot;index&quot;: 1,&#xA;      &quot;width&quot;: 300&#xA;    },&#xA;    {&#xA;      &quot;index&quot;: 2,&#xA;      &quot;width&quot;: 250&#xA;    }&#xA;  ],&#xA;  &quot;frozenRows&quot;: 1,&#xA;  &quot;frozenColumns&quot;: 0,&#xA;  &quot;showGridLines&quot;: true,&#xA;  &quot;mergedCells&quot;: [],&#xA;  &quot;hyperlinks&quot;: [],&#xA;  &quot;defaultCellStyle&quot;: {&#xA;    &quot;fontFamily&quot;: &quot;Arial&quot;,&#xA;    &quot;fontSize&quot;: 12&#xA;  },&#xA;  &quot;drawings&quot;: []&#xA;}" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Input Rows Chunk Size" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Input Rows Chunk0" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="[{&quot;index&quot;:0,&quot;height&quot;:35,&quot;cells&quot;:[{&quot;value&quot;:&quot;Variable Description&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:0},{&quot;value&quot;:&quot;Variable Name&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:1},{&quot;value&quot;:&quot;Value&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:2},{&quot;enable&quot;:false,&quot;index&quot;:3}]}]" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Spreadsheet Name" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="TestSheet" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Output Design" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="{&#xA;  &quot;name&quot;: &quot;Outputs&quot;,&#xA;  &quot;columns&quot;: [&#xA;    {&#xA;      &quot;index&quot;: 0,&#xA;      &quot;width&quot;: 300&#xA;    },&#xA;    {&#xA;      &quot;index&quot;: 1,&#xA;      &quot;width&quot;: 315&#xA;    },&#xA;    {&#xA;      &quot;index&quot;: 2,&#xA;      &quot;width&quot;: 250&#xA;    },&#xA;    {&#xA;      &quot;index&quot;: 3,&#xA;      &quot;width&quot;: 115&#xA;    }&#xA;  ],&#xA;  &quot;frozenRows&quot;: 1,&#xA;  &quot;frozenColumns&quot;: 0,&#xA;  &quot;showGridLines&quot;: true,&#xA;  &quot;mergedCells&quot;: [],&#xA;  &quot;hyperlinks&quot;: [],&#xA;  &quot;defaultCellStyle&quot;: {&#xA;    &quot;fontFamily&quot;: &quot;Arial&quot;,&#xA;    &quot;fontSize&quot;: 12&#xA;  },&#xA;  &quot;drawings&quot;: []&#xA;}" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Output Rows Chunk Size" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SpreadSheet Output Rows Chunk0" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="[{&quot;index&quot;:0,&quot;height&quot;:35,&quot;cells&quot;:[{&quot;value&quot;:&quot;Result Name&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:0},{&quot;value&quot;:&quot;Result Description&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:1},{&quot;value&quot;:&quot;Result Value&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:2},{&quot;value&quot;:&quot;Result UOM&quot;,&quot;background&quot;:&quot;#a7d6ff&quot;,&quot;color&quot;:&quot;#003e75&quot;,&quot;fontSize&quot;:20,&quot;bold&quot;:true,&quot;textAlign&quot;:&quot;center&quot;,&quot;enable&quot;:false,&quot;index&quot;:3},{&quot;enable&quot;:false,&quot;index&quot;:4}]}]" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="Spreadsheet10" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AttachToEBR" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BackgroundExec" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Calculation Design" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Calculation Rows Chunk Size" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Calculation Rows Chunk0" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Input Design" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Input Rows Chunk Size" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Input Rows Chunk0" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Spreadsheet Name" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Output Design" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Output Rows Chunk Size" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SpreadSheet Output Rows Chunk0" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="N" c1_value="&lt;@UseHTML@&gt;Spreadsheet phase to enter Variable Data and recording any record." sequence="1" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Spreadsheet file name" c2_value="TestSheet" sequence="9" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Inputs:" sequence="11" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Variable Name" c2_value="Variable Description" c3_value="Variable Value:" sequence="13" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Outputs:" sequence="15" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Output Name" c2_value="Output Description" c3_value="Output UOM" sequence="17" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Phase is not set to Auto Complete" sequence="19" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="8b357f85-7c43-6381-a1d9-e354828cbfff" dl_type="D" c1_value="Attach to EBR" c2_value="Yes" sequence="21" />
+      </eProcCompObject>

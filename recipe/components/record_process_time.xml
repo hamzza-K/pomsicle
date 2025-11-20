@@ -1,0 +1,118 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="RecordProcessTime" compProcType="PM_PHASE" instanceId="RecordProcessTime8" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" icon="/POMS/apps/ActionListApp/AltBitmaps/record_process_time.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="8" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="500" yPos="280" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:500,&quot;top&quot;:280,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:482,&quot;top&quot;:329,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:82,&quot;ZOrderLabel&quot;:80,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.RecordProcessTime.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="Timer" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/RecordProcessTime/UI/RecordProcessTime_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.RecipeExecution.RecordProcessTime.BLL.dll,Poms.RecipeExecution.RecordProcessTime.BLL.RecordProcessTimePhaseAutomation,poms/Apps/RecipeExecution/RecordProcessTime/UI/RecordProcessTime.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="RecordProcessTime" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.RecordProcessTime.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:Allow Edit" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BackgroundExec" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Comment Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Comment Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Deviation Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Deviation Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Display Format" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Global short time format" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Stop Timer" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Message Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Message Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Mode" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="STOP" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Record Time for Loca" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Report Maximum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Report Minimum" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RPTElementId" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:RPTP:Record Time for Loca" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Timer Name" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Record Time for Loca" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="RecordProcessTime8" seqNumber="0" />
+        <eProcGroup groupId="ExceptionLimits" groupName="Exception Limits" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Allow Edit" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BackgroundExec" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Comment Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Comment Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Deviation Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Deviation Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Display Format" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Message Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Message Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Mode" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:Record Time for Loca" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Report Maximum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="ExceptionLimits" paramId="ObjRef:Report Minimum" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:RPTElementId" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:RPTP:Record Time for Loca" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Timer Name" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UOM" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="N" c1_value="&lt;@UseHTML@&gt;Stop Timer" sequence="1" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="Timer Name:  Record Time for Loca" sequence="8" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="Stop Process Timer" sequence="9" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="Do Not Allow Edit" sequence="10" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="Elapsed Time Display Format:  Global short time format" sequence="11" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="UOM to define exception limits:  " sequence="12" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="Exception limits not defined." sequence="14" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="P" c1_value="Start Time:" c2_value="____________" sequence="16" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="P" c1_value="Stop Time:" c2_value="____________" sequence="17" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="P" c1_value="Elapsed Time:" c2_value="____________" sequence="18" />
+        <eProcCompDataLine parent_guid="5D1C8E53-7996-4C27-B873-A7F34DE6894C" guid="348ceaef-b93f-41be-0c30-a1b9045054b1" dl_type="D" c1_value="Phase is not set to Auto Complete" sequence="19" />
+      </eProcCompObject>

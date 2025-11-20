@@ -1,0 +1,37 @@
+<eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="VerifyArea" compProcType="PM_PHASE" instanceId="VerifyArea5" guid="2976b500-95a2-5c80-6c88-10ae253f3729" icon="/POMS/apps/ActionListApp/AltBitmaps/Verify_Area.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="5" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="118" yPos="60" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:118,&quot;top&quot;:60,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:100,&quot;top&quot;:109,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:22,&quot;ZOrderLabel&quot;:21,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/WeighDispense/VerifyArea/UI/VerifyAreaEdit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/WeighDispense/VerifyArea/UI/VerifyArea.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:7" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Cleanliness" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Check Area Cleanliness" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="VerifyArea5" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:7" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="BE1EB6B3-FF65-47C7-A445-085A7B54E458" guid="2976b500-95a2-5c80-6c88-10ae253f3729" dl_type="N" c1_value="&lt;@UseHTML@&gt;Check Area Cleanliness" sequence="1" />
+        <eProcCompDataLine parent_guid="BE1EB6B3-FF65-47C7-A445-085A7B54E458" guid="2976b500-95a2-5c80-6c88-10ae253f3729" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="BE1EB6B3-FF65-47C7-A445-085A7B54E458" guid="2976b500-95a2-5c80-6c88-10ae253f3729" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="BE1EB6B3-FF65-47C7-A445-085A7B54E458" guid="2976b500-95a2-5c80-6c88-10ae253f3729" dl_type="D" c1_value="Status Type: " c2_value="Cleanliness" sequence="8" />
+        <eProcCompDataLine parent_guid="BE1EB6B3-FF65-47C7-A445-085A7B54E458" guid="2976b500-95a2-5c80-6c88-10ae253f3729" dl_type="P" c1_value="Dispense Room ID: " c2_value="____________" c3_value="____________" sequence="10" />
+        <eProcCompDataLine parent_guid="BE1EB6B3-FF65-47C7-A445-085A7B54E458" guid="2976b500-95a2-5c80-6c88-10ae253f3729" dl_type="P" c1_value="Cleanliness Status: " c2_value="____________" c3_value="____________" sequence="11" />
+      </eProcCompObject>

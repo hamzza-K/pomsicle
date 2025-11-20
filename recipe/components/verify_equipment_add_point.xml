@@ -1,0 +1,66 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="VerifyEquipmentAddPoint" compProcType="PM_PHASE" instanceId="VerifyEquipmentAddPoint8" guid="cf81e782-9ac3-0292-9638-98e4548df61d" icon="/POMS/apps/ActionListApp/AltBitmaps/verifyEquipmentAddPoint.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="8" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="2.001" xPos="600" yPos="20" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:600,&quot;top&quot;:20,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:582,&quot;top&quot;:69,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:95,&quot;ZOrderLabel&quot;:94,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.VerifyEquipmentAddPoint.BLL" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="VerifyEquipmentAddPoint" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/VerifyEquipmentAddPoint/UI/VerifyEquipmentAddPoint_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/VerifyEquipmentAddPoint/UI/VerifyEquipmentAddPoint.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="VerifyEquipmentAddPoint" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.VerifyEquipmentAddPoint.UI" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:AddPoint Materials" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BoeRefNo" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="7" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:EquipmentClass" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="200mL Beaker" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;Select one or more &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;BOM&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; line items, and&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;&quot;&gt; designate a runtime equipment for add point resolution of the selected materials,&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;&quot;&gt; as either primary unit of the split, of a specific&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;font-weight:bold;&quot;&gt; BOE&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;&quot;&gt; Line item. &lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseBOEItem" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="VerifyEquipmentAddPoint8" seqNumber="0" />
+        <eProcGroup groupId="EquipSelection" groupName="Equipment Selection" seqNumber="2" parentGroupId="UseBOEEquip" />
+        <eProcGroup groupId="MatlSelection" groupName="Material Selection" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="UseBOEEquip" groupName="Use BOE Equipment" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="MatlSelection" paramId="ObjRef:AddPoint Materials" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="EquipSelection" paramId="ObjRef:BoeRefNo" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="EquipSelection" paramId="ObjRef:EquipmentClass" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="UseBOEEquip" paramId="ObjRef:UseBOEItem" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;Select one or more &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;font-weight:bold;&quot;&gt;BOM&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; line items, and&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;&quot;&gt; designate a runtime equipment for add point resolution of the selected materials,&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;&quot;&gt; as either primary unit of the split, of a specific&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;font-weight:bold;&quot;&gt; BOE&lt;/span&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;line-height:12pt;&quot;&gt; Line item. &lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="D" c1_value="BOM Ref No: 1" sequence="8" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="D" c1_value="Material ID: Mat_001" sequence="9" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="D" c1_value="Description: Material 001" sequence="10" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="D" c1_value="Runtime Equipment: Specific BOE Line Item" sequence="12" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="D" c1_value="BOE Ref No:  7    Equipment Class:  200mL Beaker" sequence="13" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="D" c1_value="Equipment Class Description:  200mL Beaker" sequence="14" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="Record Material for verifying Equipment Add Points" c2_value="Mat_001" sequence="16" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="Add Point Name" c2_value="____________" c3_value="____________" sequence="18" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="LotID" c2_value="____________" c3_value="____________" sequence="19" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="Container ID" c2_value="____________" c3_value="____________" sequence="20" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________" sequence="23" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="Equipment Class:" c2_value="____________" sequence="24" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="cf81e782-9ac3-0292-9638-98e4548df61d" dl_type="P" c1_value="Exception Type|Exception ID" c2_value="____________" c3_value="____________" sequence="27" />
+      </eProcCompObject>

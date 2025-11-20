@@ -1,0 +1,88 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="VerifyMaterialInEquipment" compProcType="PM_PHASE" instanceId="VerifyMaterialInEquipment9" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" icon="/POMS/apps/ActionListApp/AltBitmaps/verifyMaterialInEquipment.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="9" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="700" yPos="20" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:700,&quot;top&quot;:20,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:682,&quot;top&quot;:69,&quot;width&quot;:96,&quot;height&quot;:30.06,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:97,&quot;ZOrderLabel&quot;:96,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.VerifyMaterialInEquipment.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="VerifyMaterialInEquipment" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/VerifyMaterialInEquipment/UI/VerifyMaterialInEquipmentEdit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.RecipeExecution.VerifyMaterialInEquipment.BLL.dll,Poms.RecipeExecution.VerifyMaterialInEquipment.BLL.VerifyMaterialInEquipmentPhaseAutomation,poms/Apps/RecipeExecution/VerifyMaterialInEquipment/UI/VerifyMaterialInEquipment.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="VerifyMaterialInEquipment" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Resource Base Name" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.VerifyMaterialInEquipment.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:BackgroundExec" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BoeRefNo" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="7" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BomRefNo" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="1" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:EquipmentClass" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="200mL Beaker" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:EquipmentClassDesc" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="200mL Beaker" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;verifies checked in equipment of defined class and finds material in each Equipment belonging to the same Material defined by Recipe Author at the time of authoring.&lt;/span&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:MatlDesc" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Material 001" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:MatlID" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="Mat_001" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Quantity" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="100" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UOM" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="kg" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="VerifyMaterialInEquipment9" seqNumber="0" />
+        <eProcGroup groupId="EquipSelection" groupName="Group_EquipSelection" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="MatlSelection" groupName="Group_MatlSelection" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BackgroundExec" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="EquipSelection" paramId="ObjRef:BoeRefNo" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="MatlSelection" paramId="ObjRef:BomRefNo" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="EquipSelection" paramId="ObjRef:EquipmentClass" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="EquipSelection" paramId="ObjRef:EquipmentClassDesc" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="MatlSelection" paramId="ObjRef:MatlDesc" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="MatlSelection" paramId="ObjRef:MatlID" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="MatlSelection" paramId="ObjRef:Quantity" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="MatlSelection" paramId="ObjRef:UOM" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="N" c1_value="&lt;@UseHTML@&gt;&lt;span style=&quot;font-family:'Open Sans';font-size:14.6667px;background-color:#ffffff;&quot;&gt;verifies checked in equipment of defined class and finds material in each Equipment belonging to the same Material defined by Recipe Author at the time of authoring.&lt;/span&gt;" sequence="1" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="D" c1_value="BOE Ref No:  7    Equipment Class:  200mL Beaker" sequence="8" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="D" c1_value="Equipment Class Description:  200mL Beaker" sequence="9" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="D" c1_value="BOM Ref No:  1    Material ID:  Mat_001" sequence="10" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="D" c1_value="Material Description:  Material 001" sequence="11" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="D" c1_value="Target Quantity:  100 kg" sequence="12" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="D" c1_value="Run In Background : No" sequence="13" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="P" c1_value="BOE Reference Number:" c2_value="____________" sequence="15" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="P" c1_value="Equipment Class:" c2_value="____________" sequence="16" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="P" c1_value="BOM Reference Number:" c2_value="____________" sequence="18" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="P" c1_value="Material ID: {0}" c2_value="____________" sequence="19" />
+        <eProcCompDataLine parent_guid="22D1B4F7-13F3-47C8-8EA0-04474AB2DD20" guid="10f3b3f8-8955-81ef-1d71-5fe12cc58240" dl_type="P" c1_value="Exception Type | Exception ID:" c2_value="____________" c3_value="____________" sequence="20" />
+      </eProcCompObject>

@@ -1,0 +1,79 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="GenerateXML" compProcType="PM_PHASE" instanceId="GenerateXML6" guid="27b903c0-cb57-18fb-391c-dcbe47756469" icon="/POMS/apps/ActionListApp/AltBitmaps/generateXML.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="6" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="140" yPos="200" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:140,&quot;top&quot;:200,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:122,&quot;top&quot;:249,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:134,&quot;ZOrderLabel&quot;:133,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.GenerateXML.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="GenerateXML" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/GenerateXML/UI/GenerateXML_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.RecipeExecution.GenerateXML.BLL.dll,Poms.RecipeExecution.GenerateXML.BLL.GenerateXMLPhaseAutomation,poms/Apps/RecipeExecution/GenerateXML/UI/GenerateXML.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="GenerateXML" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.GenerateXML.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:BackgroundExec" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Destination" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="C:\EPRi\XML_GEN_FILE\Generate_XML_{Now}.xml" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:DestinationType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="File" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Generate File" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:SelectedFile" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="SampleFile.xsd" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:XML_RecordCount" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="1" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:XML_String1" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="LJBPRE::&lt;POMSTransaction xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xA;  &lt;Header&gt;&#xA;    &lt;TransactionID POMSnetSource=&quot;&quot; POMSnetSourceType=&quot;Variable&quot;&gt;{ReplaceValueString}&lt;/TransactionID&gt;&#xA;    &lt;TransactionRefID&gt;{ReplaceValueString}&lt;/TransactionRefID&gt;&#xA;  &lt;/Header&gt;&#xA;  &lt;Body&gt;&#xA;    &lt;MaterialID POMSnetSource=&quot;@BOM.{LineNumber}.ContainerID&quot; POMSnetSourceType=&quot;Variable&quot;&gt;{ReplaceValueString}&lt;/MaterialID&gt;&#xA;    &lt;PlantID&gt;{ReplaceValueString}&lt;/PlantID&gt;&#xA;  &lt;/Body&gt;&#xA;&lt;/POMSTransaction&gt;::LJBPOST" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:XSD_RecordCount" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="2" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:XSD_String1" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="LJBPRE::&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xA;&lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&#xA;&#xA;  &lt;xs:element name=&quot;POMSTransaction&quot;&gt;&#xA;    &lt;xs:complexType&gt;&#xA;      &lt;xs:sequence&gt;&#xA;        &lt;xs:element name=&quot;Header&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot;&gt;&#xA;          &lt;xs:complexType&gt;&#xA;            &lt;xs:sequence&gt;&#xA;              &lt;xs:element name=&quot;TransactionID&quot; type=&quot;xs:string&quot; /&gt;&#xA;              &lt;xs:element name=&quot;TransactionRefID&quot; type=&quot;xs:string&quot; /&gt;&#xA;            &lt;/xs:sequence&gt;&#xA;          &lt;/xs:complexType&gt;&#xA;        &lt;/xs:element&gt;&#xA;&#xA;        &lt;xs:element name=&quot;Body&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot;&gt;&#xA;          &lt;xs:complexType&gt;&#xA;            &lt;xs:sequence&gt;&#xA;              &lt;xs:element name=&quot;MaterialID&quot; type=&quot;xs:string&quot; /&gt;&#xA;              &lt;xs:element name=&quot;PlantID&quot; type=&quot;xs:string&quot; /&gt;&#xA;            &lt;/xs:sequence&gt;&#xA;          &lt;/xs:complexType&gt;&#xA;        &lt;/xs:element&gt;&#xA;      &lt;/xs:sequence&gt;&#xA;    &lt;/xs:complexType&gt;&#xA;  &lt;/xs:ele::LJBPOST" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:XSD_String2" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="LJBPRE::ment&gt;&#xA;&#xA;&lt;/xs:schema&gt;&#xA;::LJBPOST" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="GenerateXML6" seqNumber="0" />
+        <eProcGroup groupId="XML" groupName="_PHASE_" seqNumber="0" parentGroupId="_PHASE_" />
+        <eProcGroup groupId="XSD" groupName="_PHASE_" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BackgroundExec" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Destination" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:DestinationType" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:SelectedFile" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="XML" paramId="ObjRef:XML_RecordCount" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="XML" paramId="ObjRef:XML_String1" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="XSD" paramId="ObjRef:XSD_RecordCount" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="XSD" paramId="ObjRef:XSD_String1" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="XSD" paramId="ObjRef:XSD_String2" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="27b903c0-cb57-18fb-391c-dcbe47756469" dl_type="N" c1_value="&lt;@UseHTML@&gt;Generate File" sequence="1" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="27b903c0-cb57-18fb-391c-dcbe47756469" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="27b903c0-cb57-18fb-391c-dcbe47756469" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="27b903c0-cb57-18fb-391c-dcbe47756469" dl_type="D" c1_value="XSD File: SampleFile.xsd" sequence="8" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="27b903c0-cb57-18fb-391c-dcbe47756469" dl_type="D" c1_value="Destination Type: Flat File" sequence="9" />
+        <eProcCompDataLine parent_guid="1311ABAC-6B58-4EE7-AA0B-6F8BEC521E98" guid="27b903c0-cb57-18fb-391c-dcbe47756469" dl_type="D" c1_value="Destination: C:\EPRi\XML_GEN_FILE\Generate_XML_{Now}.xml" sequence="10" />
+      </eProcCompObject>
