@@ -1,91 +1,281 @@
-# Knowledge Base Azure Function
+# POMSicle Agentic Framework
 
-This Azure Function provides an API endpoint to retrieve information from Azure Cognitive Search Knowledge Base.
+This is the agentic framework version of POMSicle CLI, providing REST API endpoints for all CLI operations. This allows AI agents and other systems to interact with POMSicle programmatically.
 
-## Setup
+## Overview
 
-### Local Development
+The agentic framework exposes all CLI functionality through FastAPI endpoints, making it easy for agents to:
+- Create recipes from templates
+- Create custom recipes with specific phases
+- Import recipes from XML files
+- Load inventory from Excel files
+- Start material receiving operations
+
+## Installation
 
 1. **Install dependencies:**
    ```bash
+   cd agentic
    pip install -r requirements.txt
    ```
 
-2. **Configure environment variables:**
-   
-   Copy `.env.example` to `.env` and fill in your values:
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Or update `local.settings.json` with your Azure Search credentials.
+2. **Configure your settings:**
+   - Ensure your `config/config.cfg` file is properly configured
+   - The framework will automatically load settings from your existing configuration
 
-3. **Run locally:**
-   ```bash
-   func start
-   ```
+## Running the API
 
-### Azure Deployment
+### Development Mode
 
-1. **Set Application Settings in Azure Portal:**
-   - `AZURE_SEARCH_ENDPOINT`: Your Azure Search endpoint
-   - `AZURE_SEARCH_API_KEY`: Your Azure Search API key
-   - `KB_NAME`: Knowledge base name (default: "knowledgebase-phases")
-   - `KB_SOURCE_NAME`: Knowledge source name (default: "knowledgesource-phases")
+```bash
+cd agentic
+python main.py
+```
 
-2. **Deploy using Azure Functions Core Tools:**
-   ```bash
-   func azure functionapp publish <your-function-app-name>
-   ```
+Or using uvicorn directly:
 
-## API Usage
+```bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
 
-### Endpoint
-`POST /api/knowledgebase`
+### Production Mode
 
-### Request Body
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
+```
+
+The API will be available at `http://localhost:8000`
+
+## API Documentation
+
+Once the server is running, you can access:
+- **Swagger UI**: `http://localhost:8000/docs`
+- **ReDoc**: `http://localhost:8000/redoc`
+- **OpenAPI JSON**: `http://localhost:8000/openapi.json`
+
+## API Endpoints
+
+### Health Check
+
+**GET** `/health`
+- Returns API health status
+
+### Recipe Operations
+
+#### Create Recipe from Template
+
+**POST** `/api/recipe/create/template`
+
+Request body:
 ```json
 {
-  "assistant_message": "The name of the phases are usually the file names, only return those names. Finally append a list of phases to be added.",
-  "user_message": "Give me your analysis and best suited phases to create the recipe with the following requirements: ...",
-  "include_references": true,
-  "include_reference_source_data": true,
-  "always_query_source": false,
-  "include_activity": true
+  "recipe_name": "MyRecipe",
+  "template_name": "Template.xml",
+  "unit_procedure_name": "MyRecipe_UP",  // Optional, auto-generated if not provided
+  "operation_name": "MyRecipe_OP"      // Optional, auto-generated if not provided
 }
 ```
 
-### Response
+Response:
 ```json
 {
   "success": true,
-  "response": "Response text from knowledge base..."
+  "message": "Recipe 'MyRecipe' created successfully.",
+  "recipe_name": "MyRecipe",
+  "unit_procedure_name": "MyRecipe_UP",
+  "operation_name": "MyRecipe_OP",
+  "template_name": "Template.xml"
 }
 ```
 
-### Example using curl
+#### Create Custom Recipe
+
+**POST** `/api/recipe/create/custom`
+
+Request body:
+```json
+{
+  "phases": ["operator_instruction", "record_text", "record_time"],
+  "recipe_name": "CustomRecipe",
+  "template_name": "Assisted.xml"
+}
+```
+
+Response:
+```json
+{
+  "success": true,
+  "message": "Custom recipe 'CustomRecipe' created successfully with phases: operator_instruction, record_text, record_time",
+  "recipe_name": "CustomRecipe",
+  "phases": ["operator_instruction", "record_text", "record_time"]
+}
+```
+
+#### Import Recipe
+
+**POST** `/api/recipe/import`
+
+Request body:
+```json
+{
+  "filename": "/path/to/recipe.xml"
+}
+```
+
+### Inventory Operations
+
+#### Load Inventory
+
+**POST** `/api/inventory/load`
+
+Request body:
+```json
+{
+  "filename": "/path/to/inventory.xlsx"
+}
+```
+
+### Receiving Operations
+
+#### Start Receiving
+
+**POST** `/api/receiving/start`
+
+Request body:
+```json
+{
+  "material": "MATERIAL123",
+  "uom": "kg",
+  "containers": 5,
+  "qty_per_container": 10.5
+}
+```
+
+## Example Usage
+
+### Using curl
+
 ```bash
-curl -X POST http://localhost:7071/api/knowledgebase \
+# Create recipe from template
+curl -X POST "http://localhost:8000/api/recipe/create/template" \
   -H "Content-Type: application/json" \
   -d '{
-    "assistant_message": "The name of the phases are usually the file names, only return those names.",
-    "user_message": "Give me phases for testing vials"
+    "recipe_name": "TestRecipe"
+  }'
+
+# Create custom recipe
+curl -X POST "http://localhost:8000/api/recipe/create/custom" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phases": ["operator_instruction", "record_text"],
+    "recipe_name": "CustomTest"
+  }'
+
+# Start receiving
+curl -X POST "http://localhost:8000/api/receiving/start" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "material": "MATERIAL123",
+    "uom": "kg",
+    "containers": 2,
+    "qty_per_container": 5.0
   }'
 ```
 
-## Code Structure
+### Using Python
 
-- `knowledgebase_service.py`: Service class for knowledge base operations
-- `function_app.py`: Azure Function entry point
-- `local.settings.json`: Local development settings (not committed to git)
-- `host.json`: Azure Functions host configuration
-- `.env`: Environment variables (not committed to git)
+```python
+import requests
+
+# Create recipe from template
+response = requests.post(
+    "http://localhost:8000/api/recipe/create/template",
+    json={
+        "recipe_name": "MyRecipe",
+        "template_name": "Template.xml"
+    }
+)
+print(response.json())
+
+# Create custom recipe
+response = requests.post(
+    "http://localhost:8000/api/recipe/create/custom",
+    json={
+        "phases": ["operator_instruction", "record_text"],
+        "recipe_name": "CustomRecipe"
+    }
+)
+print(response.json())
+```
+
+## Architecture
+
+The framework is organized as follows:
+
+```
+agentic/
+├── main.py                 # FastAPI application entry point
+├── config_manager.py       # Configuration management
+├── models/
+│   └── schemas.py         # Pydantic request/response models
+├── services/
+│   ├── recipe_service.py  # Recipe operations service
+│   ├── inventory_service.py  # Inventory operations service
+│   └── receiving_service.py   # Receiving operations service
+└── requirements.txt       # Python dependencies
+```
+
+### Service Layer
+
+Each service class wraps the corresponding CLI functionality:
+- `RecipeService`: Handles all recipe-related operations
+- `InventoryService`: Handles inventory loading
+- `ReceivingService`: Handles material receiving
+
+### Configuration
+
+The framework uses the same configuration system as the CLI, loading settings from `config/config.cfg`. The `ConfigManager` class provides a singleton pattern for accessing configuration throughout the application.
+
+## Error Handling
+
+All endpoints return structured error responses:
+
+```json
+{
+  "success": false,
+  "message": "Error description",
+  "error": "Detailed error message"
+}
+```
+
+HTTP status codes:
+- `200`: Success
+- `400`: Bad request (validation errors, missing parameters)
+- `500`: Internal server error
 
 ## Logging
 
-The function uses Python's logging module with INFO level by default. Logs are automatically sent to Application Insights when deployed to Azure.
+The framework uses Python's logging module. Logs are output to the console with timestamps and log levels. Configure logging levels as needed in `main.py`.
 
-## Security
+## Security Considerations
 
-⚠️ **Important**: Never commit `.env` or `local.settings.json` files containing API keys to version control. Use Azure Key Vault or Application Settings for production deployments.
+For production deployment:
+1. Add authentication/authorization (API keys, OAuth, etc.)
+2. Configure CORS appropriately (currently allows all origins)
+3. Use HTTPS
+4. Add rate limiting
+5. Validate and sanitize all inputs
+6. Use environment variables for sensitive configuration
+
+## Development
+
+To extend the framework:
+1. Add new service methods in the appropriate service class
+2. Create Pydantic schemas in `models/schemas.py`
+3. Add FastAPI endpoints in `main.py`
+4. Update this README with new endpoint documentation
+
+## License
+
+Same as the main POMSicle project.
 
