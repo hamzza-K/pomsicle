@@ -1,0 +1,10 @@
+# Azure Functions
+azure-functions>=1.18.0
+
+# Azure Cognitive Search
+azure-search-documents>=11.4.0
+azure-core>=1.29.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
