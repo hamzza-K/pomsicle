@@ -1,8 +1,15 @@
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents.knowledgebases import KnowledgeBaseRetrievalClient
 from azure.search.documents.knowledgebases.models import SearchIndexKnowledgeSourceParams, KnowledgeBaseRetrievalRequest, KnowledgeBaseMessage, KnowledgeBaseMessageTextContent
+import dotenv
 
-kb_client = KnowledgeBaseRetrievalClient(endpoint = "https://ask-poms.search.windows.net", knowledge_base_name = "knowledgebase-phases", credential = AzureKeyCredential("3QZj3DVGel2YOU2KlTvZdpat8nOgZbkoxLWu6Hv3ogAzSeABpIyJ"))
+dotenv.load_dotenv()
+
+endpoint = dotenv.get_key(dotenv.find_dotenv(), "AZURE_KB_ENDPOINT") or "https://ask-poms.search.windows.net"
+knowledge_base_name = dotenv.get_key(dotenv.find_dotenv(), "AZURE_KB_NAME")
+credential = dotenv.get_key(dotenv.find_dotenv(), "AZURE_KB_CREDENTIAL")
+
+kb_client = KnowledgeBaseRetrievalClient(endpoint = endpoint, knowledge_base_name = knowledge_base_name, credential = AzureKeyCredential(credential))
 
 request = KnowledgeBaseRetrievalRequest(
     messages=[
