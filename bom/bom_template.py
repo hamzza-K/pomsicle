@@ -11,13 +11,13 @@ import uuid
 
 logger = logging.getLogger(__name__)
 
-class PomsicleTemplateManager:
+class PomsicleBOMManager:
     """
-    Manages the upload and import of template XML files to POMSicle.
+    Manages the upload and import of BOM XML files to POMSicle.
     """
     def __init__(self, settings: dict, username: str, password: str):
         """
-        Initializes the PomsicleTemplateManager with configuration settings and credentials.
+        Initializes the PomsicleBOMManager with configuration settings and credentials.
 
         Args:
             settings (dict): A dictionary containing POMSicle configuration details
@@ -354,11 +354,11 @@ class PomsicleTemplateManager:
 
         pass_data_json = {
             "userID": self.username,
-            "TreeIdentifier":"accf9c3b-1691-4e1a-b548-58c72e1db63c",
+            "TreeIdentifier":"33499dad-a760-44e0-a3c5-49ce14f184c4",
             "Domain":"",
             "DLL":"POMS_ProcObject_Lib",
             "Type": obj_type,
-            "SubType":"PM_RECIPE",
+            "SubType":"MM_BOM",
             "Level": level_id,
             "Location": location_id,
             "Folder":"",
@@ -408,7 +408,7 @@ class PomsicleTemplateManager:
                 logger.error(f"Response Status Code: {e.response.status_code}, Content: {e.response.text}")
             return None
 
-    def create_template(self, template_name: str = "Template.xml", recipe_name: str = None, unit_procedure_name: str = None, operation_name: str = None):
+    def create_template(self, template_name: str = "Bom_template.xml", recipe_name: str = None, unit_procedure_name: str = None, operation_name: str = None):
         """
         Main method to create a template by uploading and importing an XML file.
         Modifies the XML template with provided names before upload.
@@ -420,13 +420,13 @@ class PomsicleTemplateManager:
             unit_procedure_name (str, optional): New name for PM_SUP. Defaults to None.
             operation_name (str, optional): New name for PM_OPERATION. Defaults to None.
         """
-        logger.info(f"Attempting to create recipe: '{template_name}'")
+        logger.info(f"Attempting to create BOM: '{template_name}'")
 
         if not self._perform_login():
             logger.critical("Login failed. Cannot proceed with template creation.")
             return False
 
-        xml_folder = os.path.join(self.program_path, 'template')
+        xml_folder = os.path.join(self.program_path, 'bom')
         xml_file_path = os.path.join(xml_folder, template_name)
 
         temp_xml_file_path = f"{xml_file_path}.temp_{uuid.uuid4().hex}"
@@ -439,12 +439,12 @@ class PomsicleTemplateManager:
             return False
 
         # --- XML Modification Step ---
-        if recipe_name or unit_procedure_name or operation_name:
-            logger.debug("Modifying XML template with provided names...")
-            if not self._modify_template_xml(temp_xml_file_path, recipe_name, unit_procedure_name, operation_name):
-                logger.error("Failed to modify XML template. Aborting.")
-                os.remove(temp_xml_file_path)
-                return False
+        # if recipe_name or unit_procedure_name or operation_name:
+        #     logger.debug("Modifying XML template with provided names...")
+        #     if not self._modify_template_xml(temp_xml_file_path, recipe_name, unit_procedure_name, operation_name):
+        #         logger.error("Failed to modify XML template. Aborting.")
+        #         os.remove(temp_xml_file_path)
+        #         return False
         else:
             logger.info("No specific names provided for template modification. Using original IDs.")
 

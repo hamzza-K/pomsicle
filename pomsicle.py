@@ -7,6 +7,7 @@ import argparse
 import logging
 
 from banners import Banner
+from bom.bom_template import PomsicleBOMManager
 from inventory.read_inventory import read_file as read_inventory
 from credentials import login
 from config import config
@@ -165,6 +166,27 @@ def handle_recipe_create_template(args, token=None):
         logger.critical(f"An unexpected error occurred during template creation: {e}")
         exit(1)
 
+def handle_bom_start(args, token=None):
+    logger.info(f"Starting BOM process for: {args.template_name}")
+    # Implement BOM start logic here
+
+    try:
+        template_manager = PomsicleBOMManager(settings, USERNAME, PASSWORD)
+        success = template_manager.create_template(
+            template_name=args.template_name,
+            recipe_name=None,
+            unit_procedure_name=None,
+            operation_name=None
+        )
+        if success:
+            logger.debug(f"BOM '{args.template_name}' operation completed successfully.")
+        else:
+            logger.error(f"BOM '{args.template_name}' operation failed.")
+            Banner.error(f"BOM '{args.template_name}' operation failed.")
+    except ValueError as e:
+        logger.critical(f"Failed to initialize Template Manager: {e}")
+        exit(1)
+
 
 def handle_recipe_create_custom(args, token=None):
     builder = RecipeBuilder()
@@ -187,9 +209,9 @@ def handle_recipe_import(args, token=None):
     print(f"Imported recipe from: {args.filename}")
 
 
-# -----------------------------------------------------------------------------
+# -----------------------------------------------------
 # CLI Setup (subcommands)
-# -----------------------------------------------------------------------------
+# -----------------------------------------------------
 def create_cli():
     parser = argparse.ArgumentParser(prog="pomsicle", description="POMSicle CLI")
 
@@ -206,7 +228,7 @@ def create_cli():
     create_template.add_argument("recipe_name", help="Name of the recipe.")
     create_template.add_argument("--unit-procedure", help="Name of the unit procedure.")
     create_template.add_argument("--operation", help="Name of the operation.")
-    create_template.add_argument("--template-name", default="Template.xml", help="BoilerPlate recipe.")
+    create_template.add_argument("--template-name", default="Template.xml", help="Name of the template.")
     create_template.set_defaults(func=handle_recipe_create_template)
 
     # ----- pomsicle recipe create custom -----
@@ -248,6 +270,16 @@ def create_cli():
     start.add_argument("--containers", "-c", type=int, default=1)
     start.add_argument("--qty", "-q", type=float, default=1)
     start.set_defaults(func=handle_receiving_start)
+
+    # ================================
+    # pomsicle bom
+    # ================================
+    bom = subparsers.add_parser("bom", help="BOM operations")
+    b_sub = bom.add_subparsers(dest="action")
+
+    start = b_sub.add_parser("start", help="Start BOM process")
+    start.add_argument("--template-name", default="Bom_template.xml", help="BoilerPlate recipe.")
+    start.set_defaults(func=handle_bom_start)
 
     return parser
 
