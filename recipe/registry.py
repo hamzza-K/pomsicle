@@ -15,7 +15,7 @@ COMPONENTS = {
     },
     "record_time": {
         "path": BASE_DIR / "components" / "record_time.xml",
-        "description": "Record time component for capturing operator inputs.",
+        "description": "Captures and records time set by operators.",
         "category": "root",
     },
     "add_external_file": {
@@ -45,7 +45,7 @@ COMPONENTS = {
     },
     "calculation": {
         "path": BASE_DIR / "components" / "calculation.xml",
-        "description": "Calculation phase component.",
+        "description": "The Calculation phase is used to perform a user-defined mathematical expression against data available in the recipe.",
         "category": "root",
     },
     "call_web_api": {

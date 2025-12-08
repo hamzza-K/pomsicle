@@ -1,48 +1,57 @@
-      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="MoveMaterial" compProcType="PM_PHASE" instanceId="MoveMaterial7" guid="0315e949-b0e9-9d6c-6384-f8cc139d7adb" icon="/POMS/apps/ActionListApp/AltBitmaps/movematerial.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="7" prereq_language="0" action_type="6" options="0" displayOptions="73728" seqOptions="0" compObjVer="1.001" xPos="500" yPos="180" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:500,&quot;top&quot;:180,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:482,&quot;top&quot;:100,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:141,&quot;ZOrderLabel&quot;:140,&quot;Hidden&quot;:&quot;0&quot;}">
-        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
-          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.MoveMaterial.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="Class Name" sValue="MoveMaterial" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/MoveMaterial/UI/MoveMaterial_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/MoveMaterial/UI/MoveMaterial.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="Object ID" sValue="MoveMaterial" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.MoveMaterial.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
-        </eObjectAttribute>
-        <eProcParameter paramId="ObjRef:AllowAnyMaterial" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Value" sValue="Yes" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
-        </eProcParameter>
-        <eProcParameter paramId="ObjRef:BomRefNo" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
-        </eProcParameter>
-        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
-        </eProcParameter>
-        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
-        </eProcParameter>
-        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;Move the material of your choosing. " format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
-        </eProcParameter>
-        <eProcParameter paramId="ObjRef:MoveType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Value" sValue="MaterialMove" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
-        </eProcParameter>
-        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
-          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
-        </eProcParameter>
-        <eProcGroup groupId="_PHASE_" groupName="MoveMaterial7" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AllowAnyMaterial" attribNumber="1" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BomRefNo" attribNumber="1" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:MoveType" attribNumber="1" seqNumber="0" />
-        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
-        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="0315e949-b0e9-9d6c-6384-f8cc139d7adb" dl_type="N" c1_value="&lt;@UseHTML@&gt;Move the material of your choosing. " sequence="1" />
-        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="0315e949-b0e9-9d6c-6384-f8cc139d7adb" dl_type="N" c1_value="Phase Title" sequence="5" />
-        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="0315e949-b0e9-9d6c-6384-f8cc139d7adb" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
-        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="0315e949-b0e9-9d6c-6384-f8cc139d7adb" dl_type="D" c1_value="Allow Any Material: Yes" sequence="8" />
-        <eProcCompDataLine parent_guid="99F3748F-2908-4032-AF51-18F748FC67FC" guid="0315e949-b0e9-9d6c-6384-f8cc139d7adb" dl_type="D" c1_value="Move Type: Inventory Material Movement" sequence="9" />
-      </eProcCompObject>
+        <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="MoveMaterial" compProcType="PM_PHASE" instanceId="MoveMaterial1" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" icon="/POMS/apps/ActionListApp/AltBitmaps/movematerial.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="1" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="520" yPos="220" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:520,&quot;top&quot;:220,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:502,&quot;top&quot;:269,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:11,&quot;ZOrderLabel&quot;:9,&quot;Hidden&quot;:&quot;0&quot;}">
+    <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+      <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.RecipeExecution.MoveMaterial.BLL" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="Class Name" sValue="MoveMaterial" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="EditMethod" sValue="poms/apps/RecipeExecution/MoveMaterial/UI/MoveMaterial_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="ExecMethod" sValue="poms/apps/RecipeExecution/MoveMaterial/UI/MoveMaterial.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="ExecMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="Object ID" sValue="MoveMaterial" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+      <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.RecipeExecution.MoveMaterial.UI" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+    </eObjectAttribute>
+    <eProcParameter paramId="ObjRef:AllowAnyMaterial" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" sValue="No" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:BomRefNo" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" format="20" popMethodId="DEFER" popMethodAttr="DEFER;2;;;MoveMaterial1_BomRefNo;BOM Ref" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:DVSV_txtBomRefNo" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" sValue="&lt;txtBomRefNo nodeName=&quot;txtBomRefNo&quot;&gt;&lt;IsNew&gt;true&lt;/IsNew&gt;&lt;ParamID&gt;MoveMaterial1_BomRefNo&lt;/ParamID&gt;&lt;AttrID&gt;MoveMatlBom&lt;/AttrID&gt;&lt;ElemID&gt;BOM Ref&lt;/ElemID&gt;&lt;FMT&gt;20&lt;/FMT&gt;&lt;PID&gt;SQLCOMBO_LIST&lt;/PID&gt;&lt;PMA&gt;CALC:Accessor.GetBoxItemSqlCombo(&quot;BOM&quot;,&quot;MM_BOM_ITEM_SP&quot;)&lt;/PMA&gt;&lt;IsEditable&gt;false&lt;/IsEditable&gt;&lt;/txtBomRefNo&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;pomsicle" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:MoveType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" sValue="MaterialMove" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+      <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+    </eProcParameter>
+    <eProcGroup groupId="_PHASE_" groupName="MoveMaterial1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:AllowAnyMaterial" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BomRefNo" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:DVSV_txtBomRefNo" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:MoveType" attribNumber="1" seqNumber="0" />
+    <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="N" c1_value="&lt;@UseHTML@&gt;pomsicle" sequence="1" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="N" c1_value="Phase Title" sequence="5" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="BOM Reference Number: " sequence="8" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="Material ID: " sequence="9" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="Material Description: " sequence="10" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="Allow Any Material: No" sequence="11" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="Move Type: Inventory Material Movement" sequence="12" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="Deferred Parameter(s)" sequence="14" />
+    <eProcCompDataLine parent_guid="B50D20D8-1C6B-43ED-B1F7-B0A103743EFF" guid="75299f98-05e3-edd6-23ee-02bdbcc4a0ba" dl_type="D" c1_value="* BomRefNo is deferred to MoveMaterial1_BomRefNo." sequence="15" />
+  </eProcCompObject>
