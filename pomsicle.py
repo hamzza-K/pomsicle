@@ -181,7 +181,6 @@ def handle_bom_start(args, token=None):
             logger.debug(f"BOM '{args.bom_name}' operation completed successfully.")
         else:
             logger.error(f"BOM '{args.bom_name}' operation failed.")
-            Banner.error(f"BOM '{args.bom_name}' operation failed.")
     except ValueError as e:
         logger.critical(f"Failed to initialize Template Manager: {e}")
         exit(1)

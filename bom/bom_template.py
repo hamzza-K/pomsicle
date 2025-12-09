@@ -3,12 +3,12 @@ import json
 import xml.etree.ElementTree as ET
 import os
 import logging
-import copy
 from datetime import datetime, timezone
 from urllib.parse import quote_plus, urljoin
 from bs4 import BeautifulSoup
 from banners import Banner
 import uuid
+from utils.parse_date import parse_poms_date as parse_date
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +54,7 @@ class PomsicleBOMManager:
         self.espec_model_base_poms_path = "/poms/"
 
         self.materials_api = self.login_host + '/' + self.materials_url
+        self.inner_materials_api = self.login_host + '/' + self.base_app_url + '/SpecificationManagement.aspx/GetObjectVersions'
 
         self.configuredObject_objType = "MM_OBJ"
 
@@ -72,14 +73,40 @@ class PomsicleBOMManager:
             dict: A dictionary of material details keyed by material ID.
         """
         materials_data = {}
+        if not self._perform_login():
+            logger.critical("Login failed. Cannot fetch materials.")
+            return materials_data
+
         for material_id in self.materials:
-            material_url = f"{self.materials_api}/{material_id}"
+            body = {
+                "Approved": False,
+                "DLL": "POMS_BaseObject_Lib",
+                "Domain": "",
+                "Folder": "",
+                "IncludeLatest": False,
+                "IncludeLatestApproved": False,
+                "Latest": True,
+                "Level": self.level_id,
+                "Location": self.location_id,
+                "ObjectID": material_id,
+                "SearchSubType": "",
+                "SubType": "MM_OBJ",
+                "TreeIdentifier": "",
+                "Type": "",
+                "ignoreObsolete": False,
+                "userID": self.username
+                }
+
             try:
-                logger.debug(f"Fetching material data from: {material_url}")
-                response = self.session.get(material_url, verify=False)
+                logger.debug(f"Fetching material data from: {self.inner_materials_api}")
+                response = self.session.post(self.inner_materials_api, json=body)
                 response.raise_for_status()
-                material_info = response.json()
-                if 'MATERIAL_ID' not in material_info.keys():
+                if response.json()['d']['Rows'] == []:
+                    logger.warning(f"No data found for material '{material_id}'.")
+                    continue
+                row = response.json()['d']['Rows'][0]
+                material_info = {col["Column"]: col["Value"] for col in row}
+                if 'OBJ_ID' not in material_info.keys():
                     logger.warning(f"Material '{material_id}' not found in system.")
                     continue
                 materials_data[material_id] = material_info
@@ -87,7 +114,6 @@ class PomsicleBOMManager:
             except requests.exceptions.RequestException as e:
                 logger.error(f"Failed to fetch material '{material_id}': {e}")
         return materials_data
-
 
     def _perform_login(self) -> bool:
         """
@@ -211,34 +237,24 @@ class PomsicleBOMManager:
         Returns:
             str: Path to the modified XML file.
         """
-        # Parse template files - these are read-only and will never be modified
-        # We create deep copies of all elements before making any changes
         template = ET.parse(os.path.join(os.path.dirname(__file__), 'template', 'template.xml'))
         header_tree = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'header.xml'))
         line_item_tree = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'line_item.xml'))
         base_tree = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'base.xml'))
         
-        # Get template structure - this will be modified to build the output file
-        # but the original template.xml file on disk remains unchanged
         template_root = template.getroot()
         e_spec_xml_objs = template_root.find('eSpecXmlObjs')
         
-        # Create a deep copy of the header to avoid modifying the original template file
-        # Using ET.fromstring(ET.tostring(...)) creates a completely independent copy
         header = ET.fromstring(ET.tostring(header_tree.getroot(), encoding='unicode'))
         header.set('id', bom_name or 'POMSICLE_BOM_' + str(uuid.uuid4()))
         header.set('locationId', self.location_id)
         header.set('levelId', self.level_id)
         header.set('locationName', self.location_name)
         
-        # Add line items for each material inside the header
         item_number = 1
         for material_id, material_info in self.fetched_materials.items():
-            # Create a deep copy of the line item template to avoid modifying the original file
-            # Using ET.fromstring(ET.tostring(...)) creates a completely independent copy
             line_item = ET.fromstring(ET.tostring(line_item_tree.getroot(), encoding='unicode'))
             
-            # Set line item attributes
             line_item.set('itemLevelName', 'Master')
             line_item.set('itemLevelId', self.level_id)
             line_item.set('itemLocName', self.location_name)
@@ -250,19 +266,20 @@ class PomsicleBOMManager:
             line_item.set('subNumber', '1')
             line_item.set('seqNumber', str(item_number))
             line_item.set('itemObjType', '2')
-            line_item.set('itemObjVer', '1.001')
+            line_item.set('itemObjVer', material_info.get('OBJ_VER', '1.001'))
             line_item.set('activeFlag', 'True')
             line_item.set('aggregateFlag', 'True')
             
             # Modify sValue in Dispense UOM element (if material has INVENTORY_UOM)
-            inventory_uom = material_info.get('INVENTORY_UOM', '#')
+            inventory_uom = material_info.get('INVENTORY_UOM', 'g')
             dispense_attr = line_item.find(".//eObjectAttribute[@attribId='Dispense']")
             if dispense_attr is not None:
                 uom_elem = dispense_attr.find(".//eObjectAttributeElement[@elemId='UOM']")
                 if uom_elem is not None:
-                    uom_elem.set('sValue', inventory_uom if inventory_uom else '#')
+                    uom_elem.set('sValue', inventory_uom)
             
             # Append line item to header
+            line_item.tail = "\t\t\t\n"
             header.append(line_item)
             item_number += 1
         
@@ -271,8 +288,6 @@ class PomsicleBOMManager:
         
         # Add base objects for each material
         for material_id, material_info in self.fetched_materials.items():
-            # Create a deep copy of the base template to avoid modifying the original file
-            # Using ET.fromstring(ET.tostring(...)) creates a completely independent copy
             base = ET.fromstring(ET.tostring(base_tree.getroot(), encoding='unicode'))
             
             # Set base object attributes
@@ -289,48 +304,19 @@ class PomsicleBOMManager:
             base.set('description', material_desc)
             
             # Set status and version
-            base.set('status', 'APPROVED')
-            base.set('version', '1.001')
+            base.set('status', material_info.get('STATUS', 'APPROVED'))
+            base.set('version', material_info.get('OBJ_VER', '1.001'))
             
             # Convert and set lastChangedDate
             last_changed_date = material_info.get('LAST_CHANGED_DATE', '')
-            if last_changed_date:
-                try:
-                    # Parse ISO format: '2025-09-17T05:30:30.18407' or '2025-09-17T05:30:30.18407Z'
-                    date_str = last_changed_date.replace('Z', '+00:00')
-                    if '+' not in date_str and date_str.count('-') >= 2:
-                        # No timezone info, assume UTC
-                        if 'T' in date_str:
-                            date_str = date_str + '+00:00'
-                    dt = datetime.fromisoformat(date_str)
-                    # Convert to UTC if timezone-aware
-                    if dt.tzinfo:
-                        dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
-                    # Format as: '17/09/2025 05:30:30.184815'
-                    formatted_date = dt.strftime('%d/%m/%Y %H:%M:%S.%f')
-                    base.set('lastChangedDate', formatted_date)
-                    base.set('createDate', formatted_date)
-                    base.set('lastStatusChangedDate', formatted_date)
-                except (ValueError, AttributeError) as e:
-                    logger.warning(f"Could not parse date '{last_changed_date}': {e}")
-                    # Use current date as fallback
-                    now = datetime.now()
-                    formatted_date = now.strftime('%d/%m/%Y %H:%M:%S.%f')
-                    base.set('lastChangedDate', formatted_date)
-                    base.set('createDate', formatted_date)
-                    base.set('lastStatusChangedDate', formatted_date)
-            else:
-                # Use current date if no date provided
-                now = datetime.now()
-                formatted_date = now.strftime('%d/%m/%Y %H:%M:%S.%f')
-                base.set('lastChangedDate', formatted_date)
-                base.set('createDate', formatted_date)
-                base.set('lastStatusChangedDate', formatted_date)
-            
+            if last_changed_date.startswith('/Date('):
+                last_changed_date = parse_date(last_changed_date)
+
+            base.set('lastChangedDate', last_changed_date)
+            base.set('createDate', last_changed_date)
+            base.set('lastStatusChangedDate', last_changed_date)
             base.set('lastChangedBy', self.username)
             
-            # Modify base object attributes based on material info
-            # Default Quality Status Value
             default_qc_status = material_info.get('DEFAULT_QC_STATUS', 'Released')
             default_quality_attr = base.find(".//eObjectAttribute[@attribId='Default Quality']")
             if default_quality_attr is not None:
@@ -367,7 +353,7 @@ class PomsicleBOMManager:
         
         # Save the modified template to a temporary file
         temp_xml_path = os.path.join(os.path.dirname(__file__), 'Bom_temp.xml')
-        template.write(temp_xml_path, encoding='utf-8', xml_declaration=True)
+        template.write(temp_xml_path, encoding='utf-8', xml_declaration=False)
         logger.debug(f"Modified template saved to: {temp_xml_path}")
         
         return temp_xml_path
@@ -542,9 +528,9 @@ class PomsicleBOMManager:
         """
         logger.info(f"Attempting to create BOM: '{bom_name}'")
 
-        if not self._perform_login():
-            logger.critical("Login failed. Cannot proceed with template creation.")
-            return False
+        # if not self._perform_login():
+        #     logger.critical("Login failed. Cannot proceed with template creation.")
+        #     return False
 
         # Generate the modified template XML
         logger.debug("Modifying XML template with materials and BOM name...")
@@ -556,6 +542,8 @@ class PomsicleBOMManager:
         except Exception as e:
             logger.error(f"Failed to modify XML template: {e}")
             return False
+
+        logger.debug(f"Temporary XML file created: {temp_xml_file_path}")
 
         file_size = os.path.getsize(temp_xml_file_path)
 
