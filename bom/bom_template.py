@@ -3,6 +3,7 @@ import json
 import xml.etree.ElementTree as ET
 import os
 import logging
+import copy
 from datetime import datetime, timezone
 from urllib.parse import quote_plus, urljoin
 from bs4 import BeautifulSoup
@@ -199,34 +200,177 @@ class PomsicleBOMManager:
             logger.error(f"Error during XML processing: {e}")
             return None, None, None, None
 
-    def _modify_template_xml(self, bom_name: str = None) -> None:
+    def _modify_template_xml(self, bom_name: str = None) -> str:
+        """
+        Modifies the template XML by stitching together header, line items, and base objects.
+        Uses deep copies to ensure original template files are never modified.
+        
+        Args:
+            bom_name (str): Name for the BOM. If None, generates a UUID-based name.
+            
+        Returns:
+            str: Path to the modified XML file.
+        """
+        # Parse template files - these are read-only and will never be modified
+        # We create deep copies of all elements before making any changes
         template = ET.parse(os.path.join(os.path.dirname(__file__), 'template', 'template.xml'))
-        header = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'Header.xml')).getroot()
-        line_item = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'LineItem.xml')).getroot()
-        base = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'Base.xml')).getroot()
-
-        # Add Header element inside this template
-        # Modify the BOM name, location id, level_id, material ids inside header
+        header_tree = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'header.xml'))
+        line_item_tree = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'line_item.xml'))
+        base_tree = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'base.xml'))
+        
+        # Get template structure - this will be modified to build the output file
+        # but the original template.xml file on disk remains unchanged
+        template_root = template.getroot()
+        e_spec_xml_objs = template_root.find('eSpecXmlObjs')
+        
+        # Create a deep copy of the header to avoid modifying the original template file
+        # Using ET.fromstring(ET.tostring(...)) creates a completely independent copy
+        header = ET.fromstring(ET.tostring(header_tree.getroot(), encoding='unicode'))
         header.set('id', bom_name or 'POMSICLE_BOM_' + str(uuid.uuid4()))
         header.set('locationId', self.location_id)
         header.set('levelId', self.level_id)
         header.set('locationName', self.location_name)
-
-        template.getroot().find('eSpecXmlObjs').append(header)
-
-        # Add LineItems element inside this Header
-        # LineItems are materials
-        line_items_parent = line_item.getroot().find('LineItems')
-        if line_items_parent is not None:
-            for material_id, material_info in self.fetched_materials.items():
-                line_item_elem = ET.Element('LineItem')
-                line_item_elem.set('itemObjId', material_info.get('MATERIAL_ID', ''))
-                line_item_elem.set('itemLocName', self.location_name)
-                line_items_parent.append(line_item_elem)
-            header.append(line_items_parent)
-
-        # Finally append the bases in the template
-        template.getroot().find('eSpecXmlObjs').append(base)
+        
+        # Add line items for each material inside the header
+        item_number = 1
+        for material_id, material_info in self.fetched_materials.items():
+            # Create a deep copy of the line item template to avoid modifying the original file
+            # Using ET.fromstring(ET.tostring(...)) creates a completely independent copy
+            line_item = ET.fromstring(ET.tostring(line_item_tree.getroot(), encoding='unicode'))
+            
+            # Set line item attributes
+            line_item.set('itemLevelName', 'Master')
+            line_item.set('itemLevelId', self.level_id)
+            line_item.set('itemLocName', self.location_name)
+            line_item.set('itemLocId', self.location_id)
+            line_item.set('itemObjId', material_id)
+            line_item.set('itemObjTypeName', 'MM_OBJ')
+            line_item.set('parentRule', 'Percent')
+            line_item.set('itemNumber', str(item_number))
+            line_item.set('subNumber', '1')
+            line_item.set('seqNumber', str(item_number))
+            line_item.set('itemObjType', '2')
+            line_item.set('itemObjVer', '1.001')
+            line_item.set('activeFlag', 'True')
+            line_item.set('aggregateFlag', 'True')
+            
+            # Modify sValue in Dispense UOM element (if material has INVENTORY_UOM)
+            inventory_uom = material_info.get('INVENTORY_UOM', '#')
+            dispense_attr = line_item.find(".//eObjectAttribute[@attribId='Dispense']")
+            if dispense_attr is not None:
+                uom_elem = dispense_attr.find(".//eObjectAttributeElement[@elemId='UOM']")
+                if uom_elem is not None:
+                    uom_elem.set('sValue', inventory_uom if inventory_uom else '#')
+            
+            # Append line item to header
+            header.append(line_item)
+            item_number += 1
+        
+        # Append header to template
+        e_spec_xml_objs.append(header)
+        
+        # Add base objects for each material
+        for material_id, material_info in self.fetched_materials.items():
+            # Create a deep copy of the base template to avoid modifying the original file
+            # Using ET.fromstring(ET.tostring(...)) creates a completely independent copy
+            base = ET.fromstring(ET.tostring(base_tree.getroot(), encoding='unicode'))
+            
+            # Set base object attributes
+            base.set('objType', 'MM_OBJ')
+            base.set('relObjType', 'MM')
+            base.set('id', material_id)
+            base.set('levelName', 'Master')
+            base.set('levelId', self.level_id)
+            base.set('locationName', self.location_name)
+            base.set('locationId', self.location_id)
+            
+            # Set description from material info
+            material_desc = material_info.get('MATERIAL_DESC', '')
+            base.set('description', material_desc)
+            
+            # Set status and version
+            base.set('status', 'APPROVED')
+            base.set('version', '1.001')
+            
+            # Convert and set lastChangedDate
+            last_changed_date = material_info.get('LAST_CHANGED_DATE', '')
+            if last_changed_date:
+                try:
+                    # Parse ISO format: '2025-09-17T05:30:30.18407' or '2025-09-17T05:30:30.18407Z'
+                    date_str = last_changed_date.replace('Z', '+00:00')
+                    if '+' not in date_str and date_str.count('-') >= 2:
+                        # No timezone info, assume UTC
+                        if 'T' in date_str:
+                            date_str = date_str + '+00:00'
+                    dt = datetime.fromisoformat(date_str)
+                    # Convert to UTC if timezone-aware
+                    if dt.tzinfo:
+                        dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
+                    # Format as: '17/09/2025 05:30:30.184815'
+                    formatted_date = dt.strftime('%d/%m/%Y %H:%M:%S.%f')
+                    base.set('lastChangedDate', formatted_date)
+                    base.set('createDate', formatted_date)
+                    base.set('lastStatusChangedDate', formatted_date)
+                except (ValueError, AttributeError) as e:
+                    logger.warning(f"Could not parse date '{last_changed_date}': {e}")
+                    # Use current date as fallback
+                    now = datetime.now()
+                    formatted_date = now.strftime('%d/%m/%Y %H:%M:%S.%f')
+                    base.set('lastChangedDate', formatted_date)
+                    base.set('createDate', formatted_date)
+                    base.set('lastStatusChangedDate', formatted_date)
+            else:
+                # Use current date if no date provided
+                now = datetime.now()
+                formatted_date = now.strftime('%d/%m/%Y %H:%M:%S.%f')
+                base.set('lastChangedDate', formatted_date)
+                base.set('createDate', formatted_date)
+                base.set('lastStatusChangedDate', formatted_date)
+            
+            base.set('lastChangedBy', self.username)
+            
+            # Modify base object attributes based on material info
+            # Default Quality Status Value
+            default_qc_status = material_info.get('DEFAULT_QC_STATUS', 'Released')
+            default_quality_attr = base.find(".//eObjectAttribute[@attribId='Default Quality']")
+            if default_quality_attr is not None:
+                status_elem = default_quality_attr.find(".//eObjectAttributeElement[@elemId='Status Value']")
+                if status_elem is not None:
+                    status_elem.set('sValue', default_qc_status)
+            
+            # Inventory Tracking
+            inventory_tracking = material_info.get('INVENTORY_TRACKING', 'Container')
+            inventory_tracking_attr = base.find(".//eObjectAttribute[@attribId='Inventory Tracking']")
+            if inventory_tracking_attr is not None:
+                tracking_elem = inventory_tracking_attr.find(".//eObjectAttributeElement[@elemId='Value']")
+                if tracking_elem is not None:
+                    tracking_elem.set('sValue', inventory_tracking)
+            
+            # Inventory UOM
+            inventory_uom = material_info.get('INVENTORY_UOM', 'g')
+            inventory_uom_attr = base.find(".//eObjectAttribute[@attribId='Inventory UOM']")
+            if inventory_uom_attr is not None:
+                uom_elem = inventory_uom_attr.find(".//eObjectAttributeElement[@elemId='UOM']")
+                if uom_elem is not None:
+                    uom_elem.set('sValue', inventory_uom)
+            
+            # Storage Class
+            storage_class = material_info.get('STORAGE_CLASS', 'AMBIENT')
+            storage_class_attr = base.find(".//eObjectAttribute[@attribId='Storage Class']")
+            if storage_class_attr is not None:
+                storage_elem = storage_class_attr.find(".//eObjectAttributeElement[@elemId='Value']")
+                if storage_elem is not None:
+                    storage_elem.set('sValue', storage_class)
+            
+            # Append base to template
+            e_spec_xml_objs.append(base)
+        
+        # Save the modified template to a temporary file
+        temp_xml_path = os.path.join(os.path.dirname(__file__), 'Bom_temp.xml')
+        template.write(temp_xml_path, encoding='utf-8', xml_declaration=True)
+        logger.debug(f"Modified template saved to: {temp_xml_path}")
+        
+        return temp_xml_path
 
     def _upload_file(self, xml_file_path: str, xml_file_name: str, total_file_size: int):
         """
@@ -394,7 +538,7 @@ class PomsicleBOMManager:
 
         Args:
             template_name (str): The name of the template XML file to use.
-            (Assumed to be in the 'data' folder relative to script)
+            bom_name (str): Name for the BOM. If None, generates a UUID-based name.
         """
         logger.info(f"Attempting to create BOM: '{bom_name}'")
 
@@ -402,27 +546,16 @@ class PomsicleBOMManager:
             logger.critical("Login failed. Cannot proceed with template creation.")
             return False
 
-        xml_folder = os.path.join(self.program_path, 'bom')
-        xml_file_path = os.path.join(xml_folder, template_name)
-
-        temp_xml_file_path = f"{xml_file_path}.temp_{uuid.uuid4().hex}"
+        # Generate the modified template XML
+        logger.debug("Modifying XML template with materials and BOM name...")
         try:
-            import shutil
-            shutil.copy(xml_file_path, temp_xml_file_path)
-            logger.debug(f"Created temporary XML file for modification: {temp_xml_file_path}")
+            temp_xml_file_path = self._modify_template_xml(bom_name)
+            if not temp_xml_file_path or not os.path.exists(temp_xml_file_path):
+                logger.error("Failed to generate modified XML template. Aborting.")
+                return False
         except Exception as e:
-            logger.error(f"Failed to create temporary XML file: {e}")
+            logger.error(f"Failed to modify XML template: {e}")
             return False
-
-        # --- XML Modification Step ---
-        # if recipe_name or unit_procedure_name or operation_name:
-        #     logger.debug("Modifying XML template with provided names...")
-        #     if not self._modify_template_xml(temp_xml_file_path, recipe_name, unit_procedure_name, operation_name):
-        #         logger.error("Failed to modify XML template. Aborting.")
-        #         os.remove(temp_xml_file_path)
-        #         return False
-        else:
-            logger.info("No specific names provided for template modification. Using original IDs.")
 
         file_size = os.path.getsize(temp_xml_file_path)
 
