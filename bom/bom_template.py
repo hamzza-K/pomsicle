@@ -15,19 +15,21 @@ class PomsicleBOMManager:
     """
     Manages the upload and import of BOM XML files to POMSicle.
     """
-    def __init__(self, settings: dict, username: str, password: str):
+    def __init__(self, settings: dict, bom_settings: dict, materials: list, username: str, password: str):
         """
         Initializes the PomsicleBOMManager with configuration settings and credentials.
 
         Args:
             settings (dict): A dictionary containing POMSicle configuration details
                              (e.g., MACHINE_NAME, BASE_APP_URL).
+            materials (list): A list of materials to include in the BOM.
             username (str): The username for POMSicle login.
             password (str): The password for POMSicle login.
         """
         self.settings = settings
         self.username = username
         self.password = password
+        self.materials = materials
         
         self.base_app_url = settings.get('BASE_APP_URL')
         self.import_url = settings.get('IMPORT_URL')
@@ -35,6 +37,13 @@ class PomsicleBOMManager:
         self.login_host = settings.get('LOGIN_HOST')
         self.machine_name = settings.get('MACHINE_NAME')
         self.program_path = settings.get('PROGRAM_BASE_PATH')
+        self.materials_url = settings.get('MATERIALS_URL')
+
+        self.level_id = bom_settings.get('LEVEL_ID', '10')
+        self.location_id = bom_settings.get('LOCATION_ID', '4')
+        self.location_name = bom_settings.get('LOCATION_NAME', 'Herndon')
+
+        self.session = requests.Session()
         
         self.file_upload_url = self.login_host + '/' + self.base_app_url + '/' + self.file_upload_url
         self.import_url = self.login_host + '/' + self.base_app_url + '/' + self.import_url
@@ -43,12 +52,41 @@ class PomsicleBOMManager:
         self.espec_model_base_path = "/poms/apps/eSpecWebApplication/"
         self.espec_model_base_poms_path = "/poms/"
 
+        self.materials_api = self.login_host + '/' + self.materials_url
+
+        self.configuredObject_objType = "MM_OBJ"
+
+        self.fetched_materials = self._get_materials()
+
         if not all([self.username, self.password, self.machine_name, self.base_app_url,
                     self.import_url, self.file_upload_url, self.login_host]):
             logger.critical("Missing essential configuration variables in settings. Exiting.")
             raise ValueError("Missing essential configuration variables for PomsicleTemplateManager.")
         
-        self.session = requests.Session()
+    def _get_materials(self) -> dict:
+        """
+        Fetches material details from the POMS materials API.
+
+        Returns:
+            dict: A dictionary of material details keyed by material ID.
+        """
+        materials_data = {}
+        for material_id in self.materials:
+            material_url = f"{self.materials_api}/{material_id}"
+            try:
+                logger.debug(f"Fetching material data from: {material_url}")
+                response = self.session.get(material_url, verify=False)
+                response.raise_for_status()
+                material_info = response.json()
+                if 'MATERIAL_ID' not in material_info.keys():
+                    logger.warning(f"Material '{material_id}' not found in system.")
+                    continue
+                materials_data[material_id] = material_info
+                logger.debug(f"Material data retrieved: {material_info}")
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Failed to fetch material '{material_id}': {e}")
+        return materials_data
+
 
     def _perform_login(self) -> bool:
         """
@@ -147,9 +185,9 @@ class PomsicleBOMManager:
 
             if e_proc_object is None:
                 logger.warning("Could not find 'eProcObject' element in the XML file. Using placeholder values.")
-                obj_type = "ConfiguredObject"
-                level_id = "10"
-                location_id = "4"
+                obj_type = self.configuredObject_objType
+                level_id = self.level_id
+                location_id = self.location_id
             else:
                 obj_type = e_proc_object.get("objType")
                 level_id = e_proc_object.get("levelId")
@@ -161,93 +199,34 @@ class PomsicleBOMManager:
             logger.error(f"Error during XML processing: {e}")
             return None, None, None, None
 
-    def _modify_template_xml(self, xml_file_path: str, recipe_name: str = None, unit_procedure_name: str = None, operation_name: str = None) -> bool:
-        """
-        Modifies the 'id' attributes of <eProcObject> and <eProcCompObject> tags
-        in the XML template based on provided names and objType.
-        Also updates 'displayText' in objectConfig for eProcCompObject.
+    def _modify_template_xml(self, bom_name: str = None) -> None:
+        template = ET.parse(os.path.join(os.path.dirname(__file__), 'template', 'template.xml'))
+        header = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'Header.xml')).getroot()
+        line_item = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'LineItem.xml')).getroot()
+        base = ET.parse(os.path.join(os.path.dirname(__file__), 'objects', 'Base.xml')).getroot()
 
-        Args:
-            xml_file_path (str): Path to the XML file to modify.
-            recipe_name (str, optional): New name for PM_RECIPE. Defaults to None.
-            unit_procedure_name (str, optional): New name for PM_SUP. Defaults to None.
-            operation_name (str, optional): New name for PM_OPERATION. Defaults to None.
+        # Add Header element inside this template
+        # Modify the BOM name, location id, level_id, material ids inside header
+        header.set('id', bom_name or 'POMSICLE_BOM_' + str(uuid.uuid4()))
+        header.set('locationId', self.location_id)
+        header.set('levelId', self.level_id)
+        header.set('locationName', self.location_name)
 
-        Returns:
-            bool: True if modification was successful, False otherwise.
-        """
-        try:
-            tree = ET.parse(xml_file_path)
-            root = tree.getroot()
+        template.getroot().find('eSpecXmlObjs').append(header)
 
-            # Mapping of objType to provided names
-            name_map = {
-                "PM_RECIPE": recipe_name,
-                "PM_SUP": unit_procedure_name or recipe_name,
-                "PM_OPERATION": operation_name or recipe_name
-            }
+        # Add LineItems element inside this Header
+        # LineItems are materials
+        line_items_parent = line_item.getroot().find('LineItems')
+        if line_items_parent is not None:
+            for material_id, material_info in self.fetched_materials.items():
+                line_item_elem = ET.Element('LineItem')
+                line_item_elem.set('itemObjId', material_info.get('MATERIAL_ID', ''))
+                line_item_elem.set('itemLocName', self.location_name)
+                line_items_parent.append(line_item_elem)
+            header.append(line_items_parent)
 
-            # Update eProcObject tags
-            for obj in root.findall(".//eProcObject"):
-                obj_type = obj.get("objType")
-                new_id = name_map.get(obj_type)
-                if new_id:
-                    original_id = obj.get("id")
-                    obj.set("id", new_id)
-                    logger.debug(f"Updated eProcObject 'id' from '{original_id}' to '{new_id}' for objType='{obj_type}'.")
-                    # Also update description if it contains "Template" and matches objType pattern
-                    description = obj.get("description", "")
-                    if "Template" in description:
-                         # Simple replacement if description contains "Template"
-                        obj.set("description", description.replace("Template", new_id))
-                        logger.debug(f"Updated eProcObject 'description' for '{new_id}'.")
-
-
-            # Update eProcCompObject tags (nested components)
-            # These also have 'compProcType' and 'compObjId' attributes, and 'displayText' in objectConfig
-            for comp_obj in root.findall(".//eProcCompObject"):
-                comp_proc_type = comp_obj.get("compProcType")
-                new_id = name_map.get(comp_proc_type)
-                if new_id:
-                    original_comp_obj_id = comp_obj.get("compObjId")
-
-                    comp_obj.set("compObjId", new_id)
-                    logger.debug(f"Updated eProcCompObject 'compObjId' from '{original_comp_obj_id}' to '{new_id}' for compProcType='{comp_proc_type}'.")
-                    
-                    # Update 'displayText' within the 'objectConfig' JSON string if present
-                    object_config_str = comp_obj.get("objectConfig")
-                    if object_config_str:
-                        try:
-                            object_config = json.loads(object_config_str)
-                            # Update label.text for older versions or if the label element is directly the text
-                            if 'Label' in object_config and 'text' in object_config['Label']:
-                                object_config['Label']['text'] = new_id
-                            # For newer versions or if the Label element is more complex
-                            if 'Label' in object_config and 'styles' in object_config['Label'] and 'text' not in object_config['Label']:
-                                # Some templates might store text directly in objectConfig or not expose it.
-                                # This is a common place for the displayed text.
-                                object_config['Label']['text'] = new_id
-                            
-                            # If displayText is explicitly mapped, it might also be here
-                            # This part is highly dependent on exact XML structure and what POMSicle reads
-                            if 'displayText' in object_config:
-                                object_config['displayText'] = new_id
-
-                            comp_obj.set("objectConfig", json.dumps(object_config))
-                            logger.debug(f"Updated 'displayText' in objectConfig for '{new_id}'.")
-                        except json.JSONDecodeError:
-                            logger.warning(f"Could not parse objectConfig JSON for {comp_proc_type} with ID '{original_comp_obj_id}'. Skipping config update.")
-
-
-            tree.write(xml_file_path, encoding="UTF-8", xml_declaration=False)
-            logger.info(f"XML file '{xml_file_path}' modified successfully with new names.")
-            return True
-        except ET.ParseError as e:
-            logger.error(f"Error parsing XML file '{xml_file_path}': {e}")
-            return False
-        except Exception as e:
-            logger.error(f"An unexpected error occurred during XML modification: {e}")
-            return False
+        # Finally append the bases in the template
+        template.getroot().find('eSpecXmlObjs').append(base)
 
     def _upload_file(self, xml_file_path: str, xml_file_name: str, total_file_size: int):
         """
@@ -408,19 +387,16 @@ class PomsicleBOMManager:
                 logger.error(f"Response Status Code: {e.response.status_code}, Content: {e.response.text}")
             return None
 
-    def create_template(self, template_name: str = "Bom_template.xml", recipe_name: str = None, unit_procedure_name: str = None, operation_name: str = None):
+    def create_template(self, template_name: str = "Bom_template.xml", bom_name: str = None):
         """
         Main method to create a template by uploading and importing an XML file.
         Modifies the XML template with provided names before upload.
 
         Args:
             template_name (str): The name of the template XML file to use.
-                                 (Assumed to be in the 'data' folder relative to script)
-            recipe_name (str, optional): New name for PM_RECIPE. Defaults to None.
-            unit_procedure_name (str, optional): New name for PM_SUP. Defaults to None.
-            operation_name (str, optional): New name for PM_OPERATION. Defaults to None.
+            (Assumed to be in the 'data' folder relative to script)
         """
-        logger.info(f"Attempting to create BOM: '{template_name}'")
+        logger.info(f"Attempting to create BOM: '{bom_name}'")
 
         if not self._perform_login():
             logger.critical("Login failed. Cannot proceed with template creation.")
@@ -448,12 +424,7 @@ class PomsicleBOMManager:
         else:
             logger.info("No specific names provided for template modification. Using original IDs.")
 
-
-        obj_type, level_id, location_id, file_size = self._process_xml_file(temp_xml_file_path)
-        if not all([obj_type, level_id, location_id, file_size]):
-            logger.error("Failed to process XML file for template creation. Aborting.")
-            os.remove(temp_xml_file_path)
-            return False
+        file_size = os.path.getsize(temp_xml_file_path)
 
         uploaded_file_uid, temp_server_filename = self._upload_file(temp_xml_file_path, template_name, file_size)
         
@@ -469,11 +440,11 @@ class PomsicleBOMManager:
             logger.error("File upload failed. Aborting template creation.")
             return False
 
-        import_result = self._import_file(uploaded_file_uid, template_name, obj_type, level_id, location_id, file_size)
+        import_result = self._import_file(uploaded_file_uid, template_name, self.configuredObject_objType, self.level_id, self.location_id, file_size)
 
         if import_result and import_result.get("d", {}).get("Success"):
             logger.debug(f"Template '{template_name}' imported successfully.")
-            Banner().success(f"Recipe '{recipe_name or template_name}' created successfully.")
+            Banner().success(f"BOM '{bom_name or template_name}' created successfully.")
             return True
         else:
             logger.error(f"Template '{template_name}' import was not successful.")

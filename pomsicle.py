@@ -40,6 +40,7 @@ config_file_name = 'config.cfg'
 try:
     settings = config(translator='pomsicle')
     receive_settings = config(translator='pomsicle:receive')
+    bom_settings = config(translator='pomsicle:bom')
 except (FileNotFoundError, ValueError) as e:
     logger.critical(f"Configuration error: {e}. Exiting.")
     exit(1)
@@ -171,18 +172,16 @@ def handle_bom_start(args, token=None):
     # Implement BOM start logic here
 
     try:
-        template_manager = PomsicleBOMManager(settings, USERNAME, PASSWORD)
+        template_manager = PomsicleBOMManager(settings, bom_settings, args.add, USERNAME, PASSWORD)
         success = template_manager.create_template(
             template_name=args.template_name,
-            recipe_name=None,
-            unit_procedure_name=None,
-            operation_name=None
+            bom_name=args.bom_name
         )
         if success:
-            logger.debug(f"BOM '{args.template_name}' operation completed successfully.")
+            logger.debug(f"BOM '{args.bom_name}' operation completed successfully.")
         else:
-            logger.error(f"BOM '{args.template_name}' operation failed.")
-            Banner.error(f"BOM '{args.template_name}' operation failed.")
+            logger.error(f"BOM '{args.bom_name}' operation failed.")
+            Banner.error(f"BOM '{args.bom_name}' operation failed.")
     except ValueError as e:
         logger.critical(f"Failed to initialize Template Manager: {e}")
         exit(1)
@@ -278,7 +277,14 @@ def create_cli():
     b_sub = bom.add_subparsers(dest="action")
 
     start = b_sub.add_parser("start", help="Start BOM process")
-    start.add_argument("--template-name", default="Bom_template.xml", help="BoilerPlate recipe.")
+    start.add_argument("--template-name", default="Bom_template.xml", help="Name of the BOM template.")
+    start.add_argument("--bom-name", default="POMSICLE_BOM", help="Name of the BOM.")
+    start.add_argument(
+            "--add",
+            nargs="+",
+            required=True,
+            help="List of materials to add into the BOM"
+        )
     start.set_defaults(func=handle_bom_start)
 
     return parser
