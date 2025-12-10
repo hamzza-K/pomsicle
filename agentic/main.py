@@ -66,6 +66,7 @@ def get_recipe_service() -> RecipeService:
     """Dependency to get RecipeService instance."""
     return RecipeService(
         settings=config_manager.settings,
+        bom_settings=config_manager.bom_settings,
         username=config_manager.get_username(),
         password=config_manager.get_password()
     )
@@ -149,7 +150,10 @@ async def create_custom_recipe(
         result = service.create_custom(
             phases=request.phases,
             recipe_name=request.recipe_name,
-            template_name=request.template_name
+            template_name=request.template_name,
+            bom_name=request.bom_name,
+            materials=request.materials,
+            bom_path=request.bom_path
         )
         
         if not result["success"]:

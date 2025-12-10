@@ -19,6 +19,9 @@ class RecipeCreateCustomRequest(BaseModel):
     phases: List[str] = Field(..., description="List of phase/component names to add to the recipe")
     recipe_name: Optional[str] = Field(default="Assisted", description="Name of the recipe")
     template_name: Optional[str] = Field(default="Assisted.xml", description="Name of the template file")
+    bom_name: Optional[str] = Field(default=None, description="Name for the BOM to create and attach")
+    materials: Optional[List[str]] = Field(default=None, description="List of material IDs to include in the BOM (required if bom_name is provided)")
+    bom_path: Optional[str] = Field(default=None, description="Path to an existing BOM XML file to attach (alternative to bom_name)")
 
 
 class RecipeImportRequest(BaseModel):
@@ -56,6 +59,10 @@ class RecipeResponse(BaseResponse):
     template_name: Optional[str] = None
     phases: Optional[List[str]] = None
     filename: Optional[str] = None
+    bom_attached: Optional[bool] = None
+    bom_path: Optional[str] = None
+    bom_name: Optional[str] = None
+    materials: Optional[List[str]] = None
     error: Optional[str] = None
 
 

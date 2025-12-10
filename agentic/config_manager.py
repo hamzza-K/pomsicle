@@ -22,6 +22,7 @@ class ConfigManager:
     _instance = None
     _settings = None
     _receive_settings = None
+    _bom_settings = None
     
     def __new__(cls):
         if cls._instance is None:
@@ -47,6 +48,17 @@ class ConfigManager:
         except (FileNotFoundError, ValueError) as e:
             logger.warning(f"Receiving settings not found: {e}")
             self._receive_settings = {}
+        
+        try:
+            self._bom_settings = config(translator='pomsicle:bom')
+            logger.info("BOM configuration loaded successfully")
+        except (FileNotFoundError, ValueError) as e:
+            logger.warning(f"BOM settings not found, using defaults: {e}")
+            self._bom_settings = {
+                'LEVEL_ID': '10',
+                'LOCATION_ID': '4',
+                'LOCATION_NAME': 'Herndon'
+            }
     
     @property
     def settings(self) -> Dict:
@@ -57,6 +69,11 @@ class ConfigManager:
     def receive_settings(self) -> Dict:
         """Get receiving settings."""
         return self._receive_settings or {}
+    
+    @property
+    def bom_settings(self) -> Dict:
+        """Get BOM settings."""
+        return self._bom_settings or {}
     
     def get_username(self) -> Optional[str]:
         """Get username from settings."""
@@ -71,5 +88,6 @@ class ConfigManager:
         logger.info("Reloading configuration...")
         self._settings = None
         self._receive_settings = None
+        self._bom_settings = None
         self._load_config()
 
