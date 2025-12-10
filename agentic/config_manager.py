@@ -23,6 +23,7 @@ class ConfigManager:
     _settings = None
     _receive_settings = None
     _bom_settings = None
+    _material_settings = None
     
     def __new__(cls):
         if cls._instance is None:
@@ -59,6 +60,17 @@ class ConfigManager:
                 'LOCATION_ID': '4',
                 'LOCATION_NAME': 'Herndon'
             }
+        
+        try:
+            self._material_settings = config(translator='pomsicle:material')
+            logger.info("Material configuration loaded successfully")
+        except (FileNotFoundError, ValueError) as e:
+            logger.warning(f"Material settings not found, using defaults: {e}")
+            self._material_settings = {
+                'LEVEL_ID': '10',
+                'LOCATION_ID': '4',
+                'LOCATION_NAME': 'Herndon'
+            }
     
     @property
     def settings(self) -> Dict:
@@ -75,6 +87,11 @@ class ConfigManager:
         """Get BOM settings."""
         return self._bom_settings or {}
     
+    @property
+    def material_settings(self) -> Dict:
+        """Get material settings."""
+        return self._material_settings or {}
+    
     def get_username(self) -> Optional[str]:
         """Get username from settings."""
         return self.settings.get('USERNAME')
@@ -89,5 +106,6 @@ class ConfigManager:
         self._settings = None
         self._receive_settings = None
         self._bom_settings = None
+        self._material_settings = None
         self._load_config()
 

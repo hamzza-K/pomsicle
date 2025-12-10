@@ -1,7 +1,7 @@
 """
 Pydantic schemas for API request/response models.
 """
-from typing import Optional, List
+from typing import Optional, List, Dict
 from pydantic import BaseModel, Field
 
 
@@ -44,6 +44,15 @@ class ReceivingStartRequest(BaseModel):
     qty_per_container: Optional[float] = Field(default=1.0, description="Quantity per container")
 
 
+# Material Schemas
+class MaterialCreateRequest(BaseModel):
+    """Request schema for creating material."""
+    material_id: str = Field(..., description="ID of the material to create")
+    material_description: Optional[str] = Field(default=None, description="Description of the material")
+    attributes: Optional[Dict[str, str]] = Field(default=None, description="Dictionary mapping attribId to sValue (e.g., {'Inventory Tracking': 'Container', 'Inventory UOM': 'g'})")
+    template_name: Optional[str] = Field(default="material_template.xml", description="Name of the material template file")
+
+
 # Response Schemas
 class BaseResponse(BaseModel):
     """Base response schema."""
@@ -78,5 +87,13 @@ class ReceivingResponse(BaseResponse):
     uom: Optional[str] = None
     containers: Optional[int] = None
     qty_per_container: Optional[float] = None
+    error: Optional[str] = None
+
+
+class MaterialResponse(BaseResponse):
+    """Response schema for material operations."""
+    material_id: Optional[str] = None
+    material_description: Optional[str] = None
+    attributes: Optional[Dict[str, str]] = None
     error: Optional[str] = None
 

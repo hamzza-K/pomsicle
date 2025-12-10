@@ -14,6 +14,7 @@ from config import config
 from receive.receiving import ReceiveManager
 from recipe.builder import RecipeBuilder
 from template.recipe_template import PomsicleTemplateManager
+from material.material_template import PomsicleMaterialManager
 
 # -----------------------------------------------------------------------------
 # Logging
@@ -41,9 +42,18 @@ try:
     settings = config(translator='pomsicle')
     receive_settings = config(translator='pomsicle:receive')
     bom_settings = config(translator='pomsicle:bom')
+    material_settings = config(translator='pomsicle:material')
 except (FileNotFoundError, ValueError) as e:
     logger.critical(f"Configuration error: {e}. Exiting.")
     exit(1)
+
+# Set default material settings if not found
+if not material_settings:
+    material_settings = {
+        'LEVEL_ID': '10',
+        'LOCATION_ID': '4',
+        'LOCATION_NAME': 'Herndon'
+    }
 
 USERNAME = settings.get('USERNAME')
 PASSWORD = settings.get('PASSWORD')
@@ -186,6 +196,60 @@ def handle_bom_start(args, token=None):
         exit(1)
 
 
+def handle_material_create(args, token=None):
+    """
+    Handle material creation command.
+    
+    Args:
+        args: Command line arguments containing material_id, description, and attributes.
+        token: Authentication token (not used but kept for consistency).
+    """
+    logger.info(f"Creating material: {args.material_id}")
+    
+    # Parse attributes from command line if provided
+    attributes = {}
+    if args.attributes:
+        # Attributes should be in format: "attribId1=value1,attribId2=value2"
+        for attr_pair in args.attributes:
+            if '=' in attr_pair:
+                key, value = attr_pair.split('=', 1)
+                attributes[key.strip()] = value.strip()
+            else:
+                logger.warning(f"Invalid attribute format: {attr_pair}. Expected 'attribId=value'")
+    
+    try:
+        material_manager = PomsicleMaterialManager(
+            settings,
+            material_settings,
+            USERNAME,
+            PASSWORD
+        )
+        
+        success = material_manager.create_template(
+            material_id=args.material_id,
+            material_description=args.description,
+            attributes=attributes,
+            template_name=args.template_name,
+            pull=args.pull
+        )
+        
+        if success:
+            if args.pull:
+                logger.info(f"Material XML file created: {success}")
+            else:
+                logger.info(f"Material '{args.material_id}' created and imported successfully.")
+        else:
+            logger.error(f"Failed to create material '{args.material_id}'.")
+            exit(1)
+            
+    except ValueError as e:
+        logger.critical(f"Failed to initialize Material Manager: {e}")
+        exit(1)
+    except Exception as e:
+        logger.critical(f"Error creating material: {e}")
+        exit(1)
+
+
 def handle_recipe_create_custom(args, token=None):
     builder = RecipeBuilder()
     args.template_name = "Assisted.xml"
@@ -302,6 +366,24 @@ def create_cli():
             help="List of materials to add into the BOM"
         )
     start.set_defaults(func=handle_bom_start)
+
+    # ================================
+    # pomsicle material
+    # ================================
+    material = subparsers.add_parser("material", help="Material operations")
+    m_sub = material.add_subparsers(dest="action")
+
+    create = m_sub.add_parser("create", help="Create a material")
+    create.add_argument("material_id", help="ID of the material to create")
+    create.add_argument("--description", "-d", help="Description of the material")
+    create.add_argument("--template-name", default="material_template.xml", help="Name of the material template.")
+    create.add_argument(
+        "--attributes", "-a",
+        nargs="+",
+        help="Material attributes in format 'attribId=value' (e.g., 'Inventory Tracking=Container,Inventory UOM=g')"
+    )
+    create.add_argument("--pull", action="store_true", help="Only create XML file without uploading/importing")
+    create.set_defaults(func=handle_material_create)
 
     return parser
 

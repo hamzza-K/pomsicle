@@ -11,6 +11,7 @@ from config_manager import ConfigManager
 from services.recipe_service import RecipeService
 from services.inventory_service import InventoryService
 from services.receiving_service import ReceivingService
+from services.material_service import MaterialService
 from models.schemas import (
     RecipeCreateTemplateRequest,
     RecipeCreateCustomRequest,
@@ -19,7 +20,9 @@ from models.schemas import (
     InventoryLoadRequest,
     InventoryResponse,
     ReceivingStartRequest,
-    ReceivingResponse
+    ReceivingResponse,
+    MaterialCreateRequest,
+    MaterialResponse
 )
 
 # Configure logging
@@ -86,6 +89,16 @@ def get_receiving_service() -> ReceivingService:
     return ReceivingService(
         settings=config_manager.settings,
         receive_settings=config_manager.receive_settings,
+        username=config_manager.get_username(),
+        password=config_manager.get_password()
+    )
+
+
+def get_material_service() -> MaterialService:
+    """Dependency to get MaterialService instance."""
+    return MaterialService(
+        settings=config_manager.settings,
+        material_settings=config_manager.material_settings,
         username=config_manager.get_username(),
         password=config_manager.get_password()
     )
@@ -249,6 +262,39 @@ async def start_receiving(
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         logger.error(f"Unexpected error in start_receiving: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+
+# Material endpoints
+@app.post("/api/material/create", response_model=MaterialResponse, tags=["Material"])
+async def create_material(
+    request: MaterialCreateRequest,
+    service: MaterialService = Depends(get_material_service)
+):
+    """
+    Create a material.
+    
+    This endpoint creates a material with specified ID, description, and attributes.
+    Attributes are key-value pairs where the key is the attribId and the value is the sValue.
+    """
+    try:
+        result = service.create(
+            material_id=request.material_id,
+            material_description=request.material_description,
+            attributes=request.attributes,
+            template_name=request.template_name
+        )
+        
+        if not result["success"]:
+            raise HTTPException(status_code=400, detail=result["message"])
+        
+        return MaterialResponse(**result)
+        
+    except ValueError as e:
+        logger.error(f"Value error in create_material: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        logger.error(f"Unexpected error in create_material: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 
