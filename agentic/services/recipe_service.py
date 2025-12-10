@@ -111,7 +111,8 @@ class RecipeService:
         self,
         phases: List[str],
         recipe_name: str = "Assisted",
-        template_name: str = "Assisted.xml"
+        template_name: str = "Assisted.xml",
+        bom_path: Optional[str] = None
     ) -> dict:
         """
         Create a custom recipe with specified phases.
@@ -120,6 +121,7 @@ class RecipeService:
             phases: List of phase/component names to add to the recipe.
             recipe_name: Name of the recipe (default: "Assisted").
             template_name: Name of the template file (default: "Assisted.xml").
+            bom_path: Optional path to a BOM XML file to attach to the recipe.
         
         Returns:
             dict: Result with success status and message.
@@ -138,6 +140,14 @@ class RecipeService:
             builder.insert_components(phases, str(output_file))
             logger.info(f"Custom recipe template created with phases: {' → '.join(phases)}")
             
+            # Attach BOM if provided
+            if bom_path:
+                if not os.path.exists(bom_path):
+                    logger.warning(f"BOM file not found: {bom_path}. Skipping attachment.")
+                else:
+                    builder.attach_bill(bom_path=bom_path, output_path=str(output_file))
+                    logger.info(f"Attached BOM to recipe template: {bom_path}")
+            
             # Now create the recipe from the generated template
             result = self.create_from_template(
                 recipe_name=recipe_name,
@@ -149,6 +159,9 @@ class RecipeService:
             if result["success"]:
                 result["phases"] = phases
                 result["message"] = f"Custom recipe '{recipe_name}' created successfully with phases: {', '.join(phases)}"
+                if bom_path:
+                    result["bom_attached"] = True
+                    result["bom_path"] = bom_path
             
             return result
             

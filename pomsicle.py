@@ -209,7 +209,7 @@ def handle_recipe_create_custom(args, token=None):
             pull=True
         )
 
-        builder.attach_bill(bom_path=bom_file)
+        builder.attach_bill(bom_path=bom_file, output_path=output_file)
         logger.info(f"Attached BOM to recipe: {args.recipe_name}")
 
 

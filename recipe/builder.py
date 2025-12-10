@@ -43,15 +43,38 @@ class RecipeBuilder:
         self.TOP = 100
         self.BREAK = 3
 
-    def attach_bill(self, bom_path: str):
-        """Insert a Bill of Materials component into the recipe."""
+    def attach_bill(self, bom_path: str, output_path: str = None):
+        """
+        Insert a Bill of Materials component into the recipe.
+        
+        Args:
+            bom_path: Path to the BOM XML file to attach.
+            output_path: Optional path to write the updated XML. If None, doesn't write.
+        """
         bills = self.main_root.find(".//eSpecXmlObjs")
         if bills is None:
             raise RuntimeError("Target <eSpecXmlObjs> not found for attaching BOM")
-        bom_elem = ET.parse(bom_path).getroot()
-        bills.append(bom_elem)
+        
+        # Parse BOM XML and get the eSpecXmlObjs element (not the root eSpecObjects)
+        bom_tree = ET.parse(bom_path)
+        bom_root = bom_tree.getroot()
+        bom_spec_objs = bom_root.find(".//eSpecXmlObjs")
+        
+        if bom_spec_objs is None:
+            raise RuntimeError(f"BOM file '{bom_path}' does not contain <eSpecXmlObjs> element")
+        
+        # Append all children from BOM's eSpecXmlObjs to recipe's eSpecXmlObjs
+        for child in bom_spec_objs:
+            # Create a deep copy to avoid modifying the original
+            child_copy = copy.deepcopy(child)
+            bills.append(child_copy)
 
         logger.info("Attached BOM to recipe: %s", bom_path)
+        
+        # Write the updated XML if output path is provided
+        if output_path:
+            self.main_tree.write(output_path, pretty_print=True, encoding="utf-8", xml_declaration=False)
+            logger.info("Updated XML written to: %s", output_path)
 
     def _update_object_config(self, elem: ET._Element) -> ET._Element:
         """Update objectConfig JSON and coordinates for a component."""
