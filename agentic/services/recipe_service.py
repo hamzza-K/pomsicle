@@ -131,7 +131,7 @@ class RecipeService:
             
             builder = RecipeBuilder()
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            # Navigate to project root
+    
             project_root = Path(current_dir).parent.parent
             template_folder = project_root / "template"
             output_file = template_folder / template_name
