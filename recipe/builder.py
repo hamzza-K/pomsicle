@@ -43,6 +43,16 @@ class RecipeBuilder:
         self.TOP = 100
         self.BREAK = 3
 
+    def attach_bill(self, bom_path: str):
+        """Insert a Bill of Materials component into the recipe."""
+        bills = self.main_root.find(".//eSpecXmlObjs")
+        if bills is None:
+            raise RuntimeError("Target <eSpecXmlObjs> not found for attaching BOM")
+        bom_elem = ET.parse(bom_path).getroot()
+        bills.append(bom_elem)
+
+        logger.info("Attached BOM to recipe: %s", bom_path)
+
     def _update_object_config(self, elem: ET._Element) -> ET._Element:
         """Update objectConfig JSON and coordinates for a component."""
         logger.info("Updating objectConfig for element id=%s", elem.get("instanceId"))

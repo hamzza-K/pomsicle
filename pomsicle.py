@@ -199,6 +199,20 @@ def handle_recipe_create_custom(args, token=None):
     builder.insert_components(args.add, output_file)
     logger.info(f"Custom recipe created with: {' → '.join(args.add)}")
 
+    if args.attach:
+        if not args.materials:
+            logger.error("Materials not provided for BOM attachment. Exiting.")
+            exit(1)
+        bill_builder = PomsicleBOMManager(settings, bom_settings, args.materials, USERNAME, PASSWORD)
+        bom_file = bill_builder.create_template(
+            bom_name=args.attach,
+            pull=True
+        )
+
+        builder.attach_bill(bom_path=bom_file)
+        logger.info(f"Attached BOM to recipe: {args.recipe_name}")
+
+
     handle_recipe_create_template(args, token=None)
 
 
@@ -227,6 +241,7 @@ def create_cli():
     create_template.add_argument("--unit-procedure", help="Name of the unit procedure.")
     create_template.add_argument("--operation", help="Name of the operation.")
     create_template.add_argument("--template-name", default="Template.xml", help="Name of the template.")
+    create_template.add_argument("--attach", default="Bom_template.xml", help="Name of the Bill.")
     create_template.set_defaults(func=handle_recipe_create_template)
 
     # ----- pomsicle recipe create custom -----
@@ -238,6 +253,8 @@ def create_cli():
         required=True,
         help="List of objects to add into the custom recipe"
     )
+    create_custom.add_argument("--attach", default="Bom_template.xml", help="Name of the Bill.")
+    create_custom.add_argument("--materials", nargs="+", help="List of materials to add into the BOM")
     create_custom.set_defaults(func=handle_recipe_create_custom)
 
     # -------------------------------------------------------
