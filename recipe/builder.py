@@ -43,37 +43,38 @@ class RecipeBuilder:
         self.TOP = 100
         self.BREAK = 3
 
-    def attach_bill(self, bom_path: str, output_path: str = "Assisted.xml"):
+    def attach_bill(self, bom_path: str, output_path: str = None):
         """
         Insert a Bill of Materials component into the recipe.
-        The BOM (<eBoxObject>) is inserted right after the <eProcObject objType="PM_SUP"> element closes.
+        The BOM structure includes:
+        1. An <eProcBox> reference inside the PM_SUP element
+        2. The actual <eBoxObject> after the PM_SUP element closes
         
         Args:
             bom_path: Path to the BOM XML file to attach.
-            output_path: Optional path to write the updated XML. If None, doesn't write.
+            output_path: Full path to the recipe XML file to modify.
         """
-        recipe_path = os.path.join(self.current_dir, output_path)
-        e_spec_xml_objs = ET.parse(recipe_path).getroot().find(".//eSpecXmlObjs")
+        # Use the provided output_path (which should be the full path to Assisted.xml)
+        if output_path is None:
+            output_path = os.path.join(self.current_dir, "..", "template", "Assisted.xml")
+        
+        recipe_path = output_path
+        if not os.path.exists(recipe_path):
+            raise FileNotFoundError(f"Recipe file not found: {recipe_path}")
+        
+        recipe_tree = ET.parse(recipe_path)
+        recipe_root = recipe_tree.getroot()
+        e_spec_xml_objs = recipe_root.find(".//eSpecXmlObjs")
+        
         if e_spec_xml_objs is None:
             raise RuntimeError("Target <eSpecXmlObjs> not found for attaching BOM")
         
         # Find the PM_SUP (Unit Procedure) element
         pm_sup = e_spec_xml_objs.find(".//eProcObject[@objType='PM_SUP']")
         if pm_sup is None:
-            logger.warning("PM_SUP element not found, appending BOM to end of eSpecXmlObjs")
-            parent = e_spec_xml_objs
-            insert_index = len(list(parent))
-        else:
-            parent = pm_sup.getparent()
-            if parent is None:
-                parent = e_spec_xml_objs
-            
-            parent_children = list(parent)
-            try:
-                insert_index = parent_children.index(pm_sup) + 1
-            except ValueError:
-                insert_index = len(parent_children)
+            raise RuntimeError("PM_SUP element not found in recipe. Cannot attach BOM.")
         
+        # Parse BOM XML
         bom_tree = ET.parse(bom_path)
         bom_root = bom_tree.getroot()
         bom_spec_objs = bom_root.find(".//eSpecXmlObjs")
@@ -85,15 +86,82 @@ class RecipeBuilder:
         if bom_box_object is None:
             raise RuntimeError(f"BOM file '{bom_path}' does not contain <eBoxObject objType='MM_BOM'> element")
         
-        bom_copy = copy.deepcopy(bom_box_object)
+        bom_id = bom_box_object.get('id')
+        bom_version = bom_box_object.get('version', '1.001')
         
+        # Extract level and location from PM_SUP to match recipe structure
+        level_name = pm_sup.get('levelName', 'Master')
+        level_id = pm_sup.get('levelId', '10')
+        location_name = pm_sup.get('locationName', 'Herndon')
+        location_id = pm_sup.get('locationId', '4')
+        
+        # 1. Add <eProcBox> reference inside PM_SUP (before it closes)
+        # Check if eProcBox already exists
+        existing_proc_box = pm_sup.find(".//eProcBox[@boxType='BOM']")
+        if existing_proc_box is not None:
+            logger.debug("eProcBox already exists in PM_SUP, updating it")
+            existing_proc_box.set('boxId', bom_id)
+            existing_proc_box.set('boxVersion', bom_version)
+        else:
+            # Create new eProcBox element
+            proc_box = ET.Element('eProcBox')
+            proc_box.set('boxId', bom_id)
+            proc_box.set('boxLevelName', level_name)
+            proc_box.set('boxLevelId', level_id)
+            proc_box.set('boxLocationName', location_name)
+            proc_box.set('boxLocationId', location_id)
+            proc_box.set('boxType', 'BOM')
+            proc_box.set('boxNo', '1')
+            proc_box.set('boxVersion', bom_version)
+            
+            # Insert eProcBox before the last eProcCompObject or at the end
+            # Find the last eProcCompObject in PM_SUP
+            last_comp = None
+            for elem in reversed(list(pm_sup)):
+                if elem.tag == 'eProcCompObject':
+                    last_comp = elem
+                    break
+            
+            if last_comp is not None:
+                # Insert after the last eProcCompObject
+                parent_children = list(pm_sup)
+                insert_idx = parent_children.index(last_comp) + 1
+                pm_sup.insert(insert_idx, proc_box)
+            else:
+                # Append to PM_SUP if no eProcCompObject found
+                pm_sup.append(proc_box)
+        
+        # 2. Add the actual <eBoxObject> after PM_SUP closes
+        parent = pm_sup.getparent()
+        if parent is None:
+            parent = e_spec_xml_objs
+        
+        parent_children = list(parent)
+        try:
+            insert_index = parent_children.index(pm_sup) + 1
+        except ValueError:
+            insert_index = len(parent_children)
+        
+        # Check if eBoxObject with same id already exists
+        existing_box = e_spec_xml_objs.find(f".//eBoxObject[@id='{bom_id}']")
+        if existing_box is not None:
+            logger.debug(f"eBoxObject with id '{bom_id}' already exists, replacing it")
+            existing_box.getparent().remove(existing_box)
+            # Recalculate insert_index after removal
+            parent_children = list(parent)
+            try:
+                insert_index = parent_children.index(pm_sup) + 1
+            except ValueError:
+                insert_index = len(parent_children)
+        
+        bom_copy = copy.deepcopy(bom_box_object)
         parent.insert(insert_index, bom_copy)
 
         logger.info("Attached BOM to recipe: %s", recipe_path)
         
-        if output_path:
-            self.main_tree.write(recipe_path, pretty_print=True, encoding="utf-8", xml_declaration=False)
-            logger.info("Updated BOM XML written to: %s", recipe_path)
+        # Write the modified recipe tree back to file
+        recipe_tree.write(recipe_path, pretty_print=True, encoding="utf-8", xml_declaration=False)
+        logger.info("Updated recipe XML written to: %s", recipe_path)
 
     def _update_object_config(self, elem: ET._Element) -> ET._Element:
         """Update objectConfig JSON and coordinates for a component."""
