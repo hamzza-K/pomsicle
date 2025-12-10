@@ -232,25 +232,17 @@ class PomsicleMaterialManager:
         base_object.set('lastStatusChangedDate', formatted_date)
         base_object.set('effectivityDate', formatted_date)
         
-        # Update attribute values if provided
         if attributes:
             for attrib_id, s_value in attributes.items():
-                # Find the attribute by attribId
                 attr = base_object.find(f".//eObjectAttribute[@attribId='{attrib_id}']")
                 if attr is not None:
-                    # Find the element with sValue (could be Value, UOM, Status Value, etc.)
-                    # Try common element IDs
                     for elem_id in ['Value', 'UOM', 'Status Value']:
                         elem = attr.find(f".//eObjectAttributeElement[@elemId='{elem_id}']")
                         if elem is not None:
-                            # Validate value against popMethodAttr if available
                             pop_method_attr = elem.get('popMethodAttr', '')
                             if pop_method_attr:
-                                # Extract choices from popMethodAttr (semicolon-separated)
                                 choices = [choice.strip() for choice in pop_method_attr.split(';')]
-                                # Check if value is in choices (case-insensitive)
                                 if choices and s_value not in choices:
-                                    # Try case-insensitive match
                                     matched = next((c for c in choices if c.lower() == s_value.lower()), None)
                                     if matched:
                                         s_value = matched
@@ -265,7 +257,6 @@ class PomsicleMaterialManager:
                 else:
                     logger.warning(f"Attribute '{attrib_id}' not found in template")
         
-        # Save the modified template to a temporary file
         temp_xml_path = os.path.join(os.path.dirname(__file__), 'Material_temp.xml')
         template.write(temp_xml_path, encoding='utf-8', xml_declaration=False)
         logger.debug(f"Modified template saved to: {temp_xml_path}")
@@ -294,7 +285,6 @@ class PomsicleMaterialManager:
             str | bool: If pull=True, returns the path to the created XML file. If pull=False, returns True on success.
         """
         try:
-            # Modify template XML
             xml_file_path = self._modify_template_xml(
                 material_id=material_id,
                 material_description=material_description,
@@ -304,17 +294,14 @@ class PomsicleMaterialManager:
             if pull:
                 return xml_file_path
             
-            # Perform login if not already logged in
             if not self._perform_login():
                 logger.error("Login failed. Cannot proceed with upload and import.")
                 return False
             
-            # Upload file
             if not self._upload_file(xml_file_path):
                 logger.error("File upload failed.")
                 return False
             
-            # Import file
             if not self._import_file(xml_file_path):
                 logger.error("File import failed.")
                 return False
