@@ -209,12 +209,12 @@ def handle_recipe_create_custom(args, token=None):
             pull=True
         )
 
+        logger.info("BOM FILE CREATED: %s", bom_file)
+
         builder.attach_bill(bom_path=bom_file, output_path=output_file)
         logger.info(f"Attached BOM to recipe: {args.recipe_name}")
 
-
     handle_recipe_create_template(args, token=None)
-
 
 def handle_recipe_import(args, token=None):
     logger.info(f"Importing recipe from: {args.filename}")
