@@ -45,6 +45,7 @@ class PomsicleBOMManager:
         self.location_name = bom_settings.get('LOCATION_NAME', 'Herndon')
 
         self.session = requests.Session()
+        self._is_logged_in = False  # Track login state
         
         self.file_upload_url = self.login_host + '/' + self.base_app_url + '/' + self.file_upload_url
         self.import_url = self.login_host + '/' + self.base_app_url + '/' + self.import_url
@@ -73,9 +74,11 @@ class PomsicleBOMManager:
             dict: A dictionary of material details keyed by material ID.
         """
         materials_data = {}
-        if not self._perform_login():
-            logger.critical("Login failed. Cannot fetch materials.")
-            return materials_data
+        # Only login if not already logged in
+        if not self._is_logged_in:
+            if not self._perform_login():
+                logger.critical("Login failed. Cannot fetch materials.")
+                return materials_data
 
         for material_id in self.materials:
             body = {
@@ -118,10 +121,16 @@ class PomsicleBOMManager:
     def _perform_login(self) -> bool:
         """
         Performs a browser-like login to the POMSicle system.
+        Only performs login if not already logged in.
 
         Returns:
             bool: True if login is successful, False otherwise.
         """
+        # Skip if already logged in
+        if self._is_logged_in:
+            logger.debug("Already logged in, skipping login.")
+            return True
+            
         logger.info("Attempting browser-like login via DesktopDefault.aspx...")
 
         initial_get_return_url_encoded = quote_plus(f"{self.espec_model_base_path}SpecificationManagement.aspx?AutoClose=1")
@@ -173,10 +182,12 @@ class PomsicleBOMManager:
                 logger.error("Login failed. Check username, password, or server status.")
                 logger.error(f"Login Response Status Code: {login_response.status_code}")
                 logger.error(f"Login Response Content (start):\n{login_response.text[:1000]}...")
+                self._is_logged_in = False
                 return False
             else:
                 logger.info(f"Browser-like login successful! Current URL after login: {login_response.url}")
                 logger.debug(f"Session cookies after login: {self.session.cookies.get_dict()}")
+                self._is_logged_in = True
                 return True
 
         except requests.exceptions.RequestException as e:

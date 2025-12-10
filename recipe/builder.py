@@ -46,16 +46,37 @@ class RecipeBuilder:
     def attach_bill(self, bom_path: str, output_path: str = None):
         """
         Insert a Bill of Materials component into the recipe.
+        The BOM (<eBoxObject>) is inserted right after the <eProcObject objType="PM_SUP"> element closes.
         
         Args:
             bom_path: Path to the BOM XML file to attach.
             output_path: Optional path to write the updated XML. If None, doesn't write.
         """
-        bills = self.main_root.find(".//eSpecXmlObjs")
-        if bills is None:
+        e_spec_xml_objs = self.main_root.find(".//eSpecXmlObjs")
+        if e_spec_xml_objs is None:
             raise RuntimeError("Target <eSpecXmlObjs> not found for attaching BOM")
         
-        # Parse BOM XML and get the eSpecXmlObjs element (not the root eSpecObjects)
+        # Find the PM_SUP (Unit Procedure) element
+        pm_sup = e_spec_xml_objs.find(".//eProcObject[@objType='PM_SUP']")
+        if pm_sup is None:
+            logger.warning("PM_SUP element not found, appending BOM to end of eSpecXmlObjs")
+            parent = e_spec_xml_objs
+            insert_index = len(list(parent))
+        else:
+            # Get the parent (should be eSpecXmlObjs)
+            parent = pm_sup.getparent()
+            if parent is None:
+                parent = e_spec_xml_objs
+            
+            # Find the index of PM_SUP in parent's children and insert after it
+            parent_children = list(parent)
+            try:
+                insert_index = parent_children.index(pm_sup) + 1
+            except ValueError:
+                # If PM_SUP not found in direct children, append to parent
+                insert_index = len(parent_children)
+        
+        # Parse BOM XML and get the eBoxObject element
         bom_tree = ET.parse(bom_path)
         bom_root = bom_tree.getroot()
         bom_spec_objs = bom_root.find(".//eSpecXmlObjs")
@@ -63,11 +84,16 @@ class RecipeBuilder:
         if bom_spec_objs is None:
             raise RuntimeError(f"BOM file '{bom_path}' does not contain <eSpecXmlObjs> element")
         
-        # Append all children from BOM's eSpecXmlObjs to recipe's eSpecXmlObjs
-        for child in bom_spec_objs:
-            # Create a deep copy to avoid modifying the original
-            child_copy = copy.deepcopy(child)
-            bills.append(child_copy)
+        # Find the eBoxObject in the BOM
+        bom_box_object = bom_spec_objs.find(".//eBoxObject[@objType='MM_BOM']")
+        if bom_box_object is None:
+            raise RuntimeError(f"BOM file '{bom_path}' does not contain <eBoxObject objType='MM_BOM'> element")
+        
+        # Create a deep copy to avoid modifying the original
+        bom_copy = copy.deepcopy(bom_box_object)
+        
+        # Insert the BOM right after PM_SUP
+        parent.insert(insert_index, bom_copy)
 
         logger.info("Attached BOM to recipe: %s", bom_path)
         

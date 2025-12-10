@@ -49,14 +49,21 @@ class PomsicleTemplateManager:
             raise ValueError("Missing essential configuration variables for PomsicleTemplateManager.")
         
         self.session = requests.Session()
+        self._is_logged_in = False  # Track login state
 
     def _perform_login(self) -> bool:
         """
         Performs a browser-like login to the POMSicle system.
+        Only performs login if not already logged in.
 
         Returns:
             bool: True if login is successful, False otherwise.
         """
+        # Skip if already logged in
+        if self._is_logged_in:
+            logger.debug("Already logged in, skipping login.")
+            return True
+            
         logger.info("Attempting browser-like login via DesktopDefault.aspx...")
 
         initial_get_return_url_encoded = quote_plus(f"{self.espec_model_base_path}SpecificationManagement.aspx?AutoClose=1")
@@ -108,17 +115,21 @@ class PomsicleTemplateManager:
                 logger.error("Login failed. Check username, password, or server status.")
                 logger.error(f"Login Response Status Code: {login_response.status_code}")
                 logger.error(f"Login Response Content (start):\n{login_response.text[:1000]}...")
+                self._is_logged_in = False
                 return False
             else:
                 logger.info(f"Browser-like login successful! Current URL after login: {login_response.url}")
                 logger.debug(f"Session cookies after login: {self.session.cookies.get_dict()}")
+                self._is_logged_in = True
                 return True
 
         except requests.exceptions.RequestException as e:
             logger.error(f"Browser-like login request failed: {e}")
+            self._is_logged_in = False
             return False
         except Exception as e:
             logger.error(f"An unexpected error occurred during browser-like login: {e}")
+            self._is_logged_in = False
             return False
 
     def _process_xml_file(self, xml_file_path: str):
