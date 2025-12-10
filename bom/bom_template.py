@@ -247,6 +247,7 @@ class PomsicleBOMManager:
         
         header = ET.fromstring(ET.tostring(header_tree.getroot(), encoding='unicode'))
         header.set('id', bom_name or 'POMSICLE_BOM_' + str(uuid.uuid4()))
+        header.set('description', bom_name + " desc" or 'POMSICLE_BOM_DESC' + str(uuid.uuid4()))
         header.set('locationId', self.location_id)
         header.set('levelId', self.level_id)
         header.set('locationName', self.location_name)
@@ -287,69 +288,69 @@ class PomsicleBOMManager:
         e_spec_xml_objs.append(header)
         
         # Add base objects for each material
-        for material_id, material_info in self.fetched_materials.items():
-            base = ET.fromstring(ET.tostring(base_tree.getroot(), encoding='unicode'))
+        # for material_id, material_info in self.fetched_materials.items():
+        #     base = ET.fromstring(ET.tostring(base_tree.getroot(), encoding='unicode'))
             
-            # Set base object attributes
-            base.set('objType', 'MM_OBJ')
-            base.set('relObjType', 'MM')
-            base.set('id', material_id)
-            base.set('levelName', 'Master')
-            base.set('levelId', self.level_id)
-            base.set('locationName', self.location_name)
-            base.set('locationId', self.location_id)
+        #     # Set base object attributes
+        #     base.set('objType', 'MM_OBJ')
+        #     base.set('relObjType', 'MM')
+        #     base.set('id', material_id)
+        #     base.set('levelName', 'Master')
+        #     base.set('levelId', self.level_id)
+        #     base.set('locationName', self.location_name)
+        #     base.set('locationId', self.location_id)
             
-            # Set description from material info
-            material_desc = material_info.get('MATERIAL_DESC', '')
-            base.set('description', material_desc)
+        #     # Set description from material info
+        #     material_desc = material_info.get('MATERIAL_DESC', '')
+        #     base.set('description', material_desc)
             
-            # Set status and version
-            base.set('status', material_info.get('STATUS', 'APPROVED'))
-            base.set('version', material_info.get('OBJ_VER', '1.001'))
+        #     # Set status and version
+        #     base.set('status', material_info.get('STATUS', 'APPROVED'))
+        #     base.set('version', material_info.get('OBJ_VER', '1.001'))
             
-            # Convert and set lastChangedDate
-            last_changed_date = material_info.get('LAST_CHANGED_DATE', '')
-            if last_changed_date.startswith('/Date('):
-                last_changed_date = parse_date(last_changed_date)
+        #     # Convert and set lastChangedDate
+        #     last_changed_date = material_info.get('LAST_CHANGED_DATE', '')
+        #     if last_changed_date.startswith('/Date('):
+        #         last_changed_date = parse_date(last_changed_date)
 
-            base.set('lastChangedDate', last_changed_date)
-            base.set('createDate', last_changed_date)
-            base.set('lastStatusChangedDate', last_changed_date)
-            base.set('lastChangedBy', self.username)
+        #     base.set('lastChangedDate', last_changed_date)
+        #     base.set('createDate', last_changed_date)
+        #     base.set('lastStatusChangedDate', last_changed_date)
+        #     base.set('lastChangedBy', self.username)
             
-            default_qc_status = material_info.get('DEFAULT_QC_STATUS', 'Released')
-            default_quality_attr = base.find(".//eObjectAttribute[@attribId='Default Quality']")
-            if default_quality_attr is not None:
-                status_elem = default_quality_attr.find(".//eObjectAttributeElement[@elemId='Status Value']")
-                if status_elem is not None:
-                    status_elem.set('sValue', default_qc_status)
+        #     default_qc_status = material_info.get('DEFAULT_QC_STATUS', 'Released')
+        #     default_quality_attr = base.find(".//eObjectAttribute[@attribId='Default Quality']")
+        #     if default_quality_attr is not None:
+        #         status_elem = default_quality_attr.find(".//eObjectAttributeElement[@elemId='Status Value']")
+        #         if status_elem is not None:
+        #             status_elem.set('sValue', default_qc_status)
             
-            # Inventory Tracking
-            inventory_tracking = material_info.get('INVENTORY_TRACKING', 'Container')
-            inventory_tracking_attr = base.find(".//eObjectAttribute[@attribId='Inventory Tracking']")
-            if inventory_tracking_attr is not None:
-                tracking_elem = inventory_tracking_attr.find(".//eObjectAttributeElement[@elemId='Value']")
-                if tracking_elem is not None:
-                    tracking_elem.set('sValue', inventory_tracking)
+        #     # Inventory Tracking
+        #     inventory_tracking = material_info.get('INVENTORY_TRACKING', 'Container')
+        #     inventory_tracking_attr = base.find(".//eObjectAttribute[@attribId='Inventory Tracking']")
+        #     if inventory_tracking_attr is not None:
+        #         tracking_elem = inventory_tracking_attr.find(".//eObjectAttributeElement[@elemId='Value']")
+        #         if tracking_elem is not None:
+        #             tracking_elem.set('sValue', inventory_tracking)
             
-            # Inventory UOM
-            inventory_uom = material_info.get('INVENTORY_UOM', 'g')
-            inventory_uom_attr = base.find(".//eObjectAttribute[@attribId='Inventory UOM']")
-            if inventory_uom_attr is not None:
-                uom_elem = inventory_uom_attr.find(".//eObjectAttributeElement[@elemId='UOM']")
-                if uom_elem is not None:
-                    uom_elem.set('sValue', inventory_uom)
+        #     # Inventory UOM
+        #     inventory_uom = material_info.get('INVENTORY_UOM', 'g')
+        #     inventory_uom_attr = base.find(".//eObjectAttribute[@attribId='Inventory UOM']")
+        #     if inventory_uom_attr is not None:
+        #         uom_elem = inventory_uom_attr.find(".//eObjectAttributeElement[@elemId='UOM']")
+        #         if uom_elem is not None:
+        #             uom_elem.set('sValue', inventory_uom)
             
-            # Storage Class
-            storage_class = material_info.get('STORAGE_CLASS', 'AMBIENT')
-            storage_class_attr = base.find(".//eObjectAttribute[@attribId='Storage Class']")
-            if storage_class_attr is not None:
-                storage_elem = storage_class_attr.find(".//eObjectAttributeElement[@elemId='Value']")
-                if storage_elem is not None:
-                    storage_elem.set('sValue', storage_class)
+        #     # Storage Class
+        #     storage_class = material_info.get('STORAGE_CLASS', 'AMBIENT')
+        #     storage_class_attr = base.find(".//eObjectAttribute[@attribId='Storage Class']")
+        #     if storage_class_attr is not None:
+        #         storage_elem = storage_class_attr.find(".//eObjectAttributeElement[@elemId='Value']")
+        #         if storage_elem is not None:
+        #             storage_elem.set('sValue', storage_class)
             
-            # Append base to template
-            e_spec_xml_objs.append(base)
+        #     # Append base to template
+        #     e_spec_xml_objs.append(base)
         
         # Save the modified template to a temporary file
         temp_xml_path = os.path.join(os.path.dirname(__file__), 'Bom_temp.xml')
@@ -517,7 +518,7 @@ class PomsicleBOMManager:
                 logger.error(f"Response Status Code: {e.response.status_code}, Content: {e.response.text}")
             return None
 
-    def create_template(self, template_name: str = "Bom_template.xml", bom_name: str = None):
+    def create_template(self, template_name: str = "Bom_template.xml", bom_name: str = None, pull: bool = False) -> str | None:
         """
         Main method to create a template by uploading and importing an XML file.
         Modifies the XML template with provided names before upload.
@@ -525,25 +526,25 @@ class PomsicleBOMManager:
         Args:
             template_name (str): The name of the template XML file to use.
             bom_name (str): Name for the BOM. If None, generates a UUID-based name.
+            pull (bool): If True, pulls the file name out and hand it to the parent.
         """
         logger.info(f"Attempting to create BOM: '{bom_name}'")
-
-        # if not self._perform_login():
-        #     logger.critical("Login failed. Cannot proceed with template creation.")
-        #     return False
 
         # Generate the modified template XML
         logger.debug("Modifying XML template with materials and BOM name...")
         try:
             temp_xml_file_path = self._modify_template_xml(bom_name)
             if not temp_xml_file_path or not os.path.exists(temp_xml_file_path):
-                logger.error("Failed to generate modified XML template. Aborting.")
+                logger.error("Failed to generate modified BOM XML template. Aborting.")
                 return False
         except Exception as e:
-            logger.error(f"Failed to modify XML template: {e}")
+            logger.error(f"Failed to modify BOM XML template: {e}")
             return False
 
-        logger.debug(f"Temporary XML file created: {temp_xml_file_path}")
+        logger.debug(f"Temporary BOM XML file created: {temp_xml_file_path}")
+
+        if pull:
+            return temp_xml_file_path
 
         file_size = os.path.getsize(temp_xml_file_path)
 
