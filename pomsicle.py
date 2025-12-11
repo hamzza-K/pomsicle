@@ -216,7 +216,6 @@ def handle_material_create(args, token=None):
                 attributes[''.join(key.strip().split('_'))] = value.strip()
             else:
                 logger.warning(f"Invalid attribute format: {attr_pair}. Expected 'attribId=value'")
-    logger.info(f"Default material attributes: {attributes}")
     
     try:
         material_manager = PomsicleMaterialManager(
@@ -239,7 +238,7 @@ def handle_material_create(args, token=None):
             if args.pull:
                 logger.info(f"Material XML file created: {success}")
             else:
-                logger.info(f"Material '{args.material_id}' created and imported successfully.")
+                ban.success(f"Material '{args.material_id}' created successfully.")
         else:
             logger.error(f"Failed to create material '{args.material_id}'.")
             exit(1)

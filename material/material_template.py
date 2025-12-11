@@ -1,3 +1,4 @@
+from typing import Optional
 import requests
 import json
 import xml.etree.ElementTree as ET
@@ -39,6 +40,26 @@ class PomsicleMaterialManager:
         self.machine_name = settings.get('MACHINE_NAME')
         self.program_path = settings.get('PROGRAM_BASE_PATH')
 
+        if not isinstance(self.machine_name, str) or not self.machine_name:
+            logger.critical("MACHINE_NAME is not a valid string in settings. Exiting.")
+            raise ValueError("MACHINE_NAME is not a valid string in settings.")
+
+        if not isinstance(self.login_host, str) or not self.login_host:
+            logger.critical("LOGIN_HOST is not a valid string in settings. Exiting.")
+            raise ValueError("LOGIN_HOST is not a valid string in settings.")
+
+        if not isinstance(self.base_app_url, str) or not self.base_app_url:
+            logger.critical("BASE_APP_URL is not a valid string in settings. Exiting.")
+            raise ValueError("BASE_APP_URL is not a valid string in settings.")
+
+        if not isinstance(self.import_url, str) or not self.import_url:
+            logger.critical("IMPORT_URL is not a valid string in settings. Exiting.")
+            raise ValueError("IMPORT_URL is not a valid string in settings.")
+
+        if not isinstance(self.file_upload_url, str) or not self.file_upload_url:
+            logger.critical("FILE_UPLOAD_URL is not a valid string in settings. Exiting.")
+            raise ValueError("FILE_UPLOAD_URL is not a valid string in settings.")
+        
         self.level_id = location_settings.get('LEVEL_ID', '10')
         self.location_id = location_settings.get('LOCATION_ID', '4')
         self.location_name = location_settings.get('LOCATION_NAME', 'Herndon')
@@ -179,7 +200,7 @@ class PomsicleMaterialManager:
             logger.error(f"Error during XML processing: {e}")
             return None, None, None, None
 
-    def _modify_template_xml(self, material_id: str, material_description: str = None, attributes: dict = None) -> str:
+    def _modify_template_xml(self, material_id: str, material_description: Optional[str | None], attributes: Optional[dict]) -> str:
         """
         Modifies the material template XML by setting material ID, description, and attribute values.
         Uses deep copies to ensure original template files are never modified.
@@ -253,7 +274,7 @@ class PomsicleMaterialManager:
                                     if matched:
                                         s_value = matched
                                     else:
-                                        logger.warning(f"Value '{s_value}' not found in choices for '{attrib_id}'. Available: {choices}. Using provided value anyway.")
+                                        logger.debug(f"Value '{s_value}' not found in choices for '{attrib_id}'. Available: {choices}. Using provided value anyway.")
                             
                             elem.set('sValue', s_value)
                             logger.debug(f"Set {attrib_id} -> {s_value}")
@@ -272,8 +293,8 @@ class PomsicleMaterialManager:
     def create_template(
         self,
         material_id: str,
-        material_description: str = None,
-        attributes: dict = None,
+        material_description: Optional[str | None],
+        attributes: Optional[dict] = None,
         template_name: str = "material_template.xml",
         pull: bool = False
     ) -> str | bool:
@@ -303,92 +324,181 @@ class PomsicleMaterialManager:
             if not self._perform_login():
                 logger.error("Login failed. Cannot proceed with upload and import.")
                 return False
-            
-            if not self._upload_file(xml_file_path):
+
+            uploaded_file_uid, temp_server_filename = self._upload_file(xml_file_path)
+            if not uploaded_file_uid:
                 logger.error("File upload failed.")
                 return False
-            
-            if not self._import_file(xml_file_path):
+
+            if not self._import_file(uploaded_file_uid, temp_server_filename):
                 logger.error("File import failed.")
                 return False
             
-            logger.info(f"Material '{material_id}' created and imported successfully.")
+            logger.debug(f"Material '{material_id}' created and imported successfully.")
             return True
             
         except Exception as e:
             logger.error(f"Error creating material: {e}", exc_info=True)
             return False
 
-    def _upload_file(self, xml_file_path: str) -> bool:
+    def _upload_file(self, xml_file_path: str) -> tuple[Optional[str], Optional[str]]:
         """
-        Uploads the XML file to the POMSicle server.
+        Uploads a single XML file to the server.
 
         Args:
-            xml_file_path (str): Path to the XML file to upload.
+            xml_file_path (str): Path to the XML file.
+            xml_file_name (str): Name of the XML file.
+            total_file_size (int): Size of the XML file in bytes.
 
         Returns:
-            bool: True if upload is successful, False otherwise.
+            tuple: (uploaded_file_uid, temp_server_filename) or (None, None) on failure.
         """
-        try:
-            obj_type, level_id, location_id, file_size = self._process_xml_file(xml_file_path)
-            
-            if not all([obj_type, level_id, location_id]):
-                logger.error("Failed to extract required information from XML file.")
-                return False
+        logger.debug(f"Initiating single file upload for '{xml_file_path}' to {self.file_upload_url}...")
 
+        uploaded_file_uid = str(uuid.uuid4())
+        total_file_size = os.path.getsize(xml_file_path)
+        temp_server_filename = None
+
+        try:
             with open(xml_file_path, 'rb') as f:
-                files = {'file': (os.path.basename(xml_file_path), f, 'application/xml')}
-                data = {
-                    'objType': obj_type,
-                    'levelId': level_id,
-                    'locationId': location_id
-                }
-                
-                logger.info(f"Uploading file '{xml_file_path}' to {self.file_upload_url}")
-                response = self.session.post(self.file_upload_url, files=files, data=data, verify=False)
-                response.raise_for_status()
-                
-                logger.info(f"File uploaded successfully. Response: {response.text[:200]}")
-                return True
-                
-        except Exception as e:
-            logger.error(f"Error uploading file: {e}", exc_info=True)
-            return False
+                full_file_content = f.read()
 
-    def _import_file(self, xml_file_path: str) -> bool:
+                metadata = {
+                    "chunkIndex": 0,
+                    "contentType": "text/xml",
+                    "fileName": os.path.basename(xml_file_path),
+                    "relativePath": os.path.basename(xml_file_path),
+                    "totalFileSize": total_file_size,
+                    "totalChunks": 1,
+                    "uploadUid": uploaded_file_uid
+                }
+
+                upload_files = {
+                    'files': ("blob", full_file_content, 'application/octet-stream'),
+                    'metadata': (None, json.dumps(metadata), 'application/json')
+                }
+
+                upload_headers = {
+                    'Accept': '*/*; q=0.5, application/json',
+                    'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+                    'Connection': 'keep-alive',
+                    'Host': self.machine_name,
+                    'Origin': self.login_host,
+                    'Referer': f"{self.base_app_url}SpecificationManagement.aspx",
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+                }
+
+                logger.debug(f"Uploading entire file as a single chunk (UID: {uploaded_file_uid})...")
+                upload_response = self.session.post(self.file_upload_url, files=upload_files, headers=upload_headers, verify=False)
+                upload_response.raise_for_status()
+
+                upload_result = upload_response.json()
+                logger.debug(f"Single upload response: {upload_result}")
+
+                if upload_result.get("uploaded", False):
+                    logger.debug("File uploaded successfully to server temp directory!")
+                    temp_server_filename = upload_result.get("TempFileName")
+                    uploaded_file_uid = upload_result.get("fileUid")
+                    if uploaded_file_uid is None:
+                        logger.warning("'fileUid' was not returned in the upload response. This might cause issues.")
+                else:
+                    logger.error(f"File failed to upload. Response: {upload_result}")
+                    return None, None
+
+            if not temp_server_filename:
+                logger.error("File upload completed but no TempFileName was received from the server.")
+                return None, None
+
+            logger.debug(f"Full file uploaded successfully. Server temporary path: {temp_server_filename}")
+            return uploaded_file_uid, temp_server_filename
+
+        except requests.exceptions.RequestException as e:
+            logger.error(f"File upload request failed: {e}")
+            if hasattr(e, 'response') and e.response is not None:
+                logger.error(f"Response Status Code: {e.response.status_code}, Content: {e.response.text}")
+            return None, None
+        except Exception as e:
+            logger.error(f"An unexpected error occurred during file upload: {e}")
+            return None, None
+
+    def _import_file(self, uploaded_file_uid: str, xml_file_name: str) -> Optional[dict]:
         """
-        Imports the uploaded XML file into POMSicle.
+        Calls the server's ImportFiles endpoint to import the uploaded XML file.
 
         Args:
-            xml_file_path (str): Path to the XML file that was uploaded.
+            uploaded_file_uid (str): The UID of the uploaded file.
+            xml_file_name (str): The original name of the XML file.
+            obj_type (str): Object type extracted from XML.
+            level_id (str): Level ID extracted from XML.
+            location_id (str): Location ID extracted from XML.
+            file_size (int): Size of the XML file.
 
         Returns:
-            bool: True if import is successful, False otherwise.
+            dict: The JSON response from the import API call, or None on failure.
         """
+        logger.debug(f"Attempting to call ImportFiles with uploaded file UID: {uploaded_file_uid}...")
+
+        file_size = os.path.getsize(os.path.join(os.path.dirname(__file__), 'Material_temp.xml'))
+
+        file_entry = {
+            "FileName": xml_file_name,
+            "Extension": os.path.splitext(xml_file_name)[1],
+            "Size": file_size,
+            "Uid": uploaded_file_uid
+        }
+
+        pass_data_json = {
+            "userID": self.username,
+            "TreeIdentifier":"33499dad-a760-44e0-a3c5-49ce14f184c4",
+            "Domain":"",
+            "DLL":"POMS_ProcObject_Lib",
+            "Type": "ConfiguredObject",
+            "SubType":"MM_OBJ",
+            "Level": self.level_id,
+            "Location": self.location_id,
+            "Folder":"",
+            "SearchSubType":"",
+            "Files":[file_entry],
+            "Signature":{
+                "SignatureRequired":False,
+                "UserID": self.username,
+                "UserName": self.username,
+                "Reason":"Import",
+                "ISOTimestamp": datetime.now(timezone.utc).isoformat(timespec='milliseconds').replace('+00:00', 'Z'),
+                "UserID2":"","UserName2":"","Comment":""
+            },
+            "ValidateXMLOnly":False,
+            "StopOnError":False,
+            "PreserveCheckinCheckout":False,
+            "PreserveVersion":False,
+            "PreserveStatus":False,
+            "CreateFolders":False,
+            "ImportBase":True,
+            "ImportPhases":False
+        }
+
+        headers_for_import = {
+            'Accept': 'application/json, text/javascript, */*; q=0.01',
+            'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Origin': self.login_host,
+            'Referer': f"{self.base_app_url}SpecificationManagement.aspx",
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
+            'X-Requested-With': 'XMLHttpRequest',
+        }
+
         try:
-            obj_type, level_id, location_id, file_size = self._process_xml_file(xml_file_path)
-            
-            if not all([obj_type, level_id, location_id]):
-                logger.error("Failed to extract required information from XML file.")
-                return False
-
-            filename = os.path.basename(xml_file_path)
-            
-            import_data = {
-                'objType': obj_type,
-                'levelId': level_id,
-                'locationId': location_id,
-                'fileName': filename
-            }
-            
-            logger.info(f"Importing file '{filename}' via {self.import_url}")
-            response = self.session.post(self.import_url, json=import_data, verify=False)
+            response = self.session.post(self.import_url, json=pass_data_json, headers=headers_for_import, verify=False)
             response.raise_for_status()
-            
-            logger.info(f"File imported successfully. Response: {response.text[:200]}")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Error importing file: {e}", exc_info=True)
-            return False
 
+            result = response.json()
+            logger.info("Import request successful!")
+            logger.debug(f"Response JSON: {json.dumps(result, indent=2)}")
+            return result
+
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Import request failed: {e}")
+            if hasattr(e, 'response') and e.response is not None:
+                logger.error(f"Response Status Code: {e.response.status_code}, Content: {e.response.text}")
+            return None
