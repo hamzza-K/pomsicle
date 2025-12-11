@@ -41,8 +41,8 @@ config_file_name = 'config.cfg'
 try:
     settings = config(translator='pomsicle')
     receive_settings = config(translator='pomsicle:receive')
-    bom_settings = config(translator='pomsicle:bom')
     material_settings = config(translator='pomsicle:material')
+    location_settings = config(translator='pomsicle:location')
 except (FileNotFoundError, ValueError) as e:
     logger.critical(f"Configuration error: {e}. Exiting.")
     exit(1)
@@ -182,7 +182,7 @@ def handle_bom_start(args, token=None):
     # Implement BOM start logic here
 
     try:
-        template_manager = PomsicleBOMManager(settings, bom_settings, args.add, USERNAME, PASSWORD)
+        template_manager = PomsicleBOMManager(settings, location_settings, args.add, USERNAME, PASSWORD)
         success = template_manager.create_template(
             template_name=args.template_name,
             bom_name=args.bom_name
@@ -207,20 +207,22 @@ def handle_material_create(args, token=None):
     logger.info(f"Creating material: {args.material_id}")
     
     # Parse attributes from command line if provided
-    attributes = {}
+    attributes = material_settings
     if args.attributes:
         # Attributes should be in format: "attribId1=value1,attribId2=value2"
         for attr_pair in args.attributes:
             if '=' in attr_pair:
                 key, value = attr_pair.split('=', 1)
-                attributes[key.strip()] = value.strip()
+                attributes[''.join(key.strip().split('_'))] = value.strip()
             else:
                 logger.warning(f"Invalid attribute format: {attr_pair}. Expected 'attribId=value'")
+    logger.info(f"Default material attributes: {attributes}")
     
     try:
         material_manager = PomsicleMaterialManager(
             settings,
             material_settings,
+            location_settings,
             USERNAME,
             PASSWORD
         )
@@ -267,7 +269,7 @@ def handle_recipe_create_custom(args, token=None):
         if not args.materials:
             logger.error("Materials not provided for BOM attachment. Exiting.")
             exit(1)
-        bill_builder = PomsicleBOMManager(settings, bom_settings, args.materials, USERNAME, PASSWORD)
+        bill_builder = PomsicleBOMManager(settings, location_settings, args.materials, USERNAME, PASSWORD)
         bom_file = bill_builder.create_template(
             bom_name=args.attach,
             pull=True

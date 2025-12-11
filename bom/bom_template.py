@@ -16,7 +16,7 @@ class PomsicleBOMManager:
     """
     Manages the upload and import of BOM XML files to POMSicle.
     """
-    def __init__(self, settings: dict, bom_settings: dict, materials: list, username: str, password: str):
+    def __init__(self, settings: dict, location_settings: dict, materials: list, username: str, password: str):
         """
         Initializes the PomsicleBOMManager with configuration settings and credentials.
 
@@ -40,9 +40,9 @@ class PomsicleBOMManager:
         self.program_path = settings.get('PROGRAM_BASE_PATH')
         self.materials_url = settings.get('MATERIALS_URL')
 
-        self.level_id = bom_settings.get('LEVEL_ID', '10')
-        self.location_id = bom_settings.get('LOCATION_ID', '4')
-        self.location_name = bom_settings.get('LOCATION_NAME', 'Herndon')
+        self.level_id = location_settings.get('LEVEL_ID', '10')
+        self.location_id = location_settings.get('LOCATION_ID', '4')
+        self.location_name = location_settings.get('LOCATION_NAME', 'Herndon')
 
         self.session = requests.Session()
         self._is_logged_in = False

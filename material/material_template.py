@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from urllib.parse import quote_plus, urljoin
 from bs4 import BeautifulSoup
 from banners import Banner
+import ast
 import uuid
 from utils.parse_date import parse_poms_date as parse_date
 
@@ -16,7 +17,7 @@ class PomsicleMaterialManager:
     """
     Manages the creation, modification, and upload of Material XML files to POMSicle.
     """
-    def __init__(self, settings: dict, material_settings: dict, username: str, password: str):
+    def __init__(self, settings: dict, material_settings: dict, location_settings: dict, username: str, password: str):
         """
         Initializes the PomsicleMaterialManager with configuration settings and credentials.
 
@@ -38,9 +39,9 @@ class PomsicleMaterialManager:
         self.machine_name = settings.get('MACHINE_NAME')
         self.program_path = settings.get('PROGRAM_BASE_PATH')
 
-        self.level_id = material_settings.get('LEVEL_ID', '10')
-        self.location_id = material_settings.get('LOCATION_ID', '4')
-        self.location_name = material_settings.get('LOCATION_NAME', 'Herndon')
+        self.level_id = location_settings.get('LEVEL_ID', '10')
+        self.location_id = location_settings.get('LOCATION_ID', '4')
+        self.location_name = location_settings.get('LOCATION_NAME', 'Herndon')
 
         self.session = requests.Session()
         self._is_logged_in = False
@@ -213,7 +214,7 @@ class PomsicleMaterialManager:
         
         # Set material ID and description
         base_object.set('id', material_id)
-        base_object.set('description', material_description or material_id)
+        base_object.set('description', material_description or material_id + " Pomsicle")
         base_object.set('levelName', 'Master')
         base_object.set('levelId', self.level_id)
         base_object.set('locationName', self.location_name)
@@ -222,6 +223,7 @@ class PomsicleMaterialManager:
         base_object.set('relObjType', 'MM')
         base_object.set('status', 'EDITING')
         base_object.set('lastChangedBy', self.username)
+        base_object.set('checkedOutBy', self.username)
         base_object.set('version', '1.001')
         
         # Set dates
@@ -234,6 +236,10 @@ class PomsicleMaterialManager:
         
         if attributes:
             for attrib_id, s_value in attributes.items():
+                for a, s in ast.literal_eval(s_value).items():
+                    attrib_id = a
+                    s_value = s
+                # Find the attribute by attribId
                 attr = base_object.find(f".//eObjectAttribute[@attribId='{attrib_id}']")
                 if attr is not None:
                     for elem_id in ['Value', 'UOM', 'Status Value']:
