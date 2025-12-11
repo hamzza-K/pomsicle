@@ -20,13 +20,13 @@ logger = logging.getLogger(__name__)
 class BOMService:
     """Service for BOM (Bill of Materials) operations."""
     
-    def __init__(self, settings: Optional[dict] = None, bom_settings: Optional[dict] = None, username: Optional[str] = None, password: Optional[str] = None):
+    def __init__(self, settings: Optional[dict] = None, location_settings: Optional[dict] = None, username: Optional[str] = None, password: Optional[str] = None):
         """
         Initialize BOMService.
         
         Args:
             settings: Configuration dictionary. If None, loads from config.
-            bom_settings: BOM-specific configuration dictionary. If None, loads from config.
+            location_settings: Location-specific configuration dictionary. If None, loads from config.
             username: Username for authentication. If None, loads from config.
             password: Password for authentication. If None, loads from config.
         """
@@ -37,19 +37,19 @@ class BOMService:
                 logger.error(f"Configuration error: {e}")
                 raise ValueError(f"Failed to load configuration: {e}")
         
-        if bom_settings is None:
+        if location_settings is None:
             try:
-                bom_settings = config(translator='pomsicle:bom')
+                location_settings = config(translator='pomsicle:location')
             except (FileNotFoundError, ValueError) as e:
-                logger.warning(f"BOM settings not found, using defaults: {e}")
-                bom_settings = {
+                logger.warning(f"Location settings not found, using defaults: {e}")
+                location_settings = {
                     'LEVEL_ID': '10',
                     'LOCATION_ID': '4',
                     'LOCATION_NAME': 'Herndon'
                 }
         
         self.settings = settings
-        self.bom_settings = bom_settings
+        self.location_settings = location_settings
         self.username = username or settings.get('USERNAME')
         self.password = password or settings.get('PASSWORD')
         
@@ -85,7 +85,7 @@ class BOMService:
             
             manager = PomsicleBOMManager(
                 self.settings,
-                self.bom_settings,
+                self.location_settings,
                 materials,
                 self.username,
                 self.password
@@ -155,7 +155,7 @@ class BOMService:
             
             manager = PomsicleBOMManager(
                 self.settings,
-                self.bom_settings,
+                self.location_settings,
                 materials,
                 self.username,
                 self.password

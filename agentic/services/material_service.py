@@ -19,7 +19,8 @@ logger = logging.getLogger(__name__)
 class MaterialService:
     """Service for material operations."""
     
-    def __init__(self, settings: Optional[dict] = None, material_settings: Optional[dict] = None, username: Optional[str] = None, password: Optional[str] = None):
+    def __init__(self, settings: Optional[dict] = None, material_settings: Optional[dict] = None,
+                  location_settings: Optional[dict] = None, username: Optional[str] = None, password: Optional[str] = None):
         """
         Initialize MaterialService.
         
@@ -46,9 +47,23 @@ class MaterialService:
                     'LOCATION_ID': '4',
                     'LOCATION_NAME': 'Herndon'
                 }
+
+
+        if location_settings is None:
+            try:
+                location_settings = config(translator='pomsicle:location')
+            except (FileNotFoundError, ValueError) as e:
+                logger.warning(f"Location specific configuration not found: {e}")
+                location_settings = {
+                    'LEVEL_ID': '10',
+                    'LOCATION_ID': '4',
+                    'LOCATION_NAME': 'Herndon'
+                }
+        
         
         self.settings = settings
         self.material_settings = material_settings
+        self.location_settings = location_settings
         self.username = username or settings.get('USERNAME')
         self.password = password or settings.get('PASSWORD')
         
@@ -80,6 +95,7 @@ class MaterialService:
             manager = PomsicleMaterialManager(
                 self.settings,
                 self.material_settings,
+                self.location_settings,
                 self.username,
                 self.password
             )
@@ -142,6 +158,7 @@ class MaterialService:
             manager = PomsicleMaterialManager(
                 self.settings,
                 self.material_settings,
+                self.location_settings,
                 self.username,
                 self.password
             )

@@ -99,6 +99,7 @@ def get_material_service() -> MaterialService:
     return MaterialService(
         settings=config_manager.settings,
         material_settings=config_manager.material_settings,
+        location_settings=config_manager.location_settings,
         username=config_manager.get_username(),
         password=config_manager.get_password()
     )
@@ -277,12 +278,13 @@ async def create_material(
     This endpoint creates a material with specified ID, description, and attributes.
     Attributes are key-value pairs where the key is the attribId and the value is the sValue.
     """
+
     try:
         result = service.create(
             material_id=request.material_id,
             material_description=request.material_description,
-            attributes=request.attributes,
-            template_name=request.template_name
+            attributes=request.attributes or config_manager.material_settings,
+            template_name=request.template_name or "material_template.xml"
         )
         
         if not result["success"]:

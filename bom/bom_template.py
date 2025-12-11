@@ -256,8 +256,8 @@ class PomsicleBOMManager:
         e_spec_xml_objs = template_root.find('eSpecXmlObjs')
         
         header = ET.fromstring(ET.tostring(header_tree.getroot(), encoding='unicode'))
-        header.set('id', bom_name or 'POMSICLE_BOM_' + str(uuid.uuid4()))
-        header.set('description', bom_name + "_Pomsicle Description" or 'POMSICLE_BOM_DESC' + str(uuid.uuid4()))
+        header.set('id', bom_name +"_BOM" or 'POMSICLE_BOM_' + str(uuid.uuid4()))
+        header.set('description', bom_name + "_BOM" + "(Pomsicle)" or 'POMSICLE_BOM_DESC' + str(uuid.uuid4()))
         header.set('locationId', self.location_id)
         header.set('levelId', self.level_id)
         header.set('locationName', self.location_name)
