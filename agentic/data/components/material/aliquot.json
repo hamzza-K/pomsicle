@@ -1,0 +1,64 @@
+{
+  "id": "AliquotSetupPhase",
+  "category": "material",
+  "description": "Allows the operator to specify the source container or lot, the target quantity per destination container, and to designate either the number of destination containers or to dispense until the source container is empty. Supports optional verification of the source container, account assignment, and exception recording.",
+  "intent": "To configure and record the dispensing (aliquoting) of material from a source container into one or more target containers as defined by the recipe, capturing all necessary details for traceability and downstream processing.",
+  "inputs": {
+    "Instructions": "string",
+    "UseStandardAliquotQuantities": "boolean",
+    "VerifySourceContainer": "boolean",
+    "ConfirmationType": "string",
+    "ContainerID": "string",
+    "MaterialID": "string",
+    "RequiredQuantity": "number",
+    "UOM": "string",
+    "NumberOfContainers": "integer",
+    "DispenseUntilSourceContainerEmpty": "boolean",
+    "Account1": "string",
+    "RecordException": "boolean"
+  },
+  "outputs": {
+    "DISP_ORDER_ID": "string",
+    "DISP_BATCH_ID": "string",
+    "DISP_UP_ID": "string",
+    "DISP_SPLIT_ID": "string",
+    "DISPENSE_MATL": "string",
+    "PLANT_ID": "string",
+    "CONTAINER_ID": "string",
+    "LOT_ID": "string",
+    "BOM_REF_NO": "string",
+    "PRODUCT_ID": "string",
+    "ACCOUNT1": "string",
+    "ACCOUNT2": "string",
+    "ACCOUNT3": "string",
+    "AREA_ID": "string",
+    "LOCATION": "string",
+    "PAC_ID": "string",
+    "PAC_GROUP_ID": "string"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "Exception Page",
+      "Account Page",
+      "Assign/Edit Lot Flag Page"
+    ],
+    "conditions": [
+      "Source container or lot must be available",
+      "If lot-tracked contains multiple materials, a valid Material ID must be entered",
+      "SUPPORT_LOT_EQ_CONT_ALLOC parameter configuration applies for container-tracked material"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored and configured with Instructions and Confirmation Type",
+    "Valid Container ID is entered and material/lot information is loaded",
+    "Material ID determined or specified if required",
+    "Source area/location selected for lot-tracked material when stored in multiple locations"
+  ],
+  "postconditions": [
+    "Aliquot dispense transaction is recorded",
+    "Batch-level dispensing variables are set"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator scans container C123, enters Required Quantity = 50 g, selects UOM = \"g\", sets Number of Containers = 2, then clicks Finish. The system dispenses 100 g (50 g × 2) into two destination containers and sets batch variables (e.g., DISP_BATCH_ID, CONTAINER_ID, LOT_ID, DISPENSE_MATL, ACCOUNT1, etc.)."
+}

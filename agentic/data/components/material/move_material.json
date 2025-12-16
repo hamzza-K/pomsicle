@@ -1,0 +1,54 @@
+{
+  "id": "MoveMaterialPhase",
+  "category": "material",
+  "description": "Phase that allows an operator to move inventory material containers into production areas or move output product containers out of production by entering or scanning container IDs, selecting source and destination areas/locations, and committing the move.",
+  "intent": "To record and execute the relocation of material containers between areas and locations in the system so that raw materials are staged for production and finished outputs are moved to inventory or other batches.",
+  "inputs": {
+    "ContainerID": "Text field for entering or scanning the ID of a raw material or output container.",
+    "ContainersGrid": "Grid listing all containers associated with the entered Container/Lot ID, showing current Area, Location, Quantity, UOM and Quality Status.",
+    "SourceArea": "Dropdown for selecting the source area of the containers to move.",
+    "SourceLocation": "Dropdown for selecting the source location of the containers to move.",
+    "DestinationArea": "Dropdown for selecting the destination area for the move.",
+    "DestinationLocation": "Dropdown for selecting the destination location for the move.",
+    "MoveButton": "Button to apply the selected New Area and New Location to the chosen containers.",
+    "SaveSelectionsButton": "Button to save destination selections when moving production output containers.",
+    "CommitButton": "Button to complete and commit the container moves.",
+    "FinishButton": "Button to confirm the committed moves and perform any required sign-off.",
+    "CloseButton": "Button to close the page without committing changes.",
+    "ResetButton": "Button to clear all fields and start over.",
+    "InfoButton": "Button to view Inventory Material Information for a selected container.",
+    "MoveMaterial_EnforceUnitStagingAreaOnly": "Configurable parameter that, when true, limits the grid display to unit staging areas only.",
+    "MoveMaterial_EnforceEnterContainer": "Configurable parameter that, when true, requires containers to be entered or scanned rather than selected from the grid.",
+    "RestrictMoveInBasedOnStorageConditions": "Configurable parameter to restrict valid destination areas based on storage conditions.",
+    "AutoSetDestForMoveSameQcStatus": "Configurable parameter that, when true, pre-selects destination area/location for all containers sharing the same QC status.",
+    "QCStatusDestinationMapping": "Table MM_MATL_DEST_SP defining destination restrictions based on QC status."
+  },
+  "outputs": {
+    "MovedContainers": "List of container IDs with their updated Area and Location values after the move.",
+    "MovementRecords": "System records of each container move transaction."
+  },
+  "depends_on": {
+    "components": [
+      "Inventory Material Information page",
+      "Configurable parameters: MoveMaterial_EnforceUnitStagingAreaOnly, MoveMaterial_EnforceEnterContainer, RestrictMoveInBasedOnStorageConditions, AutoSetDestForMoveSameQcStatus",
+      "QC status destination mapping (MM_MATL_DEST_SP)"
+    ],
+    "conditions": [
+      "A valid Container ID (or Lot ID) has been entered or scanned",
+      "Containers exist in the selected source Area/Location"
+    ]
+  },
+  "preconditions": [
+    "Move Material page is accessed via POMSnet Main Menu > Material Management > Move Material (or called from within a unit procedure)",
+    "Containers to be moved are registered in the system and visible in the source area/location"
+  ],
+  "postconditions": [
+    "Selected containers are relocated to the specified destination Area and Location",
+    "Inventory and location data are updated to reflect the move"
+  ],
+  "side_effects": [
+    "Clicking the Info button launches the Inventory Material Information page",
+    "Sign-off requirements on Commit/Finish depend on configurable parameters"
+  ],
+  "example_usage": "Operator scans container 'RM‐LOT123', the grid lists all containers for that lot in Area 'Raw Staging'. They select the container, choose Destination Area 'Production Staging' and Location 'Shelf A', click [Move], then [Commit] and [Finish] to complete the relocation."
+}

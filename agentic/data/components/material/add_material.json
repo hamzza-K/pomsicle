@@ -1,0 +1,49 @@
+{
+  "id": "AddMaterialPhase",
+  "category": "material",
+  "description": "Prompts the operator to add a specified BOM material to the batch, capturing dispense details and assigning it to equipment. On completion, two equipment‐state grids (check and set) are saved.",
+  "intent": "To record the correct addition of a BOM‐referenced material, including quantity, UOM, dispense area/method, equipment assignment and any replenishment settings.",
+  "inputs": {
+    "BomRefNo": "string",
+    "MaterialSelected": "string",
+    "MatlDesc": "string",
+    "DispAreaType": "Line | Central",
+    "DispMethod": "string",
+    "Quantity": "number",
+    "UOM": "string",
+    "enableMaterialReplinished": "0 | 1",
+    "AddMatlToEquip": "0 | 1",
+    "BoeRefNo": "string",
+    "EquipmentClass": "string",
+    "AddEntireContainer": "0 | 1",
+    "CalcBaseRemainder": "0 | 1",
+    "QtyFixed": "0 | 1"
+  },
+  "outputs": {
+    "EquipmentStatusCheckGrid": "DataTable (saved starting at index 6000)",
+    "EquipmentStatusSetGrid": "DataTable (saved starting at index 5000)"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "Equipment State Grid"
+    ],
+    "conditions": [
+      "BOM reference number configured",
+      "Target equipment available"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored and configured with a valid BOM reference",
+    "Equipment (BOE) definitions are present"
+  ],
+  "postconditions": [
+    "Material addition transaction is recorded",
+    "Equipment check and set status grids are persisted"
+  ],
+  "side_effects": [
+    "Inventory levels are decremented",
+    "Equipment state grids are updated in the batch record"
+  ],
+  "example_usage": "Operator confirms BOM Ref 12345, selects Material A, enters quantity 10 kg, chooses Central dispense area, assigns BOE 678, then clicks Finish. The system saves two equipment‐state grids at indexes 6000 and 5000."
+}

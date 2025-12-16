@@ -1,0 +1,52 @@
+{
+  "id": "FlexibleAddMaterialPhase",
+  "category": "material",
+  "description": "Enables the operator to record the addition of one or more materials—BOM-defined, off-BOM or unrestricted—to a batch or order by scanning or selecting the material, entering or weighing the quantity, performing substitutions, safety and QC checks, and recording the results in the system.",
+  "intent": "To flexibly add any required materials to the manufacturing process in accordance with the recipe’s addition rules and configurable parameters, while ensuring traceability, QC compliance and correct inventory updates.",
+  "inputs": {
+    "Instructions": "string",
+    "SelectedBOMMaterialID": "string",
+    "NonBOMMaterial": "boolean",
+    "MaterialID": "string",
+    "ContainerID": "string",
+    "Quantity": "number",
+    "UOM": "string",
+    "UseRecordWeight": "boolean",
+    "RecordWithNoQuantity": "boolean",
+    "UseZeroTareAfterRecordWeight": "boolean",
+    "MaterialSubstitutionType": "Standard | NonStandard"
+  },
+  "outputs": "I don't know based on the available documents.",
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "Material Substitution screen",
+      "Record Weight page",
+      "Searching for Materials page",
+      "Safety Information page",
+      "Record Lot UDA page",
+      "Assign/Edit Lot Flag page",
+      "View Dispense Group dialog",
+      "View Required button",
+      "View Additions page"
+    ],
+    "conditions": [
+      "If container-tracked and SUPPORT_LOT_EQ_CONT_ALLOC=true, allocation sequence rules apply",
+      "Container must pass QC/expiration checks or an exception must be recorded",
+      "Pre-dispensed containers (line-dispensed) must be added before non-dispensed containers",
+      "For lot-tracked lots with multiple possible materials, a valid Material ID must be entered"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored and configured with the appropriate addition rule (BOM, off-BOM or unrestricted)",
+    "Recipe defines the list of materials or permits non-BOM/unrestricted additions",
+    "Configurable parameters (e.g. EnforceFullConsumptionOrTransferForStockContainer, SUPPORT_LOT_EQ_CONT_ALLOC, FlexibleAddMaterial_RecordWeightZeroTare) are set as required"
+  ],
+  "postconditions": [
+    "Material addition transactions are recorded and inventory is updated",
+    "Recipe variables for total added quantity and any batch-level dispensing variables are set",
+    "Any required signatures or confirmations are captured"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator selects BOM material M100 from the list, clicks Record Quantity, scans container C200, enters 50 g (or uses Record Weight), clicks Add, then selects another material, and finally clicks Finish. The system updates inventory, records total added quantities in recipe variables and prompts for confirmation."
+}

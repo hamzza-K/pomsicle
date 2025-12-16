@@ -1,0 +1,43 @@
+{
+  "id": "MatrixMaterialAdditionPhase",
+  "category": "material",
+  "description": "Allows the operator to record the addition of multiple dispensed and non-dispensed material containers to an order/batch, enforcing recipe-authoring configurations such as QC/expiration checks, lot allocation rules, tolerance limits and exception handling.",
+  "intent": "To capture and record container additions for each BOM line item selected at authoring time, ensuring traceability, compliance with allocation and tolerance rules, and updating inventory and recipe variables accordingly.",
+  "inputs": {
+    "Instructions": "string",
+    "ContainerID": "string",
+    "MaterialID": "string",
+    "Quantity": "number",
+    "UOM": "string",
+    "NumberOfContainers": "integer"
+  },
+  "outputs": {
+    "TotalAdded_Ref_<bomRefNo>": "number",
+    "<bomRefNo>.TotalQty": "number"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "Exception Page",
+      "Assign/Edit Lot Flag Page",
+      "View All Materials dialog"
+    ],
+    "conditions": [
+      "QC and Expiration checks must pass or an exception must be recorded if configured",
+      "Containers must satisfy lot allocation rules when SUPPORT_LOT_EQ_CONT_ALLOC=true",
+      "Containers must be in the correct staging area/location for the unit",
+      "Recipe author has selected BOM line items for this phase"
+    ]
+  },
+  "preconditions": [
+    "Phase is authored with selected BOM line items and material-addition configuration options (check-in requirement, multi-source/mixed-lot rules, add-total-amount, nominal value, tolerance enforcement, override exception)",
+    "If a lot-tracked container maps to multiple materials, a valid MaterialID must be entered"
+  ],
+  "postconditions": [
+    "Material addition transactions are recorded for each container",
+    "Inventory is updated to reflect added quantities",
+    "Recipe variables TotalAdded_Ref_<bomRefNo> and <bomRefNo>.TotalQty are set"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator scans container C123, QC and expiration checks pass, enters Quantity = 50 g, UOM = \"g\", NumberOfContainers = 2, then clicks Finish. The system adds two containers, applies lot/allocation rules, updates TotalAdded_Ref_1 and 1.TotalQty recipe variables, and advances to the next phase."
+}

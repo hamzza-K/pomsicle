@@ -1,0 +1,22 @@
+{
+  "id": "AddExternalFile",
+  "category": "data",
+  "description": "Phase that allows attaching an external file to the batch by specifying a link.",
+  "intent": "To attach an external file during recipe execution and publish recipe variables with attachment details.",
+  "inputs": {
+    "Link": "Base file link. Any valid link location."
+  },
+  "outputs": {
+    "AttachedFileCount": "Number of files attached by the phase (integer).",
+    "AttachedFileNames": "DataTable with a single FILENAME column containing each attached file name."
+  },
+  "depends_on": "",
+  "preconditions": [
+    "Link parameter must be specified."
+  ],
+  "postconditions": [
+    "Recipe variables AttachedFileCount and AttachedFileNames are created and populated."
+  ],
+  "side_effects": [],
+  "example_usage": "In a recipe, author adds an Add External File phase, sets Link to a network path (e.g. \\\\fileserver\\specs\\doc.pdf). At runtime, the file is attached and the phase publishes AttachedFileCount = 1 and AttachedFileNames containing 'doc.pdf'."
+}

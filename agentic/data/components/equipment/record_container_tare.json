@@ -1,0 +1,55 @@
+{
+  "id": "RecordContainerTarePhase",
+  "category": "equipment",
+  "description": "Phase that allows the operator to record the tare weight of one or more containers and print tare labels as necessary. It displays author-provided instructions and the Product ID, handles system-generated or user-entered container IDs, optional source lot entry, invokes the Record Weight page for scale capture, and manages tare records in the EBR.",
+  "intent": "To capture and log the tare weights of containers and produce corresponding labels so that downstream net-weight calculations are accurate.",
+  "inputs": {
+    "Instructions": "Custom instruction text displayed to the operator.",
+    "ProductID": "ID of the product for which containers are being tared.",
+    "ContainerIDSource": "Mode for container IDs (‘External’, ‘POMS’, or ‘Pre-Generated’).",
+    "LabelSource": "Source of labels (‘POMS’ or pre-printed).",
+    "PrintLabelPostRecordTare": "Boolean flag (PRINT_LABEL_POST_RECORD_TARE) – if true, labels are printed automatically and the Print Label button is hidden.",
+    "PreGenContainerMustExist": "Boolean flag (Pre_Gen_Container_Must_Exist) – if true, a pre-generated container must exist in the system.",
+    "SourceLotID": "Optional source lot ID, if required by the configuration.",
+    "DeletePretaredContRecords": "Boolean flag (DELETE_PRETARE_CONT_RECORDS) – if true, associated pretared container records are deleted on Finish.",
+    "WeighManualSignature": "Signature requirement for manual weight entry (WEIGH_MAN_SIGN, default Double Signature).",
+    "ConfirmationType": "Type of confirmation/signature required when Finish is clicked."
+  },
+  "outputs": {
+    "RecordedTareWeight": "Numeric tare weight captured for the current container.",
+    "RecordedTareUOM": "Unit of measure associated with the tare weight.",
+    "TaredContainersList": "List of container IDs and their tare weights recorded during this phase.",
+    "LabelsPrinted": "Indicator or list of labels printed for each container.",
+    "EBRTareDatalines": "Datalines written to the electronic batch record for each container tare.",
+    "DeletedPretaredRecords": "List of any pretared container records deleted upon Finish (if configured)."
+  },
+  "depends_on": {
+    "components": [
+      "Record Weight page",
+      "Exception page",
+      "Operator Lot Note page"
+    ],
+    "conditions": [
+      "A container ID is displayed or entered",
+      "Operator clicks the Record Weight button to perform the tare"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added and configured a Record Container Tare phase with Instructions and Product ID.",
+    "ContainerIDSource and LabelSource have been defined.",
+    "Configurable parameters PRINT_LABEL_POST_RECORD_TARE, Pre_Gen_Container_Must_Exist, DELETE_PRETARE_CONT_RECORDS and WEIGH_MAN_SIGN are set appropriately."
+  ],
+  "postconditions": [
+    "All container tare weights are recorded in the system and EBR.",
+    "Tare labels are printed or auto-printed according to configuration.",
+    "If enabled, pretared container records (mm_product_st entries) are deleted.",
+    "A confirmation signature is captured if required."
+  ],
+  "side_effects": [
+    "Generates and prints (or auto-prints) labels for each tared container.",
+    "May delete associated pretared container records based on DELETE_PRETARE_CONT_RECORDS.",
+    "Enforces use of the configured signature level for manual entries.",
+    "Operator may invoke Lot Note or Exception pages, which interrupt the normal flow."
+  ],
+  "example_usage": "In a packaging recipe, the author sets PRINT_LABEL_POST_RECORD_TARE=true and ContainerIDSource='POMS'. At runtime the operator scans each container ID, clicks Record Weight to tare on the scale, observes the displayed tare and UOM, automatically receives printed tare labels, repeats for additional containers, then clicks Finish, provides the required signature, and the system logs the tare weights and deletes any pretared records as configured."
+}

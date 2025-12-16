@@ -1,0 +1,45 @@
+{
+  "id": "CheckOutEquipmentPhase",
+  "category": "equipment",
+  "description": "Phase that enables an operator to check out equipment required by the Bill of Equipment (BOE) for use in the manufacturing process, validating status and updating allocation.",
+  "intent": "To verify equipment status, allocate equipment to the unit procedure, and record the check-out before process steps proceed.",
+  "inputs": {
+    "Instructions": "Instruction text displayed to the operator at runtime.",
+    "EquipmentClassList": "List of Equipment Classes marked as 'Allowed Checkout' with their status types, descriptions, and expected values.",
+    "EquipmentIDInput": "Textbox input for scanning or entering an equipment ID (simple method).",
+    "SelectedEquipmentRow": "Grid selection of an equipment class when using the guided method.",
+    "CheckOutAction": "Button event to execute the check-out of the selected or entered equipment.",
+    "ShowCheckedInToggle": "Toggle to filter and display only checked-in equipment in the list.",
+    "ConfirmationType": "Signature/confirmation level required when finishing the phase."
+  },
+  "outputs": {
+    "CheckedOutEquipment": "List of equipment IDs that were successfully checked out and their updated statuses.",
+    "ExceptionsRecorded": "Details of any status-override exceptions recorded during check-out."
+  },
+  "depends_on": {
+    "components": [
+      "Action List",
+      "Exception page",
+      "Equipment Maintenance page",
+      "Equipment Log report"
+    ],
+    "conditions": [
+      "Phase is invoked from the Action List",
+      "Equipment classes have been marked 'Allowed Checkout' during authoring",
+      "ALLOW_EQUIPQC_OVERRIDE parameter controls whether the operator can override status checks"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Check Out Equipment phase and configured runtime instructions and BOE equipment classes.",
+    "Equipment items are registered in the system and available for check-out."
+  ],
+  "postconditions": [
+    "Selected equipment items are marked as Pending Check Out and allocated to the unit procedure.",
+    "Equipment statuses are updated (e.g., set to 'Pending Check out')."
+  ],
+  "side_effects": [
+    "May call the Exception page if an equipment fails its status check and an override is requested.",
+    "Operator may navigate to Equipment Maintenance or Equipment Log report pages for further actions or information."
+  ],
+  "example_usage": "Author configures a Check Out Equipment phase with instructions 'Check out required equipment', selects classes Mixer and Dryer. At runtime, the operator selects the Mixer class, scans equipment ID 'MX-1001', clicks [Check Out], handles an override exception, then clicks [Finish] and signs off to complete the check-out."
+}

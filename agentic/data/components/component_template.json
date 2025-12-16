@@ -1,0 +1,16 @@
+{
+  "id": "string",
+  "category": "human | material | equipment | data | system | control | integration",
+  "description": "string",
+  "intent": "what this component is meant to accomplish",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "string"
+}

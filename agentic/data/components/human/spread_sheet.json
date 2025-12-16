@@ -1,0 +1,47 @@
+{
+  "id": "SpreadsheetPhase",
+  "category": "human",
+  "description": "Phase that performs spreadsheet calculations using inputs from recipe variables, batch data, and operator-entered values. It presents three sheets (Inputs, Spreadsheets, Outputs), allows resolving or entering values, editing spreadsheet formulas, reviewing calculated results, recording exceptions, finishing with optional signature, and generating a PDF report.",
+  "intent": "To carry out complex calculations and data entry in a spreadsheet format during recipe execution, enabling operators to input or resolve data, view dynamic computations, capture output variables, and archive a PDF report.",
+  "inputs": {
+    "Instructions": "Text instructions displayed to the operator at the start of the phase.",
+    "SpreadsheetName": "Name of the spreadsheet (and PDF file) defined during authoring.",
+    "InputVariables": "List of variable descriptions and variable names (recipe variables or plain text) configured on the Inputs sheet.",
+    "SpreadsheetsSheet": "Customizable grid of formulas and headings defined by the author for runtime calculations.",
+    "OutputVariables": "List of result variable names, descriptions, and formula mappings defined on the Outputs sheet.",
+    "AutoCompleteWithUI": "Boolean flag indicating if the phase should auto-complete with the UI displayed.",
+    "AttachToEBR": "Boolean flag indicating if the generated PDF should be attached to the Electronic Batch Record.",
+    "ConfirmationType": "Signature/confirmation level required when finishing the phase (None, Initial, Single, Double)."
+  },
+  "outputs": {
+    "InputSheetValues": "Resolved or manually entered values for each input variable saved to datalines.",
+    "CalculatedSpreadsheetData": "Runtime values from the Spreadsheets sheet, displayed for review.",
+    "OutputVariables": "Final values of the configured output variables saved as recipe variables.",
+    "PDFReport": "Generated PDF file of the Inputs and Outputs sheets saved with the specified name.",
+    "EBRAttachment": "Attachment reference to the PDF in the Electronic Batch Record if configured."
+  },
+  "depends_on": {
+    "components": [
+      "Exception page",
+      "Signature capture page"
+    ],
+    "conditions": [
+      "Phase is invoked in the action list",
+      "Operator clicks the Finish button"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Spreadsheet phase and configured Instructions, SpreadsheetName, InputVariables, SpreadsheetsSheet, OutputVariables, AttachToEBR, AutoCompleteWithUI, and ConfirmationType."
+  ],
+  "postconditions": [
+    "Values in Inputs, Spreadsheets, and Outputs sheets are saved to data lines.",
+    "PDF report is generated and attached to the EBR if AttachToEBR is true.",
+    "Confirmation signature is captured if required."
+  ],
+  "side_effects": [
+    "May prompt an exception if input recipe variables fail to resolve and operator chooses to record an exception.",
+    "Spreadsheet calculations update live when input values change.",
+    "Phase may finish automatically if AutoCompleteWithUI is selected."
+  ],
+  "example_usage": "Author inserts a Spreadsheet phase with Instructions='Enter raw data and review calculations', SpreadsheetName='BatchCalculation', InputVariables=[{VariableName:'{Batch.Quantity}',Description:'Batch quantity'},{VariableName:'RawData',Description:'Measured value'}], defines formulas in Spreadsheets sheet to compute dosage, sets OutputVariables=[{VariableName:'DoseValue',Description:'Calculated dose',UOM:'mg'}], selects AttachToEBR=true, AutoCompleteWithUI=false, ConfirmationType='Single'. At runtime, the operator resolves {Batch.Quantity}, enters RawData, reviews live calculations in the Spreadsheets sheet, clicks Finish, signs off, and the system saves InputSheetValues and DoseValue, generates 'BatchCalculation.pdf', and attaches it to the batch record."
+}

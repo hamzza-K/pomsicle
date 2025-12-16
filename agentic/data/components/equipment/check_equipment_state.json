@@ -1,0 +1,40 @@
+{
+  "id": "CheckEquipmentStatePhase",
+  "category": "equipment",
+  "description": "The Check Equipment State function lets an operator verify that checked-in equipment holds specified status values before it can be used in production.",
+  "intent": "To validate equipment status against author-configured requirements and ensure only compliant equipment progresses through the recipe.",
+  "inputs": {
+    "Instructions": "Runtime instructions defined by the recipe author.",
+    "BOEReferenceNumber": "Bill of Equipment reference selected to identify the relevant equipment and its available status types.",
+    "StatusTypeValuePairs": "List of status-type and status-value pairs (or recipe variables) that the equipment must meet.",
+    "ConfirmationType": "Signature or confirmation level required when finishing the phase (None, Initial, Single, Double)."
+  },
+  "outputs": "",
+  "depends_on": {
+    "components": [
+      "Action List",
+      "Worksheet execution page (for state correction)",
+      "Exception page",
+      "Signature capture page"
+    ],
+    "conditions": [
+      "Phase is invoked from the Action List",
+      "Equipment has already been checked in",
+      "Operator clicks the Finish button"
+    ]
+  },
+  "preconditions": [
+    "Equipment must be checked in before the state can be checked.",
+    "Recipe author has configured Instructions, BOE Reference Number, Status Types and Values, and ConfirmationType."
+  ],
+  "postconditions": [
+    "If the equipment status meets the configured values, control passes to the subsequent recipe action.",
+    "If the status check fails, the operator may launch a worksheet to correct the issue or override and generate an exception."
+  ],
+  "side_effects": [
+    "May launch a worksheet for the operator to correct equipment state if configured.",
+    "May generate an exception if the operator chooses to override a failed status check.",
+    "Requires operator signature based on the configured ConfirmationType."
+  ],
+  "example_usage": "An author configures a Check Equipment State phase with Instructions='Verify reactor vessel is in Ready state', selects the BOE Reference Number for the reactor, adds a status check for Type='OperationalStatus' Value='Ready', and sets ConfirmationType='Single'. At runtime the operator confirms the vessel's OperationalStatus is 'Ready', clicks Finish, signs off, and the recipe proceeds."
+}

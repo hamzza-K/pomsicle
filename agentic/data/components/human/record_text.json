@@ -1,0 +1,57 @@
+{
+  "id": "RecordTextPhase",
+  "category": "human",
+  "description": "Phase that displays author-provided instructions and allows the operator to record free-form text, a date/time value, or one or more single-line entries according to the Record Type configured during authoring. The phase presents the appropriate input control (multi-line text box, date/time entry with Now and Validate buttons, or entry list with delete/duplicate/uppercase options), enforces length or count limits, checks date/time against target limits if configured, and captures a confirmation signature if required.",
+  "intent": "To capture and record operator‐entered text, date/time or a list of entries as part of the electronic batch record, enforcing any author-defined validation rules and limits.",
+  "inputs": {
+    "Instructions": "Custom instruction text displayed to the operator.",
+    "RecordType": "Type of input to collect: \"Text\", \"Date\", or \"Entries\".",
+    "MinCharacters": "Minimum number of characters for text input (when RecordType = Text).",
+    "MaxCharacters": "Maximum number of characters for text input (when RecordType = Text).",
+    "ConvertToUpperCase": "Boolean flag to convert operator text to uppercase.",
+    "DateTimeFormat": "Format mask for date/time entry (when RecordType = Date).",
+    "CheckDateTimeAgainstTarget": "Boolean flag to enable limit checking of the entered date/time.",
+    "TargetValueSource": "Source of target for date/time check: \"Recipe Variable\" or \"Execution Time\".",
+    "TargetRecipeVariable": "Name of recipe variable holding the target date/time (if Source = Recipe Variable).",
+    "ExecutionTimeValue": "Numeric target value (if Source = Execution Time).",
+    "LowerLimit": "Lower limit for date/time or entries (number or recipe variable reference).",
+    "UpperLimit": "Upper limit for date/time or entries (number or recipe variable reference).",
+    "LimitUOM": "Unit of measure for any numeric limits (when applicable).",
+    "MinEntries": "Minimum number of entries allowed (when RecordType = Entries).",
+    "MaxEntries": "Maximum number of entries allowed (when RecordType = Entries).",
+    "AllowDeleteEntries": "Boolean flag to allow deletion of entries (when RecordType = Entries).",
+    "AllowDuplicateEntries": "Boolean flag to allow duplication of entries (when RecordType = Entries).",
+    "ConfirmationType": "Signature or confirmation level required to finish the phase."
+  },
+  "outputs": {
+    "RecordedText": "The multi-line text entered by the operator (if RecordType = Text).",
+    "RecordedDateTime": "The date/time string entered and optionally validated (if RecordType = Date).",
+    "RecordedEntries": "Array of single-line text entries recorded (if RecordType = Entries).",
+    "ValidationResult": "Indicator of pass/fail for any date/time limit check or character/entry count validation."
+  },
+  "depends_on": {
+    "components": [
+      "Exception page",
+      "Signature capture page"
+    ],
+    "conditions": [
+      "Phase has been invoked in the action list",
+      "Operator clicks the Finish button to submit the recorded value(s)"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Record Text phase and provided Instructions",
+    "RecordType and all applicable limits (Min/MaxCharacters, DateTimeFormat, Min/MaxEntries) are configured",
+    "ConfirmationType is specified if a signature is required"
+  ],
+  "postconditions": [
+    "Operator input is saved to phase‐level or recipe‐level variables",
+    "Any configured limit checks have been performed and exceptions recorded if limits were exceeded",
+    "A confirmation signature is captured if required"
+  ],
+  "side_effects": [
+    "May generate an exception or deviation if date/time value falls outside configured limits",
+    "May enforce a confirmation signature before allowing phase completion"
+  ],
+  "example_usage": "In a review phase, the author inserts a Record Text phase with Instructions = \"Enter any observations during cleaning\", RecordType = Text, MinCharacters = 5, MaxCharacters = 256, ConvertToUpperCase = true, ConfirmationType = \"Single\". At runtime the operator types their observations, the text is converted to uppercase, and upon Finish the comment is stored in variable Observations and the operator signs off."
+}

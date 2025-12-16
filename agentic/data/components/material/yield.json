@@ -1,0 +1,56 @@
+{
+  "id": "YieldPhase",
+  "category": "system",
+  "description": "The Yield phase allows the operator to review and approve yield calculations for the current order/batch or the current unit procedure. It displays calculated input/output data, conversion factors, and yield percentage, and enforces author-defined exception limits.",
+  "intent": "To retrieve material input/output data, perform yield calculations, display results and exception thresholds to the operator, and capture the operator’s approval or exception before committing the yield data.",
+  "inputs": {
+    "Instructions": "string",
+    "ProductID": "string",
+    "CalculationScope": "EntireRecipe | CurrentUnitProcedure",
+    "ExceptionLimits": {
+      "MessageMinPercent": "number",
+      "MessageMaxPercent": "number",
+      "CommentMinPercent": "number",
+      "CommentMaxPercent": "number",
+      "ReportMinPercent": "number",
+      "ReportMaxPercent": "number",
+      "DeviationMinPercent": "number",
+      "DeviationMaxPercent": "number"
+    },
+    "ConfirmationType": "string"
+  },
+  "outputs": {
+    "StandardOutput": "number",
+    "InputQuantity": "number",
+    "OutputQuantity": "number",
+    "TransferQuantity": "number",
+    "ConversionFactor": "number",
+    "TotalInputs": "number",
+    "ConversionOutputQuantity": "number",
+    "SampleQuantity": "number",
+    "TotalOutputs": "number",
+    "CalculatedYield": "number",
+    "ApprovalStatus": "Approved | ExceptionRecorded"
+  },
+  "depends_on": {
+    "components": [
+      "Yield Authoring Page",
+      "Exception Page"
+    ],
+    "conditions": [
+      "Material input/output data must be available from prior phases",
+      "System must perform yield calculations before display"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored with instructions, product selection, calculation scope and exception limits",
+    "Input and output material transactions have been recorded"
+  ],
+  "postconditions": [
+    "Yield percentage is committed to the electronic batch record",
+    "If approved, batch records are updated with yield results",
+    "If outside limits, an exception is recorded and logged"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator opens the Yield phase, reviews that Input Quantity = 120 g, Output Quantity = 110 g, calculated Yield = 91.7%, and clicks Approve. The system records the approved yield in the batch record and closes the phase."
+}

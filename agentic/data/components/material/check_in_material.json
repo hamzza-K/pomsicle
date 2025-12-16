@@ -1,0 +1,40 @@
+{
+  "id": "CheckInMaterialPhase",
+  "category": "material",
+  "description": "Phase that enables an operator to check in materials defined in the Bill of Materials (BOM). Displays runtime instructions and a grid of materials flagged for check-in, allowing the operator to select lines, permit overage, enforce minimum quantities, and specify no‐quantity options.",
+  "intent": "To verify and record the check-in of required BOM materials into the unit procedure according to author-defined flags before production steps proceed.",
+  "inputs": {
+    "Instructions": "Instruction text displayed to the operator at runtime.",
+    "MaterialsGrid": "List of BOM materials with columns for BOM Reference Number, Allow Overage Flag, Material ID, Check-In Flag, No Quantity Flag and Material Description.",
+    "SelectToCheckInFlags": "Boolean flags indicating which material rows are selected for check-in.",
+    "AllowOverageFlags": "Boolean flags indicating if overage is allowed for each selected material.",
+    "RequireMinimumFlags": "Boolean flags indicating if the minimum required quantity must be checked in before completion.",
+    "NoQuantityFlags": "Boolean flags indicating if the material lot will be checked in as empty.",
+    "ConfirmationType": "Level of signature/confirmation required when finishing the phase (None, Single, Double)."
+  },
+  "outputs": {
+    "CheckedInMaterials": "List of material IDs (and quantities, if applicable) that were successfully checked in.",
+    "ExceptionsRecorded": "Details of any exceptions the operator recorded during check-in."
+  },
+  "depends_on": {
+    "components": [
+      "Action List",
+      "Exception page"
+    ],
+    "conditions": [
+      "Phase is invoked from the Action List",
+      "Materials with Check-In Flag = Yes are present in the grid"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Check In Material phase and configured Instructions, selected BOM materials and their flags, and set ConfirmationType.",
+    "Materials are staged in the system and flagged for check-in."
+  ],
+  "postconditions": [
+    "Selected materials have been checked in and allocated to the unit procedure."
+  ],
+  "side_effects": [
+    "May call the Exception page if the operator records any material-related exceptions."
+  ],
+  "example_usage": "An author configures a Check In Material phase with Instructions = 'Check in raw materials', selects BOM items RM-01 and RM-02, enables Allow Overage on RM-02, marks RM-01 as Require Minimum, leaves No Quantity unchecked, and sets ConfirmationType = 'Single'. At runtime, the operator checks both items, confirms overage for RM-02, then clicks Finish and signs off to complete the check-in."
+}

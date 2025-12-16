@@ -1,0 +1,43 @@
+{
+  "id": "WriteOPCParametersPhase",
+  "category": "integration",
+  "description": "Phase that writes values to OPC tags in process equipment and other data points. It displays author-provided instructions and a grid of OPC parameters configured during authoring, allows operators to resolve equipment, manually enter values for unresolved recipe variables, attempts to write each selected tag to the OPC server, shows write status, and on completion creates recipe variables and a summary pass/fail indicator.",
+  "intent": "To write configured values to OPC tags during recipe execution, ensuring process parameters are set in equipment, with operator intervention for resolution and manual input as needed.",
+  "inputs": {
+    "Instructions": "Instruction text displayed to the operator.",
+    "OPCParameters": "List of OPC parameters configured during authoring, each containing OPC Server, Equipment Class or Unit ID, Tag Alias, Tag Type, ValueToWrite (literal or recipe variable) and UOM.",
+    "EnableManualEntry": "Flag indicating if the operator may manually enter a value at runtime when a recipe variable does not resolve.",
+    "ConfirmationType": "Level of signature or confirmation required when finishing the phase (None, Initial, Single, Double)."
+  },
+  "outputs": {
+    "RecipeVariables": "Recipe variables created for each OPC parameter, named by the tag alias (with '.' replaced by '_'), containing the values written.",
+    "AllParametersPass": "Boolean recipe variable indicating whether all parameters were written successfully (true) or if any write failed (false)."
+  },
+  "depends_on": {
+    "components": [
+      "Exception page",
+      "Signature capture page"
+    ],
+    "conditions": [
+      "Phase is invoked from the action list",
+      "Operator clicks the Finish button"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Write OPC Parameters phase and configured Instructions, OPCParameters, and ConfirmationType.",
+    "OPC Servers and Tag Aliases are defined in the database (EM_OPC_SERVER_HOST_SP and EM_OPC_TAG_ALIAS_SP).",
+    "For Class-Based from BOE selection, a BOE must be associated with the current unit procedure."
+  ],
+  "postconditions": [
+    "All configured OPC parameters are written to the OPC server.",
+    "Recipe variables (one per parameter plus AllParametersPass) are created or updated.",
+    "Data lines are refreshed for action list display."
+  ],
+  "side_effects": [
+    "May prompt the operator to record an exception for equipment resolution failures or manual-entry exceptions.",
+    "Displays error messages if an OPC write fails and allows retry via Write Selected.",
+    "Disables Cancel once at least one parameter has been written.",
+    "May require operator signature based on the configured ConfirmationType."
+  ],
+  "example_usage": "An author configures a Write OPC Parameters phase with Instructions = \"Set reactor parameters\", selects Class-Based equipment for the Reactor class, adds parameters for Reactor.Temperature (value from vTemp, UOM=C) and Reactor.Pressure (value from vPressure, UOM=bar), and sets ConfirmationType = \"Single\". At runtime, the operator resolves any missing equipment, enters vTemp or vPressure if they fail to resolve, selects each parameter and clicks Write Selected until the status shows success, then clicks Finish, signs off, and the system writes recipe variables Reactor_Temperature, Reactor_Pressure and AllParametersPass = true."
+}

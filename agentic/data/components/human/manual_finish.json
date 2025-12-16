@@ -1,0 +1,18 @@
+{
+  "id": "ManualFinishPhase",
+  "category": "human",
+  "description": "System-generated phase representing the manual finish step at the end of a manually completed Action List.",
+  "intent": "To allow the operator to manually complete and sign off on the Action List when auto-complete behavior is not used.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": [
+      "Action List is configured to be manually finished (auto-complete disabled)"
+    ]
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "The operator clicks [Finish] and provides the required signature to complete the Action List."
+}

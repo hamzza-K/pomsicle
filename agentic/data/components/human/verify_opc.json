@@ -1,0 +1,47 @@
+{
+  "id": "VerifyOPCParametersPhase",
+  "category": "human",
+  "description": "Provides a user interface to verify and record recipe author-specified OPC tag process parameters by reading values from an OPC server or entering them manually, comparing them against configured standards, resolving equipment assignments, and recording any exceptions.",
+  "intent": "To ensure that configured OPC parameter values (e.g., Temperature, Airflow, pH, Pressure) meet recipe-defined standards by automatically retrieving values or allowing manual entry, and to record the results and exceptions as needed.",
+  "inputs": {
+    "Instructions": "string",
+    "OPCParameters": "DataTable",
+    "WaitUntilConfigured": "boolean",
+    "PollingInterval": "integer",
+    "ManualEntryException": "boolean",
+    "ExceptionTypeManualEntry": "string",
+    "VerifyOPCExceptionTypeTargetValue": "string",
+    "ConfirmationType": "string"
+  },
+  "outputs": {
+    "CurrentValues": "DataTable",
+    "VerificationStatus": "string",
+    "RecordedExceptions": "DataTable",
+    "RecipeVariable": "DataTable",
+    "Signature": "string"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "OPC Server",
+      "Data Grid"
+    ],
+    "conditions": [
+      "OPC parameters have been configured during authoring"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored and configured",
+    "OPC server is available"
+  ],
+  "postconditions": [
+    "Current values are saved as recipe variables",
+    "Exceptions are recorded for each quality error or out-of-range value",
+    "Confirmation signature is captured if required"
+  ],
+  "side_effects": [
+    "Phase may block progress until all parameters pass or a timeout/manual override occurs",
+    "Exceptions may interrupt downstream process flow"
+  ],
+  "example_usage": "Operator watches the OPC Parameters grid populate via Get Current Values (or waits if 'Wait Until' is enabled), uses Manual Entry or Resolve Selected for any unresolved rows, records exceptions if values deviate from configured limits, and then clicks Finish to save results and close the page."
+}

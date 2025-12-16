@@ -1,0 +1,16 @@
+{
+  "id": "CalculationPhase",
+  "category": "data",
+  "description": "Phase that defines calculation variables whose values can be used to pre-populate fields in other phases.",
+  "intent": "To perform calculations at runtime and expose the resulting numeric values as phase variables for use elsewhere in the workflow.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "Within another phase, reference a calculation phase variable by using Top.Passage (no braces required)."
+}

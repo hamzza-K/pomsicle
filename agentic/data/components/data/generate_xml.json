@@ -1,0 +1,39 @@
+{
+  "id": "GenerateXMLPhase",
+  "category": "integration",
+  "description": "Phase that generates an XML sequence from a user-selected XSD template by mapping each element to POMSnet data sources, validates the result against the XSD, and writes the XML to a file, message queue, or POMSnet variable.",
+  "intent": "To package and transmit POMSnet recipe and batch data to external control systems or ERP by producing a standards-compliant XML message at runtime.",
+  "inputs": {
+    "TemplateXsdFile": "Path to the XSD schema file selected during authoring (must contain exactly one root node).",
+    "DataSourceMappings": "Definition of how each XSD element is populated from POMSnet data sources (including repeatable elements).",
+    "OutputTarget": "Destination type for the generated XML: File, MessageQueue, or Variable.",
+    "OutputLocation": "File path, queue name, or variable name where the XML sequence will be written."
+  },
+  "outputs": {
+    "GeneratedXml": "The completed XML sequence as a string.",
+    "ValidationResult": "Indicator of pass/fail and any validation errors against the XSD.",
+    "OutputHandle": "Reference (file path, queue message ID, or variable identifier) where the XML was written."
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": [
+      "An XSD template file has been uploaded and is accessible",
+      "All recipe phases providing data for the mapped elements have executed"
+    ]
+  },
+  "preconditions": [
+    "Author has selected and configured a single-root XSD template",
+    "DataSourceMappings defined for every required element in the XSD",
+    "OutputTarget and OutputLocation are specified"
+  ],
+  "postconditions": [
+    "An XML sequence conforming to the XSD is generated",
+    "The XML is validated against the template; failures prevent phase completion",
+    "The XML sequence is written to the configured OutputTarget"
+  ],
+  "side_effects": [
+    "Creates or overwrites a file on disk, enqueues a message, or populates a POMSnet variable",
+    "May halt recipe execution if validation errors occur"
+  ],
+  "example_usage": "In a recipe interfacing with an ERP, add a Generate XML phase, select order_confirmation.xsd, map each element (order_id → BatchID, items → ItemList), set OutputTarget to File and OutputLocation to \\\\server\\out\\order.xml. At runtime the phase builds and validates the XML, then writes it to the shared directory for the ERP to consume."
+}

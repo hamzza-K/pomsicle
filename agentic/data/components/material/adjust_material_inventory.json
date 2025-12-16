@@ -1,0 +1,74 @@
+{
+  "id": "AdjustMaterialInventoryPhase",
+  "category": "material",
+  "description": "Enables the operator to adjust the inventory quantity of a raw material container or lot by increasing, decreasing or setting the actual quantity, optionally using weight capture or OPC reads, and records the adjustment in MES and SAP.",
+  "intent": "To allow controlled updates to raw material or stock material container quantities—adding or removing material or setting an exact quantity—while capturing reasons, signatures, exceptions and posting the transaction to inventory systems.",
+  "inputs": {
+    "Instructions": "string",
+    "ContainerID": "string",
+    "MaterialID": "string",
+    "LotID": "string",
+    "SourceAreaID": "string",
+    "SourceLocationID": "string",
+    "Quantity": "number",
+    "AdjustmentType": "Increase | Decrease | Actual",
+    "UseRecordWeight": "boolean",
+    "UseOPCRead": "boolean",
+    "OPCWeightTagAlias": "string",
+    "ReasonCode": "string",
+    "OtherReasonDescription": "string",
+    "Account1": "string",
+    "Account2": "string",
+    "Account3": "string",
+    "AutoAdjust": "boolean",
+    "AutoComplete": "boolean",
+    "PrintLabels": "boolean"
+  },
+  "outputs": {
+    "AI_ContainerID": "string",
+    "AI_MaterialID": "string",
+    "AI_LotID": "string",
+    "AI_InitialQty": "string",
+    "AI_InitialUOM": "string",
+    "AI_AdjustedQty": "string",
+    "AI_AdjustedUOM": "string",
+    "AI_FinalQty": "string",
+    "AI_FinalUOM": "string",
+    "AI_ReasonCode": "string",
+    "AI_Account1": "string",
+    "AI_Account2": "string",
+    "AI_Account3": "string",
+    "AI_AutoAdjust": "string",
+    "AI_AutoComplete": "string"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "OPC Server",
+      "SAP Interface",
+      "Electronic Batch Record"
+    ],
+    "conditions": [
+      "Container is of type Raw Material or Stock Material",
+      "Adjust_Stock_Container parameter = True for stock materials",
+      "Container tracked or lot-tracked in a known area/location"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored and configured",
+    "Valid container ID entered and material/lot information loaded",
+    "OPC_Weight_Tag_Alias configured if OPC read is used"
+  ],
+  "postconditions": [
+    "Inventory quantity updated in MES",
+    "Adjustment transaction posted to SAP",
+    "Execution data lines and recipe variables recorded in the EBR"
+  ],
+  "side_effects": [
+    "Inventory levels are decremented or incremented",
+    "SAP transaction is triggered",
+    "Labels printed if configured",
+    "Exceptions generated for manual‐entry or out‐of‐tolerance conditions"
+  ],
+  "example_usage": "Operator scans container C123, reviews current quantity (100 kg), selects Decrease and enters 10 kg, chooses reason 'Damage', records signature, clicks Finish; system updates MES and posts to SAP, prints a label and saves adjustment details in the EBR."
+}

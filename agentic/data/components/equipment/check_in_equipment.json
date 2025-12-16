@@ -1,0 +1,47 @@
+{
+  "id": "CheckInEquipmentPhase",
+  "category": "equipment",
+  "description": "Phase that enables an operator to check in equipment required by the Bill of Equipment (BOE). Displays instructions, lists required equipment classes, allows equipment selection via guided or simple method, verifies each equipment's status types and values, sets new status values if configured, and records the check-in.",
+  "intent": "To verify that equipment status meets author-configured requirements, set new status values as needed, and record the check-in of equipment into the unit procedure before production steps proceed.",
+  "inputs": {
+    "Instructions": "Instruction text displayed to the operator at runtime.",
+    "BOEReferenceNumber": "The BOE item reference selected to identify required equipment classes and quantities.",
+    "StatusCheckList": "List of status-type/status-value pairs that equipment must meet before check-in, configured on the Check tab.",
+    "StatusSetList": "List of status-type/status-value pairs to set on the equipment upon check-in, configured on the Set tab.",
+    "UpdateLastProductID": "Flag indicating whether to update the equipment's last product ID on check-in.",
+    "AutoComplete": "Flag allowing the phase to automatically complete if all requirements are met and AutoStart is enabled.",
+    "ConfirmationType": "Level of signature/confirmation required when finishing the phase (None, Initial, Single, Double)."
+  },
+  "outputs": {
+    "CheckedInEquipmentList": "List of equipment IDs that were successfully checked in, by equipment class.",
+    "EquipmentStatusChanges": "Details of any status type/value changes applied to equipment during check-in."
+  },
+  "depends_on": {
+    "components": [
+      "Action List",
+      "Exception page",
+      "Signature capture page"
+    ],
+    "conditions": [
+      "Phase is invoked from the Action List",
+      "Equipment is required by the BOE and not yet checked in",
+      "Operator clicks the Finish button"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Check In Equipment phase and configured Instructions, BOEReferenceNumber, status check and set values, UpdateLastProductID, AutoComplete, and ConfirmationType.",
+    "Equipment allocation exists in the system for the selected BOE items.",
+    "System evaluates equipment expiration criteria and applies any automatic status changes before runtime."
+  ],
+  "postconditions": [
+    "All required equipment has been checked in and allocated to the unit procedure (removes allocation from inventory).",
+    "Equipment status values have been verified and/or set as configured.",
+    "Electronic Batch Record data line is updated with the check-in execution data."
+  ],
+  "side_effects": [
+    "May prompt the operator to override failed status checks and record exceptions if ALLOW_EQUIPQC_OVERRIDE is enabled.",
+    "May open external pages such as Equipment Log Report or Equipment Maintenance.",
+    "Removes equipment allocation from the system upon successful check-in."
+  ],
+  "example_usage": "An author configures a Check In Equipment phase with Instructions = 'Check in reactor vessel', BOEReferenceNumber = 'RV-01', requires Status = 'Clean', sets Status = 'Not Clean' upon expiration, enables UpdateLastProductID, and sets ConfirmationType = 'Single'. At runtime, the operator selects reactor vessel RV-01, the system verifies its status (or updates if expired), checks it in (row turns green), allocation is removed, and the operator clicks Finish and signs off."
+}

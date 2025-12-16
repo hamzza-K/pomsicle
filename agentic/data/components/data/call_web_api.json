@@ -1,0 +1,24 @@
+{
+  "id": "CallWebAPIPhase",
+  "category": "integration",
+  "description": "Phase that allows calls to be made to arbitrary Web API methods (local or remote). At startup it automatically invokes the configured URL and displays the returned data, formatted for JSON or XML when appropriate.",
+  "intent": "To integrate with external web services by invoking a Web API endpoint at runtime, surfacing the response body and status to the operator and recipe workflow.",
+  "inputs": {
+    "Url": "The full endpoint URL of the Web API method to call, as specified by the recipe author."
+  },
+  "outputs": {
+    "FormattedResult": "The body of the HTTP response, formatted for readability if JSON or XML.",
+    "SuccessMessage": "An optional success message set by the Success Check Logic.",
+    "ErrorMessage": "An optional error message set by the Success Check Logic."
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "All completion datalines for the phase are written out to the EBR and Action List when the operator clicks Finish."
+  ],
+  "side_effects": [],
+  "example_usage": "Author adds a Call Web API phase, sets Url to \"https://api.example.com/status\". At runtime the phase automatically calls that endpoint, displays the formatted JSON response, shows a success or error message based on the configured Success Check Logic, and then the operator may Retry or Finish to write completion datalines."
+}

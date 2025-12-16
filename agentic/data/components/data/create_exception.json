@@ -1,0 +1,45 @@
+{
+  "id": "CreateExceptionPhase",
+  "category": "system",
+  "description": "Phase that allows the recipe author or operator to create, access, verify and edit an exception record at any stage of recipe execution. Can be configured to run in the background (auto-completes unless input is required) and supports runtime edit options.",
+  "intent": "To record anomalies (exceptions) detected during batch processing by prompting for or automatically capturing exception details, generating a unique exception record, and logging it to the electronic batch record.",
+  "inputs": {
+    "ExceptionType": "The exception type selected by the operator or determined automatically by POMSnet when an exception condition is detected.",
+    "CommentText": "Text entered by the operator describing the nature of the exception.",
+    "ActionTaken": "Notes on corrective or investigative actions taken (required for Investigation and Deviation levels).",
+    "CustomVariables": "Any text or phase-specific variables defined by the recipe author for this exception phase.",
+    "RunInBackground": "Boolean flag (true/false) indicating whether the phase is configured to run in the background.",
+    "RuntimeEditEnabled": "Boolean flag indicating whether fields are editable at execution time (only effective if RunInBackground is false)."
+  },
+  "outputs": {
+    "ExceptionID": "Unique identifier generated for the new exception (based on type and versioning rules).",
+    "ExceptionRecord": "Object containing the full exception details (type, text, action, version, revision, status and any additional reference information).",
+    "AuthoredProcessExceptionDataline": "A dataline written to the EBR and action list as “Authored process exception” when the phase completes.",
+    "ExceptionVersion": "Initial version/revision numbers assigned to the exception (Version 0 Revision 1, status Open)."
+  },
+  "depends_on": {
+    "components": [
+      "Exception Management"
+    ],
+    "conditions": [
+      "Phase must be reached during recipe execution",
+      "An exception condition is detected or the operator invokes the phase manually"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added and configured a CreateException phase in the procedure",
+    "If RunInBackground = true, no UI appears unless automatic creation fails",
+    "If RuntimeEditEnabled = false, fields are read-only unless configuration is invalid"
+  ],
+  "postconditions": [
+    "A new exception is recorded to the exception management system and to the EBR as “Authored process exception”",
+    "ExceptionVersion is set to 0 Revision 1 with status Open",
+    "Any configured external transaction for exception creation is triggered"
+  ],
+  "side_effects": [
+    "Displays and records additional, phase-specific reference information when available",
+    "Generates a unique ExceptionID and writes completion datalines",
+    "May require a single or double electronic signature based on exception severity"
+  ],
+  "example_usage": "In a recipe authoring session, add a CreateException phase immediately after a Record Measurement phase. Configure it not to run in the background so the operator must enter a comment and action if a measurement is out of spec. At runtime, when the measurement limit is exceeded, the CreateException phase prompts for details, and on Finish writes the exception to the batch record as “Authored process exception.”"
+}

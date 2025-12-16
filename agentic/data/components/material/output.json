@@ -1,0 +1,70 @@
+{
+  "id": "OutputPhase",
+  "category": "material",
+  "description": "The Output phase allows the operator to record the output quantity of the product into one or more containers, selecting or scanning containers, capturing quantities via manual entry, scale, OPC tag or recipe variable, determining lot IDs and dates, enforcing QC/expiration checks, printing labels, and moving containers as configured.",
+  "intent": "To capture and record the process output into designated output container(s), enforce container and quantity policies, calculate and record lot, expiration, and retest dates, update inventory and batch records, and print labels and move containers according to authoring settings.",
+  "inputs": {
+    "Instructions": "string",
+    "OutputType": "string",
+    "ProductID": "string",
+    "LotIDSource": "Fixed | RecipeVariable | UniqueLots",
+    "TargetQuantity": "number",
+    "QuantityPerContainer": "number",
+    "UOM": "string",
+    "EquipmentClass": "string",
+    "ContainerID": "string",
+    "OutputQuantity": "number",
+    "RetrieveQuantityFrom": "Manual | Scale | OPC | RecipeVariable",
+    "UseNewLotID": "boolean",
+    "AllowMultipleContainers": "boolean",
+    "IncrementVesselQuantity": "boolean",
+    "KeepLot": "boolean",
+    "KeepDates": "boolean",
+    "PrintLabels": "boolean",
+    "LabelName": "string",
+    "MoveOutputEnabled": "boolean"
+  },
+  "outputs": {
+    "ContainerList": "List of processed container IDs with quantities",
+    "OutputLotID": "string",
+    "OutputQuantity": "number",
+    "ExpirationDate": "date",
+    "RetestDate": "date",
+    "LabelsPrinted": "boolean",
+    "InventoryUpdated": "boolean"
+  },
+  "depends_on": {
+    "components": [
+      "Output Execution Page",
+      "Output Authoring Page",
+      "Record Weight page",
+      "Move Output Material page",
+      "Exception page",
+      "Operator Lot Note page",
+      "Record Lot UDA page",
+      "Assign/Edit Lot Flag page",
+      "Container List dialog"
+    ],
+    "conditions": [
+      "QC and expiration checks must pass or an exception must be recorded",
+      "If Output_AutoRetrieveQtyFromRecipeVariable=true, Get Quantity button is disabled and quantity comes from a recipe variable",
+      "If a non-empty vessel is used and Increment Vessel existing quantity=false, the operator is prompted before overwriting",
+      "If Output_PrintLabelOnFinish=true and Allow Multiple Containers=false, labels print automatically upon Finish",
+      "If Enable Manual Move Output=false, Move Output is automatic or disabled"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored with product, container, quantity, label and move settings on the Output Authoring page",
+    "Recipe defines output product and runtime options (Allow Any Material, Use Pre-Tare Container, Unique Lots, etc.)",
+    "Configurable parameters (e.g. Output_AutoRetrieveQtyFromRecipeVariable, Output_PrintLabelOnFinish, Allow Multiple Containers) are set as required"
+  ],
+  "postconditions": [
+    "Material output transactions are recorded and inventory is updated",
+    "Recipe variables and/or batch parameters for output quantities and lot dates are set",
+    "Output containers are moved to the output staging area or raw material inventory as configured",
+    "Labels are printed if configured",
+    "EBR is updated with output data lines"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator selects the pre-defined product, scans container C789, clicks Get Quantity to record 100 g via scale, reviews the generated Lot ID, prints the label, then clicks Finish. The system updates inventory, moves the container to the output staging area, prints the label, and records the output in the EBR."
+}

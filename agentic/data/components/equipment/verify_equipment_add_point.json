@@ -1,0 +1,52 @@
+{
+  "id": "VerifyEquipmentAddPointPhase",
+  "category": "equipment",
+  "description": "Phase that enables an operator to resolve selected BOM line items against the add points defined on a piece of equipment, verify QC statuses of docked containers, and update add point assignments prior to processing.",
+  "intent": "To ensure that each material BOM line item is correctly associated with an equipment add point and that the docked container at each add point passes quality checks before the recipe proceeds.",
+  "inputs": {
+    "Instructions": "Instruction text (up to 4000 bytes) displayed to the operator at runtime.",
+    "BOE_ID_Version": "Label showing the current BOE ID and version (visible when using a specific BOE line item).",
+    "BOE_Ref_No": "Label showing the BOE reference number selected in authoring (visible when using a specific BOE line item).",
+    "EquipmentClass": "Label showing the equipment class ID of the selected BOE line item.",
+    "EquipmentClassDescription": "Label showing the description of the equipment class.",
+    "EquipmentID": "Textbox for entering, selecting or scanning the equipment ID (auto‐populated and disabled if using Primary Unit Of the split; enabled if using a specific BOE line item).",
+    "EquipmentIDInputList": "List of valid equipment IDs in the selected class (hidden if using Primary Unit Of the split).",
+    "AddPointVerificationGrid": "Editable grid listing each selected BOM line item with columns for BOM Ref No, Material ID, Add Point ID/Name, Lot ID, Container ID, Quantity, UOM, IBC ID, Expiration Hours and QC Status.",
+    "EditAction": "Action to enable changing the Add Point dropdown for a row.",
+    "SaveAction": "Action to save a new or refreshed Add Point assignment and its container details.",
+    "CancelAction": "Action to cancel an edit on a grid row.",
+    "RefreshButton": "Button to reload latest container quantity, expiration hours and verification status for all add points in the grid.",
+    "ConfirmationType": "Signature or confirmation level required to finish the phase.",
+    "FinishButton": "Button to complete the phase and persist verified add point assignments.",
+    "CancelButton": "Button to exit without saving changes."
+  },
+  "outputs": {
+    "VerifiedAddPointAssignments": "The final mapping of BOM line items to equipment add points and container assignments, with QC pass/fail results, saved to the batch record and displayed in the Action List."
+  },
+  "depends_on": {
+    "components": [
+      "Manage Equipment Add Point page (for docking/undocking containers)",
+      "Equipment class definitions that include add point metadata"
+    ],
+    "conditions": [
+      "Phase has been authored with one or more BOM line items selected",
+      "Recipe author has chosen runtime equipment mode (Primary Unit Of the split or Specific BOE line item)",
+      "Equipment add points are defined for the selected equipment class"
+    ]
+  },
+  "preconditions": [
+    "Verify Equipment Add Point phase is added to the action list and authoring selections (BOM lines, equipment mode, confirmation level) have been configured",
+    "Equipment items and their add point definitions are registered in the system",
+    "Containers are docked to add points or available for docking"
+  ],
+  "postconditions": [
+    "Each BOM line item is associated with a valid equipment add point and container",
+    "QC status checks have passed for all containers (Finish is disabled if any QC status is 'Fail')",
+    "Verified assignments are committed to the batch record"
+  ],
+  "side_effects": [
+    "Selecting 'Manage Equipment Add Point' for a row launches the docking/undocking page",
+    "Finish button remains disabled until all grid rows show QC status 'Pass'"
+  ],
+  "example_usage": "At runtime, the operator sees instructions 'Verify add points for each material.' They scan equipment 'EQ-100', review the grid showing two BOM items, click [Edit] on the first row to select a different add point, click [Save], click [Refresh] to confirm container expiration and QC pass, then click [Finish], provide signature, and return to the Action List with updated add point assignments."
+}

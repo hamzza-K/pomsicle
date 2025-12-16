@@ -1,0 +1,50 @@
+{
+  "id": "SendEmailPhase",
+  "category": "integration",
+  "description": "Phase that allows you to send an e-mail during recipe or worksheet execution. It displays author-provided Instructions, the sender address (from System Settings), To and CC fields, a Subject (editable at runtime if configured), attachment lists (filesystem, EBR attachments, recipe variables), and a message Body (editable if configured), then sends the e-mail when the operator finishes the phase.",
+  "intent": "To send an email from within the batch execution workflow, giving the operator control over recipients, subject, attachments and message text as allowed by authoring settings.",
+  "inputs": {
+    "Instructions": "Text instructions displayed to the operator at the top of the page.",
+    "ToAddresses": "Semicolon-separated list of recipient e-mail addresses or recipe variables.",
+    "CcAddresses": "Optional semicolon-separated list of CC e-mail addresses or recipe variables.",
+    "EditSubjectInRuntime": "Boolean flag that allows the operator to edit the subject at runtime.",
+    "Subject": "E-mail subject; editable only if EditSubjectInRuntime is true.",
+    "SelectFiles": "List of file paths attached from the file system; editable at runtime if EditAttachmentInRuntime is true.",
+    "EditAttachmentInRuntime": "Boolean flag that allows adding/removing file system attachments at runtime.",
+    "ShowEBRAttachments": "Boolean flag that enables the list of EBR-attached files and allows selection at runtime.",
+    "EBRAttachments": "List of file names previously attached to the EBR, selectable at runtime.",
+    "AttachmentVariables": "Recipe variables (e.g. DataTable) whose values (filename column) become attachments.",
+    "EditBodyInRuntime": "Boolean flag that allows the operator to edit the e-mail body at runtime.",
+    "Body": "The text of the e-mail message; editable only if EditBodyInRuntime is true.",
+    "AutoComplete": "Boolean flag to run the phase in auto-complete mode (no operator interaction).",
+    "ConfirmationType": "Level of signature/confirmation required when Finish is clicked."
+  },
+  "outputs": {
+    "EmailSentStatus": "Indicator that the e-mail was successfully dispatched or that an error occurred."
+  },
+  "depends_on": {
+    "components": [
+      "Signature capture page",
+      "Exception page"
+    ],
+    "conditions": [
+      "Phase is invoked in the action list",
+      "Operator clicks the Finish button"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Send Email phase to the action list",
+    "Instructions, recipients (To and optional CC), and ConfirmationType are configured",
+    "System Settings define a valid sender e-mail address"
+  ],
+  "postconditions": [
+    "The e-mail is dispatched to the specified To and CC addresses",
+    "A confirmation signature is captured if required",
+    "Any exceptions during send may be recorded via the Exception page"
+  ],
+  "side_effects": [
+    "May raise an error or exception if the SMTP send fails",
+    "May prompt for exception documentation if configured limits or confirmation fail"
+  ],
+  "example_usage": "Author configures a Send Email phase with Instructions = \"Notify QC upon batch completion\", ToAddresses = \"qc@example.com\", EditSubjectInRuntime = true, Subject = \"Batch {Batch.ID} Complete\", ShowEBRAttachments = true, EditBodyInRuntime = false, Body = \"The batch has finished. See attached reports.\", ConfirmationType = \"Single\". At runtime the operator reviews the fields, clicks Finish, provides a signature, and the system sends the e-mail to QC."
+}

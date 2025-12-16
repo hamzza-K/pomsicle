@@ -1,0 +1,45 @@
+{
+  "id": "ScanAndVerifyPhase",
+  "category": "human",
+  "description": "Enables the operator to scan or manually enter a set of values and verify them against a configured list of expected values.",
+  "intent": "To ensure that scanned or entered values match a predefined set of expected values and to record the verification results.",
+  "inputs": {
+    "Instructions": "string",
+    "SourceType": "Query | RecipeVariable",
+    "ExpectedValues": "string",
+    "SequentialScanning": "boolean",
+    "AttachToEBR": "boolean",
+    "AllowSaveAndResume": "boolean",
+    "AllowFinishBeforeComplete": "boolean",
+    "ExceptionType": "string",
+    "ColumnsExclusionList": "string",
+    "ConfirmationType": "string"
+  },
+  "outputs": {
+    "LastScannedValue": "string",
+    "MatchedValues": ["string"],
+    "VerificationResultsGrid": "DataTable",
+    "EBRAttachment": "file"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface",
+      "DataTable loader"
+    ],
+    "conditions": [
+      "Expected values have been configured via SQL query or recipe variable"
+    ]
+  },
+  "preconditions": [
+    "Phase has been authored and configured"
+  ],
+  "postconditions": [
+    "Verification results are saved",
+    "Sign-off is captured if required"
+  ],
+  "side_effects": [
+    "Results grid may be attached to the electronic batch record",
+    "PDF output of the grid is generated on finish"
+  ],
+  "example_usage": "The operator scans each barcode value (cells turn green on match), may use Skip or Reset, and then clicks Finish to complete the phase, attaching the results grid to the EBR."
+}

@@ -1,0 +1,45 @@
+{
+  "id": "RecordTimePhase",
+  "category": "human",
+  "description": "Phase that displays instructions and presents a timer to capture elapsed time with configurable start, end, pause, auto-start and alarm options. It allows editing start and end times, triggers exceptions or alarms based on configured limits, and records the total elapsed time along with start and end timestamps as recipe variables.",
+  "intent": "To measure and log the duration of a process step by capturing start and end times and computing elapsed time, with configurable exception and alarm triggers.",
+  "inputs": {
+    "Instructions": "Instruction text displayed at the top of the phase.",
+    "Confirmation": "Confirmation Type, controls signoff for the phase (0: None, 1: Initial, 2: Single Signature, etc.).",
+    "UOM": "Time UOM. Valid time-based unit of measure.",
+    "EditStartChecked": "Flag indicating if editing the start time is allowed (0: No, 1: Yes).",
+    "EditEndChecked": "Flag indicating if editing the end time is allowed (0: No, 1: Yes).",
+    "AllowPauseChecked": "Flag indicating if the timer can be paused (0: No, 1: Yes).",
+    "AutoStartChecked": "Flag indicating if the timer should start when the UI is shown (0: No, 1: Yes).",
+    "EditStartTriggerChecked": "Flag indicating if editing the start time triggers an exception (0: No, 1: Yes).",
+    "EditEndTriggerChecked": "Flag indicating if editing the end time triggers an exception (0: No, 1: Yes).",
+    "PauseTriggerChecked": "Flag indicating if pausing the timer triggers an exception (0: No, 1: Yes).",
+    "EndAlarmChecked": "Flag to enable an alarm when the timer ends (0: No, 1: Yes).",
+    "AutoCompleteChecked": "Flag to autocomplete the phase when the timer completes (0: No, 1: Yes).",
+    "TargetValue": "Target value for time. A valid number.",
+    "MessageMinimum": "Minimum value to trigger a message.",
+    "MessageMaximum": "Maximum value to trigger a message.",
+    "CommentMinimum": "Minimum value to trigger a comment.",
+    "CommentMaximum": "Maximum value to trigger a comment.",
+    "ReportMinimum": "Minimum value to trigger a report.",
+    "ReportMaximum": "Maximum value to trigger a report.",
+    "DeviationMinimum": "Minimum value to trigger a deviation.",
+    "DeviationMaximum": "Maximum value to trigger a deviation."
+  },
+  "outputs": {
+    "RecordTime": "Total elapsed time in the configured UOM, stored as a recipe variable.",
+    "StartTime": "DateTime representation of the timer start.",
+    "EndTime": "DateTime representation of the timer end."
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [
+    "May generate messages, comments, reports or deviations based on configured limits.",
+    "May display an alarm when the timer ends."
+  ],
+  "example_usage": "A recipe author adds a Record Time phase with UOM='Minutes', AutoStartChecked=1, AllowPauseChecked=1, EndAlarmChecked=1, TargetValue=60, MessageMaximum=75. At runtime, the timer starts automatically when the phase appears, the operator pauses for interventions, stops the timer when complete, and the system records StartTime, EndTime, and the elapsed minutes."
+}

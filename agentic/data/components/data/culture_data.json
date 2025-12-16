@@ -1,0 +1,43 @@
+{
+  "id": "CultureDataPhase",
+  "category": "data",
+  "description": "Phase that displays key culture process variables and their values to determine if the cell culture is ready for further processing. It shows custom instructions, a data grid of critical and process variables, allows viewing historical values, and supports recording an exception.",
+  "intent": "To present critical culture metrics to the operator, allow assessment against defined thresholds, and enable exception recording if readiness criteria are not met.",
+  "inputs": {
+    "Instructions": "Custom instruction text displayed to the operator during execution.",
+    "ProcessVariables": "List of one or more process variables selected for display in the grid.",
+    "CriticalVariable": "The single process variable identified as critical and requiring special attention.",
+    "TargetFactor": "Numeric threshold value for the critical variable; must be greater than zero.",
+    "ConfirmationType": "Type of sign-off required when the operator clicks Finish (None, Initial, Single Signature, etc.)."
+  },
+  "outputs": {
+    "VariableGrid": "Data grid showing current values for all selected process variables.",
+    "SelectedVariableDetail": "Detail view of the currently selected process variable.",
+    "HistoricalValues": "List of past values and timestamps for the selected process variable.",
+    "WarningIndicator": "Visual warning or message if the critical variable exceeds the target factor or if any data is missing.",
+    "ExceptionRecord": "Reference to an exception record if the operator invokes the Record Exception action."
+  },
+  "depends_on": {
+    "components": [
+      "CreateExceptionPhase"
+    ],
+    "conditions": [
+      "CriticalVariable exceeds TargetFactor",
+      "ProcessVariable values are missing"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added and configured a Culture Data phase in the procedure.",
+    "At least one ProcessVariable and one CriticalVariable are defined.",
+    "TargetFactor is set to a value greater than zero."
+  ],
+  "postconditions": [
+    "Completion datalines for the displayed variables are written to the electronic batch record when the operator clicks Finish.",
+    "If an exception is recorded, an exception entry is created and logged to the EBR."
+  ],
+  "side_effects": [
+    "Displays a warning message if thresholds are exceeded or data is missing.",
+    "Opens the exception page when the operator clicks Record Exception."
+  ],
+  "example_usage": "In a bioreactor recipe, the author configures pH and dissolved oxygen as ProcessVariables, selects pH as the CriticalVariable with a TargetFactor of 7.2, and provides instructions. At runtime the operator sees a grid of values, expands pH to view history, receives a warning if pH > 7.2, and may click Record Exception to document the deviation or click Finish to continue."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "BufferFlushPhase",
+  "category": "equipment",
+  "description": "Phase that allows a user to view a list of equipment last checked in along with the last product and material used on that equipment, based on a configured execution scope.",
+  "intent": "To provide operators visibility into the most recent product and material usage for selected equipment within a batch or split context.",
+  "inputs": {
+    "Scope": "Execution scope (Batch or Split) selected at authoring time.",
+    "VerificationDetails": "User credentials or verification details required to access the page, as configured by the recipe author.",
+    "URLs": "Optional list of URLs configured during authoring to display and open."
+  },
+  "outputs": {
+    "DisplayedEquipmentList": "Datagrid of equipment IDs with associated last product and material.",
+    "OpenedURL": "The URL the operator chose to open, if any."
+  },
+  "depends_on": {
+    "components": [
+      "Action List"
+    ],
+    "conditions": [
+      "Phase is invoked from the Action List",
+      "Operator clicks the Finish or Cancel button"
+    ]
+  },
+  "preconditions": [
+    "Recipe author has added a Buffer Flush phase and configured Scope and VerificationDetails.",
+    "Equipment check-in history exists for the selected batch or split."
+  ],
+  "postconditions": [
+    "The phase page closes and the user returns to the Action List.",
+    "No changes are made to the batch record when Cancel is confirmed."
+  ],
+  "side_effects": [
+    "May open external equipment log report pages or configured URLs.",
+    "Cancel does not save any user interactions on the page."
+  ],
+  "example_usage": "An author configures a Buffer Flush phase with Scope='Batch' and operator verification. At runtime the operator supplies the required credentials, reviews the datagrid showing equipment last checked in for the batch with their last product and material, clicks the Equipment Log Report button for a selected vessel, optionally opens a configured URL, and then clicks Finish to return to the Action List."
+}

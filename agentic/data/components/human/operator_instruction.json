@@ -1,0 +1,29 @@
+{
+  "id": "OperatorInstructionPhase",
+  "category": "human",
+  "description": "Displays instructions and presents a predefined list of responses for the operator to choose from, optionally auto-finishing when a response button is clicked.",
+  "intent": "To present guidance or questions to the operator and capture their choice from a set of configured responses.",
+  "inputs": {
+    "Instructions": "string",
+    "Choices": ["string"],
+    "DisplayResponseAs": "Combo | Button | List",
+    "AutoFinishOnSelection": "boolean",
+    "ConfirmationType": "string"
+  },
+  "outputs": {
+    "SelectedResponse": "string",
+    "Signature": "string"
+  },
+  "depends_on": {
+    "components": [
+      "User Interface"
+    ],
+    "conditions": [
+      "Instructions and response choices have been configured during authoring"
+    ]
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "Operator selects an item from the drop-down (or clicks a response button if Auto Finish on Selection was enabled) and then clicks Finish to complete the phase, providing a signature if required."
+}
