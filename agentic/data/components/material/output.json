@@ -35,15 +35,6 @@
   },
   "depends_on": {
     "components": [
-      "Output Execution Page",
-      "Output Authoring Page",
-      "Record Weight page",
-      "Move Output Material page",
-      "Exception page",
-      "Operator Lot Note page",
-      "Record Lot UDA page",
-      "Assign/Edit Lot Flag page",
-      "Container List dialog"
     ],
     "conditions": [
       "QC and expiration checks must pass or an exception must be recorded",

@@ -29,9 +29,6 @@
   },
   "depends_on": {
     "components": [
-      "Inventory Material Information page",
-      "Configurable parameters: MoveMaterial_EnforceUnitStagingAreaOnly, MoveMaterial_EnforceEnterContainer, RestrictMoveInBasedOnStorageConditions, AutoSetDestForMoveSameQcStatus",
-      "QC status destination mapping (MM_MATL_DEST_SP)"
     ],
     "conditions": [
       "A valid Container ID (or Lot ID) has been entered or scanned",

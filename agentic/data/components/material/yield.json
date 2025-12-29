@@ -34,8 +34,6 @@
   },
   "depends_on": {
     "components": [
-      "Yield Authoring Page",
-      "Exception Page"
     ],
     "conditions": [
       "Material input/output data must be available from prior phases",
