@@ -22,9 +22,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface",
-      "OPC Server",
-      "Data Grid"
     ],
     "conditions": [
       "OPC parameters have been configured during authoring"

@@ -23,10 +23,7 @@
     "EmailSentStatus": "Indicator that the e-mail was successfully dispatched or that an error occurred."
   },
   "depends_on": {
-    "components": [
-      "Signature capture page",
-      "Exception page"
-    ],
+    "components": [],
     "conditions": [
       "Phase is invoked in the action list",
       "Operator clicks the Finish button"

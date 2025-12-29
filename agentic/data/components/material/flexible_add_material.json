@@ -19,16 +19,6 @@
   "outputs": "I don't know based on the available documents.",
   "depends_on": {
     "components": [
-      "User Interface",
-      "Material Substitution screen",
-      "Record Weight page",
-      "Searching for Materials page",
-      "Safety Information page",
-      "Record Lot UDA page",
-      "Assign/Edit Lot Flag page",
-      "View Dispense Group dialog",
-      "View Required button",
-      "View Additions page"
     ],
     "conditions": [
       "If container-tracked and SUPPORT_LOT_EQ_CONT_ALLOC=true, allocation sequence rules apply",

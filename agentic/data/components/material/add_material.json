@@ -25,8 +25,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface",
-      "Equipment State Grid"
     ],
     "conditions": [
       "BOM reference number configured",

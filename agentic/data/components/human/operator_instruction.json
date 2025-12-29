@@ -16,7 +16,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface"
     ],
     "conditions": [
       "Instructions and response choices have been configured during authoring"

@@ -17,10 +17,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface",
-      "Exception Page",
-      "Assign/Edit Lot Flag Page",
-      "View All Materials dialog"
     ],
     "conditions": [
       "QC and Expiration checks must pass or an exception must be recorded if configured",

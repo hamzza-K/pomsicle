@@ -23,8 +23,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface",
-      "DataTable loader"
     ],
     "conditions": [
       "Expected values have been configured via SQL query or recipe variable"

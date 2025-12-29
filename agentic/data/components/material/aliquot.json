@@ -38,10 +38,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface",
-      "Exception Page",
-      "Account Page",
-      "Assign/Edit Lot Flag Page"
     ],
     "conditions": [
       "Source container or lot must be available",

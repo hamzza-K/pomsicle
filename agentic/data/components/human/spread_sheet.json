@@ -22,8 +22,6 @@
   },
   "depends_on": {
     "components": [
-      "Exception page",
-      "Signature capture page"
     ],
     "conditions": [
       "Phase is invoked in the action list",

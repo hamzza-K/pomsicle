@@ -14,7 +14,6 @@
   },
   "depends_on": {
     "components": [
-      "Action List"
     ],
     "conditions": [
       "Phase is invoked from the Action List",

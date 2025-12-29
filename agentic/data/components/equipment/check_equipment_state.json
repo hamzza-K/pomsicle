@@ -12,10 +12,6 @@
   "outputs": "",
   "depends_on": {
     "components": [
-      "Action List",
-      "Worksheet execution page (for state correction)",
-      "Exception page",
-      "Signature capture page"
     ],
     "conditions": [
       "Phase is invoked from the Action List",

@@ -19,7 +19,6 @@
   },
   "depends_on": {
     "components": [
-      "Exception Management"
     ],
     "conditions": [
       "Phase must be reached during recipe execution",

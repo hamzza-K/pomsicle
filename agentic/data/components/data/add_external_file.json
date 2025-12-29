@@ -10,7 +10,10 @@
     "AttachedFileCount": "Number of files attached by the phase (integer).",
     "AttachedFileNames": "DataTable with a single FILENAME column containing each attached file name."
   },
-  "depends_on": "",
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
   "preconditions": [
     "Link parameter must be specified."
   ],

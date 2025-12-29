@@ -25,8 +25,6 @@
   },
   "depends_on": {
     "components": [
-      "Manage Equipment Add Point page (for docking/undocking containers)",
-      "Equipment class definitions that include add point metadata"
     ],
     "conditions": [
       "Phase has been authored with one or more BOM line items selected",

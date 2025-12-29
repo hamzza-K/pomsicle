@@ -25,9 +25,6 @@
   },
   "depends_on": {
     "components": [
-      "Record Weight page",
-      "Exception page",
-      "Operator Lot Note page"
     ],
     "conditions": [
       "A container ID is displayed or entered",

@@ -43,10 +43,6 @@
   },
   "depends_on": {
     "components": [
-      "User Interface",
-      "OPC Server",
-      "SAP Interface",
-      "Electronic Batch Record"
     ],
     "conditions": [
       "Container is of type Raw Material or Stock Material",
