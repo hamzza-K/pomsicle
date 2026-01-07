@@ -12,6 +12,7 @@ from services.recipe_service import RecipeService
 from services.inventory_service import InventoryService
 from services.receiving_service import ReceivingService
 from services.material_service import MaterialService
+from services.bom_service import BOMService
 from models.schemas import (
     RecipeCreateTemplateRequest,
     RecipeCreateCustomRequest,
@@ -25,28 +26,23 @@ from models.schemas import (
     MaterialResponse
 )
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-# Initialize config manager
 config_manager = ConfigManager()
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Lifespan context manager for startup/shutdown events."""
-    # Startup
     logger.info("Starting POMSicle Agentic Framework API...")
     yield
-    # Shutdown
     logger.info("Shutting down POMSicle Agentic Framework API...")
 
 
-# Create FastAPI app
 app = FastAPI(
     title="POMSicle Agentic Framework API",
     description="REST API for POMSicle operations - Converted from CLI to agent-friendly interface",
@@ -57,7 +53,7 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -99,6 +95,16 @@ def get_material_service() -> MaterialService:
     return MaterialService(
         settings=config_manager.settings,
         material_settings=config_manager.material_settings,
+        location_settings=config_manager.location_settings,
+        username=config_manager.get_username(),
+        password=config_manager.get_password()
+    )
+
+
+def get_bom_service() -> BOMService:
+    """Dependency to get BOMService instance."""
+    return BOMService(
+        settings=config_manager.settings,
         location_settings=config_manager.location_settings,
         username=config_manager.get_username(),
         password=config_manager.get_password()
