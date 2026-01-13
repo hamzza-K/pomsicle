@@ -19,7 +19,7 @@ from material.material_template import PomsicleMaterialManager
 # -----------------------------------------------------------------------------
 # Logging
 # -----------------------------------------------------------------------------
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 # -----------------------------------------------------------------------------
@@ -179,7 +179,6 @@ def handle_recipe_create_template(args, token=None):
 
 def handle_bom_start(args, token=None):
     logger.info(f"Starting BOM process for: {args.template_name}")
-    # Implement BOM start logic here
 
     try:
         template_manager = PomsicleBOMManager(settings, location_settings, args.add, USERNAME, PASSWORD)
@@ -265,6 +264,7 @@ def handle_recipe_create_custom(args, token=None):
     logger.info(f"Custom recipe created with: {' → '.join(args.add)}")
 
     if args.attach:
+        logger.info("Attach is:", args.attach)
         if not args.materials:
             logger.error("Materials not provided for BOM attachment. Exiting.")
             exit(1)
@@ -318,7 +318,7 @@ def create_cli():
         required=True,
         help="List of objects to add into the custom recipe"
     )
-    create_custom.add_argument("--attach", default="Bom_template.xml", help="Name of the Bill.")
+    create_custom.add_argument("--attach", nargs="?", const="Bom_template.xml", default=None, help="Name of the Bill.")
     create_custom.add_argument("--materials", nargs="+", help="List of materials to add into the BOM")
     create_custom.set_defaults(func=handle_recipe_create_custom)
 
@@ -359,7 +359,7 @@ def create_cli():
 
     start = b_sub.add_parser("start", help="Start BOM process")
     start.add_argument("--template-name", default="Bom_template.xml", help="Name of the BOM template.")
-    start.add_argument("--bom-name", default="POMSICLE_BOM", help="Name of the BOM.")
+    start.add_argument("bom_name", default="POMSICLE_BOM", help="Name of the BOM.")
     start.add_argument(
             "--add",
             nargs="+",

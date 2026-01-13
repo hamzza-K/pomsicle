@@ -204,7 +204,6 @@ class RecipeService:
                         "bom_name": bom_name
                     }
             elif bom_path:
-                # Use provided BOM file path
                 bom_file_path = bom_path
                 if not os.path.exists(bom_file_path):
                     logger.warning(f"BOM file not found: {bom_file_path}. Skipping attachment.")

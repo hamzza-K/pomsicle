@@ -9,10 +9,13 @@ import logging
 
 
 logger = logging.getLogger(__name__)
-
 settings = config('pomsicle')
 
-MACHINE_NAME = settings["MACHINE_NAME"]
+MACHINE_NAME = settings.get('MACHINE_NAME', None)
+
+if not MACHINE_NAME:
+    logger.critical("MACHINE_NAME is not configured. Exiting.")
+    exit(1)
 
 BASE_URL = f'http://{MACHINE_NAME}/poms-api/'
 

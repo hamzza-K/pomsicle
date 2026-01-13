@@ -8,7 +8,7 @@ payload = Payload()
 
 settings = config('pomsicle')
 
-SHEET = settings['INVENTORY_SHEET']
+SHEET = settings.get("INVENTORY_SHEET", "Sheet1")
 
 
 def read_file(token: str, filename: str):

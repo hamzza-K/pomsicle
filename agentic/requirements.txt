@@ -12,3 +12,4 @@ polars-lts-cpu
 # Additional dependencies that may be needed
 python-multipart>=0.0.6  # For file uploads if needed
 
+configmanager

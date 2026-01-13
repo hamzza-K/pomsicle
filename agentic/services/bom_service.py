@@ -6,6 +6,7 @@ import sys
 import logging
 from typing import Optional, List
 from pathlib import Path
+import configparser
 
 # Add parent directory to path to import modules
 project_root = Path(__file__).parent.parent.parent
@@ -19,8 +20,10 @@ logger = logging.getLogger(__name__)
 
 class BOMService:
     """Service for BOM (Bill of Materials) operations."""
-    
-    def __init__(self, settings: Optional[dict] = None, location_settings: Optional[dict] = None, username: Optional[str] = None, password: Optional[str] = None):
+
+    def __init__(self, settings: configparser.SectionProxy, location_settings: Optional[configparser.SectionProxy] = None,
+                username: Optional[str | None] = None,
+                password: Optional[str | None] = None):
         """
         Initialize BOMService.
         
@@ -50,9 +53,9 @@ class BOMService:
         
         self.settings = settings
         self.location_settings = location_settings
-        self.username = username or settings.get('USERNAME')
-        self.password = password or settings.get('PASSWORD')
-        
+        self.username = username or settings.get('USERNAME', None)
+        self.password = password or settings.get('PASSWORD', None)
+
         if not self.username or not self.password:
             raise ValueError("Username and password are required")
     
@@ -83,6 +86,9 @@ class BOMService:
             
             logger.info(f"Creating BOM '{bom_name}' with materials: {materials}")
             
+            if self.username is None or self.password is None:
+                raise ValueError("Username and password must not be None when creating a BOM.")
+
             manager = PomsicleBOMManager(
                 self.settings,
                 self.location_settings,
