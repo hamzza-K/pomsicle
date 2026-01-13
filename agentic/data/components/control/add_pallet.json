@@ -1,0 +1,44 @@
+{
+  "id": "AddPallet",
+  "category": "control",
+  "description": "Allows a pallet of containers to be automatically consumed when a pallet ID or one of the container IDs on the pallet is scanned for consumption. Supports both Raw Material Pallet and Dispensed Material Pallet modes, displays configured instructions and confirmation type, performs QC checks, updates running totals, and creates or updates recipe variables.",
+  "intent": "Enable operators to add full pallets of materials into the production run by scanning, validate and consume all containers on the pallet, update dispense requirements and recipe state, and optionally send a transaction to an ERP system.",
+  "inputs": {
+    "pallet_id": "Scanned pallet ID or any container ID on the pallet",
+    "mode": "Phase mode: Raw Material Pallet or Dispensed Material Pallet",
+    "allow_unselected_materials": "Flag indicating whether carriers containing materials not selected for consumption are accepted"
+  },
+  "outputs": {
+    "dispense_requirements": "Updated required, previously added and running added amounts in the Dispense Requirement section",
+    "current_pallets": "List of pallets available and pallets marked as Being Added in the Current Pallets section",
+    "recipe_variables": "Created or updated variables (e.g., TotalAdded_Ref_<bom>, Ref_<bom>_TotalAddedQty, IsComplete_Ref_<bom>, LastContainer)",
+    "erp_transaction": "Transaction sent to an ERP system upon successful completion if configured",
+    "phase_completion_allowed": "Flag indicating whether the Finish button is enabled (true if at least one pallet has been added)"
+  },
+  "depends_on": {
+    "components": [
+    ],
+    "conditions": [
+      "User has appropriate authorization to access the phase",
+      "Phase is configured with selected materials and mode",
+      "For Raw Material Pallet mode, pallets have been checked in"
+    ]
+  },
+  "preconditions": [
+    "The Add Pallet phase is active and loaded",
+    "Instructions and confirmation type have been configured",
+    "Eligible pallets are available for the current order/batch/unit procedure/split"
+  ],
+  "postconditions": [
+    "All containers on the selected pallet are consumed (pallet dissolved)",
+    "Dispense Requirement totals reflect the addition",
+    "Recipe variables for added quantities and completion status are updated",
+    "ERP transaction is sent if configured"
+  ],
+  "side_effects": [
+    "Containers are removed from inventory",
+    "Recipe variables are created or updated",
+    "Pallet appears as Being Added and is then removed upon completion"
+  ],
+  "example_usage": "Scan pallet 'C-000000036' (or container '0000000115'), observe Total Running Added update in the Dispense Requirement grid, then click Finish to complete the Add Pallet phase and dissolve the pallet."
+}

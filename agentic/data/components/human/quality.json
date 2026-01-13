@@ -1,0 +1,47 @@
+{
+  "id": "Quality",
+  "category": "human",
+  "description": "Phase used to handle a container\u2019s material status, retest and expiration dates; may be marked as autocomplete for background execution without operator interaction.",
+  "intent": "To allow the operator (or system in auto-complete mode) to update and confirm the container\u2019s QC status and manage retest and expiration dates, including optional label printing, and record these changes in the electronic batch record.",
+  "inputs": {
+    "Container ID": "ID of the container whose QC status and dates will be managed (entered or selected at runtime)",
+    "Select at Run Time": "Flag indicating container ID will be provided during execution",
+    "New QC Status": "The material status value to assign (can be static or from variable)",
+    "From Variable": "Flag to retrieve new status value from specified variable",
+    "Variable ID": "ID of variable containing the new status value",
+    "Print Label": "Flag indicating whether a new label should be printed",
+    "Label ID": "ID of the label template to use if printing is enabled",
+    "Rule": "Rule for calculating retest and expiration dates (e.g., authored values, phase markers, execution time)",
+    "Retest Date": "Specified or calculated retest date (supports special variables)",
+    "Expiration Date": "Specified or calculated expiration date (supports special variables)",
+    "Phase ID": "Phase marker ID for offset calculations",
+    "Operation ID": "Operation marker ID for offset calculations",
+    "Start Time": "Start time marker for offset calculations",
+    "End Time": "End time marker for offset calculations",
+    "Retest Offset Time": "Offset interval for retest date (supports special variables)",
+    "Expiration Offset Time": "Offset interval for expiration date (supports special variables)",
+    "UOM": "Unit of measure for offset intervals",
+    "Number of Labels to Print": "Number of labels to print, default is 1",
+    "Confirmation Type": "Type of confirmation required upon phase completion"
+  },
+  "outputs": {
+    "Updated EBR": "Electronic Batch Record updated with new QC status, retest and expiration dates and execution details",
+    "Printed Label": "Physical label(s) printed if Print Label is selected"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Container must exist and be accessible in the batch execution context"
+  ],
+  "postconditions": [
+    "EBR reflects updated material status and date values",
+    "Labels are printed if requested"
+  ],
+  "side_effects": [
+    "May trigger background execution if auto-complete is enabled",
+    "May invoke label printing process"
+  ],
+  "example_usage": "Operator enters or scans the container ID, selects a new QC status or variable, configures date calculation rule, sets retest and expiration values, opts to print a label, and clicks Finish to update the batch record."
+}

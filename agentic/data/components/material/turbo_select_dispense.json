@@ -1,0 +1,16 @@
+{
+  "id": "TurboSelectDispense",
+  "category": "material",
+  "description": "Turbo Select Dispense is a high-speed dispensing runtime phase that enables operators to rapidly dispense materials, now with support for lot-tracked materials.",
+  "intent": "Allow the operator to perform a fast 'turbo' dispense of material into WIP containers, support dispensing of lot-tracked materials, and optionally require re-taring each new WIP container when configured.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "Operator opens the Turbo Select Dispense phase, selects a lot-tracked source container, enters the dispense quantity, and\u2014if configured\u2014re-tares the new WIP container before committing the dispense."
+}

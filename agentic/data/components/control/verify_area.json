@@ -1,0 +1,31 @@
+{
+  "id": "VerifyArea",
+  "category": "control",
+  "description": "Allows an operator to verify the current status of a dispense area (room), including cleanliness and environmental statuses, view the log for the area, and optionally update or record cleaning as needed.",
+  "intent": "Ensure that the dispense area meets required status values before continuing with dispense actions by verifying and updating room statuses or recording exceptions.",
+  "inputs": {
+    "instructions": "string",
+    "statusTypeValuePairs": [],
+    "confirmationType": "string"
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [
+      "VerifyDispenseRoomCleaning"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "A dispense area is identified and loaded for verification"
+  ],
+  "postconditions": [
+    "Dispense area statuses are validated against required values",
+    "Room status values are updated if the operator chose to update",
+    "Exceptions are recorded if applicable"
+  ],
+  "side_effects": [
+    "May open the Equipment Maintenance page to update room status",
+    "May open the Exception page to record an exception"
+  ],
+  "example_usage": "Operator reviews displayed instructions and current room statuses, selects the status checks to perform, and clicks Finish to complete area verification before proceeding with material dispense."
+}

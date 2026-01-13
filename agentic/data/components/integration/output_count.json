@@ -1,0 +1,45 @@
+{
+  "id": "OutputCount",
+  "category": "integration",
+  "description": "A recipe runtime phase that allows the operator to output as many identical containers or carriers as specified during authoring, using either provided data tables or runtime entry when permitted. It supports printing labels, writing output records to EBR, and handling multi-level carriers.",
+  "intent": "To enable operators to efficiently generate the required number of output containers or carriers with minimal manual configuration by leveraging authoring parameters and recipe variables.",
+  "inputs": {
+    "Product ID": "string",
+    "Lot ID": "string",
+    "Containers to Output": "dataTable",
+    "Number of Containers": "integer",
+    "Quantity per Container": "number + UOM",
+    "QC/SDA Rules": "string",
+    "Print Labels": "boolean",
+    "Label Name": "string",
+    "Labels per Container": "integer",
+    "Input Containers": "dataTable",
+    "Containers per Carrier": "integer",
+    "Multi-Level Carrier": "integer",
+    "Confirmation Type": "string"
+  },
+  "outputs": {
+    "vProductID": "string",
+    "vProductNumber": "string",
+    "vLotID": "string",
+    "dtContainers": "dataTable",
+    "vContainerCount": "integer",
+    "vQtyPerContainer": "number + UOM",
+    "dtCarriers": "dataTable",
+    "vCarrierCount": "integer",
+    "dtCarrierContainers": "dataTable",
+    "vCarrierContCount": "integer",
+    "vContainersPerCarrier": "integer"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [
+    "Print labels for containers or carriers when configured",
+    "Write output containers/carriers to datalines or EBR"
+  ],
+  "example_usage": "Operator selects 'Output Containers', enters Number of Containers = 5 and Quantity per Container = 100 mL, then clicks Finish to generate five containers."
+}

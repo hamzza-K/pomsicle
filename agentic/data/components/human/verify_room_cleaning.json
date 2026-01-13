@@ -1,0 +1,25 @@
+{
+  "id": "VerifyRoomCleaning",
+  "category": "human",
+  "description": "The Verify Room Cleaning phase lets an operator verify that a dispensing room has been cleaned to the required state by comparing room cleanliness status against recipe-defined criteria.",
+  "intent": "Ensure the dispense room meets the required cleanliness status before proceeding",
+  "inputs": {
+    "instructions": "string",
+    "statusType": "string",
+    "statusValues": [
+      "string"
+    ],
+    "confirmationTypes": [
+      "string"
+    ]
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "Operator views instructions, selects the appropriate cleanliness status (General Clean, Complete Clean, or Needs Cleaning), provides the required confirmation signature, and clicks Finish to complete the phase."
+}

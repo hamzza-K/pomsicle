@@ -1,0 +1,27 @@
+{
+  "id": "ViewReport",
+  "category": "human",
+  "description": "A recipe phase that displays a report to the operator during execution and allows optionally attaching the report to the electronic batch record (EBR). It supports selecting the report, entering or mapping report parameters, previewing the report, and configuring attachment to EBR.",
+  "intent": "To allow operators to view system-generated reports and choose to include them in the EBR for documentation and compliance.",
+  "inputs": {
+    "Instructions": "string",
+    "Report Name": "string",
+    "Report Parameters": "string",
+    "Attach to EBR": "boolean",
+    "Confirmation Type": "string"
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Report displayed to operator",
+    "Report attached to EBR if configured"
+  ],
+  "side_effects": [
+    "Attaches report to Electronic Batch Record when selected"
+  ],
+  "example_usage": "Operator selects 'Batch Summary' report, enters parameter values 'BatchID:1234', checks 'Attach to EBR', previews the report, then clicks Finish to view the report and attach it as a PDF to the EBR."
+}

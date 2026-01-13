@@ -1,0 +1,48 @@
+{
+  "id": "AddUtility",
+  "category": "human",
+  "description": "Enables the operator to record additions of non-inventory-tracked utility materials to a specified equipment drop, generating lot IDs for each addition or period of additions.",
+  "intent": "Guide the operator through selecting the utility equipment, entering or recording the addition quantity (manually or via scale), viewing safety data and equipment logs, initiating worksheets or maintenance actions if needed, handling exceptions, and committing the addition with required signoff.",
+  "inputs": {
+    "equipment_id": "ID of the utility drop equipment to which material is added",
+    "quantity": "Quantity of utility material to add (entered or recorded from scale)",
+    "uom": "Unit of measure for the entered quantity",
+    "use_scale": "Flag or action to invoke the Record Quantity page to get weight from a scale",
+    "view_safety": "Action to display safety information for the utility material",
+    "view_log": "Action to display the equipment log for the selected utility drop",
+    "initiate_worksheet": "Action to launch worksheets applicable to the equipment class",
+    "equipment_maintenance": "Action to open equipment maintenance functions for the selected equipment",
+    "record_exception": "Action to call the Exception page and record an exception",
+    "confirmation_type": "Signature level required for finishing the addition (overrides WEIGH_MAN_SIGN if more restrictive)",
+    "finish": "Action to commit the material addition and close the page",
+    "cancel": "Action to close the page without saving the addition"
+  },
+  "outputs": {
+    "generated_lot_id": "Lot ID(s) created for this addition or period of additions",
+    "exception_id": "Exception ID returned if an exception was recorded",
+    "signed_off": "Boolean or signature record indicating finish confirmation"
+  },
+  "depends_on": {
+    "components": [
+    ],
+    "conditions": [
+      "Utility material must be staged on the specified equipment before recording",
+      "If equipment is not in the correct status, an exception must be created or equipment maintenance invoked"
+    ]
+  },
+  "preconditions": [
+    "Material has been added to the equipment represented by the Equipment ID",
+    "Any required DCS-supplied quantity is available if called from a DCS system"
+  ],
+  "postconditions": [
+    "Addition of utility material is recorded in the batch record",
+    "Lot ID(s) are generated and associated with the addition",
+    "Signature is captured if required"
+  ],
+  "side_effects": [
+    "Invocation of the scale interface when recording weight",
+    "Calls to safety data, equipment log, worksheet and equipment maintenance subsystems",
+    "Possible exception workflow launch"
+  ],
+  "example_usage": "The operator scans or enters Equipment ID 'UTIL-DROP-01', views the safety sheet, presses 'Record Quantity' to pull weight from the scale, reviews the equipment log, clicks 'Finish', supplies the required signature, and the system generates Lot ID 'LOT-U1234' for the recorded addition."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "AutoGlassLoad",
+  "category": "equipment",
+  "description": "The Autoclave / Glasswash Load recipe runtime phase now allows the removal of components in subsequent runs of the phase after the initial load has been saved (committed), when configured via the new configurable parameters AUTOCLAVE_RemoveAddedComponent and GLASSWASH_RemoveAddedComponent.",
+  "intent": "To load components into an autoclave or glasswash unit and, when configured, allow removal of previously added components in later executions.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Components loaded into the autoclave or glasswash",
+    "Previously added components removed in subsequent runs if configured"
+  ],
+  "side_effects": [
+    "Removes components added in prior runs when configured via AUTOCLAVE_RemoveAddedComponent or GLASSWASH_RemoveAddedComponent"
+  ],
+  "example_usage": "string"
+}

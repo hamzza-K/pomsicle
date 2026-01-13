@@ -1,0 +1,27 @@
+{
+  "id": "DisplayLotAttributes",
+  "category": "human",
+  "description": "Phase that retrieves a container ID (from a recipe variable if configured or via user input), determines the material lot, and displays the lot\u2019s material ID, material description and all user-defined attribute (UDA) names and values.",
+  "intent": "To present the operator with lot-specific attribute data for a container\u2019s material lot and make those values available for PTL and downstream calculation phases.",
+  "inputs": {
+    "ContainerID": "Container identifier retrieved from a recipe variable or entered/scanned by the operator",
+    "MaterialID": "Entered or scanned material identifier when the lot has multiple associated materials"
+  },
+  "outputs": {
+    "MaterialID": "Determined material identifier for the selected lot",
+    "MaterialDescription": "Description of the determined material",
+    "UDAAttributes": "List of user-defined attribute names and values for the lot"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Lot UDA list populated and made available for PTL and calculation phases"
+  ],
+  "side_effects": [
+    "Displays instructions regarding equipment that must be recorded"
+  ],
+  "example_usage": "Operator scans or enters a container ID (or the phase retrieves it from a recipe variable), enters a material ID if prompted, reviews the displayed lot attributes and UDA values, then selects Finish to save and proceed."
+}

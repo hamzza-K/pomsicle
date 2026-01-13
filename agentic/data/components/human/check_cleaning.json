@@ -1,0 +1,40 @@
+{
+  "id": "CheckCleaning",
+  "category": "human",
+  "description": "Phase retrieves checked\u2010in equipment for a configured Bill of Equipment item, displays configuration and current values, allows operator selection of equipment, overwrite and Next Like flags, and gathers cleaning and flushing requirements.",
+  "intent": "To verify and collect cleaning and flushing parameters for selected equipment by retrieving configuration values and operator inputs, and to generate recipe variables for subsequent phase logic.",
+  "inputs": {
+    "BOEItem": "Configured Bill of Equipment item identifier",
+    "CheckedInEquipment": "List of equipment IDs checked in for the BOE item",
+    "ConfigurationValues": "Values from the configuration matrix for cleaning and flushing",
+    "AllowOverwrite": "Flag indicating if operator may overwrite retrieved values",
+    "AllowNextLike": "Flag indicating if operator may specify the Next Like value"
+  },
+  "outputs": {
+    "SelectedEquipmentID": "Equipment ID chosen by the operator",
+    "OverwriteException": "Exception type specified if values were overwritten",
+    "NextLikeFlag": "Operator-specified Next Like flag value",
+    "CleaningType": "Required cleaning type",
+    "WorksheetID": "Worksheet identifier for the cleaning",
+    "FlushQuantity": "Required flush quantity and unit of measure",
+    "RecipeVariables": "Generated variables for use in phase transition logic"
+  },
+  "depends_on": {
+    "components": [
+      "CheckInEquipment"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "Phase configured by recipe author with Bill of Equipment and corresponding configuration matrix",
+    "Equipment has been checked in for the configured BOE item"
+  ],
+  "postconditions": [
+    "Electronic Batch Record updated with execution data line for cleaning",
+    "Recipe variables created for cleaning and flushing requirements"
+  ],
+  "side_effects": [
+    "User-generated exceptions are recorded in the Electronic Batch Record"
+  ],
+  "example_usage": "Operator runs the Check Cleaning phase, selects the appropriate equipment and flag values, confirms or overwrites parameters, and completes the phase to proceed with cleaning execution."
+}

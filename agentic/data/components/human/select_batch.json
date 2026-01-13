@@ -1,0 +1,16 @@
+{
+  "id": "SelectBatch",
+  "category": "human",
+  "description": "Operator selects one or more batches.",
+  "intent": "Allow the operator to select batches for subsequent processing.",
+  "inputs": "I don't know based on the available documents.",
+  "outputs": "I don't know based on the available documents.",
+  "depends_on": {
+    "components": "I don't know based on the available documents.",
+    "conditions": "I don't know based on the available documents."
+  },
+  "preconditions": "I don't know based on the available documents.",
+  "postconditions": "I don't know based on the available documents.",
+  "side_effects": "I don't know based on the available documents.",
+  "example_usage": "Operator selects one or more batches."
+}

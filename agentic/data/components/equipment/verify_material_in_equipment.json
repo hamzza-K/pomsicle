@@ -1,0 +1,31 @@
+{
+  "id": "VerifyMaterialInEquipment",
+  "category": "equipment",
+  "description": "Verifies that the specified material is present in each equipment of a defined class and validates each material's quantity, expiry date, and reset date.",
+  "intent": "Ensure the material defined by the recipe is correctly loaded and valid in all equipment of the specified class, and record any exceptions.",
+  "inputs": {
+    "instructions": "string",
+    "equipmentClass": "string",
+    "bomReferenceNumber": "string",
+    "runInBackground": "boolean",
+    "confirmationType": "string"
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Material and equipment class are defined in recipe authoring"
+  ],
+  "postconditions": [
+    "All equipment have been checked for the specified material",
+    "Material quantity, expiry date, and reset date have been validated",
+    "Exceptions are recorded if any verification fails"
+  ],
+  "side_effects": [
+    "May open the Safety Info page",
+    "May open the Exception page to record an exception"
+  ],
+  "example_usage": "Operator selects equipment class and BOM reference, reviews material in each listed equipment (quantity, expiry date, reset date), records any exceptions, and clicks Finish to complete the phase."
+}

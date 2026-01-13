@@ -1,0 +1,28 @@
+{
+  "id": "SampleCollection",
+  "category": "human",
+  "description": "Records sample collection details for one or more containers and publishes recipe variables with information about the collected samples.",
+  "intent": "Capture and record sample information including sample identifiers, container counts, quantities, and unit of measure for a specified sample group.",
+  "inputs": {},
+  "outputs": {
+    "SampleID": "Unique identifier for the collected sample",
+    "SampleName": "Name of the collected sample",
+    "NumOfContainers": "Number of containers collected",
+    "QtyPerContainer": "Quantity per container collected",
+    "UOM": "Unit of measure for the collected quantity",
+    "SourceContainer": "Identifier of the source container",
+    "MaterialID": "Identifier of the sampled material",
+    "LotID": "Lot identifier of the sampled material",
+    "dtContainers": "DataTable with columns CONTAINER_NUM, QUANTITY, UOM for each container"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Recipe variables for sample collection are published and available for downstream phases"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator selects a sample group, specifies number of containers and quantity per container, collects the sample, and upon completion the phase outputs variables like SampleID, NumOfContainers and dtContainers for further processing."
+}

@@ -1,0 +1,43 @@
+{
+  "id": "RawMaterialSampling",
+  "category": "human",
+  "description": "Phase that allows the user to record one or more samples from a raw material container, displaying sampling instructions, container and material information, and managing the list of recorded samples.",
+  "intent": "To enable the operator to capture sample quantities and units from a raw material container and commit them to the electronic batch record.",
+  "inputs": {
+    "Container ID": "ID of the raw material container (entered or scanned)",
+    "Sample ID": "Identifier for the sample being collected",
+    "Number of Required Samples": "Number of samples required as defined by the recipe",
+    "Material ID": "ID of the material within the container (entered if multiple materials present)",
+    "Quantity": "Quantity of the sample to record",
+    "Unit of Measure": "Unit of measure for the sample quantity",
+    "Scale": "Button to record the sample weight via the RecordWeight phase",
+    "Record": "Action to add the entered sample to the current samples list",
+    "Remove": "Action to remove a recorded sample from the list",
+    "Exception": "Button to invoke the exception recording page",
+    "Confirmation Type": "Signature requirement type for the Finish action"
+  },
+  "outputs": {
+    "Current Samples": "List of samples recorded during this phase",
+    "Electronic Batch Record": "Updated with the recorded sample entries upon Finish"
+  },
+  "depends_on": {
+    "components": [
+      "RecordWeight"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "Raw material container exists and is accessible",
+    "Sampling instructions and required sample count are defined"
+  ],
+  "postconditions": [
+    "All recorded samples are committed to the electronic batch record",
+    "Required signature is captured if configured"
+  ],
+  "side_effects": [
+    "May invoke the RecordWeight page when Scale is selected",
+    "May invoke the exception page when Exception is selected",
+    "May require a confirmation signature on Finish"
+  ],
+  "example_usage": "Operator views sampling instructions, scans the container ID, reviews material info, enters quantity and UOM (or selects Scale), clicks Record for each sample, then clicks Finish (and signs if required) to commit samples or Cancel to exit without saving."
+}

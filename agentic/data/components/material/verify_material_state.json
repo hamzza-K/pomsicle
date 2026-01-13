@@ -1,0 +1,26 @@
+{
+  "id": "VerifyMaterialState",
+  "category": "material",
+  "description": "The Verify Material State phase allows the operator to verify that all materials used at this point in the unit procedure match the bill of materials and meet required state parameters such as QC status, expiration date, retest date, and defined SDA values.",
+  "intent": "Ensure that each material required by the recipe's BOM is the correct material and is in a valid state before proceeding.",
+  "inputs": {
+    "containerID": "string",
+    "expectedMaterialID": "string"
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Materials to be verified are defined in the Bill of Materials and by the Recipe Author"
+  ],
+  "postconditions": [
+    "All BOM line items have State Checked set to Yes",
+    "Finish button is unlocked to complete the phase"
+  ],
+  "side_effects": [
+    "May open the Exception page to record an exception"
+  ],
+  "example_usage": "Operator scans or enters a Container ID for each BOM line item, the system populates QC Status, Expiration Date, Retest Date, and SDA values, the operator records any exceptions for invalid statuses, and clicks Finish once all material states are verified."
+}

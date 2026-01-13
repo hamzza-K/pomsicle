@@ -1,0 +1,26 @@
+{
+  "id": "ManageAssembly",
+  "category": "human",
+  "description": "Phase that allows operators to assemble, maintain, or disassemble a specified grouping of equipment and material lots into a single identity or break it down into its constituent parts.",
+  "intent": "To enable operators to manage assemblies by creating new assemblies, updating existing assemblies, or disassembling assemblies during recipe execution.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [
+      "SpecificationManagement"
+    ],
+    "conditions": [
+      "Assembly must be defined in specification management"
+    ]
+  },
+  "preconditions": [
+    "Assembly ID must be selected and the action mode (Create, Maintain, or Disassemble) is determined",
+    "Required equipment status checks are configured and satisfied"
+  ],
+  "postconditions": [
+    "Assembly actions are committed and recorded",
+    "Confirmation signature may be required to finalize the assembly operation"
+  ],
+  "side_effects": [],
+  "example_usage": "During recipe execution, the operator selects the Manage Assembly phase, chooses the assembly ID, selects 'Create', scans equipment and material container IDs to add them, and then clicks Finish to commit the assembly."
+}

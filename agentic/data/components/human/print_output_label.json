@@ -1,0 +1,29 @@
+{
+  "id": "PrintOutputLabel",
+  "category": "human",
+  "description": "Phase that enables a user to print a production output label for an output container if no label has yet been printed, with support for disposable (one\u2010time) and reusable containers.",
+  "intent": "To allow the operator to generate and print the output container label, ensuring proper labeling of disposable and reusable vessels.",
+  "inputs": {
+    "Container ID": "ID of the output container to be labeled (entered or scanned)",
+    "Label Name": "Name of the label as defined during authoring"
+  },
+  "outputs": {
+    "Printed Label": "Physical label output sent to the configured label printer"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "An output container must exist and its ID is provided",
+    "For disposable containers, no label must have been printed previously"
+  ],
+  "postconditions": [
+    "Production output label is printed and associated with the output container"
+  ],
+  "side_effects": [
+    "May invoke the exception recording page if the operator selects Record Exception",
+    "May require a confirmation signature when the operator selects Finish"
+  ],
+  "example_usage": "Operator scans or enters the container ID, selects Print Label to send the label to the printer, optionally records an exception, and then clicks Finish (with signature) to commit or Cancel to exit without saving."
+}

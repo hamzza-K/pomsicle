@@ -1,0 +1,27 @@
+{
+  "id": "RecordDevice",
+  "category": "equipment",
+  "description": "Enables the operator to record a value returned from a connected device or manually enter a reading.",
+  "intent": "Capture device readings and store them as recipe variables, ensuring readings are within specified limits and handling manual\u2010entry exceptions.",
+  "inputs": {},
+  "outputs": {
+    "ManualEntry": "boolean indicating if the reading was manually entered",
+    "RecordedValue": "the value retrieved from the device or entered manually"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Equipment must be connected and selected",
+    "Recipe author must configure Equipment Class and valid Equipment IDs"
+  ],
+  "postconditions": [
+    "Reading and ManualEntry flag are written to recipe variables",
+    "Limit checks are applied and pass/fail status is determined"
+  ],
+  "side_effects": [
+    "Manual entry generates an exception of type specified by RecordDevice_EXCEPTION_TYPE_MANUAL_ENTRY"
+  ],
+  "example_usage": "Operator uses this phase to record a pH meter reading during a unit procedure."
+}

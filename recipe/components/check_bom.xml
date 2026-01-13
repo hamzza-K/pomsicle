@@ -1,0 +1,72 @@
+      <eProcCompObject compLevelName="Master" compLevelId="10" compLocName="Herndon" compLocId="4" compObjId="CheckBOM" compProcType="PM_PHASE" instanceId="CheckBOM10" guid="cbf49917-dc18-1bee-4262-ed824d730d94" icon="/POMS/apps/ActionListApp/AltBitmaps/check_bom.svg;/POMS/apps/ActionListApp/bitmaps/al_phase.gif" compNo="10" prereq_language="0" action_type="6" options="0" displayOptions="65536" seqOptions="0" compObjVer="1.001" xPos="700" yPos="460" change_flag="0" objectConfig="{&quot;Image&quot;:{&quot;type&quot;:&quot;path-group&quot;,&quot;left&quot;:700,&quot;top&quot;:460,&quot;width&quot;:60,&quot;height&quot;:48,&quot;fill&quot;:&quot;rgb(0,0,0)&quot;,&quot;strokeWidth&quot;:0},&quot;Label&quot;:{&quot;type&quot;:&quot;textbox&quot;,&quot;left&quot;:682,&quot;top&quot;:509,&quot;width&quot;:96,&quot;height&quot;:15.82,&quot;fontSize&quot;:14,&quot;lineHeight&quot;:0.9,&quot;textAlign&quot;:&quot;center&quot;,&quot;minWidth&quot;:20,&quot;styles&quot;:{}},&quot;ZOrderImage&quot;:103,&quot;ZOrderLabel&quot;:102,&quot;Hidden&quot;:&quot;0&quot;}">
+        <eObjectAttribute attribId="Execution Info" classId="PhaseExecutionInfo" attribNumber="1" seqNumber="1" attribValidity="True">
+          <eObjectAttributeElement elemId="BLL Assembly Name" sValue="Poms.MaterialManagement.CheckBOM.BLL" format="20" popMethodId="ENTRY" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Class Name" sValue="CheckBOMBLL" format="20" popMethodId="ENTRY" popMethodAttr="Web Page;Non Display;Automated" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethod" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="CopyMethodType" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethod" sValue="poms/Apps/MaterialManagement/CheckBOM/UI/CheckBOM_Edit.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="EditMethodType" sValue="Web Page" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethod" sValue="Poms.MaterialManagement.CheckBOM.BLL.dll,Poms.MaterialManagement.CheckBOM.BLL.CheckBOMBLLPhaseAutomation,poms/Apps/MaterialManagement/CheckBOM/UI/CheckBOM.aspx" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="ExecMethodType" sValue="Automated" format="20" popMethodId="COMBO" popMethodAttr="Web Page;Non Display;Automated" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Hook Module" format="1000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="Object ID" sValue="CheckBOM" format="20" popMethodId="ENTRY" dataType="String" elemValidity="True" />
+          <eObjectAttributeElement elemId="UI Assembly Name" sValue="Poms.MaterialManagement.CheckBOM.UI" format="20" popMethodId="ENTRY" dataType="String" elemValidity="True" />
+        </eObjectAttribute>
+        <eProcParameter paramId="ObjRef:ADDITION_COMPLETE" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BackgroundExec" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="0" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:BOMData" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="20" popMethodId="DEFER" popMethodAttr="DEFER;2;;;CheckBOM10_BOMLineItems;BOM Ref" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Confirmation" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" nValue="0" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:DISPENSE_COMPLETE" attribId="Number Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Number" format="4000" popMethodId="ENTRY" dataType="Number" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:DVSV_ddlExceptionType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;ddlExceptionType nodeName=&quot;ddlExceptionType&quot;&gt;&lt;IsNew&gt;true&lt;/IsNew&gt;&lt;ParamID&gt;CheckBOM10_ExceptionType&lt;/ParamID&gt;&lt;AttrID&gt;Exception Type&lt;/AttrID&gt;&lt;ElemID&gt;Exception Type&lt;/ElemID&gt;&lt;FMT&gt;10&lt;/FMT&gt;&lt;PID&gt;COMBO_LIST&lt;/PID&gt;&lt;PMA&gt;NONE^None;MESSAGE^Message;COMMENT^Comment;INVESTIGATION^Investigation;DEVIATION^Deviation&lt;/PMA&gt;&lt;IsEditable&gt;false&lt;/IsEditable&gt;&lt;/ddlExceptionType&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:DVSV_dgBOMLineItems" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;dgBOMLineItems nodeName=&quot;dgBOMLineItems&quot;&gt;&lt;IsNew&gt;true&lt;/IsNew&gt;&lt;ParamID&gt;CheckBOM10_BOMLineItems&lt;/ParamID&gt;&lt;AttrID&gt;CheckBOMGrid&lt;/AttrID&gt;&lt;ElemID&gt;BOM Ref&lt;/ElemID&gt;&lt;FMT&gt;20&lt;/FMT&gt;&lt;PID&gt;SQLCOMBO_LIST&lt;/PID&gt;&lt;PMA&gt;CALC:Accessor.GetBoxItemSqlCombo(&quot;BOM&quot;,&quot;MM_BOM_ITEM_SP&quot;)&lt;/PMA&gt;&lt;IsEditable&gt;false&lt;/IsEditable&gt;&lt;/dgBOMLineItems&gt;" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:ExeType" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="10" popMethodId="DEFER" popMethodAttr="DEFER;2;;;CheckBOM10_ExceptionType;Exception Type" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:InstructionImage" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:Instructions" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="&lt;@UseHTML@&gt;pomsicle" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:PhaseTitle" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcParameter paramId="ObjRef:UseAutoCompleteBehavior" attribId="String Parameter" attribNumber="1" paramType="Object Reference">
+          <eObjectAttributeElement elemId="Value" sValue="True" format="4000" popMethodId="ENTRY" dataType="String" elemValidity="False" />
+        </eProcParameter>
+        <eProcGroup groupId="_PHASE_" groupName="CheckBOM10" seqNumber="0" />
+        <eProcGroup groupId="Variables" groupName="Variables" seqNumber="1" parentGroupId="_PHASE_" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:ADDITION_COMPLETE" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BackgroundExec" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:BOMData" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Confirmation" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="Variables" paramId="ObjRef:DISPENSE_COMPLETE" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:DVSV_ddlExceptionType" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:DVSV_dgBOMLineItems" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:ExeType" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:InstructionImage" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:Instructions" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:PhaseTitle" attribNumber="1" seqNumber="0" />
+        <eProcParamSeq groupId="_PHASE_" paramId="ObjRef:UseAutoCompleteBehavior" attribNumber="1" seqNumber="0" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="N" c1_value="&lt;@UseHTML@&gt;pomsicle" sequence="1" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="N" c1_value="Phase Title" sequence="5" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="N" c1_value="Confirmation Type: None" sequence="6" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="D" c1_value="Auto Complete Phase: No" sequence="8" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="D" c1_value="Deferred Parameter(s)" sequence="10" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="D" c1_value="* ExeType is deferred to CheckBOM10_ExceptionType." sequence="11" />
+        <eProcCompDataLine parent_guid="16EAA6DC-E014-4632-91D5-60287A0F7BF6" guid="cbf49917-dc18-1bee-4262-ed824d730d94" dl_type="D" c1_value="* BOMData is deferred to CheckBOM10_BOMLineItems." sequence="12" />
+      </eProcCompObject>

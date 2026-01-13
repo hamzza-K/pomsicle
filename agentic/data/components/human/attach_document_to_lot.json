@@ -1,0 +1,28 @@
+{
+  "id": "AttachDocumentToLot",
+  "category": "human",
+  "description": "A recipe phase that allows operators to attach one or more documents to a specified Lot in the Electronic Batch Record, pre-populates based on configuration, and publishes recipe variables about attached files upon completion.",
+  "intent": "To enable operators to attach documents to a Lot and to capture attachment metadata for downstream processing.",
+  "inputs": {
+    "Lot ID": "string",
+    "Documents": "DataTable"
+  },
+  "outputs": {
+    "AttachedFileCount": "integer",
+    "AttachedFileNames": "DataTable with columns FILENAME, ATTACHMENT_TYPE"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Documents attached to the specified Lot",
+    "Recipe variables AttachedFileCount and AttachedFileNames populated"
+  ],
+  "side_effects": [
+    "Attaches documents to Lot in the EBR",
+    "Publishes recipe variables with attachment information"
+  ],
+  "example_usage": "Operator executes the Attach Document to Lot phase, enters Lot ID 'Lot1', selects two documents, and finishes to attach the documents and populate attachment variables."
+}

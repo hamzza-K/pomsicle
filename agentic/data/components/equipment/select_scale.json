@@ -1,0 +1,24 @@
+{
+  "id": "SelectScale",
+  "category": "equipment",
+  "description": "In the Select Scale phase, the operator selects the configured scale and clicks Finish.",
+  "intent": "Allow the operator to choose the appropriate scale for subsequent weighing operations.",
+  "inputs": "I don't know based on the available documents.",
+  "outputs": "I don't know based on the available documents.",
+  "depends_on": {
+    "components": [
+      "SelectBatch",
+      "SelectMaterial",
+      "SelectDispenseMethod"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "Dispense method is selected"
+  ],
+  "postconditions": [
+    "Configured scale is recorded for weighing"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator selects the configured scale and clicks Finish."
+}

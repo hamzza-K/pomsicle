@@ -1,0 +1,38 @@
+{
+  "id": "FlexibleDataGrid",
+  "category": "data",
+  "description": "Phase that displays a tabular data grid at runtime based on either a SQL query or a DataTable recipe variable.",
+  "intent": "Allow the recipe author to present and interact with database query results or an existing DataTable variable in a flexible grid format during execution.",
+  "inputs": {
+    "Instructions": "Instructions displayed to the runtime user.",
+    "Mode": "Query Mode (enter an SQL query) or Recipe Variable Mode (specify a DataTable variable).",
+    "SQLQuery": "SQL query to execute and display (Query Mode only).",
+    "DataTableVariable": "Name of the recipe variable of type DataTable to display (Recipe Variable Mode only).",
+    "AttachToEBR": "Flag indicating whether to attach a PDF of the grid to the Electronic Batch Record (true/false).",
+    "AllowCSVGeneration": "Flag indicating whether to allow CSV export of the grid (true/false).",
+    "AutoComplete": "Flag indicating whether the phase should complete automatically without user intervention (true/false).",
+    "AutoRefresh": "Flag indicating whether the grid should automatically refresh during execution (true/false).",
+    "RefreshRate": "Refresh interval in seconds when AutoRefresh is enabled.",
+    "SelectRow": "Flag indicating whether the operator may select rows from the grid (true/false).",
+    "RowSelectionCount": "Number of rows the operator may select at runtime; zero means unlimited selection.",
+    "ConfirmationType": "Signature or confirmation level required to finish the phase."
+  },
+  "outputs": {
+    "SQLResultData": "DataTable containing the results of the SQL query or specified DataTable variable.",
+    "SelectedRows": "DataTable of rows selected by the operator (empty if none or not selectable).",
+    "SelectedRowCount": "Integer count of rows selected by the operator.",
+    "SQLResultRowCount": "Integer count of rows in the SQLResultData variable."
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [
+    "May generate and attach a PDF to the EBR if AttachToEBR is enabled.",
+    "May generate a downloadable CSV file if AllowCSVGeneration is enabled.",
+    "Executes a database query when in Query Mode, consuming database resources."
+  ],
+  "example_usage": "Author a FlexibleDataGrid phase in Query Mode with SQLQuery = \"SELECT * FROM BATCH_LOG\", AttachToEBR = true, AllowCSVGeneration = true, AutoRefresh = true (RefreshRate = 60), SelectRow = true (RowSelectionCount = 5). At runtime the grid displays the batch log, refreshes every 60 s, lets the operator select up to 5 rows, and attaches a PDF to the EBR."
+}

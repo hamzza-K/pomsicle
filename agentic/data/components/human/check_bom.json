@@ -1,0 +1,30 @@
+{
+  "id": "CheckBOM",
+  "category": "human",
+  "description": "Phase enabling the operator to verify successful completion of dispensing and addition of selected Bill of Material line items at recipe runtime and to display their status in the Electronic Batch Record.",
+  "intent": "To help users verify that selected BoM line items have been dispensed and/or added to the batch within configured tolerance levels before proceeding.",
+  "inputs": {
+    "BOMLineItems": "DataTable of selected BoM items with required quantities"
+  },
+  "outputs": {
+    "BOMVerificationStatus": "DataTable with columns ITEM, QUANTITY, UOM, STATUS"
+  },
+  "depends_on": {
+    "components": [
+      "Dispense",
+      "Add"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "Phase configured by recipe author at edit stage to enable BoM validation",
+    "Central dispense line items exist for dispense check"
+  ],
+  "postconditions": [
+    "EBR data lines indicate completion status of each selected BoM line item"
+  ],
+  "side_effects": [
+    "Phase does not autocomplete if any BoM item is outside tolerance or incomplete"
+  ],
+  "example_usage": "Operator executes the Check BOM phase, reviews the displayed line items and their completion statuses, and confirms to proceed if all items are within tolerance."
+}

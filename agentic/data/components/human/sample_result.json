@@ -1,0 +1,26 @@
+{
+  "id": "SampleResult",
+  "category": "human",
+  "description": "Allows the user to record or display one or more sample test results for a specified sample group.",
+  "intent": "Capture and record sample test results, including numeric and string values, for tests associated with a sample group.",
+  "inputs": {
+    "SampleGroupID": "Identifier of the sample group whose tests are being recorded"
+  },
+  "outputs": {
+    "SampleResultValue": "Numeric sample result value as a recipe variable",
+    "SampleResultString": "Sample result value as a string recipe variable",
+    "FinalResultValue": "Final pass/fail result as a recipe variable (0=fail, 1=pass, 2=N/A)"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Sample test results are committed and available for downstream processing"
+  ],
+  "side_effects": [
+    "May call the Exception phase to record an exception related to the sample"
+  ],
+  "example_usage": "Operator selects a test from the Sample Group grid, enters a result value and UOM (or uses manual entry), saves the entry, optionally records exceptions, and clicks Finish to commit the results."
+}

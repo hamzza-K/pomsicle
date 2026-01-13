@@ -1,0 +1,32 @@
+{
+  "id": "VerifyOPCParameters",
+  "category": "integration",
+  "description": "The Verify OPC Parameters phase is used to verify and record recipe-author-specified process parameter OPC tags (e.g., Temperature, Airflow, Agitation, pH, Pressure). It reads tag values, compares them to author-specified standard or target values, allows manual entry or equipment resolution, and blocks progress or records exceptions on failure.",
+  "intent": "Ensure all configured OPC process parameters are within recipe-specified limits before proceeding, recording values as recipe variables and capturing any deviations or exceptions.",
+  "inputs": {
+    "instructions": "string",
+    "opcParameters": [],
+    "runInBackground": "boolean",
+    "confirmationType": "string"
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "OPC parameters have been configured during recipe authoring",
+    "OPC server and associated equipment are available"
+  ],
+  "postconditions": [
+    "Current OPC tag values are recorded as recipe variables",
+    "OPC tag values are validated against recipe-specified standard or target values",
+    "Exceptions are recorded for each quality error or deviation"
+  ],
+  "side_effects": [
+    "May open the Record Exception page to record an exception",
+    "May prompt for a confirmation signature",
+    "May block progress until OPC tag values meet specified standards"
+  ],
+  "example_usage": "Operator reviews instructions, clicks Get Current Values (or waits until all parameters pass), performs manual entry or resolves equipment where needed, records any exceptions, and clicks Finish to complete the phase."
+}

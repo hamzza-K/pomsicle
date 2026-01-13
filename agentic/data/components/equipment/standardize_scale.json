@@ -1,0 +1,47 @@
+{
+  "id": "StandardizeScale",
+  "category": "equipment",
+  "description": "Prompts the operator to perform a scale standardization challenge by zeroing the scale, recording weight readings (or manual entry if needed), comparing the measurement against the target range, and logging the results to the equipment log.",
+  "intent": "Ensure the scale is properly standardized by guiding the operator through the standardization steps and recording pass/fail results.",
+  "inputs": {
+    "Instructions": "string",
+    "ScaleID": "string",
+    "ScaleClass": "string",
+    "Description": "string",
+    "TargetQuantity": "string",
+    "TargetMinimum": "string",
+    "TargetMaximum": "string",
+    "TargetUOM": "string",
+    "SetStandardizationToPass": "boolean",
+    "ConfirmationType": "string",
+    "ManualStandardizationConfirmationType": "string",
+    "RunAllScaleStdz": "boolean",
+    "AutoComplete": "boolean"
+  },
+  "outputs": {
+    "LastResult": "string",
+    "DetailResult": "string",
+    "GlobalResult": "string",
+    "StandardizeScaleStatus": "string"
+  },
+  "depends_on": {
+    "components": [
+      "SelectScale"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "Scale ID and Scale Class have been selected",
+    "Scale is connected and stable",
+    "Standardization targets are configured"
+  ],
+  "postconditions": [
+    "Standardization result is written to the equipment log",
+    "Scale status and result variables are updated in the system"
+  ],
+  "side_effects": [
+    "Manual weight entry may require electronic signatures",
+    "Page may close automatically based on RunAllScaleStdz parameter"
+  ],
+  "example_usage": "Operator zeros the scale, places the standard weight, clicks Record Weight when stable, optionally enters a manual weight if needed, and clicks Finish to complete the standardization challenge."
+}

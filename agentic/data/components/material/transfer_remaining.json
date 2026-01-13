@@ -1,0 +1,35 @@
+{
+  "id": "TransferRemaining",
+  "category": "material",
+  "description": "Enables the user to transfer a remaining quantity of material from a container to another batch, location, or to waste at runtime.",
+  "intent": "Allow the operator to record and commit the transfer of remaining raw material quantities according to the selected transfer option.",
+  "inputs": {
+    "transferInstructions": "string",
+    "containerId": "string",
+    "materialId": "string",
+    "transferQuantity": "number",
+    "transferOption": "string",
+    "orderBatchUnitProcedureSplitLine": "string",
+    "areaLocation": "string",
+    "dtContainers2Transfer": "DataTable"
+  },
+  "outputs": {
+    "TotalTransferredQuantity": "number"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Transfer entry is added to current transfer grid",
+    "Material quantity is moved to the selected destination",
+    "Recipe variable TotalTransferredQuantity is updated"
+  ],
+  "side_effects": [
+    "May print waste or transfer labels depending on selection",
+    "Confirmation dialogs displayed for conflicting allocations",
+    "Exception page may be invoked"
+  ],
+  "example_usage": "Operator scans container ID, enters transfer quantity, selects a transfer option (e.g., Transfer To Batch), chooses destination, and clicks Finish to commit the transfer."
+}

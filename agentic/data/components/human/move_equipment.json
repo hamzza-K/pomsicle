@@ -1,0 +1,22 @@
+{
+  "id": "MoveEquipment",
+  "category": "human",
+  "description": "Phase that allows the operator to move required equipment listed in the Bill of Equipment (BOE) from one location to another.",
+  "intent": "To enable the operator to relocate equipment items belonging to a BOE by specifying the target area and location, ensuring the equipment record is updated to the new location.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Equipment records are updated to reflect the new location in the Lot ID grid",
+    "MoveEquipment phase is completed and signed off when the operator clicks Finish"
+  ],
+  "side_effects": [
+    "Stores new equipment location data in the location grid starting at index 9000",
+    "Maintains equipment status grids for check (index 6000) and set (index 5000)"
+  ],
+  "example_usage": "Operator selects the BOE reference number(s) for the equipment to move, specifies the target Area and Location, clicks Move to update the location, and then clicks Finish to complete and sign off on the move."
+}

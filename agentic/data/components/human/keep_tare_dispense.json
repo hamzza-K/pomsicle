@@ -1,0 +1,18 @@
+{
+  "id": "KeepTareDispense",
+  "category": "human",
+  "description": "Function that lets an operator dispense against a previously selected dispense instance, using the tare retrieved from the database based on the source lot. If no tare value exists in the database, POMSnet requires the operator to record the tare value in the database.",
+  "intent": "To allow the operator to dispense material using a previously recorded tare weight for the source lot.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "A previously selected dispense instance must exist"
+  ],
+  "postconditions": [],
+  "side_effects": [],
+  "example_usage": "I don't know based on the available documents."
+}

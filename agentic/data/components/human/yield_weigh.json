@@ -1,0 +1,31 @@
+{
+  "id": "YieldWeigh",
+  "category": "human",
+  "description": "Allows the user to record the net weight of one or more output containers for the current Order/Batch/Unit Procedure. Displays instructions, accepts container IDs via scan or entry, shows actual quantity, tare weight, and gross weight, and lets the user add weights to a list or record notes/exceptions.",
+  "intent": "To capture and record the yield weight information of product containers into the system.",
+  "inputs": {
+    "ContainerID": "string",
+    "ActualQuantity": "number",
+    "TareWeight": "number",
+    "GrossWeight": "number",
+    "LotNote": "string"
+  },
+  "outputs": {
+    "YieldWeigh": "Yield weigh value and unit of measure (recipe variable)"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "The unit of measure of the output product must be 'EA' to calculate conversion factor"
+  ],
+  "postconditions": [
+    "Yield weight information is committed and the page closes",
+    "Weighed containers are added to the list of recorded yields"
+  ],
+  "side_effects": [
+    "Enforces operator signature based on the WEIGH_MAN_SIGN configurable parameter (default: Double Signature)"
+  ],
+  "example_usage": "Use this phase in a unit procedure to scan each output container, record its net weight, and commit the yield data to the batch record."
+}

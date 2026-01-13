@@ -1,0 +1,36 @@
+{
+  "id": "GrossWeighDispense",
+  "category": "human",
+  "description": "Process consisting of two worksheets (Gross Weigh Initiation and Gross Weigh Completion) to capture the gross and tare weights of a material container and calculate the net dispensed weight.",
+  "intent": "To determine the net dispensed weight by recording the container\u2019s gross weight before dispense and its tare weight after dispense.",
+  "inputs": {
+    "ContainerID": "Identifier of the container being weighed",
+    "GrossWeight": "Weight of the container before dispensing (recorded in the Initiation worksheet)",
+    "TareWeight": "Weight of the empty container after dispensing (recorded in the Completion worksheet)"
+  },
+  "outputs": {
+    "NetWeight": "Calculated difference between gross and tare weights",
+    "DispenseTransaction": "Dispense transaction record sent during the Gross Weigh Completion phase"
+  },
+  "depends_on": {
+    "components": [
+      "GrossWeighInitiation",
+      "GrossWeighCompletion"
+    ],
+    "conditions": [
+      "Material must be lot\u2010tracked"
+    ]
+  },
+  "preconditions": [
+    "Material is lot\u2010tracked",
+    "Operator is on the Dispensing screen"
+  ],
+  "postconditions": [
+    "Net dispensed weight is calculated",
+    "Dispense transactions are sent"
+  ],
+  "side_effects": [
+    "Dispense transactions are only transmitted during the Gross Weigh Completion phase"
+  ],
+  "example_usage": "Navigate to Dispensing \u2192 Gross Weigh Initiation, enter the gross weight and finish. Later navigate to Dispensing \u2192 Gross Weigh Completion, enter the tare weight and finish to calculate the net weight and send the dispense transaction."
+}

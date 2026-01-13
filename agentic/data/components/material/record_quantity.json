@@ -1,0 +1,25 @@
+{
+  "id": "RecordQuantity",
+  "category": "material",
+  "description": "Enables operators to record material quantities by volume, count, or weight as specified by the recipe author within POMSnet.",
+  "intent": "Capture material quantities in the appropriate measurement type and unit of measure, optionally against a target quantity, to ensure accurate data recording.",
+  "inputs": {
+    "MeasurementType": "string",
+    "ExpectedUOM": "string",
+    "TargetQuantity": "number"
+  },
+  "outputs": {
+    "RecordedQuantity": "number",
+    "UOM": "string"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Recorded quantity is written to recipe variables"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator uses this phase to record 500 milliliters of solution by volume."
+}

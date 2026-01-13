@@ -1,0 +1,22 @@
+{
+  "id": "MiscDispenseSetup",
+  "category": "human",
+  "description": "Phase that initiates a miscellaneous dispense activity by allowing the operator to specify a material container, required quantity, unit of measure, and related details such as dispense comments and account association.",
+  "intent": "To enable the operator to set up a miscellaneous dispense action not tied to a specific order or batch by capturing all necessary dispense parameters prior to execution.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Batch-level dispense variables (e.g., DISP_BATCH_ID, DISPENSE_MATL, CONTAINER_ID, LOT_ID, etc.) are initialized",
+    "MiscDispenseSetup phase is marked closed when the miscellaneous dispense worksheet instance is closed",
+    "The selected dispense method is recorded for reporting and outbound interface transactions"
+  ],
+  "side_effects": [
+    "Records the specific dispense method in MM_BOM_MATL_ST and MM_DISPENSE_ST (and their _LG/_LX) tables for later reporting"
+  ],
+  "example_usage": "Operator opens the Miscellaneous Dispense Setup phase, scans or enters the container and material IDs, inputs the required quantity and UOM, optionally enters a dispense comment and selects an account, then clicks Finish to commit the setup."
+}

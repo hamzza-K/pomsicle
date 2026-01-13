@@ -1,0 +1,44 @@
+{
+  "id": "RecordProcessTime",
+  "category": "system",
+  "description": "Phase that starts or stops a named process timer, recording the start and stop timestamps and calculating the elapsed time in hours.",
+  "intent": "Record the duration of a process by timing from a start event to a stop event and capturing the elapsed time.",
+  "inputs": {
+    "Timer Name": "Name of the timer to start or stop. Arbitrary string when starting; must match an existing start timer name when stopping.",
+    "Mode": "START or STOP to indicate whether to start or stop the timer.",
+    "Allow Edit": "Flag indicating if the operator may edit the start or stop timestamps (0: No; 1: Yes).",
+    "Display Format": "Format string for displaying elapsed time, matching an entry in the TIME_DISPLAY_FORMAT list.",
+    "UOM": "Unit of measure for defining exception limits (must be time‐based for STOP mode).",
+    "Message Minimum": "Minimum elapsed time value to trigger a message (optional).",
+    "Message Maximum": "Maximum elapsed time value to trigger a message (optional).",
+    "Comment Minimum": "Minimum elapsed time value to require operator comment (optional).",
+    "Comment Maximum": "Maximum elapsed time value to require operator comment (optional).",
+    "Report Minimum": "Minimum elapsed time value to trigger a report (optional).",
+    "Report Maximum": "Maximum elapsed time value to trigger a report (optional).",
+    "Deviation Minimum": "Minimum elapsed time value to trigger a deviation (optional).",
+    "Deviation Maximum": "Maximum elapsed time value to trigger a deviation (optional).",
+    "BackgroundExec": "Flag indicating if this phase should run as a background phase (0: UI; 1: Background).",
+    "UseAutoCompleteBehavior": "Must be True to allow automated completion behavior."
+  },
+  "outputs": {
+    "Start Time": "Timestamp when the timer was started (recorded in database).",
+    "Stop Time": "Timestamp when the timer was stopped (recorded in database).",
+    "Elapsed Time (hours)": "Calculated elapsed time in hours, stored in an internal recipe variable."
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "In STOP mode, a corresponding START instance for the given Timer Name must already exist."
+  ],
+  "postconditions": [
+    "In START mode, a new timer instance with the given name is created and running.",
+    "In STOP mode, the timer is stopped, elapsed time is calculated and stored, and exception limits are evaluated."
+  ],
+  "side_effects": [
+    "Writes start and stop timestamps to the database; if multiple start instances exist, STOP is applied to the earliest one.",
+    "May prompt for exception recording if elapsed time falls outside defined limits."
+  ],
+  "example_usage": "Use RecordProcessTime with Timer Name 'RecipeTimer' and Mode = START at the beginning of a recipe, then later invoke RecordProcessTime with the same Timer Name and Mode = STOP to capture and store the total elapsed time."
+}

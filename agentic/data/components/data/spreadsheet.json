@@ -1,0 +1,34 @@
+{
+  "id": "Spreadsheet",
+  "category": "data",
+  "description": "Performs spreadsheet-based calculations using recipe variables and operator inputs, displays input and output sheets, and records results.",
+  "intent": "Allow the operator to view and resolve input variables, perform calculations in spreadsheet format, record any exceptions, and save resulting output variables, optionally generating a PDF attached to the EBR.",
+  "inputs": {
+    "Instructions": "string",
+    "InputVariables": [
+      "string"
+    ],
+    "AutoComplete": "boolean",
+    "AttachToEBR": "boolean"
+  },
+  "outputs": {
+    "OutputVariables": [
+      "string"
+    ],
+    "PDFFileName": "string",
+    "SavedDataLines": "string"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Values from Inputs and Outputs sheets are saved in the datalines",
+    "PDF file is generated and attached to EBR if configured"
+  ],
+  "side_effects": [
+    "Exception may be recorded if input values are unresolved"
+  ],
+  "example_usage": "Operator reviews the Inputs sheet, enters unresolved values or creates exceptions, navigates to the Spreadsheetsheet to view calculations, and clicks Finish to save results and generate the PDF."
+}

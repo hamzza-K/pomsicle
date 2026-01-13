@@ -1,0 +1,20 @@
+{
+  "id": "ReportSDA",
+  "category": "data",
+  "description": "Allows the user to report and update System Defined Attributes (SDAs) cycle counts and durations for materials in the Bill of Materials, reducing the specified SDA by the given amount.",
+  "intent": "Capture and apply updates to system defined attribute values for selected materials, based on author-specified rules.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Specified SDAs for selected materials are updated according to configured update rules"
+  ],
+  "side_effects": [
+    "Supports background execution when Auto Complete Phase is selected"
+  ],
+  "example_usage": "Operator selects a material in the Material ID grid, expands its SDAs, chooses to decrement the cycle count SDA by a recipe variable, selects a confirmation type, and clicks Finish to apply the update."
+}

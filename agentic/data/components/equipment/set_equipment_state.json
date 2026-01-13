@@ -1,0 +1,35 @@
+{
+  "id": "SetEquipmentState",
+  "category": "equipment",
+  "description": "Enables the operator to set or update the status of one or more equipment items as configured by the recipe author, including entering comments and updating the last product ID if required.",
+  "intent": "Allow the operator to review and apply new status types and values to specified equipment, updating their state in the system.",
+  "inputs": {
+    "Instructions": "string",
+    "StatusTypeValuePairs": [
+      {
+        "StatusType": "string",
+        "StatusValue": "string"
+      }
+    ],
+    "UpdateLastProductID": "boolean",
+    "AutoComplete": "boolean",
+    "ConfirmationType": "string"
+  },
+  "outputs": {
+    "ServerError": "string"
+  },
+  "depends_on": {
+    "components": [
+      "CheckInEquipment"
+    ],
+    "conditions": []
+  },
+  "preconditions": [
+    "Equipment is checked in"
+  ],
+  "postconditions": [
+    "Equipment status values are updated in the system"
+  ],
+  "side_effects": [],
+  "example_usage": "Operator reviews the equipment list, selects new status values, optionally records an exception, and clicks Finish to commit the new equipment state."
+}

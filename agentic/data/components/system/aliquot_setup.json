@@ -1,0 +1,38 @@
+{
+  "id": "AliquotSetup",
+  "category": "system",
+  "description": "Sets batch-level variables for aliquots, including order ID, batch ID, UP ID, split ID, material ID, plant ID, container ID, lot ID, BOM reference number, product ID, account lines, area ID, location, PAC ID, and PAC group ID.",
+  "intent": "To initialize and configure all necessary batch-level variables required for aliquot processing.",
+  "inputs": {},
+  "outputs": {
+    "DISP_ORDER_ID": "string",
+    "DISP_BATCH_ID": "string",
+    "DISP_UP_ID": "string",
+    "DISP_SPLIT_ID": "string",
+    "DISPENSE_MATL": "string",
+    "PLANT_ID": "string",
+    "CONTAINER_ID": "string",
+    "LOT_ID": "string",
+    "BOM_REF_NO": "string",
+    "PRODUCT_ID": "string",
+    "ACCOUNT1": "string",
+    "ACCOUNT2": "string",
+    "ACCOUNT3": "string",
+    "AREA_ID": "string",
+    "LOCATION": "string",
+    "PAC_ID": "string",
+    "PAC_GROUP_ID": "string"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Batch-level aliquot variables initialized"
+  ],
+  "side_effects": [
+    "Defines and sets multiple batch-level recipe variables"
+  ],
+  "example_usage": "At the start of an aliquoting recipe, the AliquotSetup phase initializes DISP_ORDER_ID, DISP_BATCH_ID, DISP_UP_ID, DISP_SPLIT_ID, and other related variables before subsequent processing."
+}

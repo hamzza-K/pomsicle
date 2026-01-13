@@ -1,0 +1,33 @@
+{
+  "id": "LaunchWorksheet",
+  "category": "human",
+  "description": "Phase that allows operators to launch any approved and effective worksheet during recipe execution, presenting instructions and launch options in POMSnet.",
+  "intent": "To initiate the execution of a worksheet during recipe operation, display instructions and manage its lifecycle including sign-off.",
+  "inputs": {
+    "WorksheetID": "Identifier of the worksheet to be launched",
+    "UnitID": "Identifier of the unit where the worksheet will run",
+    "IncludeInEBR": "Indicator whether the worksheet should be included in the Electronic Batch Record",
+    "ActionsListSelection": "Selection of the Launch Worksheet option from the recipe action list"
+  },
+  "outputs": {
+    "WorksheetOrderID": "Generated order ID for the launched worksheet instance",
+    "WorksheetBatchID": "Batch ID associated with the launched worksheet instance",
+    "LaunchTime": "Timestamp when the worksheet was launched",
+    "Status": "Current status of the worksheet instance",
+    "WorksheetVersion": "Version of the worksheet that was launched"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Worksheet must be approved and effective",
+    "Launch Worksheet option must be configured in the recipe's action list"
+  ],
+  "postconditions": [
+    "Worksheet instance is created and tracked in the Instance Detail section",
+    "Authorized sign-off control is displayed for worksheet completion"
+  ],
+  "side_effects": [],
+  "example_usage": "During recipe execution, the operator selects the Launch Worksheet action, reviews the displayed instructions and worksheet details, and signs off upon completion to record the worksheet in the EBR."
+}

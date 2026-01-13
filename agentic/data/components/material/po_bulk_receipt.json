@@ -1,0 +1,21 @@
+{
+  "id": "POBulkReceipt",
+  "category": "material",
+  "description": "Phase that performs bulk receipt of materials from a purchase order using a specified equipment class.",
+  "intent": "To record the bulk receipt of materials against a purchase order and update equipment status grids accordingly.",
+  "inputs": {
+    "Equipment Class": "Valid equipment class for bulk receipt"
+  },
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [
+    "Saves a check-status equipment state grid starting at index 6000",
+    "Saves a set-status equipment state grid starting at index 5000"
+  ],
+  "example_usage": "Operator selects the purchase order, enters the equipment class, executes the bulk receipt phase, and the system records the received materials and updates the equipment grids."
+}

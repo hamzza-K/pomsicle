@@ -1,0 +1,40 @@
+{
+  "id": "ComplexSampleCollection",
+  "category": "human",
+  "description": "Phase that allows the user to record one or more samples in configured sample containers to satisfy a sample group, capturing IDs, weights, labels and exceptions.",
+  "intent": "To guide the operator through sampling one or more containers for a defined sample group, record sample data (IDs, weights, UOM), print labels if configured, and update recipe variables and the electronic batch record.",
+  "inputs": {
+    "SampleID": "Scanned or entered sample identifier",
+    "SampleContainer": "Scanned or entered pre-tared container identifier (if required)",
+    "SourceContainer": "Scanned or entered source container identifier (if Record Source is selected)",
+    "Quantity": "Weight or quantity of sample container, entered or recorded via scale",
+    "UOM": "Unit of measure for the entered quantity",
+    "PrintLabel": "Operator action to print labels (if unlocked)",
+    "RecordException": "Operator action to record an exception (launches exception page)"
+  },
+  "outputs": {
+    "TotalSampleQuantity": "Calculated sum of quantities of all sample containers defined during authoring",
+    "TotalNonRetainedSampleQuantity": "Calculated sum of quantities of non-retained sample containers",
+    "SampleCollection": "Recipe variable storing total sample quantity for the phase",
+    "LabelsPrinted": "Indicator that labels were printed",
+    "ExceptionRecorded": "Indicator that an exception was recorded",
+    "ConfirmationSignature": "Recorded signature upon phase completion"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Phase configured by recipe author with sample group, container definitions, retention flags and label settings"
+  ],
+  "postconditions": [
+    "Electronic Batch Record updated with sample entries, weights, exceptions and label print events",
+    "Recipe variables TotalSampleQty and SampleCollection set or updated"
+  ],
+  "side_effects": [
+    "May launch scale interface or exception page",
+    "May prompt printing of sample labels",
+    "May require confirmation signature based on configuration"
+  ],
+  "example_usage": "Operator scans the Sample ID and container, records or enters the quantity and UOM, prints labels if required, records any exceptions, then selects Finish to complete the phase and continue."
+}

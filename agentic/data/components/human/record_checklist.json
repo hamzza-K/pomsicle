@@ -1,0 +1,27 @@
+{
+  "id": "RecordChecklist",
+  "category": "human",
+  "description": "Presents a checklist based on a selected checklist group from a Bill of Lists, allowing users to fill various field types and capturing their inputs in a recipe variable.",
+  "intent": "To guide users through a series of checklist items and record their responses for documentation and compliance.",
+  "inputs": {
+    "Checklist Group": "string",
+    "Confirmation Type": "string"
+  },
+  "outputs": {
+    "vChecklistResponses": "string"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [
+    "Bill of Lists attached to the unit procedure"
+  ],
+  "postconditions": [
+    "Checklist responses stored in recipe variable"
+  ],
+  "side_effects": [
+    "Creates recipe variable to hold entered checklist values"
+  ],
+  "example_usage": "Operator selects the 'Safety Checklist' group, completes Yes/No and text entries for each item, then clicks Finish to record the responses."
+}

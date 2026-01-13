@@ -1,0 +1,18 @@
+{
+  "id": "WriteOPCParameters",
+  "category": "integration",
+  "description": "The phase used to write values to OPC tags in process equipment and other data points.",
+  "intent": "To write recipe author\u2013specified target values to OPC tags during execution.",
+  "inputs": {},
+  "outputs": {},
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [],
+  "side_effects": [
+    "Sets a boolean recipe variable 'AllParametersPass' indicating if all tags were written successfully"
+  ],
+  "example_usage": "Use this phase in a unit procedure to write target process parameters such as temperature, pressure, and flow rate to their corresponding OPC tags."
+}

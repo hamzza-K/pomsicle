@@ -1,0 +1,34 @@
+{
+  "id": "FlexibleRecordDevice",
+  "category": "equipment",
+  "description": "Phase used to retrieve data from an externally connected device and parse the received data into multiple value/UOM pairs based on configurable parsing logic.",
+  "intent": "To allow the operator to connect to equipment, read device data, apply parsing and conversion logic for each parameter, and record the results and any manual entries or exceptions.",
+  "inputs": {
+    "EquipmentClass": "Configured equipment class for selecting valid equipment",
+    "EquipmentID": "Selected equipment identifier used for readings",
+    "PortID": "Connected port identifier for the selected equipment",
+    "Parameters": "List of configured parameters with parsing logic, UOM, and exception limits"
+  },
+  "outputs": {
+    "ManualEntry": "Boolean recipe variable set to true if readings were entered manually, or false if read from the device",
+    "ParameterReadings": "Variables {ParameterID}_Reading containing the value and UOM for each parameter",
+    "ParameterSuccess": "Variables {ParameterID}_Success indicating parsing pass/fail status for each parameter",
+    "ParameterMessage": "Variables {ParameterID}_Message containing messages or errors for each parameter",
+    "EBRResults": "Electronic batch record results including parameter values and optionally the full device input string"
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Phase-level recipe variables for readings, success flags, and messages are created",
+    "ManualEntry variable is created and set based on input method",
+    "EBR results are written out"
+  ],
+  "side_effects": [
+    "Finish button is disabled if parsing errors occur",
+    "Manual entry requires a different completion signature and optional exception as configured"
+  ],
+  "example_usage": "Operator selects equipment class and ID, clicks Read Device to retrieve raw data, clicks Get Values to parse and convert readings, reviews the results grid, addresses any errors or exceptions, and clicks Finish to record the readings."
+}

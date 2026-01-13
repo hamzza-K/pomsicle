@@ -1,0 +1,35 @@
+{
+  "id": "RecordRejectsAndSamples",
+  "category": "material",
+  "description": "Allows operators to record samples or rejects for defined material compositions during a packaging run, adjusting quantities up or down and optionally printing labels.",
+  "intent": "Capture and classify sample and reject quantities, update running totals and recipe variables, and print labels if configured.",
+  "inputs": {
+    "ClassificationType": "string",
+    "CompositionSequence": "number",
+    "AdjustedQuantity": "number",
+    "UOM": "string",
+    "PrintLabel": "boolean"
+  },
+  "outputs": {
+    "TotalSampleQty": "number",
+    "TotalRejectQty": "number",
+    "RunningTotals": {
+      "CompSeq": "number"
+    }
+  },
+  "depends_on": {
+    "components": [],
+    "conditions": []
+  },
+  "preconditions": [],
+  "postconditions": [
+    "Recipe variables for TotalSampled and TotalRejected updated",
+    "Total_CompSeq_{SeqNo} updated at phase level"
+  ],
+  "side_effects": [
+    "May print labels for recorded samples or rejects",
+    "May require electronic signature",
+    "Writes data to MES and eSpec tables"
+  ],
+  "example_usage": "Operator selects 'Sample', chooses composition sequence 1, enters an adjusted quantity of 5, checks 'Print Label', and clicks Finish to record the samples."
+}

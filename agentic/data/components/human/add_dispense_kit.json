@@ -1,0 +1,52 @@
+{
+  "id": "AddDispenseKit",
+  "category": "human",
+  "description": "Allows containers that are kitted together to be automatically consumed when their kit ID is scanned. The phase displays the central dispense requirement grid, current kits grid and containers-for-kit grid; supports scanning kit IDs, undoing the last addition, viewing all additions, and finishing or cancelling the phase.",
+  "intent": "Guide the operator through scanning and consuming complete kits of materials according to recipe authoring settings (including underconsumption rules), update dispense quantities, and optionally send a transaction to an ERP system upon completion.",
+  "inputs": {
+    "instructions": "Text instructions defined by the recipe author.",
+    "confirmation_type": "Signature level required for the operator at runtime.",
+    "allow_kits_containing_unselected_materials": "Boolean flag from authoring indicating whether kits containing materials not selected for consumption may be added.",
+    "central_dispense_requirement_grid": "Grid of BOM line items with target, min/max target, remaining and dispensed quantities.",
+    "current_kits_grid": "Grid of available kits for the current order, batch, unit procedure and split.",
+    "containers_for_kit_grid": "Grid of all containers included in the currently selected kit.",
+    "kit_id_entry": "Kit ID entered or scanned by the operator.",
+    "undo_last": "Operator action to undo the addition of the last scanned kit.",
+    "view_additions": "Operator action to view all additions recorded so far.",
+    "finish": "Operator action to complete the phase once requirements are met.",
+    "cancel": "Operator action to cancel without saving any additions."
+  },
+  "outputs": {
+    "consumed_kits": "List of kit IDs that were successfully consumed.",
+    "consumed_containers": "List of container IDs consumed as part of scanned kits.",
+    "updated_material_quantities": "Updated running added quantities for each BOM line item.",
+    "exception_id": "Exception ID returned if the exception screen was invoked.",
+    "erp_transaction_sent": "Boolean indicating whether a transaction was sent to the ERP system."
+  },
+  "depends_on": {
+    "components": [
+      "WarehouseDispense",
+      "ERP integration service"
+    ],
+    "conditions": [
+      "Unit procedure with central dispense kits is configured",
+      "At least one kit is available for the current order and split"
+    ]
+  },
+  "preconditions": [
+    "Phase is authored with BOM line items configured for kitting",
+    "Central dispense items are defined in the recipe",
+    "Recipe author has configured underconsumption and kit-group settings"
+  ],
+  "postconditions": [
+    "All selected kits are consumed and dissolved",
+    "Inventory and dispense records are updated in the batch record",
+    "ERP transaction is sent if configured"
+  ],
+  "side_effects": [
+    "Invokes the WarehouseDispense phase to process individual containers",
+    "Sends a consumption transaction to the ERP system if enabled",
+    "Updates the electronic batch record with consumed quantities"
+  ],
+  "example_usage": "At runtime, the operator opens the Add Dispense Kit phase, reviews the displayed grids, scans kit ID 'KIT123', the system auto-selects and consumes all containers in that kit, updates running quantities, and when all requirements are met the operator clicks Finish\u2014dissolving the kit and sending an ERP transaction."
+}
