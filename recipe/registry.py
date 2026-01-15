@@ -18,9 +18,12 @@ COMPONENTS = {
         "description": "Captures and records time set by operators.",
         "category": "root",
     },
+    "record_process_time": {
+        "path": BASE_DIR / "components" / "record_process_time.xml",
+    },
     "add_external_file": {
         "path": BASE_DIR / "components" / "add_external_file.xml",
-        "description": "Add external file component.",
+        "description": "Phase that allows attaching an external file to the batch by specifying a link.",
         "category": "root",
     },
     "add_material": {
@@ -28,24 +31,60 @@ COMPONENTS = {
         "description": "Add material to the recipe.",
         "category": "root",
     },
+    # --- Matched agentic/recipe components ---
+    "calculation": {
+        "path": BASE_DIR / "components" / "calculation.xml",
+        "description": "Phase that defines calculation variables whose values can be used to pre-populate fields in other phases.",
+        "category": "root",
+    },
+    "spread_sheet": {
+        "path": BASE_DIR / "components" / "spread_sheet.xml",
+        "description": "Performs spreadsheet-based calculations using recipe variables and operator inputs, displays input and output sheets, and records results.",
+        "category": "root",
+    },
+    "verify_equipment_add_point": {
+        "path": BASE_DIR / "components" / "verify_equipment_add_point.xml",
+        "description": "Verified add point assignments for equipment, with QC pass/fail results.",
+        "category": "root",
+    },
+    "verify_material_in_equipment": {
+        "path": BASE_DIR / "components" / "verify_material_in_equipment.xml",
+        "description": "Verifies that the specified material is present in each equipment of a defined class and validates each material's quantity, expiry date, and reset date.",
+        "category": "root",
+    },
+    "check_in_material": {
+        "path": BASE_DIR / "components" / "check_in_material.xml",
+        "description": "Checks in material lots and records exceptions if needed.",
+        "category": "root",
+    },
     "adjust_material_inventory": {
         "path": BASE_DIR / "components" / "adjust_material_inventory.xml",
-        "description": "Adjust material inventory.",
+        "description": "Allows operators to adjust material inventory quantities and record reasons.",
         "category": "root",
     },
     "aliquot": {
         "path": BASE_DIR / "components" / "aliquot.xml",
-        "description": "Aliquot material component.",
+        "description": "Splits material into aliquots and records relevant data.",
         "category": "root",
     },
-    "buffer_flush": {
-        "path": BASE_DIR / "components" / "buffer_flush.xml",
-        "description": "Buffer flush operation.",
+    "add_utility": {
+        "path": BASE_DIR / "components" / "add_utility.xml",
+        "description": "Adds utility material to equipment and records exceptions if needed.",
         "category": "root",
     },
-    "calculation": {
-        "path": BASE_DIR / "components" / "calculation.xml",
-        "description": "The Calculation phase is used to perform a user-defined mathematical expression against data available in the recipe.",
+    "add_dispense_kit": {
+        "path": BASE_DIR / "components" / "add_dispense_kit.xml",
+        "description": "Allows containers that are kitted together to be automatically consumed when their kit ID is scanned.",
+        "category": "root",
+    },
+    "scan_and_verify": {
+        "path": BASE_DIR / "components" / "scan_and_verify.xml",
+        "description": "Enables the operator to scan or manually enter a set of values and verify them against a configured list of expected values.",
+        "category": "root",
+    },
+    "record_text": {
+        "path": BASE_DIR / "components" / "record_text.xml",
+        "description": "Records multi-line text, date/time, or entries from the operator.",
         "category": "root",
     },
     "call_web_api": {
@@ -61,11 +100,6 @@ COMPONENTS = {
     "check_in_equipment": {
         "path": BASE_DIR / "components" / "check_in_equipment.xml",
         "description": "Check in equipment.",
-        "category": "root",
-    },
-    "check_in_material": {
-        "path": BASE_DIR / "components" / "check_in_material.xml",
-        "description": "Check in material.",
         "category": "root",
     },
     "check_out_equipment": {
@@ -126,11 +160,6 @@ COMPONENTS = {
     "record_container_tare": {
         "path": BASE_DIR / "components" / "record_container_tare.xml",
         "description": "Record container tare phase.",
-        "category": "root",
-    },
-    "record_text": {
-        "path": BASE_DIR / "components" / "record_text.xml",
-        "description": "Record text component for capturing operator inputs.",
         "category": "root",
     },
     "scan_and_verify": {

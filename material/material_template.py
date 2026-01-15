@@ -6,8 +6,8 @@ import os
 import logging
 from datetime import datetime, timezone
 from urllib.parse import quote_plus, urljoin
+from configparser import SectionProxy
 from bs4 import BeautifulSoup
-from banners import Banner
 import ast
 import uuid
 from utils.parse_date import parse_poms_date as parse_date
@@ -18,7 +18,8 @@ class PomsicleMaterialManager:
     """
     Manages the creation, modification, and upload of Material XML files to POMSicle.
     """
-    def __init__(self, settings: dict, material_settings: dict, location_settings: dict, username: str, password: str):
+    def __init__(self, settings: SectionProxy,
+                material_settings: Optional[SectionProxy | dict], location_settings: SectionProxy, username: str, password: str):
         """
         Initializes the PomsicleMaterialManager with configuration settings and credentials.
 
@@ -32,7 +33,7 @@ class PomsicleMaterialManager:
         self.settings = settings
         self.username = username
         self.password = password
-        
+
         self.base_app_url = settings.get('BASE_APP_URL')
         self.import_url = settings.get('IMPORT_URL')
         self.file_upload_url = settings.get('FILE_UPLOAD_URL')

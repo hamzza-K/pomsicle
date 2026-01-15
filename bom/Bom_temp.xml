@@ -1,7 +1,7 @@
 <eSpecObjects>
   <eSpecXmlObjs>
   
-  <eBoxObject objType="MM_BOM" id="UAUA_BOM" levelName="Master" levelId="10" locationName="Herndon" locationId="4" description="UAUA_BOM(Pomsicle)" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" version="1.001" createDate="08/12/2025 03:35:59.236782" lastChangedDate="08/12/2025 04:03:00.915924" lastStatusChangedDate="08/12/2025 03:35:59.236782">
+  <eBoxObject objType="MM_BOM" id="UKULELE_BOM" levelName="Master" levelId="10" locationName="Herndon" locationId="4" description="UKULELE_BOM(Pomsicle)" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" version="1.001" createDate="08/12/2025 03:35:59.236782" lastChangedDate="08/12/2025 04:03:00.915924" lastStatusChangedDate="08/12/2025 03:35:59.236782">
     <eObjectAttribute attribId="Base Quantity" classId="Common" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" attribValidity="True">
     <eObjectAttributeElement elemId="Quantity" format="13.5" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Number" nValue="1" elemValidity="True" />
     <eObjectAttributeElement elemId="UOM" sValue="#" format="10" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_UOM_SP;UOM;WHERE UOM_TYPE IN (1,3,9) ORDER BY UOM" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
@@ -11,6 +11,70 @@
     </eObjectAttribute>
     <eClassRef classId="Common" priority="1" />
 <eLineItem itemLevelName="Master" itemLevelId="10" itemLocName="Herndon" itemLocId="4" itemObjId="base" itemObjTypeName="MM_OBJ" parentRule="Percent" itemNumber="1" subNumber="1" seqNumber="1" itemObjType="2" itemObjVer="1.001" activeFlag="True" aggregateFlag="True">
+<eObjectAttribute attribId="Addition Group" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_LIST_SP;LIST_ITEM_ID;WHERE LIST_ID = 'Addition Group'" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Allow Batch Staging" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Allow Whse Dispense" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Check In" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Check Weigh" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Rule" format="10" popMethodId="COMBO_LIST" popMethodAttr="Fixed;Percent" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+    <eObjectAttributeElement elemId="Tolerance" format="12.3" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="Number" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Dispense Area" classId="Common" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="ID" sValue="Central" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="CALC:&quot;MM_DISPENSE_AREA_SP;DISPENSE_AREA_ID;WHERE DISPENSE_AREA_TYPE ='&quot; + Accessor.Element(&quot;Dispense Area&quot;,&quot;Type&quot;).StrValue + &quot;'&quot; " bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+    <eObjectAttributeElement elemId="Type" sValue="Central" format="20" popMethodId="COMBO_LIST" popMethodAttr="Central;Line" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Dispense Tolerance" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Lower" format="12.3" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="Number" elemValidity="True" />
+    <eObjectAttributeElement elemId="Rule" format="10" popMethodId="COMBO_LIST" popMethodAttr="Fixed;Percent" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+    <eObjectAttributeElement elemId="Upper" format="12.3" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="Number" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Dispense" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Comment" format="4000" popMethodId="ENTRY" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+    <eObjectAttributeElement elemId="Method" format="25" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_DISPENSE_METHOD_SP;DISPENSE_METHOD;" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+    <eObjectAttributeElement elemId="UOM" sValue="g" format="10" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_UOM_SP;UOM;WHERE UOM_TYPE IN (1,3,9) ORDER BY UOM" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Equipment Class" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="EM_EQUIPMENT_CLASS_SP;EQUIPMENT_CLASS;WHERE PARENT_CLASS = 'Vessel' ORDER BY EQUIPMENT_CLASS" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="EXT_BOM_REF_NO" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="20" popMethodId="ENTRY" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Kitting Group" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_LIST_SP;LIST_ITEM_ID;WHERE LIST_ID = 'Kitting Group'" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Material Quantity" classId="Common" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Quantity" format="13.5" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" dataType="Number" nValue="10" elemValidity="True" />
+    <eObjectAttributeElement elemId="UOM" sValue="#" format="10" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_UOM_SP;UOM;WHERE UOM_TYPE IN (1,3,9) ORDER BY UOM" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Optimizable" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Percentage in Yield" classId="Common" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Target Number" format="12.3" popMethodId="ENTRY" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="Number" hilo="Target" ord="0" nValue="10" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Require Check-In" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Scale Class" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="EM_EQUIPMENT_CLASS_SP;EQUIPMENT_CLASS;WHERE PARENT_CLASS = 'Scale'" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Scaling Rule" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" format="10" popMethodId="COMBO_LIST" popMethodAttr="Fixed;Percent" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eObjectAttribute attribId="Transfer" classId="Common" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
+    <eObjectAttributeElement elemId="Value" sValue="No" format="10" popMethodId="COMBO_LIST" popMethodAttr="Yes;No" bindLevelName="Master" bindLevelId="10" lockLevelName="Master" lockLevelId="10" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
+</eObjectAttribute>
+<eClassRef classId="Common" priority="1" />
+</eLineItem>			
+<eLineItem itemLevelName="Master" itemLevelId="10" itemLocName="Herndon" itemLocId="4" itemObjId="base_cont" itemObjTypeName="MM_OBJ" parentRule="Percent" itemNumber="2" subNumber="1" seqNumber="2" itemObjType="2" itemObjVer="4.001" activeFlag="True" aggregateFlag="True">
 <eObjectAttribute attribId="Addition Group" classId="Common" attribNumber="1" seqNumber="1" calcSeqNumber="1" attribValidity="False">
     <eObjectAttributeElement elemId="Value" format="20" popMethodId="SQLCOMBO_LIST" popMethodAttr="CO_LIST_SP;LIST_ITEM_ID;WHERE LIST_ID = 'Addition Group'" popMethodLockStatus="Yes" dataType="String" elemValidity="True" />
 </eObjectAttribute>

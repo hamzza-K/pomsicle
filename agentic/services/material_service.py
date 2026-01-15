@@ -5,6 +5,7 @@ import os
 import sys
 import logging
 from typing import Optional, Dict
+import configparser
 
 # Add parent directory to path to import modules
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -18,9 +19,9 @@ logger = logging.getLogger(__name__)
 
 class MaterialService:
     """Service for material operations."""
-    
-    def __init__(self, settings: Optional[dict] = None, material_settings: Optional[dict] = None,
-                  location_settings: Optional[dict] = None, username: Optional[str] = None, password: Optional[str] = None):
+
+    def __init__(self, settings: Optional[configparser.SectionProxy | dict] = None, material_settings: Optional[configparser.SectionProxy | dict] = None,
+                  location_settings: Optional[configparser.SectionProxy | dict] = None, username: Optional[str] = None, password: Optional[str] = None):
         """
         Initialize MaterialService.
         
