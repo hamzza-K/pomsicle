@@ -19,7 +19,7 @@ from material.material_template import PomsicleMaterialManager
 # -----------------------------------------------------------------------------
 # Logging
 # -----------------------------------------------------------------------------
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 # -----------------------------------------------------------------------------
@@ -55,8 +55,12 @@ if not material_settings:
         'LOCATION_NAME': 'Herndon'
     }
 
-USERNAME = settings.get('USERNAME')
-PASSWORD = settings.get('PASSWORD')
+USERNAME = settings.get('USERNAME', '')
+PASSWORD = settings.get('PASSWORD', '')
+
+if not USERNAME or not PASSWORD:
+    logger.critical("USERNAME or PASSWORD not configured. Exiting.")
+    exit(1)
 
 # -----------------------------------------------------------------------------
 # Banner
@@ -205,7 +209,6 @@ def handle_material_create(args, token=None):
     """
     logger.info(f"Creating material: {args.material_id}")
     
-    # Parse attributes from command line if provided
     attributes = material_settings
     if args.attributes:
         # Attributes should be in format: "attribId1=value1,attribId2=value2"
@@ -264,7 +267,6 @@ def handle_recipe_create_custom(args, token=None):
     logger.info(f"Custom recipe created with: {' → '.join(args.add)}")
 
     if args.attach:
-        logger.info("Attach is:", args.attach)
         if not args.materials:
             logger.error("Materials not provided for BOM attachment. Exiting.")
             exit(1)
@@ -311,7 +313,7 @@ def create_cli():
 
     # ----- pomsicle recipe create custom -----
     create_custom = recipe_create_sub.add_parser("custom", help="Create a custom recipe")
-    create_custom.add_argument("--recipe-name", default="Assisted", help="Name of the recipe.")
+    create_custom.add_argument("recipe_name", help="Name of the recipe.")
     create_custom.add_argument(
         "--add",
         nargs="+",
@@ -393,7 +395,7 @@ def create_cli():
 # -----------------------------------------------------------------------------
 def author_info():
     print("\n" + "-" * 55)
-    print("Made with ❤  by Hamzza K - https://hamzza.vercel.app/")
+    print("Made with ❤  by Hamzza K")
     print("-" * 55)
 
 # -----------------------------------------------------------------------------

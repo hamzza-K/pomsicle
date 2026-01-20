@@ -8,6 +8,7 @@ from urllib.parse import quote_plus, urljoin
 from bs4 import BeautifulSoup
 from banners import Banner
 import uuid
+from configparser import SectionProxy
 
 logger = logging.getLogger(__name__)
 
@@ -15,12 +16,12 @@ class PomsicleTemplateManager:
     """
     Manages the upload and import of template XML files to POMSicle.
     """
-    def __init__(self, settings: dict, username: str, password: str):
+    def __init__(self, settings: SectionProxy, username: str, password: str):
         """
         Initializes the PomsicleTemplateManager with configuration settings and credentials.
 
         Args:
-            settings (dict): A dictionary containing POMSicle configuration details
+            settings (SectionProxy): A SectionProxy object containing POMSicle configuration details
                              (e.g., MACHINE_NAME, BASE_APP_URL).
             username (str): The username for POMSicle login.
             password (str): The password for POMSicle login.
