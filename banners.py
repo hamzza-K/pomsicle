@@ -126,6 +126,7 @@ class Banner:
         lines = self.style * style_count
         return lines, formatted_msg
 
+    @staticmethod
     def _format(func):
         """
         A decorator that formats the banner output by adding lines and colors to the
@@ -138,8 +139,8 @@ class Banner:
             function: A wrapper function that prints the formatted banner with colors
                       and lines.
         """
-        def wrapper(self, message: str = None):
-            if message is None:
+        def wrapper(self, message: str):
+            if not message:
                 message = func.__name__.upper()
             color = Colors.get_color(func.__name__)
             lines, msg = self._fill_term(message=message)
