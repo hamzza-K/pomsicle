@@ -1,6 +1,6 @@
 <eSpecObjects>
   <eSpecXmlObjs>
-    <eBaseObject objType="MM_OBJ" relObjType="MM" id="HOJOKO" levelName="Master" levelId="10" locationName="Herndon" locationId="4" description="MOKOKO" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" version="1.001" effectivityDate="07/01/2026 04:43:23.565133" createDate="07/01/2026 04:43:23.565133" lastChangedDate="07/01/2026 04:43:23.565133" lastStatusChangedDate="07/01/2026 04:43:23.565133">
+    <eBaseObject objType="MM_OBJ" relObjType="MM" id="boom" levelName="Master" levelId="10" locationName="Herndon" locationId="4" description="boom Pomsicle" status="EDITING" lastChangedBy="administrator" checkedOutBy="administrator" version="1.001" effectivityDate="20/01/2026 02:43:11.399374" createDate="20/01/2026 02:43:11.399374" lastChangedDate="20/01/2026 02:43:11.399374" lastStatusChangedDate="20/01/2026 02:43:11.399374">
       <eObjectAttribute attribId="Aliquot Stock" classId="Common" attribNumber="1" seqNumber="1" attribValidity="True">
         <eObjectAttributeElement elemId="Value" sValue="No" format="20" popMethodId="COMBO_LIST" popMethodAttr="No;Yes" dataType="String" elemValidity="True" />
       </eObjectAttribute>

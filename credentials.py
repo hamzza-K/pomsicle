@@ -19,7 +19,7 @@ if not MACHINE_NAME:
 
 BASE_URL = f'http://{MACHINE_NAME}/poms-api/'
 
-def login(username: str, password: str) -> None:
+def login(username: str, password: str) -> Token | None:
     """
     Sends a request to the API to authenticate a user and get a new authentication token.
     """
@@ -40,8 +40,10 @@ def login(username: str, password: str) -> None:
         if response.ok:
             token_data = json.loads(response.content)
             token = Token(token_data['access_token'], token_data['expires_in'])
+
+            logger.info(f"✓ Successfully authorized '{username}' on '{MACHINE_NAME}'")
             return token
     except Exception as e:
-        Banner().error(f"Couldn't authorize '{username}' on '{MACHINE_NAME}'")
+        Banner().error(f"✗ Couldn't authorize '{username}' on '{MACHINE_NAME}'")
         logger.error(e)
 
