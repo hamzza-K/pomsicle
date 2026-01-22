@@ -18,6 +18,11 @@ COMPONENTS = {
         "description": "Captures and records time set by operators.",
         "category": "root",
     },
+    "select_scale": {
+        "path": BASE_DIR / "components" / "select_scale.xml",
+        "description": "Allows operators to select a scale for measurements.",
+        "category": "root",
+    },
     "record_process_time": {
         "path": BASE_DIR / "components" / "record_process_time.xml",
     },
@@ -195,6 +200,11 @@ COMPONENTS = {
     "yield": {
         "path": BASE_DIR / "components" / "yield.xml",
         "description": "Yield phase component.",
+        "category": "root",
+    },
+    "yield_weigh": {
+        "path": BASE_DIR / "components" / "yield_weigh.xml",
+        "description": "Yield weigh phase component.",
         "category": "root",
     },
     "send_email": {

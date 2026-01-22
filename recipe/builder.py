@@ -43,7 +43,7 @@ class RecipeBuilder:
         self.TOP = 100
         self.BREAK = 3
 
-    def attach_bill(self, bom_path: str, output_path: str = None):
+    def attach_bill(self, bom_path: str, output_path: str | None = None):
         """
         Insert a Bill of Materials component into the recipe.
         The BOM structure includes:
@@ -173,12 +173,16 @@ class RecipeBuilder:
         self.TOP += 49
         return elem
 
-    def _load_component_element(self, name: str) -> ET._Element:
+    def _load_component_element(self, name: str) -> ET._Element | None:
         """Load a component XML element and update objectConfig."""
-        xml_path = COMPONENTS[name]["path"]
-        root = ET.parse(str(xml_path)).getroot()
-        elem = root.find(".//eProcCompObject") or root
-        return self._update_object_config(elem)
+        try:
+            xml_path = COMPONENTS[name]["path"]
+            root = ET.parse(str(xml_path)).getroot()
+            elem = root.find(".//eProcCompObject") or root
+            return self._update_object_config(elem)
+        except KeyError:
+            logger.warning(f"Component '{name}' not found in registry. Skipping.")
+            return None
 
     def insert_components(self, component_names: list[str], out_path: str):
         """Insert a list of components into the main recipe template."""
@@ -201,7 +205,8 @@ class RecipeBuilder:
             component_guid = str(uuid.uuid4())
             comp_elem = copy.deepcopy(self._load_component_element(name))
 
-            # Set compNo, instanceId, and GUID
+            if comp_elem is None: continue
+
             if "compNo" in comp_elem.attrib:
                 comp_elem.set("compNo", str(component_no))
             if "instanceId" in comp_elem.attrib:

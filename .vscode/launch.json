@@ -2,6 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Pomsicle Debug",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "pomsicle.py",
+      "console": "integratedTerminal",
+      "args": ["material", "create", "gugu"]
+    },
+    {
       "name": "UV Python",
       "type": "debugpy",
       "request": "launch",

@@ -119,7 +119,7 @@ class PomsicleTemplateManager:
                 self._is_logged_in = False
                 return False
             else:
-                logger.info(f"Browser-like login successful! Current URL after login: {login_response.url}")
+                logger.debug(f"Browser-like login successful! Current URL after login: {login_response.url}")
                 logger.debug(f"Session cookies after login: {self.session.cookies.get_dict()}")
                 self._is_logged_in = True
                 return True
@@ -252,7 +252,7 @@ class PomsicleTemplateManager:
 
 
             tree.write(xml_file_path, encoding="UTF-8", xml_declaration=False)
-            logger.info(f"XML file '{xml_file_path}' modified successfully with new names.")
+            logger.debug(f"XML file '{xml_file_path}' modified successfully with new names.")
             return True
         except ET.ParseError as e:
             logger.error(f"Error parsing XML file '{xml_file_path}': {e}")
@@ -410,7 +410,7 @@ class PomsicleTemplateManager:
             response.raise_for_status()
 
             result = response.json()
-            logger.info("Import request successful!")
+            logger.debug("Import request successful!")
             logger.debug(f"Response JSON: {json.dumps(result, indent=2)}")
             return result
 

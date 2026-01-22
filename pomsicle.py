@@ -417,4 +417,4 @@ if __name__ == "__main__":
         exit(0)
 
     args.func(args, token_obj)
-    author_info()
+    # author_info()

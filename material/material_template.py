@@ -147,7 +147,8 @@ class PomsicleMaterialManager:
                 self._is_logged_in = False
                 return False
             else:
-                logger.info(f"Browser-like login successful! Current URL after login: {login_response.url}")
+                logger.info(f"Browser-like login successful!")
+                logger.debug(f"Current URL after login: {login_response.url}")
                 logger.debug(f"Session cookies after login: {self.session.cookies.get_dict()}")
                 self._is_logged_in = True
                 return True
@@ -258,10 +259,10 @@ class PomsicleMaterialManager:
         
         if attributes:
             for attrib_id, s_value in attributes.items():
-                for a, s in ast.literal_eval(s_value).items():
-                    attrib_id = a
-                    s_value = s
-                # Find the attribute by attribId
+                if not type(attributes).__name__ == "dict": # We pass SectionProxy by CLI and dict by webmethod
+                    item = list(ast.literal_eval(s_value).items())
+                    if item:
+                        attrib_id, s_value = item[0]
                 attr = base_object.find(f".//eObjectAttribute[@attribId='{attrib_id}']")
                 if attr is not None:
                     for elem_id in ['Value', 'UOM', 'Status Value']:
